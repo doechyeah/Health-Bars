@@ -10,7 +10,13 @@ Leaderboard/Progression charts to measure progress/regression and add as a compe
 Rotating daily roster of games/activities aimed towards mental and physical musical engagment.
 
 ## Requirements
-
+### User Requirements
+The user is given a set of activities that are musically related to help by musical therapy and excercise in fine motor contorl. They will be incentivized by the scores they achieve in the activities and tracking their progress compared to others on a leaderboard.
+### System Requirements
+The app will run on a iOS device (most likely iPhone) and be implemented as a downloadable app through the app store. 
+- The app will feature multiple activities that can have their scores/stats tracked to be uploaded on a external server accessible by website address
+- The app will have a user interface that is easily navigatable with non-precise movements.
+- The app will be able to connect with an external database to track and log user statistics.
 ## Usage
 
 ## Research/Academic References 
