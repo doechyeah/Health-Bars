@@ -34,7 +34,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rgr-zE-Cd5">
                                 <rect key="frame" x="123" y="150" width="129" height="97"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Start sine waves"/>
                                 <connections>
                                     <action selector="toggleSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iwY-P5-rfE"/>
                                 </connections>
@@ -44,8 +44,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Go to second scene"/>
                                 <connections>
-                                    <segue destination="366-Sc-t1T" kind="show" id="lUi-V1-Cub"/>
+                                    <action selector="gotoSecondView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7hL-Oy-xVK"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DD0-8s-fCV">
+                                <rect key="frame" x="117" y="283" width="140" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Record audio"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -54,6 +59,9 @@
                     <navigationItem key="navigationItem" id="BmP-Xq-miB">
                         <barButtonItem key="backBarButtonItem" title="yes1" id="vCb-xu-cbC"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="366-Sc-t1T" kind="show" identifier="ID_gotoSecondView" id="F4c-3W-EAP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -106,7 +114,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Go back to first view"/>
                                 <connections>
-                                    <segue destination="TqZ-2D-r2d" kind="unwind" unwindAction="unwindToStart:" id="bev-H0-E68"/>
+                                    <segue destination="TqZ-2D-r2d" kind="unwind" identifier="ID_unwindToStart" unwindAction="unwindToStart:" id="bev-H0-E68"/>
                                 </connections>
                             </button>
                         </subviews>

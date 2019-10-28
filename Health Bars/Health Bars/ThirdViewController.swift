@@ -14,9 +14,15 @@ class ThirdViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "back to root", style: .plain, target: self, action: #selector(ThirdViewController.back(sender:)))
+        self.navigationItem.leftBarButtonItem = newBackButton
     }
     
-    
+    @objc func back(sender: UIBarButtonItem) {
+        //_ = navigationController?.popViewController(animated: true)
+        performSegue(withIdentifier: "ID_unwindToStart", sender: self)
+    }
     /*
     // MARK: - Navigation
 
