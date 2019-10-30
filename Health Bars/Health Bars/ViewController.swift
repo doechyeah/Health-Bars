@@ -19,17 +19,25 @@ class ViewController: UIViewController {
     let noteFrequencies = [16.35, 17.32, 18.35, 19.45, 20.6, 21.83, 23.12, 24.5, 25.96, 27.5, 29.14, 30.87]
     let noteNamesWithSharps = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
     let noteNamesWithFlats = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"]
-    
+    // note sustain period, have to manually adjust based on timer durations
+    let noteSustainPeriodsForSuccess = 10
     
     //MARK: Outlets
     @IBOutlet weak var frequencyLabel: UILabel!
     @IBOutlet weak var amplitudeLabel: UILabel!
     @IBOutlet weak var noteNameWithSharpsLabel: UILabel!
     @IBOutlet weak var noteNameWithFlatsLabel: UILabel!
-    
+    @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var timerTest: UILabel!
+    var timerTestNum: Float = 0
+    @IBOutlet weak var matchPeriods: UILabel!
     
     //MARK: Condition variables
     var success: Bool = false
+    var noteSustainPeriods: Int = 0
+    var currentPitchToMatch: String!
+    var displayTimer: Timer!
+    var recordTimer: Timer!
     
     //MARK: AudioKit variables
     var oscillator1: AKOscillator!
@@ -43,14 +51,14 @@ class ViewController: UIViewController {
     // called when view first gets loaded into memory
     override func viewDidLoad() {
         // debug
-        NSLog("viewDidLoad")
+        NSLog("viewDidLoad()")
         super.viewDidLoad()
     }
     
     // called when view appears fully
     override func viewDidAppear(_ animated: Bool) {
         // debug
-        NSLog("viewDidAppear")
+        NSLog("viewDidAppear()")
         super.viewDidAppear(animated)
         
         AKSettings.audioInputEnabled = true
@@ -89,21 +97,19 @@ class ViewController: UIViewController {
         } catch {
             AKLog("AudioKit did not start!")
         }
-        Timer.scheduledTimer(timeInterval: 0.1,
-                             target: self,
-                             selector: #selector(ViewController.updateUI),
-                             userInfo: nil,
-                             repeats: true)
+        
+        //TODO: read pitch from filename/contents
+        currentPitchToMatch = findPitchFromFrequencyStringSharps(1000.0)
         
         // debug
-        NSLog("Done viewDidAppear")
+        NSLog("Done viewDidAppear()")
         
     }
     
     // called with view disappears fully
     override func viewDidDisappear(_ animated: Bool) {
         // debug
-        NSLog("viewDidDisappear")
+        NSLog("viewDidDisappear()")
         
         do {
             try AudioKit.stop()
@@ -112,7 +118,7 @@ class ViewController: UIViewController {
         }
         
         // debug
-        NSLog("Done viewDidDisappear")
+        NSLog("Done viewDidDisappear()")
     }
     
     // start/stop sine oscillator
@@ -130,6 +136,19 @@ class ViewController: UIViewController {
         }
     }
     
+    // start recording to match the pitch
+    @IBAction func startRecording(_ sender: UIButton) {
+        sender.isEnabled = false
+        displayTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.updateUI), userInfo: nil, repeats: true)
+        //displayTimer.tolerance = 0.1
+        recordTimer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(ViewController.stopRecord), userInfo: nil, repeats: false)
+        //recordTimer.tolerance = 0.5
+        // replaced with timer
+        //DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(4000)) {
+        //    self.stopRecord()
+        //}
+    }
+    
     // unwind segue function, called from other views
     @IBAction func unwindToStart(_ unwindSegue: UIStoryboardSegue) {
         //let sourceViewController = unwindSegue.source
@@ -138,42 +157,91 @@ class ViewController: UIViewController {
     
     // action segue to conditionally go to second view
     @IBAction func gotoSecondView(_ sender: UIButton) {
-        if success == false {
+        if success == true {
             performSegue(withIdentifier: "ID_gotoSecondView", sender: self)
         }
     }
     
     @objc func updateUI() {
         // debug
-        NSLog("updateUI")
+        //NSLog("updateUI()")
+        
+        amplitudeLabel.text = String(format: "%0.2f", tracker.amplitude)
+        
+        timerTestNum += 0.1
+        timerTest.text = "\(timerTestNum)"
+        
         
         if tracker.amplitude > 0.1 {
             frequencyLabel.text = String(format: "%0.1f", tracker.frequency)
             
-            var frequency = Float(tracker.frequency)
-            while frequency > Float(noteFrequencies[noteFrequencies.count - 1]) {
-                frequency /= 2.0
-            }
-            while frequency < Float(noteFrequencies[0]) {
-                frequency *= 2.0
-            }
+            let (octave, index) = findPitchFromFrequency(Float(tracker.frequency))
+            let currentPitch = "\(noteNamesWithSharps[index])\(octave)"
             
-            var minDistance: Float = 10_000.0
-            var index = 0
-            
-            for i in 0..<noteFrequencies.count {
-                let distance = fabsf(Float(noteFrequencies[i]) - frequency)
-                if distance < minDistance {
-                    index = i
-                    minDistance = distance
-                }
-            }
-            let octave = Int(log2f(Float(tracker.frequency) / frequency))
-            noteNameWithSharpsLabel.text = "\(noteNamesWithSharps[index])\(octave)"
+            noteNameWithSharpsLabel.text = currentPitch
             noteNameWithFlatsLabel.text = "\(noteNamesWithFlats[index])\(octave)"
+            
+            matchPitch(currentPitch)
         }
-        amplitudeLabel.text = String(format: "%0.2f", tracker.amplitude)
+    }
+    
+    // invalidate displayTimer to stop updating UI
+    @objc func stopRecord() {
+        if displayTimer != nil {
+            displayTimer.invalidate()
+            displayTimer = nil
+        }
+        if recordTimer != nil {
+            recordTimer.invalidate()
+            recordTimer = nil
+        }
+        // button doesn't appear enabled until UI is interacted with, but can still be pressed
+        recordButton.isEnabled = true
+        timerTestNum = 0
+        timerTest.text = "TimerTest"
+        matchPeriods.text = "MatchPeriods"
+    }
+    
+    func matchPitch(_ pitch: String) {
+        if currentPitchToMatch == pitch {
+            noteSustainPeriods += 1
+        }
+        if noteSustainPeriods >= noteSustainPeriodsForSuccess {
+            noteSustainPeriods = 0
+            stopRecord()
+            success = true
+        }
+    }
+    
+    func findPitchFromFrequency(_ freq: Float) -> (Int, Int) {
+        var frequency = freq
+        
+        // find base frequency
+        while frequency > Float(noteFrequencies[noteFrequencies.count - 1]) {
+            frequency /= 2.0
+        }
+        while frequency < Float(noteFrequencies[0]) {
+            frequency *= 2.0
+        }
+        
+        var minDistance: Float = 10_000.0
+        var index = 0
+        
+        // find closest pitch match
+        for i in 0..<noteFrequencies.count {
+            let distance = fabsf(Float(noteFrequencies[i]) - frequency)
+            if distance < minDistance {
+                index = i
+                minDistance = distance
+            }
+        }
+        let octave = Int(log2f(freq / frequency))
+        return (octave, index)
+    }
+    
+    func findPitchFromFrequencyStringSharps(_ freq: Float) -> String {
+        let (octave, index) = findPitchFromFrequency(Float(freq))
+        return "\(noteNamesWithSharps[index])\(octave)"
     }
     
 }
-

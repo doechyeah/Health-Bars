@@ -67,7 +67,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="EvX-LT-MkB">
-                                <rect key="frame" x="132" y="296" width="127" height="170"/>
+                                <rect key="frame" x="132" y="296" width="127" height="291"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U50-gO-3i4" userLabel="Start sine waves">
@@ -80,6 +80,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cdt-Ws-Ud1" userLabel="Record audio">
                                         <rect key="frame" x="0.0" y="70" width="127" height="30"/>
                                         <state key="normal" title="Record audio"/>
+                                        <connections>
+                                            <action selector="startRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rGc-ac-Am6"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0d-vP-tfs" userLabel="Go to second view">
                                         <rect key="frame" x="0.0" y="140" width="127" height="30"/>
@@ -88,6 +91,18 @@
                                             <action selector="gotoSecondView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ko4-kF-Kxf"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimerTest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIQ-RM-mok">
+                                        <rect key="frame" x="0.0" y="210" width="127" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MatchPeriods" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdp-ge-teC">
+                                        <rect key="frame" x="0.0" y="270.5" width="127" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -104,8 +119,11 @@
                     <connections>
                         <outlet property="amplitudeLabel" destination="DOs-Sk-Rbc" id="0Ts-ZW-7Hu"/>
                         <outlet property="frequencyLabel" destination="Fhu-BM-JFw" id="3fQ-1f-Otw"/>
+                        <outlet property="matchPeriods" destination="Pdp-ge-teC" id="FdR-4l-g3F"/>
                         <outlet property="noteNameWithFlatsLabel" destination="H9d-Qj-xrV" id="LRc-JY-Kq4"/>
                         <outlet property="noteNameWithSharpsLabel" destination="1Az-Na-lv6" id="JPU-4V-b5U"/>
+                        <outlet property="recordButton" destination="Cdt-Ws-Ud1" id="fPv-rK-0oI"/>
+                        <outlet property="timerTest" destination="UIQ-RM-mok" id="7RQ-4H-NQM"/>
                         <segue destination="8sG-tZ-4Jd" kind="show" identifier="ID_gotoSecondView" id="1A7-MY-5az"/>
                     </connections>
                 </viewController>
