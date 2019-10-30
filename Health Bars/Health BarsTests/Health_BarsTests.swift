@@ -2,8 +2,8 @@
 //  Health_BarsTests.swift
 //  Health BarsTests
 //
-//  Created by Michael Lin on 2019-10-26.
-//  Copyright © 2019 Michael Lin. All rights reserved.
+//  Created by Michael Lin on 2019-10-29.
+//  Copyright © 2019 Team Rhythm. All rights reserved.
 //
 
 import XCTest

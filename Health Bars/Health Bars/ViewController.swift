@@ -19,12 +19,22 @@ class ViewController: UIViewController {
     let noteNamesWithFlats = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"]
     
     
+    //@IBOutlet weak var frequencyLabel: UILabel!
+    //@IBOutlet weak var noteNameWithSharpsLabel: UILabel!
+    //@IBOutlet weak var noteNameWithFlatsLabel: UILabel!
+    //@IBOutlet weak var amplitudeLabel: UILabel!
+    @IBOutlet weak var frequencyLabel: UILabel!
+    @IBOutlet weak var amplitudeLabel: UILabel!
+    @IBOutlet weak var noteNameWithSharpsLabel: UILabel!
+    @IBOutlet weak var noteNameWithFlatsLabel: UILabel!
+    
+    
     
     var success: Bool = false
-
+    
     var oscillator1 = AKOscillator()
+    var mixer = AKMixer()
     //var oscillator2 = AKOscillator()
-    //var mixer = AKMixer()
     var mic: AKMicrophone!
     var tracker: AKFrequencyTracker!
     var bandpassfilter: AKBandPassButterworthFilter!
@@ -32,21 +42,39 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         AKSettings.audioInputEnabled = true
         AKSettings.sampleRate = AudioKit.engine.inputNode.inputFormat(forBus: 0).sampleRate
         mic = AKMicrophone()
         bandpassfilter = AKBandPassButterworthFilter(mic)
         bandpassfilter.centerFrequency = 800
         bandpassfilter.bandwidth = 700
-        tracker = AKFrequencyTracker.init(bandpassfilter)
+        tracker = AKFrequencyTracker(bandpassfilter)
+        //have to give the frequencytracker an output, or else it won't work
         silence = AKBooster(tracker, gain: 0)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        AudioKit.output = silence
+        
+        if let inputs = AudioKit.inputDevices {
+            do {
+                try AudioKit.setInputDevice(inputs[0])
+                try mic.setDevice(inputs[0])
+            } catch {
+                AKLog("failed to get mic")
+            }
+        } else {
+            AKLog("failed to get mic")
+        }
+        
+        mixer = AKMixer(oscillator1, silence)
+        
+        // Cut the volume in half since we have two oscillators
+        mixer.volume = 0.5
+        AudioKit.output = mixer
         do {
             try AudioKit.start()
         } catch {
@@ -59,34 +87,29 @@ class ViewController: UIViewController {
                              repeats: true)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        //mixer = AKMixer(oscillator1, oscillator2)
-
-        // Cut the volume in half since we have two oscillators
-        //mixer.volume = 0.5
-        AudioKit.output = oscillator1
+    override func viewDidDisappear(_ animated: Bool) {
         do {
-            try AudioKit.start()
+            try AudioKit.stop()
         } catch {
-            AKLog("AudioKit did not start!")
+            AKLog("AudioKit did not stop!")
         }
     }
-
+    
+    
     @IBAction func toggleSound(_ sender: UIButton) {
         if oscillator1.isPlaying {
             oscillator1.stop()
             //oscillator2.stop()
             sender.setTitle("Play Sine Waves", for: .normal)
         } else {
-            oscillator1.frequency = random(in: 220 ... 880)
+            oscillator1.frequency = 1000
             oscillator1.start()
             //oscillator2.frequency = random(in: 220 ... 880)
             //oscillator2.start()
             sender.setTitle("Stop \(Int(oscillator1.frequency))Hz", for: .normal)
         }
     }
-
+    
     @IBAction func unwindToStart(_ unwindSegue: UIStoryboardSegue) {
         //let sourceViewController = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
@@ -101,7 +124,7 @@ class ViewController: UIViewController {
     @objc func updateUI() {
         if tracker.amplitude > 0.1 {
             frequencyLabel.text = String(format: "%0.1f", tracker.frequency)
-
+            
             var frequency = Float(tracker.frequency)
             while frequency > Float(noteFrequencies[noteFrequencies.count - 1]) {
                 frequency /= 2.0
@@ -109,10 +132,10 @@ class ViewController: UIViewController {
             while frequency < Float(noteFrequencies[0]) {
                 frequency *= 2.0
             }
-
+            
             var minDistance: Float = 10_000.0
             var index = 0
-
+            
             for i in 0..<noteFrequencies.count {
                 let distance = fabsf(Float(noteFrequencies[i]) - frequency)
                 if distance < minDistance {
