@@ -18,6 +18,7 @@
 		0CA377DE23694484001DAB00 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377DD23694484001DAB00 /* ThirdViewController.swift */; };
 		0CA377E123694583001DAB00 /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA377E023694583001DAB00 /* AudioKit.framework */; };
 		0CA377E323694586001DAB00 /* AudioKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA377E223694586001DAB00 /* AudioKitUI.framework */; };
+		0CCB411A236A97DB0031AB67 /* NavigationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		0CA377DD23694484001DAB00 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		0CA377E023694583001DAB00 /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioKit.framework; path = ../../AudioKit.framework; sourceTree = "<group>"; };
 		0CA377E223694586001DAB00 /* AudioKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioKitUI.framework; path = ../../AudioKitUI.framework; sourceTree = "<group>"; };
+		0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				0CA377AD23694264001DAB00 /* AppDelegate.swift */,
+				0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */,
 				0CA377AF23694264001DAB00 /* ViewController.swift */,
 				0CA377DB23694427001DAB00 /* SecondViewController.swift */,
 				0CA377DD23694484001DAB00 /* ThirdViewController.swift */,
@@ -278,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CCB411A236A97DB0031AB67 /* NavigationMenu.swift in Sources */,
 				0CA377B023694264001DAB00 /* ViewController.swift in Sources */,
 				0CA377DE23694484001DAB00 /* ThirdViewController.swift in Sources */,
 				0CA377DC23694427001DAB00 /* SecondViewController.swift in Sources */,

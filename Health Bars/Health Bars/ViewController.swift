@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     //MARK: Constants
     let noteFrequencies = [16.35, 17.32, 18.35, 19.45, 20.6, 21.83, 23.12, 24.5, 25.96, 27.5, 29.14, 30.87]
     let noteNamesWithSharps = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
-    let noteNamesWithFlats = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"]
     // note sustain period, have to manually adjust based on timer durations
     let noteSustainPeriodsForSuccess = 10
     
@@ -26,17 +25,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var frequencyLabel: UILabel!
     @IBOutlet weak var amplitudeLabel: UILabel!
     @IBOutlet weak var noteNameWithSharpsLabel: UILabel!
-    @IBOutlet weak var noteNameWithFlatsLabel: UILabel!
+    @IBOutlet weak var listenButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var timerTest: UILabel!
-    var timerTestNum: Float = 0
     @IBOutlet weak var matchPeriods: UILabel!
+    
+    var timerTestNum: Float = 0
     
     //MARK: Condition variables
     var success: Bool = false
     var noteSustainPeriods: Int = 0
     var currentPitchToMatch: String!
     var displayTimer: Timer!
+    var listenTimer: Timer!
     var recordTimer: Timer!
     
     //MARK: AudioKit variables
@@ -123,22 +124,37 @@ class ViewController: UIViewController {
     
     // start/stop sine oscillator
     @IBAction func toggleSound(_ sender: UIButton) {
+        toggleOscillator()
+    }
+    
+    @objc func toggleOscillator() {
         if oscillator1.isPlaying {
             oscillator1.stop()
             //oscillator2.stop()
-            sender.setTitle("Play Sine Waves", for: .normal)
+            listenButton.setTitle("Play Sine Waves", for: .normal)
+            
+            if listenTimer != nil {
+                listenTimer.invalidate()
+                listenTimer = nil
+            }
+            listenButton.isEnabled = true
+            recordButton.isEnabled = true
+            
         } else {
             oscillator1.frequency = 1000
             oscillator1.start()
+            listenTimer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(ViewController.toggleOscillator), userInfo: nil, repeats: false)
             //oscillator2.frequency = random(in: 220 ... 880)
             //oscillator2.start()
-            sender.setTitle("Stop \(Int(oscillator1.frequency))Hz", for: .normal)
+            listenButton.setTitle("Stop \(Int(oscillator1.frequency))Hz", for: .normal)
+            listenButton.isEnabled = false
         }
     }
     
     // start recording to match the pitch
     @IBAction func startRecording(_ sender: UIButton) {
         sender.isEnabled = false
+        listenButton.isEnabled = false
         displayTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.updateUI), userInfo: nil, repeats: true)
         //displayTimer.tolerance = 0.1
         recordTimer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(ViewController.stopRecord), userInfo: nil, repeats: false)
@@ -158,7 +174,7 @@ class ViewController: UIViewController {
     // action segue to conditionally go to second view
     @IBAction func gotoSecondView(_ sender: UIButton) {
         if success == true {
-            performSegue(withIdentifier: "ID_gotoSecondView", sender: self)
+            performSegue(withIdentifier: "ID_gotoSuccess", sender: self)
         }
     }
     
@@ -170,6 +186,7 @@ class ViewController: UIViewController {
         
         timerTestNum += 0.1
         timerTest.text = "\(timerTestNum)"
+        matchPeriods.text = "\(noteSustainPeriods)"
         
         
         if tracker.amplitude > 0.1 {
@@ -179,7 +196,6 @@ class ViewController: UIViewController {
             let currentPitch = "\(noteNamesWithSharps[index])\(octave)"
             
             noteNameWithSharpsLabel.text = currentPitch
-            noteNameWithFlatsLabel.text = "\(noteNamesWithFlats[index])\(octave)"
             
             matchPitch(currentPitch)
         }
@@ -196,10 +212,17 @@ class ViewController: UIViewController {
             recordTimer = nil
         }
         // button doesn't appear enabled until UI is interacted with, but can still be pressed
+        listenButton.isEnabled = true
         recordButton.isEnabled = true
         timerTestNum = 0
         timerTest.text = "TimerTest"
         matchPeriods.text = "MatchPeriods"
+        
+        if success == false {
+            performSegue(withIdentifier: "ID_gotoFail", sender: self)
+        } else if success == false {
+            performSegue(withIdentifier: "ID_gotoSuccess", sender: self)
+        }
     }
     
     func matchPitch(_ pitch: String) {
@@ -208,8 +231,8 @@ class ViewController: UIViewController {
         }
         if noteSustainPeriods >= noteSustainPeriodsForSuccess {
             noteSustainPeriods = 0
-            stopRecord()
             success = true
+            stopRecord()
         }
     }
     
