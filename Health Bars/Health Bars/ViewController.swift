@@ -15,6 +15,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    //MARK: Testing constants
+    // make sure this is a frequency from pitch table
+    let testingFreq: Float = 440.0
+    
     //MARK: Constants
     let noteFrequencies = [16.35, 17.32, 18.35, 19.45, 20.6, 21.83, 23.12, 24.5, 25.96, 27.5, 29.14, 30.87]
     let noteNamesWithSharps = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
@@ -35,7 +39,7 @@ class ViewController: UIViewController {
     //MARK: Condition variables
     var success: Bool = false
     var noteSustainPeriods: Int = 0
-    var currentPitchToMatch: String!
+    var currentPitchIndexToMatch: Int!
     var displayTimer: Timer!
     var listenTimer: Timer!
     var recordTimer: Timer!
@@ -49,11 +53,18 @@ class ViewController: UIViewController {
     var bandpassfilter: AKBandPassButterworthFilter!
     var silence: AKBooster!
     
+    deinit {
+        NSLog("deinit()")
+    }
+    
     // called when view first gets loaded into memory
     override func viewDidLoad() {
         // debug
         NSLog("viewDidLoad()")
         super.viewDidLoad()
+        
+        // debug
+        NSLog("Done viewDidLoad()")
     }
     
     // called when view appears fully
@@ -67,7 +78,6 @@ class ViewController: UIViewController {
         AKSettings.sampleRate = AudioKit.engine.inputNode.inputFormat(forBus: 0).sampleRate
         
         oscillator1 = AKOscillator()
-        mixer = AKMixer()
         
         mic = AKMicrophone()
         // filter out non-vocal frequencies
@@ -89,18 +99,18 @@ class ViewController: UIViewController {
             AKLog("failed to get mic")
         }
         
+        mixer.volume = 1
         
-        // Cut the volume in half since we have two oscillators
-        mixer.volume = 0.5
+        //TODO: read pitch from filename/contents
+        currentPitchIndexToMatch = findPitchFromFrequency(testingFreq).1
+        
         AudioKit.output = mixer
+        
         do {
             try AudioKit.start()
         } catch {
             AKLog("AudioKit did not start!")
         }
-        
-        //TODO: read pitch from filename/contents
-        currentPitchToMatch = findPitchFromFrequencyStringSharps(1000.0)
         
         // debug
         NSLog("Done viewDidAppear()")
@@ -112,11 +122,17 @@ class ViewController: UIViewController {
         // debug
         NSLog("viewDidDisappear()")
         
+        if listenTimer != nil {
+            listenTimer.invalidate()
+            listenTimer = nil
+        }
+        
         do {
             try AudioKit.stop()
         } catch {
             AKLog("AudioKit did not stop!")
         }
+        
         
         // debug
         NSLog("Done viewDidDisappear()")
@@ -141,7 +157,7 @@ class ViewController: UIViewController {
             recordButton.isEnabled = true
             
         } else {
-            oscillator1.frequency = 1000
+            oscillator1.frequency = Double(testingFreq)
             oscillator1.start()
             listenTimer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(ViewController.toggleOscillator), userInfo: nil, repeats: false)
             //oscillator2.frequency = random(in: 220 ... 880)
@@ -193,11 +209,10 @@ class ViewController: UIViewController {
             frequencyLabel.text = String(format: "%0.1f", tracker.frequency)
             
             let (octave, index) = findPitchFromFrequency(Float(tracker.frequency))
-            let currentPitch = "\(noteNamesWithSharps[index])\(octave)"
             
-            noteNameWithSharpsLabel.text = currentPitch
+            noteNameWithSharpsLabel.text = findPitchFromOctaveIndexString(octave, index)
             
-            matchPitch(currentPitch)
+            matchPitch(index)
         }
     }
     
@@ -220,13 +235,13 @@ class ViewController: UIViewController {
         
         if success == false {
             performSegue(withIdentifier: "ID_gotoFail", sender: self)
-        } else if success == false {
+        } else if success == true {
             performSegue(withIdentifier: "ID_gotoSuccess", sender: self)
         }
     }
     
-    func matchPitch(_ pitch: String) {
-        if currentPitchToMatch == pitch {
+    func matchPitch(_ pitch: Int) {
+        if currentPitchIndexToMatch == pitch {
             noteSustainPeriods += 1
         }
         if noteSustainPeriods >= noteSustainPeriodsForSuccess {
@@ -262,8 +277,12 @@ class ViewController: UIViewController {
         return (octave, index)
     }
     
-    func findPitchFromFrequencyStringSharps(_ freq: Float) -> String {
+    func findPitchFromFrequencyString(_ freq: Float) -> String {
         let (octave, index) = findPitchFromFrequency(Float(freq))
+        return findPitchFromOctaveIndexString(octave, index)
+    }
+    
+    func findPitchFromOctaveIndexString(_ octave: Int, _ index: Int) -> String {
         return "\(noteNamesWithSharps[index])\(octave)"
     }
     
