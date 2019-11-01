@@ -96,6 +96,11 @@ class LongTones: UIViewController {
         // debug
         NSLog("viewDidAppear()")
         super.viewDidAppear(animated)
+
+        //simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        toneToMatchText.text = "hey"
         
         // UI Init
         hearTheToneButton.isHidden = false
@@ -264,9 +269,9 @@ class LongTones: UIViewController {
         
         volumeText.text = String(format: "%0.2f", tracker.amplitude)
         
-        timerText.text = "\(String(describing: timerTestNum))"
+        timerText.text = String(format: "%0.2f",timerTestNum)
         //TODO: fix so it works for any number of periods
-        progressText.text = String(format: "%.2f", Double(noteSustainPeriods)/10)
+        progressText.text = String(format: "%.0f%%", Double(noteSustainPeriods)*10)
         
         
         if tracker.amplitude > 0.1 {
@@ -292,9 +297,8 @@ class LongTones: UIViewController {
             displayTimer.invalidate()
             displayTimer = nil
         }
-        // button doesn't appear enabled until UI is interacted with, but can still be pressed
+
         unlockButtons()
-        
         
         if success == false {
             performSegue(withIdentifier: "segue_gotoFail", sender: self)
@@ -386,5 +390,8 @@ class LongTones: UIViewController {
         
         progressStaticText.isHidden = false
         progressText.isHidden = false
+        
+        timerStaticText.isHidden = false
+        timerText.isHidden = false
     }
 }
