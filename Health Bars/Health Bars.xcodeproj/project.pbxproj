@@ -8,17 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		0CA377AE23694264001DAB00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377AD23694264001DAB00 /* AppDelegate.swift */; };
-		0CA377B023694264001DAB00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377AF23694264001DAB00 /* ViewController.swift */; };
+		0CA377B023694264001DAB00 /* LongTones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377AF23694264001DAB00 /* LongTones.swift */; };
 		0CA377B323694264001DAB00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA377B123694264001DAB00 /* Main.storyboard */; };
 		0CA377B823694266001DAB00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA377B623694266001DAB00 /* LaunchScreen.storyboard */; };
 		0CA377C323694266001DAB00 /* Health_BarsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377C223694266001DAB00 /* Health_BarsTests.swift */; };
 		0CA377CE23694266001DAB00 /* Health_BarsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377CD23694266001DAB00 /* Health_BarsUITests.swift */; };
-		0CA377DC23694427001DAB00 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377DB23694427001DAB00 /* SecondViewController.swift */; };
-		0CA377DE23694484001DAB00 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377DD23694484001DAB00 /* ThirdViewController.swift */; };
+		0CA377DC23694427001DAB00 /* Success.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377DB23694427001DAB00 /* Success.swift */; };
+		0CA377DE23694484001DAB00 /* Fail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377DD23694484001DAB00 /* Fail.swift */; };
 		0CA377E123694583001DAB00 /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA377E023694583001DAB00 /* AudioKit.framework */; };
 		0CA377E323694586001DAB00 /* AudioKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA377E223694586001DAB00 /* AudioKitUI.framework */; };
 		0CCB411A236A97DB0031AB67 /* NavigationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */; };
 		0CF23E4E236C1EA400283DFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CF23E4D236C1EA400283DFD /* Assets.xcassets */; };
+		0CF4103B236CA3BE00F11054 /* ComingSoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF4103A236CA3BE00F11054 /* ComingSoon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +42,7 @@
 /* Begin PBXFileReference section */
 		0CA377AA23694263001DAB00 /* Health Bars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Health Bars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA377AD23694264001DAB00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0CA377AF23694264001DAB00 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0CA377AF23694264001DAB00 /* LongTones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTones.swift; sourceTree = "<group>"; };
 		0CA377B223694264001DAB00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0CA377B723694266001DAB00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CA377B923694266001DAB00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,12 +52,13 @@
 		0CA377C923694266001DAB00 /* Health BarsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Health BarsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA377CD23694266001DAB00 /* Health_BarsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health_BarsUITests.swift; sourceTree = "<group>"; };
 		0CA377CF23694266001DAB00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0CA377DB23694427001DAB00 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		0CA377DD23694484001DAB00 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		0CA377DB23694427001DAB00 /* Success.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Success.swift; sourceTree = "<group>"; };
+		0CA377DD23694484001DAB00 /* Fail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fail.swift; sourceTree = "<group>"; };
 		0CA377E023694583001DAB00 /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioKit.framework; path = ../../AudioKit.framework; sourceTree = "<group>"; };
 		0CA377E223694586001DAB00 /* AudioKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioKitUI.framework; path = ../../AudioKitUI.framework; sourceTree = "<group>"; };
 		0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMenu.swift; sourceTree = "<group>"; };
 		0CF23E4D236C1EA400283DFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0CF4103A236CA3BE00F11054 /* ComingSoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,9 +114,10 @@
 			children = (
 				0CA377AD23694264001DAB00 /* AppDelegate.swift */,
 				0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */,
-				0CA377AF23694264001DAB00 /* ViewController.swift */,
-				0CA377DB23694427001DAB00 /* SecondViewController.swift */,
-				0CA377DD23694484001DAB00 /* ThirdViewController.swift */,
+				0CA377AF23694264001DAB00 /* LongTones.swift */,
+				0CA377DB23694427001DAB00 /* Success.swift */,
+				0CA377DD23694484001DAB00 /* Fail.swift */,
+				0CF4103A236CA3BE00F11054 /* ComingSoon.swift */,
 				0CA377B123694264001DAB00 /* Main.storyboard */,
 				0CF23E4D236C1EA400283DFD /* Assets.xcassets */,
 				0CA377B623694266001DAB00 /* LaunchScreen.storyboard */,
@@ -282,10 +285,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CCB411A236A97DB0031AB67 /* NavigationMenu.swift in Sources */,
-				0CA377B023694264001DAB00 /* ViewController.swift in Sources */,
-				0CA377DE23694484001DAB00 /* ThirdViewController.swift in Sources */,
-				0CA377DC23694427001DAB00 /* SecondViewController.swift in Sources */,
+				0CA377B023694264001DAB00 /* LongTones.swift in Sources */,
+				0CA377DE23694484001DAB00 /* Fail.swift in Sources */,
+				0CA377DC23694427001DAB00 /* Success.swift in Sources */,
 				0CA377AE23694264001DAB00 /* AppDelegate.swift in Sources */,
+				0CF4103B236CA3BE00F11054 /* ComingSoon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
