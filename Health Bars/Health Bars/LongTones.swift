@@ -19,7 +19,11 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
     //MARK: Testing constants
     // make sure this is a frequency from pitch table
     let testingFreq: Double = 311.2
-    var notePlayer: AVAudioPlayer!
+    //let audioSession: AVAudioSession = AVAudioSession.sharedInstance()
+    //var notePlayer: AVAudioPlayer!
+    var note: AKAudioFile!
+    var notePlayer: AKAudioPlayer!
+    
     
     //MARK: Constants
     let noteFrequencies = [16.35, 17.32, 18.35, 19.45, 20.6, 21.83, 23.12, 24.5, 25.96, 27.5, 29.14, 30.87]
@@ -89,6 +93,7 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
         // debug
         NSLog("viewDidLoad()")
         super.viewDidLoad()
+        //initAudioSession()
         
         // debug
         NSLog("Done viewDidLoad()")
@@ -109,12 +114,13 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
         // debug
         NSLog("viewDidAppear()")
         super.viewDidAppear(animated)
+        //simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
         if(!segueKeepSameTone){
             randNote =  Int.random(in: 0...11)
         }
-        initPlayer(randNote)
-        //simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        initPlayer()
         
         toneToMatchText.text = "hey"
         
@@ -160,7 +166,7 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
         // workaround for bug in audiokit: https://github.com/AudioKit/AudioKit/issues/1799#issuecomment-506373157
         AKSettings.sampleRate = AudioKit.engine.inputNode.inputFormat(forBus: 0).sampleRate
         
-        oscillator1 = AKOscillator()
+        //oscillator1 = AKOscillator()
         
         mic = AKMicrophone()
         // filter out non-vocal frequencies
@@ -168,7 +174,7 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
         tracker = AKFrequencyTracker(bandpassfilter)
         // have to connect the frequencytracker to an output, or else it won't work
         silence = AKBooster(tracker, gain: 0)
-        mixer = AKMixer(oscillator1, silence)
+        mixer = AKMixer(notePlayer, silence)
         
         // set mic input to first (may not be necessary)
         if let inputs = AudioKit.inputDevices {
@@ -182,16 +188,11 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
             AKLog("failed to get mic")
         }
         
-        mixer.volume = 1
+        //mixer.volume = 1
         
         AudioKit.output = mixer
+        initAudioSession()
         // end AudioKit variables init
-        
-        do {
-            try AudioKit.start()
-        } catch {
-            AKLog("AudioKit did not start!")
-        }
         
         // debug
         NSLog("Done viewDidAppear()")
@@ -227,7 +228,7 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
     @IBAction func hearTheToneButtonPressed(_ sender: UIButton) {
         lockButtons()
         //startOscillator()
-        notePlayer.play()
+        notePlayer.play(from: 0.0)
         unhideToneToMatchTexts()
         NSLog(noteNamesWithSharps[randNote])
         toneToMatchText.text = noteNamesWithSharps[randNote]
@@ -275,7 +276,7 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
         }
         //stopOscillator()
         notePlayer.stop()
-        notePlayer.currentTime = 0
+        //notePlayer.currentTime = 0
         unlockButtons()
     }
     
@@ -326,17 +327,6 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
             performSegue(withIdentifier: "segue_gotoSuccess", sender: self)
         }
     }
-    
-    func initPlayer(_ indx: Int){
-        do{
-            let audioPlayer = Bundle.main.path(forResource: noteNamesWithSharps[randNote], ofType: ".wav")
-            try notePlayer = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPlayer!) as URL)
-        }
-        catch{
-            //error
-        }
-    }
-    
     
     //MARK: helper functions
     func matchPitch(_ pitch: Int) {
@@ -423,5 +413,23 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
         
         timerStaticText.isHidden = false
         timerText.isHidden = false
+    }
+    
+    func initPlayer(){
+        do{
+            try note = AKAudioFile(readFileName: noteNamesWithSharps[randNote]+".wav", baseDir: .resources)
+            try notePlayer = AKAudioPlayer(file: note!)
+        }catch{
+            //error
+        }
+    }
+    func initAudioSession(){
+        do{
+            try AKSettings.session.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.mixWithOthers)
+            try AKSettings.session.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
+            try AudioKit.start()
+        }catch{
+            //error
+        }
     }
 }
