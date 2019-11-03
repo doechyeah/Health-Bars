@@ -12,16 +12,18 @@ import AudioKit
 import AudioKitUI
 
 import UIKit
+import AVFoundation
 
-class LongTones: UIViewController {
+class LongTones: UIViewController, AVAudioPlayerDelegate {
     
     //MARK: Testing constants
     // make sure this is a frequency from pitch table
-    let testingFreq: Double = 440.0
+    let testingFreq: Double = 311.2
+    var notePlayer: AVAudioPlayer!
     
     //MARK: Constants
     let noteFrequencies = [16.35, 17.32, 18.35, 19.45, 20.6, 21.83, 23.12, 24.5, 25.96, 27.5, 29.14, 30.87]
-    let noteNamesWithSharps = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
+    let noteNamesWithSharps = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
     // note sustain period, have to manually adjust based on timer durations
     let recordTimerInterval = 0.1
     let recordTimerPeriod = 4.0
@@ -65,6 +67,7 @@ class LongTones: UIViewController {
     // special variable for keeping the sane tone when coming from fail screen
     //TODO:
     var segueKeepSameTone: Bool = false
+    var randNote: Int = Int.random(in: 0...11)
     
     //MARK: AudioKit variables
     //TODO: get rid of this in favour of reading from file
@@ -90,13 +93,26 @@ class LongTones: UIViewController {
         // debug
         NSLog("Done viewDidLoad()")
     }
-    
+    /*
+     
+     let path = NSBundle.mainBundle().pathForResource("filename", ofType: "ext")
+     let url = NSURL.fileURLWithPath(path!)
+     var audioPlayer: AVAudioPlayer?
+     do {
+     try audioPlayer = AVAudioPlayer(contentsOfURL: url)
+     } catch {
+     print("Unable to load file")
+     }
+ */
     // called when view appears fully
     override func viewDidAppear(_ animated: Bool) {
         // debug
         NSLog("viewDidAppear()")
         super.viewDidAppear(animated)
-
+        if(!segueKeepSameTone){
+            randNote =  Int.random(in: 0...11)
+        }
+        initPlayer(randNote)
         //simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
@@ -137,8 +153,7 @@ class LongTones: UIViewController {
         noteSustainPeriods = 0
         timerTestNum = recordTimerPeriod
         //TODO: read pitch from filename/contents
-        currentPitchIndexToMatch = findPitchFromFrequency(testingFreq).1
-        
+        currentPitchIndexToMatch = findPitchFromFrequency(noteFrequencies[randNote]).1
         
         // AudioKit variables init
         AKSettings.audioInputEnabled = true
@@ -211,10 +226,11 @@ class LongTones: UIViewController {
     
     @IBAction func hearTheToneButtonPressed(_ sender: UIButton) {
         lockButtons()
-        startOscillator()
+        //startOscillator()
+        notePlayer.play()
         unhideToneToMatchTexts()
-        NSLog(findPitchFromFrequencyString(testingFreq))
-        toneToMatchText.text = findPitchFromFrequencyString(testingFreq)
+        NSLog(noteNamesWithSharps[randNote])
+        toneToMatchText.text = noteNamesWithSharps[randNote]
         listenTimer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(LongTones.doneHearTheToneButtonPressed), userInfo: nil, repeats: false)
     }
     
@@ -257,7 +273,9 @@ class LongTones: UIViewController {
             listenTimer.invalidate()
             listenTimer = nil
         }
-        stopOscillator()
+        //stopOscillator()
+        notePlayer.stop()
+        notePlayer.currentTime = 0
         unlockButtons()
     }
     
@@ -301,9 +319,21 @@ class LongTones: UIViewController {
         unlockButtons()
         
         if success == false {
+            segueKeepSameTone = true
             performSegue(withIdentifier: "segue_gotoFail", sender: self)
         } else if success == true {
+            segueKeepSameTone = false
             performSegue(withIdentifier: "segue_gotoSuccess", sender: self)
+        }
+    }
+    
+    func initPlayer(_ indx: Int){
+        do{
+            let audioPlayer = Bundle.main.path(forResource: noteNamesWithSharps[randNote], ofType: ".wav")
+            try notePlayer = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPlayer!) as URL)
+        }
+        catch{
+            //error
         }
     }
     

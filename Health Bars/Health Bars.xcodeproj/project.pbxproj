@@ -15,11 +15,23 @@
 		0CA377CE23694266001DAB00 /* Health_BarsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377CD23694266001DAB00 /* Health_BarsUITests.swift */; };
 		0CA377DC23694427001DAB00 /* Success.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377DB23694427001DAB00 /* Success.swift */; };
 		0CA377DE23694484001DAB00 /* Fail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377DD23694484001DAB00 /* Fail.swift */; };
-		0CA377E123694583001DAB00 /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA377E023694583001DAB00 /* AudioKit.framework */; };
-		0CA377E323694586001DAB00 /* AudioKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA377E223694586001DAB00 /* AudioKitUI.framework */; };
 		0CCB411A236A97DB0031AB67 /* NavigationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */; };
 		0CF23E4E236C1EA400283DFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CF23E4D236C1EA400283DFD /* Assets.xcassets */; };
 		0CF4103B236CA3BE00F11054 /* ComingSoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF4103A236CA3BE00F11054 /* ComingSoon.swift */; };
+		E14527FB236D593C000DDF3E /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14527F9236D593C000DDF3E /* AudioKit.framework */; };
+		E14527FC236D593C000DDF3E /* AudioKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14527FA236D593C000DDF3E /* AudioKitUI.framework */; };
+		E1452826236D639B000DDF3E /* D#.wav in Resources */ = {isa = PBXBuildFile; fileRef = E145281A236D639A000DDF3E /* D#.wav */; };
+		E1452827236D639B000DDF3E /* C.wav in Resources */ = {isa = PBXBuildFile; fileRef = E145281B236D639A000DDF3E /* C.wav */; };
+		E1452828236D639B000DDF3E /* F.wav in Resources */ = {isa = PBXBuildFile; fileRef = E145281C236D639A000DDF3E /* F.wav */; };
+		E1452829236D639B000DDF3E /* D.wav in Resources */ = {isa = PBXBuildFile; fileRef = E145281D236D639A000DDF3E /* D.wav */; };
+		E145282A236D639B000DDF3E /* A#.wav in Resources */ = {isa = PBXBuildFile; fileRef = E145281E236D639A000DDF3E /* A#.wav */; };
+		E145282B236D639B000DDF3E /* A.wav in Resources */ = {isa = PBXBuildFile; fileRef = E145281F236D639B000DDF3E /* A.wav */; };
+		E145282C236D639B000DDF3E /* E.wav in Resources */ = {isa = PBXBuildFile; fileRef = E1452820236D639B000DDF3E /* E.wav */; };
+		E145282D236D639B000DDF3E /* G.wav in Resources */ = {isa = PBXBuildFile; fileRef = E1452821236D639B000DDF3E /* G.wav */; };
+		E145282E236D639B000DDF3E /* G#.wav in Resources */ = {isa = PBXBuildFile; fileRef = E1452822236D639B000DDF3E /* G#.wav */; };
+		E145282F236D639B000DDF3E /* F#.wav in Resources */ = {isa = PBXBuildFile; fileRef = E1452823236D639B000DDF3E /* F#.wav */; };
+		E1452830236D639B000DDF3E /* B.wav in Resources */ = {isa = PBXBuildFile; fileRef = E1452824236D639B000DDF3E /* B.wav */; };
+		E1452831236D639B000DDF3E /* C#.wav in Resources */ = {isa = PBXBuildFile; fileRef = E1452825236D639B000DDF3E /* C#.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +71,20 @@
 		0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMenu.swift; sourceTree = "<group>"; };
 		0CF23E4D236C1EA400283DFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CF4103A236CA3BE00F11054 /* ComingSoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoon.swift; sourceTree = "<group>"; };
+		E14527F9236D593C000DDF3E /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioKit.framework; path = "../../AudioKit-iOS/AudioKit.framework"; sourceTree = "<group>"; };
+		E14527FA236D593C000DDF3E /* AudioKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioKitUI.framework; path = "../../AudioKit-iOS/AudioKitUI.framework"; sourceTree = "<group>"; };
+		E145281A236D639A000DDF3E /* D#.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "D#.wav"; sourceTree = "<group>"; };
+		E145281B236D639A000DDF3E /* C.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = C.wav; sourceTree = "<group>"; };
+		E145281C236D639A000DDF3E /* F.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = F.wav; sourceTree = "<group>"; };
+		E145281D236D639A000DDF3E /* D.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = D.wav; sourceTree = "<group>"; };
+		E145281E236D639A000DDF3E /* A#.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "A#.wav"; sourceTree = "<group>"; };
+		E145281F236D639B000DDF3E /* A.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = A.wav; sourceTree = "<group>"; };
+		E1452820236D639B000DDF3E /* E.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = E.wav; sourceTree = "<group>"; };
+		E1452821236D639B000DDF3E /* G.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = G.wav; sourceTree = "<group>"; };
+		E1452822236D639B000DDF3E /* G#.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "G#.wav"; sourceTree = "<group>"; };
+		E1452823236D639B000DDF3E /* F#.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "F#.wav"; sourceTree = "<group>"; };
+		E1452824236D639B000DDF3E /* B.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = B.wav; sourceTree = "<group>"; };
+		E1452825236D639B000DDF3E /* C#.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "C#.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +92,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CA377E123694583001DAB00 /* AudioKit.framework in Frameworks */,
-				0CA377E323694586001DAB00 /* AudioKitUI.framework in Frameworks */,
+				E14527FB236D593C000DDF3E /* AudioKit.framework in Frameworks */,
+				E14527FC236D593C000DDF3E /* AudioKitUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +148,7 @@
 				0CF23E4D236C1EA400283DFD /* Assets.xcassets */,
 				0CA377B623694266001DAB00 /* LaunchScreen.storyboard */,
 				0CA377B923694266001DAB00 /* Info.plist */,
+				E1452833236D63E0000DDF3E /* Notes */,
 			);
 			path = "Health Bars";
 			sourceTree = "<group>";
@@ -147,10 +174,31 @@
 		0CA377DF23694583001DAB00 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E14527F9236D593C000DDF3E /* AudioKit.framework */,
+				E14527FA236D593C000DDF3E /* AudioKitUI.framework */,
 				0CA377E223694586001DAB00 /* AudioKitUI.framework */,
 				0CA377E023694583001DAB00 /* AudioKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E1452833236D63E0000DDF3E /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				E145281F236D639B000DDF3E /* A.wav */,
+				E145281E236D639A000DDF3E /* A#.wav */,
+				E1452824236D639B000DDF3E /* B.wav */,
+				E145281B236D639A000DDF3E /* C.wav */,
+				E1452825236D639B000DDF3E /* C#.wav */,
+				E145281D236D639A000DDF3E /* D.wav */,
+				E145281A236D639A000DDF3E /* D#.wav */,
+				E1452820236D639B000DDF3E /* E.wav */,
+				E145281C236D639A000DDF3E /* F.wav */,
+				E1452823236D639B000DDF3E /* F#.wav */,
+				E1452821236D639B000DDF3E /* G.wav */,
+				E1452822236D639B000DDF3E /* G#.wav */,
+			);
+			path = Notes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,9 +305,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E145282F236D639B000DDF3E /* F#.wav in Resources */,
+				E145282D236D639B000DDF3E /* G.wav in Resources */,
+				E145282C236D639B000DDF3E /* E.wav in Resources */,
+				E1452830236D639B000DDF3E /* B.wav in Resources */,
+				E145282B236D639B000DDF3E /* A.wav in Resources */,
 				0CA377B823694266001DAB00 /* LaunchScreen.storyboard in Resources */,
+				E1452826236D639B000DDF3E /* D#.wav in Resources */,
+				E1452829236D639B000DDF3E /* D.wav in Resources */,
 				0CF23E4E236C1EA400283DFD /* Assets.xcassets in Resources */,
+				E1452828236D639B000DDF3E /* F.wav in Resources */,
+				E1452831236D639B000DDF3E /* C#.wav in Resources */,
+				E145282E236D639B000DDF3E /* G#.wav in Resources */,
 				0CA377B323694264001DAB00 /* Main.storyboard in Resources */,
+				E145282A236D639B000DDF3E /* A#.wav in Resources */,
+				E1452827236D639B000DDF3E /* C.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,7 +529,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4K53HL69CH;
+				DEVELOPMENT_TEAM = AQ6W32PQC7;
+				FRAMEWORK_SEARCH_PATHS = "/Users/Alvin/Desktop/AudioKit-iOS";
 				INFOPLIST_FILE = "Health Bars/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -488,7 +549,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4K53HL69CH;
+				DEVELOPMENT_TEAM = AQ6W32PQC7;
+				FRAMEWORK_SEARCH_PATHS = "/Users/Alvin/Desktop/AudioKit-iOS";
 				INFOPLIST_FILE = "Health Bars/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
