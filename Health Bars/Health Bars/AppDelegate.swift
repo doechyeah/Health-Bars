@@ -2,8 +2,16 @@
 //  AppDelegate.swift
 //  Health Bars
 //
-//  Created by Michael Lin on 2019-10-29.
+//  Team: Team Rhythm
+//
+//  Developers:
+//  Michael Lin
+//  Alvin David
+//
 //  Copyright © 2019 Team Rhythm. All rights reserved.
+//
+//  Changelog:
+//  2019-10: Created
 //
 
 import UIKit

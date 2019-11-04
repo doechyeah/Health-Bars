@@ -2,8 +2,18 @@
 //  ViewController.swift
 //  Health Bars
 //
-//  Created by Michael Lin on 2019-10-26.
-//  Copyright © 2019 Michael Lin. All rights reserved.
+//  Team: Team Rhythm
+//
+//  Developers:
+//  Michael Lin
+//  Alvin David
+//
+//  Copyright © 2019 Team Rhythm. All rights reserved.
+//
+//  Changelog:
+//  2019-10-27: Created
+//  2019-10-29: Converted to Xcode 10.3
+//  2019-11-02: Added audio file playback
 //
 
 // Majority of AudioKit code in this file is taken from AudioKit examples Hello World and Microphone Analysis
@@ -11,17 +21,13 @@
 import AudioKit
 
 import UIKit
-import AVFoundation
 
-class LongTones: UIViewController, AVAudioPlayerDelegate {
+class LongTones: UIViewController {
     
     //MARK: Testing constants
     // make sure this is a frequency from pitch table
     let testingFreq: Double = 311.2
-    //let audioSession: AVAudioSession = AVAudioSession.sharedInstance()
-    //var notePlayer: AVAudioPlayer!
-    var note: AKAudioFile!
-    var notePlayer: AKAudioPlayer!
+    
     
     
     //MARK: Constants
@@ -33,16 +39,6 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
     let noteSustainPeriodsForSuccess = 10
     
     //MARK: Outlets
-    /*
-    @IBOutlet weak var frequencyLabel: UILabel!
-    @IBOutlet weak var amplitudeLabel: UILabel!
-    @IBOutlet weak var noteNameWithSharpsLabel: UILabel!
-    @IBOutlet weak var listenButton: UIButton!
-    @IBOutlet weak var recordButton: UIButton!
-    @IBOutlet weak var timerTest: UILabel!
-    @IBOutlet weak var matchPeriods: UILabel!
-    */
-    
     @IBOutlet weak var hearTheToneButton: UIButton!
     @IBOutlet weak var recordYourToneButton: UIButton!
     
@@ -50,13 +46,13 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var toneToMatchText: UILabel!
     @IBOutlet weak var currentToneStaticText: UILabel!
     @IBOutlet weak var currentToneText: UILabel!
+    // debug text on UI
     @IBOutlet weak var volumeStaticText: UILabel!
     @IBOutlet weak var volumeText: UILabel!
     @IBOutlet weak var progressStaticText: UILabel!
     @IBOutlet weak var progressText: UILabel!
     @IBOutlet weak var timerStaticText: UILabel!
     @IBOutlet weak var timerText: UILabel!
-    
     
     var timerTestNum: Double!
     
@@ -67,14 +63,15 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
     var displayTimer: Timer!
     var listenTimer: Timer!
     
-    // special variable for keeping the sane tone when coming from fail screen
-    //TODO:
+    // special variable for keeping the same tone when coming from fail screen
     var segueKeepSameTone: Bool = false
     var randNote: Int = Int.random(in: 0...11)
     
     //MARK: AudioKit variables
-    //TODO: get rid of this in favour of reading from file
-    var oscillator1: AKOscillator!
+    //var oscillator1: AKOscillator!
+    
+    var note: AKAudioFile!
+    var notePlayer: AKAudioPlayer!
     
     var mic: AKMicrophone!
     var tracker: AKFrequencyTracker!
@@ -84,44 +81,31 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
     
     deinit {
         //debug
-        NSLog("deinit()")
+        //NSLog("deinit()")
     }
     
     // called when view first gets loaded into memory
     override func viewDidLoad() {
         // debug
-        NSLog("viewDidLoad()")
+        //NSLog("viewDidLoad()")
         super.viewDidLoad()
-        //initAudioSession()
         
         // debug
-        NSLog("Done viewDidLoad()")
+        //NSLog("Done viewDidLoad()")
     }
-    /*
-     
-     let path = NSBundle.mainBundle().pathForResource("filename", ofType: "ext")
-     let url = NSURL.fileURLWithPath(path!)
-     var audioPlayer: AVAudioPlayer?
-     do {
-     try audioPlayer = AVAudioPlayer(contentsOfURL: url)
-     } catch {
-     print("Unable to load file")
-     }
- */
+    
     // called when view appears fully
     override func viewDidAppear(_ animated: Bool) {
         // debug
-        NSLog("viewDidAppear()")
+        //NSLog("viewDidAppear()")
         super.viewDidAppear(animated)
-        //simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
+        // simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         if(!segueKeepSameTone){
             randNote =  Int.random(in: 0...11)
         }
         initPlayer()
-        
-        toneToMatchText.text = "hey"
         
         // UI Init
         hearTheToneButton.isHidden = false
@@ -157,7 +141,7 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
         success = false
         noteSustainPeriods = 0
         timerTestNum = recordTimerPeriod
-        //TODO: read pitch from filename/contents
+        //read pitch from filename/contents
         currentPitchIndexToMatch = findPitchFromFrequency(noteFrequencies[randNote]).1
         
         // AudioKit variables init
@@ -194,14 +178,14 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
         // end AudioKit variables init
         
         // debug
-        NSLog("Done viewDidAppear()")
+        //NSLog("Done viewDidAppear()")
         
     }
     
     // called with view disappears fully
     override func viewDidDisappear(_ animated: Bool) {
         // debug
-        NSLog("viewDidDisappear()")
+        //NSLog("viewDidDisappear()")
         
         // destroy timers
         destroyTimers()
@@ -213,24 +197,17 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
         }
         
         // debug
-        NSLog("Done viewDidDisappear()")
+        //NSLog("Done viewDidDisappear()")
     }
-    
-    // start/stop sine oscillator
-    /*
-    @IBAction func toggleSound(_ sender: UIButton) {
-        toggleOscillator()
-    }
-    */
-    
     
     @IBAction func hearTheToneButtonPressed(_ sender: UIButton) {
         lockButtons()
         //startOscillator()
         notePlayer.play(from: 0.0)
         unhideToneToMatchTexts()
-        NSLog(noteNamesWithSharps[randNote])
+        //NSLog(noteNamesWithSharps[randNote])
         toneToMatchText.text = noteNamesWithSharps[randNote]
+        // let note play for 4 seconds
         listenTimer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(LongTones.doneHearTheToneButtonPressed), userInfo: nil, repeats: false)
     }
     
@@ -238,12 +215,9 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
     @IBAction func recordYourToneButtonPressed(_ sender: UIButton) {
         lockButtons()
         unhideRecordTexts()
+        // call updateUI every 0.1 seconds
         displayTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(LongTones.updateUI), userInfo: nil, repeats: true)
         //displayTimer.tolerance = 0.1
-        // replaced with timer
-        //DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(4000)) {
-        //    self.stopRecord()
-        //}
     }
     
     // unwind segue function, called from other views
@@ -252,21 +226,14 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
         // Use data from the view controller which initiated the unwind segue
     }
     
-    // action segue to conditionally go to second view
-    @IBAction func gotoSuccess(_ sender: UIButton) {
-        if success == true {
-            performSegue(withIdentifier: "segue_gotoSuccess", sender: self)
-        }
-    }
+    // @objc func startOscillator() {
+    //     oscillator1.frequency = Double(testingFreq)
+    //     oscillator1.start()
+    // }
     
-    @objc func startOscillator() {
-        oscillator1.frequency = Double(testingFreq)
-        oscillator1.start()
-    }
-    
-    @objc func stopOscillator() {
-        oscillator1.stop()
-    }
+//    @objc func stopOscillator() {
+//        oscillator1.stop()
+//    }
     
     @objc func doneHearTheToneButtonPressed() {
         if listenTimer != nil {
@@ -279,9 +246,10 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
         unlockButtons()
     }
     
+    // updates current tone text and gets current mic input frequency
     @objc func updateUI() {
         // debug
-        NSLog("updateUI()")
+        //NSLog("updateUI()")
         
         timerTestNum -= 0.1
         
@@ -292,17 +260,19 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
         progressText.text = String(format: "%.0f%%", Double(noteSustainPeriods)*10)
         
         
+        var matched: Bool = false
+        
         if tracker.amplitude > 0.1 {
             
             let (_, index) = findPitchFromFrequency(Double(tracker.frequency))
             
             currentToneText.text = noteNamesWithSharps[index]
             
-            matchPitch(index)
+            matched = matchPitch(index)
         }
         
-        //replace with proper Double epsilon
-        if (timerTestNum < 0.001) {
+        // TODO: replace with proper Double epsilon
+        if (matched || timerTestNum < 0.001) {
             stopRecord()
         }
     }
@@ -310,7 +280,7 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
     // invalidate displayTimer to stop updating UI
     @objc func stopRecord() {
         //debug
-        NSLog("stopRecord()")
+        //NSLog("stopRecord()")
         if displayTimer != nil {
             displayTimer.invalidate()
             displayTimer = nil
@@ -328,15 +298,17 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
     }
     
     //MARK: helper functions
-    func matchPitch(_ pitch: Int) {
+    // check if input pitch is same as pitch to match
+    func matchPitch(_ pitch: Int) -> Bool {
         if currentPitchIndexToMatch == pitch {
             noteSustainPeriods += 1
         }
         if noteSustainPeriods >= noteSustainPeriodsForSuccess {
             noteSustainPeriods = 0
             success = true
-            stopRecord()
+            return true
         }
+        return false
     }
     
     func findPitchFromFrequency(_ freq: Double) -> (Int, Int) {
@@ -404,30 +376,31 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
         currentToneStaticText.isHidden = false
         currentToneText.isHidden = false
         
-        volumeStaticText.isHidden = false
-        volumeText.isHidden = false
-        
-        progressStaticText.isHidden = false
-        progressText.isHidden = false
-        
-        timerStaticText.isHidden = false
-        timerText.isHidden = false
+//        volumeStaticText.isHidden = false
+//        volumeText.isHidden = false
+//
+//        progressStaticText.isHidden = false
+//        progressText.isHidden = false
+//
+//        timerStaticText.isHidden = false
+//        timerText.isHidden = false
     }
     
-    func initPlayer(){
-        do{
+    func initPlayer() {
+        do {
             try note = AKAudioFile(readFileName: noteNamesWithSharps[randNote]+".mp3", baseDir: .resources)
             try notePlayer = AKAudioPlayer(file: note!)
-        }catch{
+        } catch {
             //error
         }
     }
-    func initAudioSession(){
-        do{
+    
+    func initAudioSession() {
+        do {
             try AKSettings.session.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.mixWithOthers)
             try AKSettings.session.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
             try AudioKit.start()
-        }catch{
+        } catch {
             //error
         }
     }

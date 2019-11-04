@@ -2,8 +2,16 @@
 //  ThirdViewController.swift
 //  Health Bars
 //
-//  Created by Michael Lin on 2019-10-27.
-//  Copyright © 2019 Michael Lin. All rights reserved.
+//  Team: Team Rhythm
+//
+//  Developers:
+//  Michael Lin
+//  Alvin David
+//
+//  Copyright © 2019 Team Rhythm. All rights reserved.
+//
+//  Changelog:
+//  2019-10: Created
 //
 
 import UIKit
