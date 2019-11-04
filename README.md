@@ -1,6 +1,6 @@
 # Health Bars : Musical mental and physical exercise for those who suffer from Parkinsons disease.
 
-Parkinsons is a progressive neural disorder that restricts muscular contorl. Research has shown that music and exercise is helpful in reducing the progression by increasing dopamine levels and Health bars is aimed to provide a meaningful application that encorporates both of these activities.
+Parkinsons is a progressive neural disorder that restricts muscular control. Research has shown that music and exercise is helpful in reducing the progression by increasing dopamine levels and Health bars is aimed to provide a meaningful application that encorporates both of these activities.
 
 Health Bars is an open source project for CMPT 275 on iOS.
 
@@ -35,7 +35,7 @@ Click root project item in left side menu.
 
 Choose development team.
 
-Choose simulator in top right.
+Choose simulator in top left.
 
 Click play icon.
 
