@@ -9,7 +9,6 @@
 // Majority of AudioKit code in this file is taken from AudioKit examples Hello World and Microphone Analysis
 
 import AudioKit
-import AudioKitUI
 
 import UIKit
 import AVFoundation
@@ -417,7 +416,7 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
     
     func initPlayer(){
         do{
-            try note = AKAudioFile(readFileName: noteNamesWithSharps[randNote]+".wav", baseDir: .resources)
+            try note = AKAudioFile(readFileName: noteNamesWithSharps[randNote]+".mp3", baseDir: .resources)
             try notePlayer = AKAudioPlayer(file: note!)
         }catch{
             //error
