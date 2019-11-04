@@ -12,47 +12,56 @@ Musically directed interactive games that are aimed towards the control of rythy
 Leaderboard/Progression charts to measure progress/regression and add as a competitive incentive.
 Rotating daily roster of games/activities aimed towards mental and physical musical engagment.
 
-## Build Requirements
-requires xcode 10.3
-if using other xcode version, audiokit version must be compatible, must manually download and place in project folder
+## Project Build Instructions
 
-### Project Build Instructions
-files:
+### Build Requirements
+Requires xcode 10.3.
+
+If using other xcode version, audiokit version must be compatible, must manually download and place in same folder as .xcodeproj file.
+
+### Common
+
+Fetch files
 ```
 git clone https://www.github.com/doechyeah/Health-Bars health-bars
 cd health-bars
 cd "Health Bars"
 build will fetch audiokit framework from web
 ```
-xcode:
-open .xcodeproj file
+### Xcode
+Open .xcodeproj file.
 
-click root project item in left side menu
+Click root project item in left side menu.
 
-choose development team
+Choose development team.
 
-choose simulator in top right
+Choose simulator in top right.
 
-click play icon
+Click play icon.
 
-cmdline (only works for simulator unless you sign):
+### Command Line
+
+(only works for simulator unless you sign)
 ```
 build_path="your/outputfolder/here"
 xcodebuild -scheme "Health Bars" build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED="NO" CODE_SIGNING_ALLOWED="NO" CONFIGURATION_BUILD_DIR="${build_path}"  -sdk iphonesimulator
 ```
-start iphone simulator.
-xcrun simctl list.
+Start iphone simulator.
 
-find device that has (Booted) at the end, ex: (D633C2D0-7633-48A1-8B88-3797C93E946C) (Booted).
+```
+xcrun simctl list
+```
 
-copy UUID, ex "D633C2D0-7633-48A1-8B88-3797C93E946C".
+Find device that has (Booted) at the end, ex: (D633C2D0-7633-48A1-8B88-3797C93E946C) (Booted).
+
+Copy UUID, ex "D633C2D0-7633-48A1-8B88-3797C93E946C".
 ```
 xcrun simctl install "paste UUID here" "${build_path}/Health Bars.app"
 ```
-swipe right to find app installed
+Swipe right to find app installed.
 
 
-### User Requirements
+## User Requirements
 The user is given a set of activities that are musically related to help by musical therapy and excercise in fine motor contorl. They will be incentivized by the scores they achieve in the activities and tracking their progress compared to others on a leaderboard.
 
 ## Website
