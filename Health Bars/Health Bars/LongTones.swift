@@ -24,18 +24,13 @@ import UIKit
 
 class LongTones: UIViewController {
     
-    //MARK: Testing constants
-    // make sure this is a frequency from pitch table
-    let testingFreq: Double = 311.2
-    
-    
-    
     //MARK: Constants
     let noteFrequencies = [16.35, 17.32, 18.35, 19.45, 20.6, 21.83, 23.12, 24.5, 25.96, 27.5, 29.14, 30.87]
     let noteNamesWithSharps = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+    let playTonePeriod = 5.0
     // note sustain period, have to manually adjust based on timer durations
-    let recordTimerInterval = 0.1
-    let recordTimerPeriod = 4.0
+    let displayTimerInterval = 0.1
+    let displayTimerPeriod = 5.0
     let noteSustainPeriodsForSuccess = 10
     
     //MARK: Outlets
@@ -68,7 +63,6 @@ class LongTones: UIViewController {
     var randNote: Int = Int.random(in: 0...11)
     
     //MARK: AudioKit variables
-    //var oscillator1: AKOscillator!
     
     var note: AKAudioFile!
     var notePlayer: AKAudioPlayer!
@@ -134,28 +128,26 @@ class LongTones: UIViewController {
         
         timerStaticText.isHidden = true
         timerText.isHidden = true
-        timerText.text = String(format: "%0.2f", recordTimerPeriod)
+        timerText.text = String(format: "%0.2f", displayTimerPeriod)
         // end UI Init
         
         // condition variables init
         success = false
         noteSustainPeriods = 0
-        timerTestNum = recordTimerPeriod
+        timerTestNum = displayTimerPeriod
         //read pitch from filename/contents
-        currentPitchIndexToMatch = findPitchFromFrequency(noteFrequencies[randNote]).1
+        currentPitchIndexToMatch = randNote
         
         // AudioKit variables init
         AKSettings.audioInputEnabled = true
         // workaround for bug in audiokit: https://github.com/AudioKit/AudioKit/issues/1799#issuecomment-506373157
         AKSettings.sampleRate = AudioKit.engine.inputNode.inputFormat(forBus: 0).sampleRate
         
-        //oscillator1 = AKOscillator()
-        
         mic = AKMicrophone()
         // filter out non-vocal frequencies
         bandpassfilter = AKBandPassButterworthFilter(mic, centerFrequency: 800, bandwidth: 750)
         tracker = AKFrequencyTracker(bandpassfilter)
-        // have to connect the frequencytracker to an output, or else it won't work
+        // must to connect the frequencytracker to an output for functionality.
         silence = AKBooster(tracker, gain: 0)
         mixer = AKMixer(notePlayer, silence)
         
@@ -202,13 +194,11 @@ class LongTones: UIViewController {
     
     @IBAction func hearTheToneButtonPressed(_ sender: UIButton) {
         lockButtons()
-        //startOscillator()
         notePlayer.play(from: 0.0)
         unhideToneToMatchTexts()
-        //NSLog(noteNamesWithSharps[randNote])
         toneToMatchText.text = noteNamesWithSharps[randNote]
         // let note play for 4 seconds
-        listenTimer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(LongTones.doneHearTheToneButtonPressed), userInfo: nil, repeats: false)
+        listenTimer = Timer.scheduledTimer(timeInterval: playTonePeriod, target: self, selector: #selector(LongTones.doneHearTheToneButtonPressed), userInfo: nil, repeats: false)
     }
     
     // start recording to match the pitch
@@ -216,7 +206,7 @@ class LongTones: UIViewController {
         lockButtons()
         unhideRecordTexts()
         // call updateUI every 0.1 seconds
-        displayTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(LongTones.updateUI), userInfo: nil, repeats: true)
+        displayTimer = Timer.scheduledTimer(timeInterval: displayTimerInterval, target: self, selector: #selector(LongTones.updateUI), userInfo: nil, repeats: true)
         //displayTimer.tolerance = 0.1
     }
     
@@ -251,7 +241,7 @@ class LongTones: UIViewController {
         // debug
         //NSLog("updateUI()")
         
-        timerTestNum -= 0.1
+        timerTestNum -= displayTimerInterval
         
         volumeText.text = String(format: "%0.2f", tracker.amplitude)
         
