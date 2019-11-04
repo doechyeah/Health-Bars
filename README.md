@@ -18,11 +18,12 @@ if using other xcode version, audiokit version must be compatible, must manually
 
 ### Project Build Instructions
 files:
+```
 git clone https://www.github.com/doechyeah/Health-Bars health-bars
 cd health-bars
 cd "Health Bars"
 build will fetch audiokit framework from web
-
+```
 xcode:
 open .xcodeproj file
 click root project item in left side menu
@@ -31,13 +32,19 @@ choose simulator in top right
 click play icon
 
 cmdline (only works for simulator unless you sign):
+```
 build_path="your/outputfolder/here"
 xcodebuild -scheme "Health Bars" build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED="NO" CODE_SIGNING_ALLOWED="NO" CONFIGURATION_BUILD_DIR="${build_path}"  -sdk iphonesimulator
-start iphone simulator
-xcrun simctl list
-find device that has (Booted) at the end, ex: (D633C2D0-7633-48A1-8B88-3797C93E946C) (Booted)
-copy UUID, ex "D633C2D0-7633-48A1-8B88-3797C93E946C"
+```
+start iphone simulator.
+xcrun simctl list.
+
+find device that has (Booted) at the end, ex: (D633C2D0-7633-48A1-8B88-3797C93E946C) (Booted).
+
+copy UUID, ex "D633C2D0-7633-48A1-8B88-3797C93E946C".
+```
 xcrun simctl install "paste UUID here" "${build_path}/Health Bars.app"
+```
 swipe right to find app installed
 
 
@@ -49,7 +56,9 @@ https://advanture.wixsite.com/health-bars-g9
 
 ## Testing Framework
 Qase test account:
+
 email: shyprea2@hotmail.com
+
 password: healthbars
 
 ## Research
