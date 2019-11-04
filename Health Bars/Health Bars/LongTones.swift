@@ -47,17 +47,6 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var hearTheToneButton: UIButton!
     @IBOutlet weak var recordYourToneButton: UIButton!
     
-    @IBOutlet weak var toneToMatchStaticText: UILabel!
-    @IBOutlet weak var toneToMatchText: UILabel!
-    @IBOutlet weak var currentToneStaticText: UILabel!
-    @IBOutlet weak var currentToneText: UILabel!
-    @IBOutlet weak var volumeStaticText: UILabel!
-    @IBOutlet weak var volumeText: UILabel!
-    @IBOutlet weak var progressStaticText: UILabel!
-    @IBOutlet weak var progressText: UILabel!
-    @IBOutlet weak var timerStaticText: UILabel!
-    @IBOutlet weak var timerText: UILabel!
-    
     
     var timerTestNum: Double!
     
@@ -85,18 +74,18 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
     
     deinit {
         //debug
-        NSLog("deinit()")
+        //NSLog("deinit()")
     }
     
     // called when view first gets loaded into memory
     override func viewDidLoad() {
         // debug
-        NSLog("viewDidLoad()")
+        //NSLog("viewDidLoad()")
         super.viewDidLoad()
         //initAudioSession()
         
         // debug
-        NSLog("Done viewDidLoad()")
+        //NSLog("Done viewDidLoad()")
     }
     /*
      
@@ -112,46 +101,24 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
     // called when view appears fully
     override func viewDidAppear(_ animated: Bool) {
         // debug
-        NSLog("viewDidAppear()")
+        //NSLog("viewDidAppear()")
         super.viewDidAppear(animated)
         //simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        //UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         if(!segueKeepSameTone){
             randNote =  Int.random(in: 0...11)
         }
         initPlayer()
         
-        toneToMatchText.text = "hey"
-        
-        // UI Init
+        // UI Debug text init
         hearTheToneButton.isHidden = false
         hearTheToneButton.isEnabled = true
         
         if segueKeepSameTone == false {
             recordYourToneButton.isHidden = false
             recordYourToneButton.isEnabled = false
-        
-            toneToMatchStaticText.isHidden = true
-            toneToMatchText.isHidden = true
-            toneToMatchText.text = "__"
         }
-        
-        currentToneStaticText.isHidden = true
-        currentToneText.isHidden = true
-        currentToneText.text = "_"
-        
-        volumeStaticText.isHidden = true
-        volumeText.isHidden = true
-        volumeText.text = "__"
-        
-        progressStaticText.isHidden = true
-        progressText.isHidden = true
-        progressText.text = "__%"
-        
-        timerStaticText.isHidden = true
-        timerText.isHidden = true
-        timerText.text = String(format: "%0.2f", recordTimerPeriod)
         // end UI Init
         
         // condition variables init
@@ -195,14 +162,14 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
         // end AudioKit variables init
         
         // debug
-        NSLog("Done viewDidAppear()")
+        //NSLog("Done viewDidAppear()")
         
     }
     
     // called with view disappears fully
     override func viewDidDisappear(_ animated: Bool) {
         // debug
-        NSLog("viewDidDisappear()")
+        //NSLog("viewDidDisappear()")
         
         // destroy timers
         destroyTimers()
@@ -214,7 +181,7 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
         }
         
         // debug
-        NSLog("Done viewDidDisappear()")
+        //NSLog("Done viewDidDisappear()")
     }
     
     // start/stop sine oscillator
@@ -229,16 +196,13 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
         lockButtons()
         //startOscillator()
         notePlayer.play(from: 0.0)
-        unhideToneToMatchTexts()
-        NSLog(noteNamesWithSharps[randNote])
-        toneToMatchText.text = noteNamesWithSharps[randNote]
+        //NSLog(noteNamesWithSharps[randNote])
         listenTimer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(LongTones.doneHearTheToneButtonPressed), userInfo: nil, repeats: false)
     }
     
     // start recording to match the pitch
     @IBAction func recordYourToneButtonPressed(_ sender: UIButton) {
         lockButtons()
-        unhideRecordTexts()
         displayTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(LongTones.updateUI), userInfo: nil, repeats: true)
         //displayTimer.tolerance = 0.1
         // replaced with timer
@@ -282,22 +246,13 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
     
     @objc func updateUI() {
         // debug
-        NSLog("updateUI()")
+        //NSLog("updateUI()")
         
         timerTestNum -= 0.1
-        
-        volumeText.text = String(format: "%0.2f", tracker.amplitude)
-        
-        timerText.text = String(format: "%0.2f",timerTestNum)
-        //TODO: fix so it works for any number of periods
-        progressText.text = String(format: "%.0f%%", Double(noteSustainPeriods)*10)
-        
         
         if tracker.amplitude > 0.1 {
             
             let (_, index) = findPitchFromFrequency(Double(tracker.frequency))
-            
-            currentToneText.text = noteNamesWithSharps[index]
             
             matchPitch(index)
         }
@@ -311,7 +266,7 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
     // invalidate displayTimer to stop updating UI
     @objc func stopRecord() {
         //debug
-        NSLog("stopRecord()")
+        //NSLog("stopRecord()")
         if displayTimer != nil {
             displayTimer.invalidate()
             displayTimer = nil
@@ -396,39 +351,21 @@ class LongTones: UIViewController, AVAudioPlayerDelegate {
         recordYourToneButton.isEnabled = true
     }
     
-    func unhideToneToMatchTexts() {
-        toneToMatchStaticText.isHidden = false
-        toneToMatchText.isHidden = false
-    }
-    
-    func unhideRecordTexts() {
-        currentToneStaticText.isHidden = false
-        currentToneText.isHidden = false
-        
-        volumeStaticText.isHidden = false
-        volumeText.isHidden = false
-        
-        progressStaticText.isHidden = false
-        progressText.isHidden = false
-        
-        timerStaticText.isHidden = false
-        timerText.isHidden = false
-    }
-    
     func initPlayer(){
-        do{
+        do {
             try note = AKAudioFile(readFileName: noteNamesWithSharps[randNote]+".wav", baseDir: .resources)
             try notePlayer = AKAudioPlayer(file: note!)
         }catch{
             //error
         }
     }
+    
     func initAudioSession(){
-        do{
+        do {
             try AKSettings.session.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.mixWithOthers)
             try AKSettings.session.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
             try AudioKit.start()
-        }catch{
+        } catch{
             //error
         }
     }
