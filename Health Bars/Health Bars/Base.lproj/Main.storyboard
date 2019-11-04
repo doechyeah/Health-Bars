@@ -355,7 +355,7 @@
                                     <constraint firstAttribute="width" constant="240" id="V7J-Ac-7DG"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SWIPE RIGHT TO TRY A" translatesAutoresizingMaskIntoConstraints="NO" id="yLd-cq-IHp">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SWIPE LEFT FOR ALL E" translatesAutoresizingMaskIntoConstraints="NO" id="yLd-cq-IHp">
                                 <rect key="frame" x="16" y="558" width="145" height="70"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -363,7 +363,7 @@
                                     <constraint firstAttribute="height" constant="70" id="uUt-DH-bF7"/>
                                 </constraints>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="K6d-D4-OGq" appends="YES" id="NPf-fo-VjU"/>
+                                    <outletCollection property="gestureRecognizers" destination="g8H-j9-JUF" appends="YES" id="FPa-Tl-GaB"/>
                                 </connections>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Title_ All Exercises" translatesAutoresizingMaskIntoConstraints="NO" id="3Ga-De-89s">
@@ -384,7 +384,7 @@
                                     <segue destination="abp-ys-K6h" kind="unwind" unwindAction="unwindToNavigationMenu:" id="ILd-TV-fBZ"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SWIPE LEFT FOR ALL E" translatesAutoresizingMaskIntoConstraints="NO" id="UMI-Uv-Eeu">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SWIPE RIGHT TO TRY A" translatesAutoresizingMaskIntoConstraints="NO" id="UMI-Uv-Eeu">
                                 <rect key="frame" x="195" y="555" width="164" height="75"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -392,7 +392,7 @@
                                     <constraint firstAttribute="width" constant="164" id="bbO-0Y-eo3"/>
                                 </constraints>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="g8H-j9-JUF" appends="YES" id="tp5-Ga-dVa"/>
+                                    <outletCollection property="gestureRecognizers" destination="K6d-D4-OGq" appends="YES" id="8xm-AH-v5U"/>
                                 </connections>
                             </imageView>
                         </subviews>
@@ -426,13 +426,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y1h-gz-3yM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="abp-ys-K6h" userLabel="Exit" sceneMemberID="exit"/>
-                <swipeGestureRecognizer direction="left" id="g8H-j9-JUF" userLabel="left">
+                <swipeGestureRecognizer direction="right" id="g8H-j9-JUF" userLabel="right">
                     <connections>
                         <action selector="fail_left:" destination="akj-XQ-Xo9" id="q1K-9y-yQu"/>
                         <segue destination="abp-ys-K6h" kind="unwind" unwindAction="unwindToNavigationMenu:" id="LEy-dt-kAg"/>
                     </connections>
                 </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="right" id="K6d-D4-OGq" userLabel="right">
+                <swipeGestureRecognizer direction="left" id="K6d-D4-OGq" userLabel="left">
                     <connections>
                         <action selector="fail_right:" destination="akj-XQ-Xo9" id="JZJ-zM-zwT"/>
                         <segue destination="abp-ys-K6h" kind="unwind" unwindAction="unwindToLongTones:" id="bL3-2Z-wGW"/>
@@ -538,7 +538,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vok-M7-Ppt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="eb6-yk-mtg" userLabel="Exit" sceneMemberID="exit"/>
-                <swipeGestureRecognizer direction="left" id="6UM-vQ-fOg" userLabel="left">
+                <swipeGestureRecognizer direction="right" id="6UM-vQ-fOg" userLabel="right">
                     <connections>
                         <action selector="success_swipe:" destination="AZR-xI-Yh5" id="PR0-Se-LDL"/>
                         <segue destination="eb6-yk-mtg" kind="unwind" unwindAction="unwindToNavigationMenu:" id="xU6-DS-IsG"/>
