@@ -26,9 +26,13 @@ build will fetch audiokit framework from web
 ```
 xcode:
 open .xcodeproj file
+
 click root project item in left side menu
+
 choose development team
+
 choose simulator in top right
+
 click play icon
 
 cmdline (only works for simulator unless you sign):
