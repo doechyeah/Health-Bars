@@ -26,8 +26,10 @@ Fetch files
 git clone https://www.github.com/doechyeah/Health-Bars health-bars
 cd health-bars
 cd "Health Bars"
-build will fetch audiokit framework from web
 ```
+
+build will fetch AudioKit framework 4.7.2 from web
+
 ### Xcode
 Open .xcodeproj file.
 
@@ -46,7 +48,7 @@ Click play icon.
 build_path="your/outputfolder/here"
 xcodebuild -scheme "Health Bars" build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED="NO" CODE_SIGNING_ALLOWED="NO" CONFIGURATION_BUILD_DIR="${build_path}"  -sdk iphonesimulator
 ```
-Start iphone simulator.
+Start iPhone simulator.
 
 ```
 xcrun simctl list
