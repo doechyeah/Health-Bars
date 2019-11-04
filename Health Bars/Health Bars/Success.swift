@@ -1,8 +1,9 @@
-//
-//  SecondViewController.swift
 //  Health Bars
 //
 //  Team: Team Rhythm
+//
+//  Success.swift
+//  Success view for LongTones
 //
 //  Developers:
 //  Michael Lin

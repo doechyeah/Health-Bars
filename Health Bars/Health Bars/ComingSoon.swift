@@ -1,8 +1,9 @@
-//
-//  ComingSoon.swift
 //  Health Bars
 //
 //  Team: Team Rhythm
+//
+//  ComingSoon.swift
+//  Not yet implemented features view
 //
 //  Developers:
 //  Michael Lin

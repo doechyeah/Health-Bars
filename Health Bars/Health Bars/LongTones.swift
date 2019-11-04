@@ -1,9 +1,9 @@
-//
-//  ViewController.swift
 //  Health Bars
 //
 //  Team: Team Rhythm
 //
+//  LongTones.swift
+//  Long Tones activity, play a tone and replicate the tone through user input.
 //  Developers:
 //  Michael Lin
 //  Alvin David
@@ -12,10 +12,13 @@
 //
 //  Changelog:
 //  2019-10-27: Created
+//  2019-10-28: Added frequency detection and pitch evaluation
 //  2019-10-29: Converted to Xcode 10.3
 //  2019-11-02: Added audio file playback
 //
-
+//  Bugs:
+//  2019-11-03 Frequency detection can be slightly off, however works almost all of the time
+//
 // Majority of AudioKit code in this file is taken from AudioKit examples Hello World and Microphone Analysis
 
 import AudioKit
@@ -61,9 +64,9 @@ class LongTones: UIViewController {
     // special variable for keeping the same tone when coming from fail screen
     var segueKeepSameTone: Bool = false
     var randNote: Int = Int.random(in: 0...11)
+    var noteSame: Int = -1
     
     //MARK: AudioKit variables
-    
     var note: AKAudioFile!
     var notePlayer: AKAudioPlayer!
     
@@ -98,6 +101,11 @@ class LongTones: UIViewController {
         
         if(!segueKeepSameTone){
             randNote =  Int.random(in: 0...11)
+            if (noteSame == randNote) {
+                let x = randNote + Int.random(in: 1...11)
+                randNote = x%12
+            }
+            noteSame = randNote
         }
         initPlayer()
         
@@ -163,8 +171,6 @@ class LongTones: UIViewController {
             AKLog("failed to get mic")
         }
         
-        //mixer.volume = 1
-        
         AudioKit.output = mixer
         initAudioSession()
         // end AudioKit variables init
@@ -197,7 +203,7 @@ class LongTones: UIViewController {
         notePlayer.play(from: 0.0)
         unhideToneToMatchTexts()
         toneToMatchText.text = noteNamesWithSharps[randNote]
-        // let note play for 4 seconds
+        // let note play for 5 seconds
         listenTimer = Timer.scheduledTimer(timeInterval: playTonePeriod, target: self, selector: #selector(LongTones.doneHearTheToneButtonPressed), userInfo: nil, repeats: false)
     }
     
@@ -216,23 +222,12 @@ class LongTones: UIViewController {
         // Use data from the view controller which initiated the unwind segue
     }
     
-    // @objc func startOscillator() {
-    //     oscillator1.frequency = Double(testingFreq)
-    //     oscillator1.start()
-    // }
-    
-//    @objc func stopOscillator() {
-//        oscillator1.stop()
-//    }
-    
     @objc func doneHearTheToneButtonPressed() {
         if listenTimer != nil {
             listenTimer.invalidate()
             listenTimer = nil
         }
-        //stopOscillator()
         notePlayer.stop()
-        //notePlayer.currentTime = 0
         unlockButtons()
     }
     
@@ -365,17 +360,9 @@ class LongTones: UIViewController {
     func unhideRecordTexts() {
         currentToneStaticText.isHidden = false
         currentToneText.isHidden = false
-        
-//        volumeStaticText.isHidden = false
-//        volumeText.isHidden = false
-//
-//        progressStaticText.isHidden = false
-//        progressText.isHidden = false
-//
-//        timerStaticText.isHidden = false
-//        timerText.isHidden = false
     }
     
+    //initializes the audio file to play
     func initPlayer() {
         do {
             try note = AKAudioFile(readFileName: noteNamesWithSharps[randNote]+".mp3", baseDir: .resources)
@@ -385,6 +372,7 @@ class LongTones: UIViewController {
         }
     }
     
+    //initializes audio session to play audio on device speakers
     func initAudioSession() {
         do {
             try AKSettings.session.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.mixWithOthers)

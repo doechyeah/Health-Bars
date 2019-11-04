@@ -1,8 +1,9 @@
-//
-//  AppDelegate.swift
 //  Health Bars
 //
 //  Team: Team Rhythm
+//
+//  AppDelegate.swift
+//  Entry point for the application
 //
 //  Developers:
 //  Michael Lin

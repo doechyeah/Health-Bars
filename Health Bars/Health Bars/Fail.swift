@@ -1,8 +1,9 @@
-//
-//  ThirdViewController.swift
 //  Health Bars
 //
 //  Team: Team Rhythm
+//
+//  Fail.swift
+//  Fail view for LongTones
 //
 //  Developers:
 //  Michael Lin

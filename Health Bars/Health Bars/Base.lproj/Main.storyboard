@@ -355,17 +355,6 @@
                                     <constraint firstAttribute="width" constant="240" id="V7J-Ac-7DG"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SWIPE LEFT FOR ALL E" translatesAutoresizingMaskIntoConstraints="NO" id="yLd-cq-IHp">
-                                <rect key="frame" x="16" y="558" width="145" height="70"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="145" id="CnR-hy-krF"/>
-                                    <constraint firstAttribute="height" constant="70" id="uUt-DH-bF7"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="g8H-j9-JUF" appends="YES" id="FPa-Tl-GaB"/>
-                                </connections>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Title_ All Exercises" translatesAutoresizingMaskIntoConstraints="NO" id="3Ga-De-89s">
                                 <rect key="frame" x="0.0" y="20" width="375" height="95"/>
                                 <constraints>
@@ -384,35 +373,46 @@
                                     <segue destination="abp-ys-K6h" kind="unwind" unwindAction="unwindToNavigationMenu:" id="ILd-TV-fBZ"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SWIPE RIGHT TO TRY A" translatesAutoresizingMaskIntoConstraints="NO" id="UMI-Uv-Eeu">
-                                <rect key="frame" x="195" y="555" width="164" height="75"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SWIPE LEFT TO TRY AG" translatesAutoresizingMaskIntoConstraints="NO" id="UMI-Uv-Eeu">
+                                <rect key="frame" x="216" y="550" width="143" height="78"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="XP6-cm-pd6"/>
-                                    <constraint firstAttribute="width" constant="164" id="bbO-0Y-eo3"/>
+                                    <constraint firstAttribute="width" constant="143" id="3ZC-Op-piX"/>
+                                    <constraint firstAttribute="height" constant="78" id="FoK-la-p6M"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="K6d-D4-OGq" appends="YES" id="8xm-AH-v5U"/>
+                                </connections>
+                            </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SWIPE RIGHT FOR ALL" translatesAutoresizingMaskIntoConstraints="NO" id="yLd-cq-IHp">
+                                <rect key="frame" x="16" y="535" width="174" height="112"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="174" id="A1i-3e-Vwq"/>
+                                    <constraint firstAttribute="height" constant="112" id="ka4-ez-lmY"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="g8H-j9-JUF" appends="YES" id="FPa-Tl-GaB"/>
                                 </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="UMI-Uv-Eeu" firstAttribute="top" secondItem="Kez-ho-XuI" secondAttribute="bottom" constant="37" id="1fh-2o-CNp"/>
                             <constraint firstItem="3Ga-De-89s" firstAttribute="top" secondItem="esL-MU-gh1" secondAttribute="top" id="4Gh-gb-B5m"/>
                             <constraint firstItem="3Ga-De-89s" firstAttribute="trailing" secondItem="esL-MU-gh1" secondAttribute="trailing" id="A1c-kb-CD4"/>
-                            <constraint firstItem="yLd-cq-IHp" firstAttribute="top" secondItem="Kez-ho-XuI" secondAttribute="bottom" constant="45" id="AhH-ch-Pvu"/>
                             <constraint firstItem="Afc-VE-FFr" firstAttribute="leading" secondItem="esL-MU-gh1" secondAttribute="leading" constant="16" id="DVB-YP-a11"/>
+                            <constraint firstItem="yLd-cq-IHp" firstAttribute="leading" secondItem="esL-MU-gh1" secondAttribute="leading" constant="16" id="EWy-Aa-kVL"/>
                             <constraint firstItem="esL-MU-gh1" firstAttribute="trailing" secondItem="UMI-Uv-Eeu" secondAttribute="trailing" constant="16" id="Em6-xl-jSd"/>
                             <constraint firstItem="kbz-G2-a0u" firstAttribute="top" secondItem="dwj-UC-IrC" secondAttribute="bottom" constant="35" id="Iz8-oe-Bon"/>
                             <constraint firstItem="Kez-ho-XuI" firstAttribute="leading" secondItem="esL-MU-gh1" secondAttribute="leading" constant="67" id="L8p-pV-eCq"/>
                             <constraint firstItem="3Ga-De-89s" firstAttribute="leading" secondItem="esL-MU-gh1" secondAttribute="leading" id="Sab-77-908"/>
                             <constraint firstItem="dwj-UC-IrC" firstAttribute="leading" secondItem="esL-MU-gh1" secondAttribute="leading" constant="67" id="TXX-xB-M13"/>
                             <constraint firstItem="Khn-tQ-K1a" firstAttribute="leading" secondItem="esL-MU-gh1" secondAttribute="leading" constant="26" id="VmS-bd-nxN"/>
+                            <constraint firstItem="yLd-cq-IHp" firstAttribute="top" secondItem="Kez-ho-XuI" secondAttribute="bottom" constant="22" id="X7H-bz-JB8"/>
                             <constraint firstItem="esL-MU-gh1" firstAttribute="trailing" secondItem="Khn-tQ-K1a" secondAttribute="trailing" constant="27" id="egK-al-UXO"/>
-                            <constraint firstItem="UMI-Uv-Eeu" firstAttribute="top" secondItem="Kez-ho-XuI" secondAttribute="bottom" constant="42" id="ejX-83-tIg"/>
                             <constraint firstItem="esL-MU-gh1" firstAttribute="trailing" secondItem="dwj-UC-IrC" secondAttribute="trailing" constant="68" id="f0g-Ns-XV1"/>
-                            <constraint firstItem="yLd-cq-IHp" firstAttribute="leading" secondItem="esL-MU-gh1" secondAttribute="leading" constant="16" id="hf5-lT-jCt"/>
                             <constraint firstItem="esL-MU-gh1" firstAttribute="trailing" secondItem="Kez-ho-XuI" secondAttribute="trailing" constant="68" id="nJp-oD-YPg"/>
                             <constraint firstItem="Kez-ho-XuI" firstAttribute="top" secondItem="kbz-G2-a0u" secondAttribute="bottom" constant="25" id="ocz-aU-nfh"/>
                             <constraint firstItem="kbz-G2-a0u" firstAttribute="leading" secondItem="esL-MU-gh1" secondAttribute="leading" constant="67" id="srm-Td-LYr"/>
@@ -439,7 +439,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1452" y="1046"/>
+            <point key="canvasLocation" x="1452" y="1045.7271364317842"/>
         </scene>
         <!--Success-->
         <scene sceneID="meE-Hp-xQW">
@@ -470,7 +470,7 @@
                                     <constraint firstAttribute="width" constant="240" id="gLE-tK-feO"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SWIPE LEFT FOR ALL E" translatesAutoresizingMaskIntoConstraints="NO" id="B8O-Zz-WUr">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SWIPE RIGHT FOR ALL" translatesAutoresizingMaskIntoConstraints="NO" id="B8O-Zz-WUr">
                                 <rect key="frame" x="67" y="558" width="240" height="110"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -560,8 +560,8 @@
         <image name="Goal_ Try to match t" width="225" height="51"/>
         <image name="LONG TONES" width="205" height="33"/>
         <image name="Progress Bar (PB) voice" width="315" height="60"/>
-        <image name="SWIPE LEFT FOR ALL E" width="157" height="65"/>
-        <image name="SWIPE RIGHT TO TRY A" width="136" height="65"/>
+        <image name="SWIPE LEFT TO TRY AG" width="136" height="65"/>
+        <image name="SWIPE RIGHT FOR ALL" width="170" height="65"/>
         <image name="TRY AGAIN!" width="312" height="45"/>
         <image name="Title_ All Exercises" width="375" height="95"/>
         <image name="Title_ Navigation Menu" width="375" height="96"/>

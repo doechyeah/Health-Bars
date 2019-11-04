@@ -1,8 +1,9 @@
-//
-//  File.swift
 //  Health Bars
 //
 //  Team: Team Rhythm
+//
+//  NavigationMenu.swift
+//  Navigation for different views
 //
 //  Developers:
 //  Michael Lin
