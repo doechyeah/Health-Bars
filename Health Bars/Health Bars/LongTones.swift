@@ -4,6 +4,7 @@
 //
 //  LongTones.swift
 //  Long Tones activity, play a tone and replicate the tone through user input.
+//
 //  Developers:
 //  Michael Lin
 //  Alvin David

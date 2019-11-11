@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C7B24172379F62600E59378 /* ShakeIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B24162379F62600E59378 /* ShakeIt.swift */; };
+		0C7B241A2379F94F00E59378 /* songTest_Hardbass.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0C7B24192379F94F00E59378 /* songTest_Hardbass.mp3 */; };
 		0C887207236FF9AD00B4193A /*  in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C887206236FF9AD00B4193A /*  */; };
 		0C887214236FF9E400B4193A /* C#.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0C887208236FF9E300B4193A /* C#.mp3 */; };
 		0C887215236FF9E400B4193A /* D#.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0C887209236FF9E300B4193A /* D#.mp3 */; };
@@ -29,6 +31,7 @@
 		0CA377DC23694427001DAB00 /* Success.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377DB23694427001DAB00 /* Success.swift */; };
 		0CA377DE23694484001DAB00 /* Fail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377DD23694484001DAB00 /* Fail.swift */; };
 		0CCB411A236A97DB0031AB67 /* NavigationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */; };
+		0CCB43812378CC6F00FCC3DE /* AllExercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB43802378CC6F00FCC3DE /* AllExercises.swift */; };
 		0CF23E4E236C1EA400283DFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CF23E4D236C1EA400283DFD /* Assets.xcassets */; };
 		0CF4103B236CA3BE00F11054 /* ComingSoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF4103A236CA3BE00F11054 /* ComingSoon.swift */; };
 /* End PBXBuildFile section */
@@ -51,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C7B24162379F62600E59378 /* ShakeIt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeIt.swift; sourceTree = "<group>"; };
+		0C7B24192379F94F00E59378 /* songTest_Hardbass.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = songTest_Hardbass.mp3; sourceTree = "<group>"; };
 		0C887206236FF9AD00B4193A /*  */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ""; sourceTree = "<group>"; };
 		0C887208236FF9E300B4193A /* C#.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "C#.mp3"; sourceTree = "<group>"; };
 		0C887209236FF9E300B4193A /* D#.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "D#.mp3"; sourceTree = "<group>"; };
@@ -79,6 +84,7 @@
 		0CA377DB23694427001DAB00 /* Success.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Success.swift; sourceTree = "<group>"; };
 		0CA377DD23694484001DAB00 /* Fail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fail.swift; sourceTree = "<group>"; };
 		0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMenu.swift; sourceTree = "<group>"; };
+		0CCB43802378CC6F00FCC3DE /* AllExercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllExercises.swift; sourceTree = "<group>"; };
 		0CF23E4D236C1EA400283DFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CF4103A236CA3BE00F11054 /* ComingSoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,6 +115,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C7B24182379F86900E59378 /* Songs */ = {
+			isa = PBXGroup;
+			children = (
+				0C7B24192379F94F00E59378 /* songTest_Hardbass.mp3 */,
+			);
+			path = Songs;
+			sourceTree = "<group>";
+		};
 		0CA377A123694263001DAB00 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +130,7 @@
 				0CA377C123694266001DAB00 /* Health BarsTests */,
 				0CA377CC23694266001DAB00 /* Health BarsUITests */,
 				0CA377DF23694583001DAB00 /* Frameworks */,
+				0CA377AB23694263001DAB00 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,7 +142,6 @@
 				0CA377C923694266001DAB00 /* Health BarsUITests.xctest */,
 			);
 			name = Products;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		0CA377AC23694263001DAB00 /* Health Bars */ = {
@@ -135,16 +149,18 @@
 			children = (
 				0CA377AD23694264001DAB00 /* AppDelegate.swift */,
 				0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */,
+				0CCB43802378CC6F00FCC3DE /* AllExercises.swift */,
 				0CA377AF23694264001DAB00 /* LongTones.swift */,
+				0C7B24162379F62600E59378 /* ShakeIt.swift */,
 				0CA377DB23694427001DAB00 /* Success.swift */,
 				0CA377DD23694484001DAB00 /* Fail.swift */,
 				0CF4103A236CA3BE00F11054 /* ComingSoon.swift */,
-				0CA377AB23694263001DAB00 /* Products */,
 				0CA377B123694264001DAB00 /* Main.storyboard */,
 				0CF23E4D236C1EA400283DFD /* Assets.xcassets */,
 				0CA377B623694266001DAB00 /* LaunchScreen.storyboard */,
 				0CA377B923694266001DAB00 /* Info.plist */,
 				E1452833236D63E0000DDF3E /* Notes */,
+				0C7B24182379F86900E59378 /* Songs */,
 			);
 			path = "Health Bars";
 			sourceTree = "<group>";
@@ -305,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C88721B236FF9E400B4193A /* B.mp3 in Resources */,
+				0C7B241A2379F94F00E59378 /* songTest_Hardbass.mp3 in Resources */,
 				0C88721A236FF9E400B4193A /* G.mp3 in Resources */,
 				0C887218236FF9E400B4193A /* E.mp3 in Resources */,
 				0C887216236FF9E400B4193A /* A.mp3 in Resources */,
@@ -363,6 +380,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CCB43812378CC6F00FCC3DE /* AllExercises.swift in Sources */,
+				0C7B24172379F62600E59378 /* ShakeIt.swift in Sources */,
 				0CCB411A236A97DB0031AB67 /* NavigationMenu.swift in Sources */,
 				0CA377B023694264001DAB00 /* LongTones.swift in Sources */,
 				0CA377DE23694484001DAB00 /* Fail.swift in Sources */,
