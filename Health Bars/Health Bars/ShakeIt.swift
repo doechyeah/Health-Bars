@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 import AudioKit
 
@@ -31,6 +32,7 @@ class ShakeIt: UIViewController {
     var beatMatchHits: Int!
     var beatMatchMisses: Int!
     var displayTimer: Timer!
+    var beatTime: Timer!
 
     // special variable for keeping the same song when coming from fail screen
     var segueKeepSameSong: Bool = false
@@ -40,8 +42,18 @@ class ShakeIt: UIViewController {
     var songPlayer: AKAudioPlayer!
     var amplitudeTracker: AKAmplitudeTracker!
 
-    //MARK: Tempo variable
-    let tempo: [String: Int] = ["Grave": 25, "Lento": 45, "Adagio": 66, "Andante": , "Moderato", "Allegro", "Vivace", "Presto"]
+    //MARK: TEMPO DICT
+    var tempo: [String: Int] = ["Grave": 25,
+                                "Lento": 45,
+                                "Adagio": 66,
+                                "Andante": 76,
+                                "Moderato": 108,
+                                "Allegro": 112,
+                                "Vivace": 156,
+                                "Presto": 168]
+    var BeatsPlay: Int
+    var totBeats: Int
+    var timeInterv: Int
     // Note: Anything faster than Allegro is pretty dumb to do.
 
 
@@ -50,15 +62,9 @@ class ShakeIt: UIViewController {
         //NSLog("deinit()")
     }
 
-
-
-    func BeatScore() {
-        Timer
-    }
-
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
-          print("Good")
+            
         }
     }
 
@@ -80,16 +86,14 @@ class ShakeIt: UIViewController {
         // simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
 
-        /*
-        if(!segueKeepSameTone){
-            randNote =  Int.random(in: 0...11)
-            if (noteSame == randNote) {
-                let x = randNote + Int.random(in: 1...11)
-                randNote = x%12
-            }
-            noteSame = randNote
-        }
-        */
+        let randomTempo = tempo.randomElement()
+        
+        BeatsPlay = randomTempo!.value
+        
+        // Lets assume we lets them play for 30 seconds?
+        totBeats = BeatsPlay/2
+        timeInterv = (60/BeatsPlay)*1000
+        
 
         // UI Init
 
@@ -137,11 +141,28 @@ class ShakeIt: UIViewController {
         startButton.isEnabled = false
         displayTimer = Timer.scheduledTimer(timeInterval: displayTimerInterval, target: self, selector: #selector(ShakeIt.updateUI), userInfo: nil, repeats: true)
         //debug
-
-        songPlayer.completionHandler = {
-            self.donePlayback()
+//
+//        songPlayer.completionHandler = {
+//            self.donePlayback()
+//        }
+//        songPlayer.play(from: 0.0, to: playSongPeriod)
+        // Countdown to start.
+        for x in 5...1 {
+            print(x)
+            sleep(1)
+            // BAD IMPLEMENTATION PLS CHANGE LATER ON. ADD UI ELEMENT THAT SHOWS USER
         }
-        songPlayer.play(from: 0.0, to: playSongPeriod)
+        
+        for x in 1...totBeats {
+            // Show visual cue here.
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            
+            // TRIGGER ACCURACY FUNCTION HERE
+            usleep(useconds_t(timeInterv))
+            var accSoFar: Double = beatMatchHits/x
+            print(accSoFar)
+            
+        }
     }
 
 
