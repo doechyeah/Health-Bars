@@ -60,24 +60,35 @@ class ShakeIt: UIViewController {
     //var totBeats: Int!
     //var timeInterv: Int!
     // Note: Anything faster than Allegro is pretty dumb to do.
+    var gameActive = false
+    var score = 0
+    var timeOfLastShake = 0
+    var timer = Timer()
 
 
-    deinit {
+    deinit {	
         //debug
         //NSLog("deinit()")
     }
 
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
-            print("SHAKE!")
-            if songPlayer != nil {
-                if songPlayer.isStarted {
-                    print("\(songPlayer.currentTime)")
+//            print("SHAKE!")
+            if !gameActive {
+                gameActive = true
+                if songPlayer != nil {
+                    if songPlayer.isStarted {
+                        print("\(songPlayer.currentTime)")
                     
+                    }
                 }
+            }
+            else {
+                timeOfLastShake = score
             }
         }
     }
+    
 
     // called when view first gets loaded into memory
     override func viewDidLoad() {
@@ -135,7 +146,13 @@ class ShakeIt: UIViewController {
 
         // debug
         //NSLog("Done viewDidAppear()")
-
+    
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        get {
+            return true
+        }
     }
 
     // called with view disappears fully
@@ -161,14 +178,19 @@ class ShakeIt: UIViewController {
     //MARK: Actions
     @IBAction func startButtonPressed(_ sender: UIButton) {
         startButton.isEnabled = false
-        displayTimer = Timer.scheduledTimer(timeInterval: displayTimerInterval, target: self, selector: #selector(ShakeIt.updateUI), userInfo: nil, repeats: true)
+        displayTimer = Timer.scheduledTimer(timeInterval: displayTimerInterval,
+                                            target: self,
+                                            selector: #selector(ShakeIt.updateUI),
+                                            userInfo: nil,
+                                            repeats: true)
         //debug
         
         songPlayer.completionHandler = {
             self.donePlayback()
         }
         songPlayer.play(from: 0.0, to: playSongPeriod)
-
+        
+        gameActive = true
         
         /*
         for x in 1...totBeats {
@@ -195,6 +217,22 @@ class ShakeIt: UIViewController {
         //let sourceViewController = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
     }
+    
+    @objc func updateScore() {
+        score += 1
+//        scoreLabel.text = String(score)
+        let timeSinceLastShake = score - timeOfLastShake
+//        switch timeSinceLastShake {
+//        case 1:
+//            messageLabel.Text = "Perfect"
+//        case 2:
+//            messageLabel.Text = "Good"
+//        case 3:
+//            messageLabel.Text = "Okay"
+//        default:
+//            messageLabel.Text = "Miss"
+//        }
+    }
 
     // updates current tone text and gets current mic input frequency
     @objc func updateUI() {
@@ -213,7 +251,6 @@ class ShakeIt: UIViewController {
 
 
     //MARK: helper functions
-
     func destroyTimers() {
         if displayTimer != nil {
             displayTimer.invalidate()
