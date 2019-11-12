@@ -18,8 +18,18 @@ class ShakeIt: UIViewController {
     // UI update time interval resolution
     let displayTimerInterval = 0.1
     let beatMatchRatioForSuccess = 0.5
+    
+    let tempo: [String: Int] = ["Grave": 25,
+                                "Lento": 45,
+                                "Adagio": 66,
+                                "Andante": 76,
+                                "Moderato": 108,
+                                "Allegro": 112,
+                                "Vivace": 156,
+                                "Presto": 168]
+
     // Metronome
-    let met = AKMetronome()
+    //let met = AKMetronome()
 
     //MARK: Outlets
     @IBOutlet weak var startButton: UIButton!
@@ -32,7 +42,10 @@ class ShakeIt: UIViewController {
     var beatMatchHits: Int!
     var beatMatchMisses: Int!
     var displayTimer: Timer!
-    var beatTime: Timer!
+    
+    
+    var songBPM: Float!
+    var songStartOffsetTime: Float!
 
     // special variable for keeping the same song when coming from fail screen
     var segueKeepSameSong: Bool = false
@@ -42,18 +55,10 @@ class ShakeIt: UIViewController {
     var songPlayer: AKAudioPlayer!
     var amplitudeTracker: AKAmplitudeTracker!
 
-    //MARK: TEMPO DICT
-    var tempo: [String: Int] = ["Grave": 25,
-                                "Lento": 45,
-                                "Adagio": 66,
-                                "Andante": 76,
-                                "Moderato": 108,
-                                "Allegro": 112,
-                                "Vivace": 156,
-                                "Presto": 168]
-    var BeatsPlay: Int
-    var totBeats: Int
-    var timeInterv: Int
+
+    //var BeatsPlay: Int!
+    //var totBeats: Int!
+    //var timeInterv: Int!
     // Note: Anything faster than Allegro is pretty dumb to do.
 
 
@@ -64,7 +69,13 @@ class ShakeIt: UIViewController {
 
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
-            
+            print("SHAKE!")
+            if songPlayer != nil {
+                if songPlayer.isStarted {
+                    print("\(songPlayer.currentTime)")
+                    
+                }
+            }
         }
     }
 
@@ -86,13 +97,13 @@ class ShakeIt: UIViewController {
         // simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
 
-        let randomTempo = tempo.randomElement()
+        //let randomTempo = tempo.randomElement()
         
-        BeatsPlay = randomTempo!.value
+        //BeatsPlay = randomTempo!.value
         
         // Lets assume we lets them play for 30 seconds?
-        totBeats = BeatsPlay/2
-        timeInterv = (60/BeatsPlay)*1000
+        //totBeats = BeatsPlay/2
+        //timeInterv = (60/BeatsPlay)*1000
         
 
         // UI Init
@@ -104,7 +115,18 @@ class ShakeIt: UIViewController {
         beatMatchHits = 0
         beatMatchMisses = 0
         displayTimer = nil
-        //read pitch from filename/contents
+        
+        //TODO:
+        songBPM = 154.0
+        songStartOffsetTime = 1.0
+        
+        // read pitch from filename/contents
+        
+        //TODO: implement
+        //chooseSong(tempoMin: minTempo, tempoMax: maxTempo)
+        
+        
+        // init (preload) player on view load so starting is faster
         initPlayer()
 
         // AudioKit variables init
@@ -141,18 +163,14 @@ class ShakeIt: UIViewController {
         startButton.isEnabled = false
         displayTimer = Timer.scheduledTimer(timeInterval: displayTimerInterval, target: self, selector: #selector(ShakeIt.updateUI), userInfo: nil, repeats: true)
         //debug
-//
-//        songPlayer.completionHandler = {
-//            self.donePlayback()
-//        }
-//        songPlayer.play(from: 0.0, to: playSongPeriod)
-        // Countdown to start.
-        for x in 5...1 {
-            print(x)
-            sleep(1)
-            // BAD IMPLEMENTATION PLS CHANGE LATER ON. ADD UI ELEMENT THAT SHOWS USER
-        }
         
+        songPlayer.completionHandler = {
+            self.donePlayback()
+        }
+        songPlayer.play(from: 0.0, to: playSongPeriod)
+
+        
+        /*
         for x in 1...totBeats {
             // Show visual cue here.
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
@@ -163,6 +181,8 @@ class ShakeIt: UIViewController {
             print(accSoFar)
             
         }
+ */
+        
     }
 
 

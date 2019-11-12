@@ -2,8 +2,8 @@
 //
 //  Team: Team Rhythm
 //
-//  NavigationMenu.swift
-//  Navigation for different views
+//  AllExercises.swift
+//  All exercises menu which lists all the exercises available
 //
 //  Developers:
 //  Michael Lin
@@ -12,7 +12,7 @@
 //  Copyright © 2019 Team Rhythm. All rights reserved.
 //
 //  Changelog:
-//  2019-10: Created
+//  2019-11: Created
 //
 
 import Foundation
