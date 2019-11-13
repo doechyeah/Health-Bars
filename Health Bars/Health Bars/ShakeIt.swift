@@ -7,17 +7,19 @@
 //
 
 import UIKit
-import AudioToolbox
 
 import AudioKit
 
 class ShakeIt: UIViewController {
 
     //MARK: Constants
-    let playSongPeriod = 20.0
+    let playSongPeriod: Double = 250.0
     // UI update time interval resolution
-    let displayTimerInterval = 0.1
-    let beatMatchRatioForSuccess = 0.5
+    let displayTimerInterval: Double = 0.1
+    let beatMatchRatioForSuccess: Double = 0.5
+    // tolerance of accuracy of shake to beat as percentage of beat period, from center to edge (not negative to positive edge)
+    let shakeAccuracyToleranceRatio: Double = 0.15
+    let countdownLength: Int = 5
     
     let tempo: [String: Int] = ["Grave": 25,
                                 "Lento": 45,
@@ -35,17 +37,26 @@ class ShakeIt: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var pretendShakeButton: UIButton!
     @IBOutlet weak var amplitudeLabel: UILabel!
-
+    @IBOutlet weak var countdownLabel: UILabel!
+    
 
     //MARK: Condition variables
     var success: Bool!
-    var beatMatchHits: Int!
-    var beatMatchMisses: Int!
+    var shakeBeatHits: Int!
+    var shakeBeatMisses: Int!
+    var shakeBeatOffTempos: Int!
     var displayTimer: Timer!
+    var beatTimer: Timer!
+    var countdownNum: Int!
     
+    var shakedToBeat: Bool = false
+    var beatNum: Int = 0
     
-    var songBPM: Float!
-    var songStartOffsetTime: Float!
+    var songBPM: Double!
+    var songStartOffsetTime: Double!
+    var songBeatPeriod: Double!
+    var shakeAccuracyToleranceTime: Double!
+    var gameActive: Bool!
 
     // special variable for keeping the same song when coming from fail screen
     var segueKeepSameSong: Bool = false
@@ -56,36 +67,23 @@ class ShakeIt: UIViewController {
     var amplitudeTracker: AKAmplitudeTracker!
 
 
-    //var BeatsPlay: Int!
-    //var totBeats: Int!
-    //var timeInterv: Int!
     // Note: Anything faster than Allegro is pretty dumb to do.
-    var gameActive = false
-    var score = 0
-    var timeOfLastShake = 0
-    var timer = Timer()
 
 
-    deinit {	
+    deinit {
         //debug
         //NSLog("deinit()")
     }
 
+    override func becomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    // called by system when start of motion gesture has been detected
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
-//            print("SHAKE!")
-            if !gameActive {
-                gameActive = true
-                if songPlayer != nil {
-                    if songPlayer.isStarted {
-                        print("\(songPlayer.currentTime)")
-                    
-                    }
-                }
-            }
-            else {
-                timeOfLastShake = score
-            }
+            print("Shake event from shake gesture")
+            shakeEvent()
         }
     }
     
@@ -108,60 +106,57 @@ class ShakeIt: UIViewController {
         // simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
 
-        //let randomTempo = tempo.randomElement()
-        
-        //BeatsPlay = randomTempo!.value
-        
-        // Lets assume we lets them play for 30 seconds?
-        //totBeats = BeatsPlay/2
-        //timeInterv = (60/BeatsPlay)*1000
-        
-
         // UI Init
-
+        amplitudeLabel.text = "Amplitude"
+        countdownLabel.text = "Countdown"
         // end UI Init
 
         // condition variables init
         success = false
-        beatMatchHits = 0
-        beatMatchMisses = 0
+        shakeBeatHits = 0
+        shakeBeatMisses = 0
+        shakeBeatOffTempos = 0
         displayTimer = nil
-        
-        //TODO:
-        songBPM = 154.0
-        songStartOffsetTime = 1.0
-        
-        // read pitch from filename/contents
+        beatTimer = nil
+        countdownNum = countdownLength
         
         //TODO: implement
         //chooseSong(tempoMin: minTempo, tempoMax: maxTempo)
+        songBPM = 154.0
+        songStartOffsetTime = 0.0
+        songBeatPeriod = 60 / songBPM
+        shakeAccuracyToleranceTime = shakeAccuracyToleranceRatio * songBeatPeriod
         
+        gameActive = false
         
+        // AudioKit variables init
         // init (preload) player on view load so starting is faster
         initPlayer()
 
-        // AudioKit variables init
         initAudioSession()
         // end AudioKit variables init
 
         // debug
         //NSLog("Done viewDidAppear()")
-    
     }
     
+    /*
     override var canBecomeFirstResponder: Bool {
         get {
             return true
         }
     }
+ */
 
     // called with view disappears fully
     override func viewDidDisappear(_ animated: Bool) {
         // debug
         //NSLog("viewDidDisappear()")
+        super.viewDidDisappear(animated)
 
         // destroy timers
-        destroyTimers()
+        //destroyTimers()
+        endGame()
 
         songPlayer.stop()
 
@@ -178,60 +173,19 @@ class ShakeIt: UIViewController {
     //MARK: Actions
     @IBAction func startButtonPressed(_ sender: UIButton) {
         startButton.isEnabled = false
-        displayTimer = Timer.scheduledTimer(timeInterval: displayTimerInterval,
-                                            target: self,
-                                            selector: #selector(ShakeIt.updateUI),
-                                            userInfo: nil,
-                                            repeats: true)
-        //debug
-        
-        songPlayer.completionHandler = {
-            self.donePlayback()
-        }
-        songPlayer.play(from: 0.0, to: playSongPeriod)
-        
-        gameActive = true
-        
-        /*
-        for x in 1...totBeats {
-            // Show visual cue here.
-            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-            
-            // TRIGGER ACCURACY FUNCTION HERE
-            usleep(useconds_t(timeInterv))
-            var accSoFar: Double = beatMatchHits/x
-            print(accSoFar)
-            
-        }
- */
-        
+        countdownStart()
     }
-
+        
 
     @IBAction func pretendShakePressed(_ sender: UIButton) {
-        print("\(songPlayer.currentTime)")
+        print("Shake event from Pretend shake button")
+        shakeEvent()
     }
 
     // unwind segue function, called from other views
     @IBAction func unwindToShakeIt(_ unwindSegue: UIStoryboardSegue) {
         //let sourceViewController = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
-    }
-    
-    @objc func updateScore() {
-        score += 1
-//        scoreLabel.text = String(score)
-        let timeSinceLastShake = score - timeOfLastShake
-//        switch timeSinceLastShake {
-//        case 1:
-//            messageLabel.Text = "Perfect"
-//        case 2:
-//            messageLabel.Text = "Good"
-//        case 3:
-//            messageLabel.Text = "Okay"
-//        default:
-//            messageLabel.Text = "Miss"
-//        }
     }
 
     // updates current tone text and gets current mic input frequency
@@ -242,24 +196,101 @@ class ShakeIt: UIViewController {
 
     }
 
-    func donePlayback() {
-        self.destroyTimers()
-        AKLog("Done playback")
-        startButton.isEnabled = true
-        amplitudeLabel.text = "Amplitude"
-    }
-
-
     //MARK: helper functions
+    @objc func countdownStart() {
+        NSLog("Countdown: \(countdownNum ?? -1)")
+        countdownNum -= 1
+        if countdownNum >= 0 {
+            Timer.scheduledTimer(timeInterval: 1.0,
+                                            target: self,
+                                            selector: #selector(ShakeIt.countdownStart),
+                                            userInfo: nil,
+                                            repeats: false)
+        } else {
+            startGame()
+        }
+    }
+    
+    func startGame() {
+        NSLog("Start Game!")
+        displayTimer = Timer.scheduledTimer(timeInterval: displayTimerInterval,
+                                            target: self,
+                                            selector: #selector(ShakeIt.updateUI),
+                                            userInfo: nil,
+                                            repeats: true)
+        
+        // have trigger right before start of each good hit window
+        Timer.scheduledTimer(withTimeInterval: songStartOffsetTime + (2 * songBeatPeriod) - shakeAccuracyToleranceTime, repeats: false, block: {_ in
+            self.beatTimer = Timer.scheduledTimer(timeInterval: self.songBeatPeriod,
+                                             target: self,
+                                             selector: #selector(ShakeIt.updateShakeCondition),
+                                             userInfo: nil,
+                                             repeats: true)
+        })
+        
+        // can also achieve with separate timer
+        songPlayer.completionHandler = {
+            self.endGame()
+        }
+        //TODO: use songOffsetTime maybe?
+        songPlayer.play(from: 0.0, to: playSongPeriod)
+        gameActive = true
+    }
+    
+    func endGame() {
+        NSLog("End Game!")
+        gameActive = false
+        shakedToBeat = false
+        destroyTimers()
+        updateStats()
+    }
+    
+    // display/save stats to our DB (IF WE HAD ONE)
+    func updateStats() {
+
+    }
+    
     func destroyTimers() {
         if displayTimer != nil {
             displayTimer.invalidate()
             displayTimer = nil
         }
+        if beatTimer != nil {
+            beatTimer.invalidate()
+            beatTimer = nil
+        }
     }
 
+    //TODO: make async if necessary (testing required)
+    @objc func updateShakeCondition() {
+        if !shakedToBeat {
+            shakeBeatMisses += 1
+        }
+        shakedToBeat = false
+        beatNum += 1
+        print("Time discrepancy vs AKPlayer: \((beatNum * songBeatPeriod) - songPlayer.currentTime)")
+    }
+    
+    func shakeEvent() {
+        //debug
+        NSLog("shakeEvent()")
+        if gameActive {
+            NSLog("Current song time: \(songPlayer.currentTime)")
+            // good shake timing window calculation
+            let offset: Double = (songPlayer.currentTime - songStartOffsetTime).remainder(dividingBy: songBeatPeriod) - (songPlayer.currentTime - songStartOffsetTime)
+            if abs(offset) < shakeAccuracyToleranceTime && !shakedToBeat{
+                shakeBeatHits += 1
+            } else {
+                shakeBeatOffTempos += 1
+            }
+        } else {
+            NSLog("Game not started yet")
+        }
+    }
+    
 
     //initializes the audio file to play
+    //TODO: choose random file and read song properties file, probably make another function
     func initPlayer() {
         do {
             try songFile = AKAudioFile(readFileName: "songTest_Hardbass.mp3", baseDir: .resources)

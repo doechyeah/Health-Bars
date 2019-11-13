@@ -676,6 +676,13 @@
                                     <action selector="startButtonPressed:" destination="Ne4-Sr-bE1" eventType="touchUpInside" id="NLF-l9-SgR"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Countdown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9y-33-Mkh">
+                                <rect key="frame" x="143" y="535" width="88" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
@@ -696,7 +703,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="2fm-U0-guT"/>
                     <connections>
-                        <outlet property="amplitudeLabel" destination="dnC-JZ-imY" id="jw1-1W-gjd"/>
+                        <outlet property="amplitudeLabel" destination="v9y-33-Mkh" id="ec9-72-38g"/>
+                        <outlet property="countdownLabel" destination="v9y-33-Mkh" id="Zww-Ec-NXS"/>
                         <outlet property="pretendShakeButton" destination="7co-wM-26Y" id="L43-OT-JM9"/>
                         <outlet property="startButton" destination="hLC-3V-TJV" id="WfH-59-zZc"/>
                     </connections>
