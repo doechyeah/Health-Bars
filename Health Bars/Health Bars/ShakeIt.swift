@@ -55,9 +55,10 @@ class ShakeIt: UIViewController {
     var shakeBeatHits: Int!
     var shakeBeatMisses: Int!
     var shakeBeatOffTempos: Int!
+    var countdownNum: Int!
+
     var displayTimer: Timer!
     var beatTimer: Timer!
-    var countdownNum: Int!
     
     var shakedToBeat: Bool = false
     var beatNum: Int = 0
@@ -207,11 +208,10 @@ class ShakeIt: UIViewController {
 
     }
 
-    //MARK: helper functions
     @objc func countdownStart() {
-        NSLog("Countdown: \(countdownNum ?? -1)")
-        countdownNum -= 1
-        if countdownNum >= 0 {
+        if countdownNum > 0 {
+            NSLog("Countdown: \(countdownNum!)")
+            countdownNum -= 1
             Timer.scheduledTimer(timeInterval: 1.0,
                                             target: self,
                                             selector: #selector(ShakeIt.countdownStart),

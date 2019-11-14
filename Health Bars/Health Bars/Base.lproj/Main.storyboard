@@ -703,7 +703,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="2fm-U0-guT"/>
                     <connections>
-                        <outlet property="amplitudeLabel" destination="v9y-33-Mkh" id="ec9-72-38g"/>
+                        <outlet property="amplitudeLabel" destination="dnC-JZ-imY" id="vN3-l6-Dkl"/>
                         <outlet property="countdownLabel" destination="v9y-33-Mkh" id="Zww-Ec-NXS"/>
                         <outlet property="pretendShakeButton" destination="7co-wM-26Y" id="L43-OT-JM9"/>
                         <outlet property="startButton" destination="hLC-3V-TJV" id="WfH-59-zZc"/>
