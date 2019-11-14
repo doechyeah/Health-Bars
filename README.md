@@ -47,7 +47,9 @@ https://advanture.wixsite.com/health-bars-g9
 
 ## Testing Framework
 
-###Qase test account
+### Qase test account
+
+link: https://app.qase.io/login
 
 email: shyprea2@hotmail.com
 
