@@ -69,7 +69,7 @@ class LongTones: UIViewController {
     
     //MARK: AudioKit variables
     var note: AKAudioFile!
-    var notePlayer: AKAudioPlayer!
+    var notePlayer: AKPlayer!
     
     var mic: AKMicrophone!
     var tracker: AKFrequencyTracker!
@@ -367,7 +367,7 @@ class LongTones: UIViewController {
     func initPlayer() {
         do {
             try note = AKAudioFile(readFileName: noteNamesWithSharps[randNote]+".mp3", baseDir: .resources)
-            try notePlayer = AKAudioPlayer(file: note!)
+            notePlayer = AKPlayer(audioFile: note)
         } catch {
             //error
         }

@@ -1,9 +1,19 @@
-//
-//  ShakeIt.swift
 //  Health Bars
 //
-//  Created by Michael Lin on 2019-11-11.
+//  Team: Team Rhythm
+//
+//  ShakeIt.swift
+//  Shake It activity, play a song and user shakes to beat. Collects data on accuracy of shakes vs beat
+//
+//  Developers:
+//  Michael Lin
+//
 //  Copyright © 2019 Team Rhythm. All rights reserved.
+//
+//  Changelog:
+//  2019-11-05: Created
+//
+//  Bugs:
 //
 
 import UIKit
@@ -13,12 +23,12 @@ import AudioKit
 class ShakeIt: UIViewController {
 
     //MARK: Constants
-    let playSongPeriod: Double = 250.0
+    let playSongPeriod: Double = 20.0
     // UI update time interval resolution
     let displayTimerInterval: Double = 0.1
     let beatMatchRatioForSuccess: Double = 0.5
     // tolerance of accuracy of shake to beat as percentage of beat period, from center to edge (not negative to positive edge)
-    let shakeAccuracyToleranceRatio: Double = 0.15
+    let shakeAccuracyToleranceRatio: Double = 0.3
     let countdownLength: Int = 5
     
     let tempo: [String: Int] = ["Grave": 25,
@@ -63,7 +73,7 @@ class ShakeIt: UIViewController {
 
     //MARK: AudioKit variables
     var songFile: AKAudioFile!
-    var songPlayer: AKAudioPlayer!
+    var songPlayer: AKPlayer!
     var amplitudeTracker: AKAmplitudeTracker!
 
 
@@ -126,6 +136,7 @@ class ShakeIt: UIViewController {
         songStartOffsetTime = 0.0
         songBeatPeriod = 60 / songBPM
         shakeAccuracyToleranceTime = shakeAccuracyToleranceRatio * songBeatPeriod
+        NSLog("shakeAccuracyToleranceTime: \(shakeAccuracyToleranceTime!)")
         
         gameActive = false
         
@@ -178,7 +189,7 @@ class ShakeIt: UIViewController {
         
 
     @IBAction func pretendShakePressed(_ sender: UIButton) {
-        print("Shake event from Pretend shake button")
+        //print("Shake event from Pretend shake button")
         shakeEvent()
     }
 
@@ -263,25 +274,30 @@ class ShakeIt: UIViewController {
 
     //TODO: make async if necessary (testing required)
     @objc func updateShakeCondition() {
+        //NSLog("updateShakeCondition()")
         if !shakedToBeat {
             shakeBeatMisses += 1
         }
         shakedToBeat = false
         beatNum += 1
-        print("Time discrepancy vs AKPlayer: \((beatNum * songBeatPeriod) - songPlayer.currentTime)")
+        //print("Time discrepancy vs AKPlayer: \((beatNum * songBeatPeriod) - songPlayer.currentTime)")
     }
     
     func shakeEvent() {
         //debug
-        NSLog("shakeEvent()")
+        //NSLog("shakeEvent()")
         if gameActive {
-            NSLog("Current song time: \(songPlayer.currentTime)")
+            //NSLog("Current song time: \(songPlayer.currentTime)")
             // good shake timing window calculation
-            let offset: Double = (songPlayer.currentTime - songStartOffsetTime).remainder(dividingBy: songBeatPeriod) - (songPlayer.currentTime - songStartOffsetTime)
+            let offset: Double = (songPlayer.currentTime - songStartOffsetTime).remainder(dividingBy: songBeatPeriod)
+            NSLog("\(offset)")
             if abs(offset) < shakeAccuracyToleranceTime && !shakedToBeat{
                 shakeBeatHits += 1
+                shakedToBeat = true
+                NSLog("shake Hit")
             } else {
                 shakeBeatOffTempos += 1
+                NSLog("shake Off Tempo")
             }
         } else {
             NSLog("Game not started yet")
@@ -294,11 +310,12 @@ class ShakeIt: UIViewController {
     func initPlayer() {
         do {
             try songFile = AKAudioFile(readFileName: "songTest_Hardbass.mp3", baseDir: .resources)
-            try songPlayer = AKAudioPlayer(file: songFile!)
+            songPlayer = AKPlayer(audioFile: songFile)
 
             if songPlayer.duration < playSongPeriod {
                 NSLog("song is \(songPlayer.duration) but playback duration is \(playSongPeriod)")
             }
+            songPlayer.prepare()
         } catch {
             //error
         }
