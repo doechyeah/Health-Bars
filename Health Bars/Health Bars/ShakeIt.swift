@@ -24,12 +24,11 @@ import AudioKit
 class ShakeIt: UIViewController {
 
     //MARK: Constants
-    let playSongPeriod: Double = 20.0
     // UI update time interval resolution
     let displayTimerInterval: Double = 0.1
     let beatMatchRatioForSuccess: Double = 0.5
     // tolerance of accuracy of shake to beat as percentage of beat period, from center to edge (not negative to positive edge)
-    let shakeAccuracyToleranceRatio: Double = 0.2
+    let shakeAccuracyToleranceRatio: Double = 0.002
     let countdownLength: Int = 3
     
     let tempo: [String: Int] = ["Grave": 25,
@@ -50,36 +49,43 @@ class ShakeIt: UIViewController {
     @IBOutlet weak var amplitudeLabel: UILabel!
     @IBOutlet weak var countdownLabel: UILabel!
     
-
-    //MARK: Condition variables
-    var success: Bool!
-    var shakeBeatHits: Int!
-    var shakeBeatMisses: Int!
-    var shakeBeatOffTempos: Int!
-    var countdownNum: Int!
-
-    var displayTimer: Timer!
-    var beatTimer: Timer!
+    //MARK: Game parameters
+    var shakeBeatHits: Int = 0
+    var shakeBeatMisses: Int = 0
+    var shakeBeatOffTempos: Int = 0
+    
+    var countdownNum: Int = 0
+    
+    var songName: String = ""
+    var songUrl: URL!
+    
+    var gameActive: Bool = false
     
     var shakedToBeat: Bool = false
     var beatNum: Int = 0
     
-    var songBPM: Double!
-    var songStartOffsetTime: Double!
-    var songBeatPeriod: Double!
-    var shakeAccuracyToleranceTime: Double!
-    var gameActive: Bool!
+    var songStartOffsetTime: Double = 0
+    var songEndTime: Double = 0
+    var playSongPeriod: Double = 0
+    var songBPM: Double = 0
+    var songBeatPeriod: Double = 0
+    var shakeAccuracyToleranceTime: Double = 0
+    
+    var success: Bool = false
+
+    //MARK: Condition variables
 
     // special variable for keeping the same song when coming from fail screen
     var segueKeepSameSong: Bool = false
 
+    var displayTimer: Timer!
+    var beatTimer: Timer!
+    
     //MARK: AudioKit variables
     var songFile: AKAudioFile!
     var songPlayer: AKPlayer!
     var amplitudeTracker: AKAmplitudeTracker!
     
-
-    // Note: Anything faster than Allegro is pretty dumb to do.
 
 
     deinit {
@@ -123,31 +129,47 @@ class ShakeIt: UIViewController {
         countdownLabel.text = "Countdown"
         // end UI Init
 
-        // condition variables init
-        success = false
+        // game parameters init
         shakeBeatHits = 0
         shakeBeatMisses = 0
         shakeBeatOffTempos = 0
-        displayTimer = nil
-        beatTimer = nil
+        
         countdownNum = countdownLength
         
-        //TODO: implement
-        //chooseSong(tempoMin: minTempo, tempoMax: maxTempo)
-        songBPM = 155.0
-        songStartOffsetTime = 0.0
-        songBeatPeriod = 60.0 / songBPM
-        shakeAccuracyToleranceTime = shakeAccuracyToleranceRatio * songBeatPeriod
-        print("shakeAccuracyToleranceTime: \(shakeAccuracyToleranceTime!)")
+        songName = ""
         
         gameActive = false
         
+        shakedToBeat = false
+        beatNum = 0
+        
+        songStartOffsetTime = 0
+        songEndTime = 0
+        playSongPeriod = 0
+        songBPM = 0
+        songBeatPeriod = 0
+        shakeAccuracyToleranceTime = 0
+        
+        success = false
+        //end game parameters init
+        
+        
+        // condition variables init
+        displayTimer = nil
+        beatTimer = nil
+        
+        //TODO: implement
+        //chooseSong(tempoMin: minTempo, tempoMax: maxTempo)
+        
+        chooseRandomSong()
         // AudioKit variables init
         // init (preload) player on view load so starting is faster
         initPlayer()
 
         initAudioSession()
         // end AudioKit variables init
+        
+        setGameParameters()
 
         // debug
         //NSLog("Done viewDidAppear()")
@@ -211,7 +233,7 @@ class ShakeIt: UIViewController {
 
     @objc func countdownStart() {
         if countdownNum > 0 {
-            print("Countdown: \(countdownNum!)")
+            print("Countdown: \(countdownNum)")
             countdownNum -= 1
             Timer.scheduledTimer(timeInterval: 1.0,
                                             target: self,
@@ -234,6 +256,7 @@ class ShakeIt: UIViewController {
         
         // have trigger right at end of first window
         Timer.scheduledTimer(withTimeInterval: songStartOffsetTime + shakeAccuracyToleranceTime, repeats: false, block: {_ in
+            self.updateShakeCondition()
             self.beatTimer = Timer.scheduledTimer(timeInterval: self.songBeatPeriod,
                                              target: self,
                                              selector: #selector(ShakeIt.updateShakeCondition),
@@ -245,8 +268,8 @@ class ShakeIt: UIViewController {
         songPlayer.completionHandler = {
             self.endGame()
         }
-        //TODO: use songOffsetTime maybe?
         songPlayer.play(at: AVAudioTime.now())
+        gameActive = true
     }
     
     func endGame() {
@@ -260,9 +283,9 @@ class ShakeIt: UIViewController {
     // display/save stats to our DB (IF WE HAD ONE)
     func updateStats() {
         //TODO:
-        print("Hits: \(shakeBeatHits!)")
-        print("Misses: \(shakeBeatMisses!)")
-        print("Off Tempos: \(shakeBeatOffTempos!)")
+        print("Hits: \(shakeBeatHits)")
+        print("Misses: \(shakeBeatMisses)")
+        print("Off Tempos: \(shakeBeatOffTempos)")
     }
     
     func destroyTimers() {
@@ -295,8 +318,9 @@ class ShakeIt: UIViewController {
         if gameActive {
             //NSLog("Current song time: \(songPlayer.currentTime)")
             // good shake timing window calculation
-            let offset: Double = (songPlayer.currentTime - songStartOffsetTime).remainder(dividingBy: songBeatPeriod)
-            print("\(offset)")
+            let currentTime = songPlayer.currentTime
+            let offset: Double = (currentTime - songStartOffsetTime).remainder(dividingBy: songBeatPeriod)
+            print("offset: \(offset)\ncurrent player time: \(currentTime)")
             if abs(offset) < shakeAccuracyToleranceTime && !shakedToBeat{
                 shakeBeatHits += 1
                 shakedToBeat = true
@@ -315,15 +339,23 @@ class ShakeIt: UIViewController {
     //TODO: choose random file and read song properties file, probably make another function
     func initPlayer() {
         do {
-            try songFile = AKAudioFile(readFileName: "songTest_Hardbass.mp3", baseDir: .resources)
+            
+            try songFile = AKAudioFile(forReading: songUrl)
             songPlayer = AKPlayer(audioFile: songFile)
             
             if songPlayer.duration < playSongPeriod {
+                // should never happen
                 print("song is \(songPlayer.duration) but playback duration is \(playSongPeriod)")
             }
-            gameActive = true
+            
+            // less than 0 for play until end
+            if songEndTime < 0 {
+                songEndTime = songPlayer.duration
+            }
+            print("song playtime duration: \(songEndTime)")
+                
             // preload file into memory for fast starting
-            songPlayer.preroll(from: 0.0, to: playSongPeriod)
+            songPlayer.preroll(from: 0.0, to: songEndTime)
             
         } catch {
             //error
@@ -345,6 +377,49 @@ class ShakeIt: UIViewController {
         } catch {
             //error
         }
+    }
+    
+    func chooseRandomSong() {
+        guard let urls = Bundle.main.urls(forResourcesWithExtension: "json", subdirectory: nil) else {
+            //TODO: pop up message and exit game here
+            NSLog("json urls array empty")
+            return
+        }
+        songUrl = urls[Int.random(in: 0..<urls.count)]
+        loadSongJsonParameters(url: songUrl)
+    }
+    
+    func loadSongJsonParameters(url: URL) {
+        let jsonString = try? String(contentsOf: url)
+        let json = JSON(parseJSON: jsonString!)
+        //debug
+        for (key, subJson):(String, JSON) in json {
+            print("\(key): \(subJson)")
+        }
+        //print("\(json["songName"])")
+        songName = json["songName"].stringValue
+        //TODO: maybe support for different extensions/formats
+        songUrl = Bundle.main.url(forResource: songName, withExtension: "mp3")
+        
+        //print("\(json["BPM"])")
+        songBPM = json["BPM"].doubleValue
+        
+        //print("\(json["endTime"])")
+        songEndTime = json["endTime"].doubleValue
+        
+        //print("\(json["offsetStartTime"])")
+        songStartOffsetTime = json["offsetStartTime"].doubleValue
+        
+        
+        
+    }
+    
+    func setGameParameters() {
+        
+        songBeatPeriod = 60.0 / songBPM
+        shakeAccuracyToleranceTime = shakeAccuracyToleranceRatio * songBeatPeriod
+        print("shakeAccuracyToleranceTime: \(shakeAccuracyToleranceTime)")
+        playSongPeriod = songEndTime - songStartOffsetTime
     }
 
 

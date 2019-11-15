@@ -658,7 +658,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Pretend Shake"/>
                                 <connections>
-                                    <action selector="pretendShakePressed:" destination="Ne4-Sr-bE1" eventType="touchUpInside" id="5TZ-Xo-ifD"/>
+                                    <action selector="pretendShakePressed:" destination="Ne4-Sr-bE1" eventType="touchDown" id="6hh-Lh-mUT"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amplitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnC-JZ-imY">
