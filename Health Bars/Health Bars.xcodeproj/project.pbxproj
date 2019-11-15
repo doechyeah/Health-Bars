@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C524149237EA10200CA2C98 /* songTest_HardBass.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C524148237EA10100CA2C98 /* songTest_HardBass.json */; };
 		0C7B24172379F62600E59378 /* ShakeIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B24162379F62600E59378 /* ShakeIt.swift */; };
 		0C7B241A2379F94F00E59378 /* songTest_Hardbass.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0C7B24192379F94F00E59378 /* songTest_Hardbass.mp3 */; };
 		0C887207236FF9AD00B4193A /*  in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C887206236FF9AD00B4193A /*  */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C524148237EA10100CA2C98 /* songTest_HardBass.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = songTest_HardBass.json; sourceTree = "<group>"; };
 		0C7B24162379F62600E59378 /* ShakeIt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeIt.swift; sourceTree = "<group>"; };
 		0C7B24192379F94F00E59378 /* songTest_Hardbass.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = songTest_Hardbass.mp3; sourceTree = "<group>"; };
 		0C887206236FF9AD00B4193A /*  */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ""; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				0C7B24192379F94F00E59378 /* songTest_Hardbass.mp3 */,
+				0C524148237EA10100CA2C98 /* songTest_HardBass.json */,
 			);
 			path = Songs;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				0C887219236FF9E400B4193A /* D.mp3 in Resources */,
 				0C887214236FF9E400B4193A /* C#.mp3 in Resources */,
 				0CA377B323694264001DAB00 /* Main.storyboard in Resources */,
+				0C524149237EA10200CA2C98 /* songTest_HardBass.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

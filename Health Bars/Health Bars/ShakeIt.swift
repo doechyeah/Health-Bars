@@ -14,6 +14,7 @@
 //  2019-11-05: Created
 //
 //  Bugs:
+//  2019-11-15: NSTimer will drift slightly on simulator, results in accuracy drift, should not matter with shorter song durations
 //
 
 import UIKit
@@ -28,8 +29,8 @@ class ShakeIt: UIViewController {
     let displayTimerInterval: Double = 0.1
     let beatMatchRatioForSuccess: Double = 0.5
     // tolerance of accuracy of shake to beat as percentage of beat period, from center to edge (not negative to positive edge)
-    let shakeAccuracyToleranceRatio: Double = 0.3
-    let countdownLength: Int = 5
+    let shakeAccuracyToleranceRatio: Double = 0.2
+    let countdownLength: Int = 3
     
     let tempo: [String: Int] = ["Grave": 25,
                                 "Lento": 45,
@@ -76,7 +77,7 @@ class ShakeIt: UIViewController {
     var songFile: AKAudioFile!
     var songPlayer: AKPlayer!
     var amplitudeTracker: AKAmplitudeTracker!
-
+    
 
     // Note: Anything faster than Allegro is pretty dumb to do.
 
@@ -133,11 +134,11 @@ class ShakeIt: UIViewController {
         
         //TODO: implement
         //chooseSong(tempoMin: minTempo, tempoMax: maxTempo)
-        songBPM = 154.0
+        songBPM = 155.0
         songStartOffsetTime = 0.0
-        songBeatPeriod = 60 / songBPM
+        songBeatPeriod = 60.0 / songBPM
         shakeAccuracyToleranceTime = shakeAccuracyToleranceRatio * songBeatPeriod
-        NSLog("shakeAccuracyToleranceTime: \(shakeAccuracyToleranceTime!)")
+        print("shakeAccuracyToleranceTime: \(shakeAccuracyToleranceTime!)")
         
         gameActive = false
         
@@ -210,7 +211,7 @@ class ShakeIt: UIViewController {
 
     @objc func countdownStart() {
         if countdownNum > 0 {
-            NSLog("Countdown: \(countdownNum!)")
+            print("Countdown: \(countdownNum!)")
             countdownNum -= 1
             Timer.scheduledTimer(timeInterval: 1.0,
                                             target: self,
@@ -223,15 +224,16 @@ class ShakeIt: UIViewController {
     }
     
     func startGame() {
-        NSLog("Start Game!")
+        print("Start Game!")
+        
         displayTimer = Timer.scheduledTimer(timeInterval: displayTimerInterval,
                                             target: self,
                                             selector: #selector(ShakeIt.updateUI),
                                             userInfo: nil,
                                             repeats: true)
         
-        // have trigger right before start of each good hit window
-        Timer.scheduledTimer(withTimeInterval: songStartOffsetTime + (2 * songBeatPeriod) - shakeAccuracyToleranceTime, repeats: false, block: {_ in
+        // have trigger right at end of first window
+        Timer.scheduledTimer(withTimeInterval: songStartOffsetTime + shakeAccuracyToleranceTime, repeats: false, block: {_ in
             self.beatTimer = Timer.scheduledTimer(timeInterval: self.songBeatPeriod,
                                              target: self,
                                              selector: #selector(ShakeIt.updateShakeCondition),
@@ -244,12 +246,11 @@ class ShakeIt: UIViewController {
             self.endGame()
         }
         //TODO: use songOffsetTime maybe?
-        songPlayer.play(from: 0.0, to: playSongPeriod)
-        gameActive = true
+        songPlayer.play(at: AVAudioTime.now())
     }
     
     func endGame() {
-        NSLog("End Game!")
+        print("End Game!")
         gameActive = false
         shakedToBeat = false
         destroyTimers()
@@ -258,7 +259,10 @@ class ShakeIt: UIViewController {
     
     // display/save stats to our DB (IF WE HAD ONE)
     func updateStats() {
-
+        //TODO:
+        print("Hits: \(shakeBeatHits!)")
+        print("Misses: \(shakeBeatMisses!)")
+        print("Off Tempos: \(shakeBeatOffTempos!)")
     }
     
     func destroyTimers() {
@@ -271,15 +275,17 @@ class ShakeIt: UIViewController {
             beatTimer = nil
         }
     }
-
+    
     //TODO: make async if necessary (testing required)
     @objc func updateShakeCondition() {
         //NSLog("updateShakeCondition()")
         if !shakedToBeat {
             shakeBeatMisses += 1
+            print("shake Miss")
         }
         shakedToBeat = false
         beatNum += 1
+        print("Beatnum: \(beatNum)")
         //print("Time discrepancy vs AKPlayer: \((beatNum * songBeatPeriod) - songPlayer.currentTime)")
     }
     
@@ -290,32 +296,35 @@ class ShakeIt: UIViewController {
             //NSLog("Current song time: \(songPlayer.currentTime)")
             // good shake timing window calculation
             let offset: Double = (songPlayer.currentTime - songStartOffsetTime).remainder(dividingBy: songBeatPeriod)
-            NSLog("\(offset)")
+            print("\(offset)")
             if abs(offset) < shakeAccuracyToleranceTime && !shakedToBeat{
                 shakeBeatHits += 1
                 shakedToBeat = true
-                NSLog("shake Hit")
+                print("shake Hit")
             } else {
                 shakeBeatOffTempos += 1
-                NSLog("shake Off Tempo")
+                print("shake Off Tempo")
             }
         } else {
-            NSLog("Game not started yet")
+            print("Game not started yet")
         }
     }
     
-
+    
     //initializes the audio file to play
     //TODO: choose random file and read song properties file, probably make another function
     func initPlayer() {
         do {
             try songFile = AKAudioFile(readFileName: "songTest_Hardbass.mp3", baseDir: .resources)
             songPlayer = AKPlayer(audioFile: songFile)
-
+            
             if songPlayer.duration < playSongPeriod {
-                NSLog("song is \(songPlayer.duration) but playback duration is \(playSongPeriod)")
+                print("song is \(songPlayer.duration) but playback duration is \(playSongPeriod)")
             }
-            songPlayer.prepare()
+            gameActive = true
+            // preload file into memory for fast starting
+            songPlayer.preroll(from: 0.0, to: playSongPeriod)
+            
         } catch {
             //error
         }
@@ -328,7 +337,7 @@ class ShakeIt: UIViewController {
             AKSettings.sampleRate = AudioKit.engine.inputNode.inputFormat(forBus: 0).sampleRate
 
             amplitudeTracker = AKAmplitudeTracker(songPlayer)
-
+            
             AudioKit.output = amplitudeTracker
             //try AKSettings.session.setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.mixWithOthers)
             try AKSettings.session.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
