@@ -71,6 +71,7 @@ class ShakeIt: UIViewController {
     var shakeAccuracyToleranceTime: Double!
     var gameActive: Bool!
     
+    var shakeQ = DispatchQueue(label: "GameUpdate")
     // Mutex
     let shakeLck = NSLock()
 
@@ -225,14 +226,15 @@ class ShakeIt: UIViewController {
         }
     }
     
-    func gameTrigger() {
-        Timer.scheduledTimer(withTimeInterval: songStartOffsetTime + shakeAccuracyToleranceTime, repeats: false, block: {_ in
+    func gameTrigger() -> Timer {
+        let ti = Timer.scheduledTimer(withTimeInterval: songStartOffsetTime + shakeAccuracyToleranceTime, repeats: false, block: {_ in
             self.beatTimer = Timer.scheduledTimer(timeInterval: self.songBeatPeriod,
                                                   target: self,
                                                   selector: #selector(ShakeIt.updateShakeCondition),
                                                   userInfo: nil,
                                                   repeats: true)
         })
+        return ti
     }
     
     func startGame() {
@@ -245,8 +247,17 @@ class ShakeIt: UIViewController {
                                             repeats: true)
         
         // have trigger right at end of first window
-        DispatchQueue.main.async { [weak self] in
-            self?.gameTrigger()
+        DispatchQueue.global(qos: .background).async {
+            let ti = Timer.scheduledTimer(withTimeInterval: self.songStartOffsetTime + self.shakeAccuracyToleranceTime, repeats: false, block: {_ in
+                self.beatTimer = Timer.scheduledTimer(timeInterval: self.songBeatPeriod,
+                target: self,
+                selector: #selector(ShakeIt.updateShakeCondition),
+                userInfo: nil,
+                repeats: true)
+            })
+            let runLoop = RunLoop.current
+            runLoop.add(ti, forMode: .default)
+            runLoop.run()
         }
         
         // can also achieve with separate timer
