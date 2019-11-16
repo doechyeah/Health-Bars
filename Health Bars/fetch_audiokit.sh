@@ -15,14 +15,3 @@ else
   rm -rf AudioKit-iOS
   echo "Done cleanup of downloaded files"
 fi
-
-if [ -d "${my_depSQL}" -o -L "${my_depSQL}"  ]; then
-  echo "SQLite.swift already exists, skipping fetch"
-else
-  echo "Fetching SQLite.swift.Framework"
-  curl -O -L https://github.com/stephencelis/SQLite.swift/archive/0.12.2.zip
-  unzip 0.12.2.zip
-  echo "Done fetching SQLite.framework, cleaning up downloaded files"
-  rm -rf 0.12.2.zip
-  echo "Done cleanup of downloaded files"
-fi
