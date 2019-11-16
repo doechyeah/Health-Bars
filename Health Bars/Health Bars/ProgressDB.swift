@@ -39,8 +39,8 @@ class ProgClass {
         let format = DateFormatter()
         format.dateFormat = "yyyy/MM/dd"
         currentdate = format.string(from: date)
-        let db = try! Connection("\(path)/ProgressDB.sqlite3")
         do {
+            let db = try Connection("\(path)/ProgressDB.sqlite3")
             try db.run(rhythm.create(ifNotExists: true) {
                 t in
                 t.column(datetime, primaryKey: true)
@@ -77,30 +77,18 @@ class ProgClass {
             print("Error Opening Tables")
         }
     }
-    
+   
     func insert(table: String, actscore: Int) {
         let db = try! Connection("\(path)/ProgressDB.sqlite3")
         let DBtable = Table(table)
-        /*
-        switch table {
-        case "rhythm":
-            DBtable = rhythm
-        case "memory":
-            DBtable = memory
-        case "voice":
-            DBtable = voice
-        default:
-            print("invalid table")
-        }
-        */
         
         do {
             let dateExist = try db.scalar(DBtable.select(datetime.count))
             if dateExist == 0 {
                 do {
-                try db.run(DBtable.insert(datetime <- currentdate,
-                                          score <- Int64(actscore),
-                                          attempts <- 1))
+                    try db.run(DBtable.insert(datetime <- currentdate,
+                                              score <- Int64(actscore),
+                                              attempts <- 1))
                 }
                 catch let error {
                     print("Insert failed: \(error)")
@@ -109,8 +97,8 @@ class ProgClass {
             else {
                 let daterow = DBtable.filter(datetime == currentdate)
                 do {
-                try db.run(daterow.update(score += Int64(actscore),
-                                          attempts += 1))
+                    try db.run(daterow.update(score += Int64(actscore),
+                                              attempts += 1))
                 }
                 catch  let error {
                     print("Update failed: \(error)")
@@ -119,6 +107,17 @@ class ProgClass {
         } catch let error {
             print("Error with checking date: \(error)")
         }
+    }
+    
+    func readTable(table: String) -> Dictionary<String, (Int64, Int64)> {
+        let db = try! Connection("\(path)/ProgressDB.sqlite3")
+        let DBtable = Table(table)
+        var rows: Dictionary<String, (Int64, Int64)> = [currentdate: (0,0)]
+        
+        for data in try! db.prepare(DBtable) {
+            rows[data[datetime]] = (data[score],data[attempts])
+        }
+        return rows
     }
     
     func genStats() {
