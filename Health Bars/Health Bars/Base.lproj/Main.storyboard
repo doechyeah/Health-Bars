@@ -23,7 +23,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gv9-Fv-2eB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1615" y="928"/>
+            <point key="canvasLocation" x="-1231" y="928"/>
         </scene>
         <!--Navigation Menu-->
         <scene sceneID="VUj-Gp-sse">
@@ -95,7 +95,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DSi-fl-6z4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-706" y="928"/>
+            <point key="canvasLocation" x="-374" y="928"/>
         </scene>
         <!--Coming Soon-->
         <scene sceneID="vPz-MO-vCF">
@@ -129,7 +129,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BIi-24-hAe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="1bR-et-YTO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-706" y="1645"/>
+            <point key="canvasLocation" x="-375" y="1648"/>
         </scene>
         <!--Long Tones-->
         <scene sceneID="N5p-YM-BS3">
@@ -317,7 +317,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Z1-Fv-uIj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="yFd-F0-f1t" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1806" y="399"/>
+            <point key="canvasLocation" x="1652" y="107"/>
         </scene>
         <!--Fail-->
         <scene sceneID="0a9-MA-HvT">
@@ -439,7 +439,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3148" y="603"/>
+            <point key="canvasLocation" x="2558" y="-326"/>
         </scene>
         <!--Success-->
         <scene sceneID="meE-Hp-xQW">
@@ -545,7 +545,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3148" y="1483"/>
+            <point key="canvasLocation" x="2558" y="382"/>
         </scene>
         <!--All Exercises-->
         <scene sceneID="Uiv-OF-r0e">
@@ -712,7 +712,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VEq-XK-J99" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="B9W-jv-lt4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1806" y="1290"/>
+            <point key="canvasLocation" x="1652" y="1310"/>
         </scene>
     </scenes>
     <resources>

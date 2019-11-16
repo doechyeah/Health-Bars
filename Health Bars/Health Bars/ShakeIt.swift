@@ -259,7 +259,7 @@ class ShakeIt: UIViewController {
                                             repeats: true)
         
         // have trigger right at end of first window
-        DispatchQueue.global(qos: .background).async {
+        DispatchQueue.global(qos: .userInitiated).async {
             let ti = Timer.scheduledTimer(withTimeInterval: self.songStartOffsetTime + self.shakeAccuracyToleranceTime, repeats: false, block: {_ in
                 self.beatTimer = Timer.scheduledTimer(timeInterval: self.songBeatPeriod,
                 target: self,
