@@ -1,6 +1,6 @@
 {
-  "songName": "songTest_Hardbass.mp3",
+  "songName": "songTest_Hardbass",
   "BPM": 155.0,
-  "lengthInSeconds": 260.31,
-  "offsetTime": 0.178
+  "endTime": 24.7,
+  "offsetStartTime": 0.178
 }

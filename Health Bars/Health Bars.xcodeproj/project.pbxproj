@@ -37,6 +37,7 @@
 		0CF4103B236CA3BE00F11054 /* ComingSoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF4103A236CA3BE00F11054 /* ComingSoon.swift */; };
 		5C071B1A237F5BAD0006A921 /* ProgressDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C071B12237F5BAC0006A921 /* ProgressDB.swift */; };
 		5C44AD6A237F5A6900F7582B /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C44AD69237F5A6900F7582B /* AudioKit.framework */; };
+		5CF6802C237F8664005778E3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6801D237F8664005778E3 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +195,7 @@
 		5C009B98237F45CB006C3FAB /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = ../../SQLite.swift/SQLite.xcodeproj; sourceTree = "<group>"; };
 		5C071B12237F5BAC0006A921 /* ProgressDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressDB.swift; sourceTree = "<group>"; };
 		5C44AD69237F5A6900F7582B /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AudioKit.framework; sourceTree = "<group>"; };
+		5CF6801D237F8664005778E3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +265,7 @@
 				0CA377AF23694264001DAB00 /* LongTones.swift */,
 				0C7B24162379F62600E59378 /* ShakeIt.swift */,
 				5C071B12237F5BAC0006A921 /* ProgressDB.swift */,
+				5CF6801D237F8664005778E3 /* SwiftyJSON.swift */,
 				0CA377DB23694427001DAB00 /* Success.swift */,
 				0CA377DD23694484001DAB00 /* Fail.swift */,
 				0CF4103A236CA3BE00F11054 /* ComingSoon.swift */,
@@ -637,6 +640,7 @@
 				0CCB43812378CC6F00FCC3DE /* AllExercises.swift in Sources */,
 				0C7B24172379F62600E59378 /* ShakeIt.swift in Sources */,
 				5C071B1A237F5BAD0006A921 /* ProgressDB.swift in Sources */,
+				5CF6802C237F8664005778E3 /* SwiftyJSON.swift in Sources */,
 				0CCB411A236A97DB0031AB67 /* NavigationMenu.swift in Sources */,
 				0CA377B023694264001DAB00 /* LongTones.swift in Sources */,
 				0CA377DE23694484001DAB00 /* Fail.swift in Sources */,
