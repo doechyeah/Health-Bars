@@ -28,7 +28,7 @@ class ShakeIt: UIViewController {
     let displayTimerInterval: Double = 0.1
     let beatMatchRatioForSuccess: Double = 0.5
     // tolerance of accuracy of shake to beat as percentage of beat period, from center to edge (not negative to positive edge)
-    let shakeAccuracyToleranceRatio: Double = 0.002
+    let shakeAccuracyToleranceRatio: Double = 0.3
     let countdownLength: Int = 3
     
     let tempo: [String: Int] = ["Grave": 25,
@@ -80,6 +80,9 @@ class ShakeIt: UIViewController {
 
     var displayTimer: Timer!
     var beatTimer: Timer!
+    var vibrateTimer: Timer!
+    
+    var vibrationGenerator: UIImpactFeedbackGenerator!
     
     //MARK: AudioKit variables
     var songFile: AKAudioFile!
@@ -157,6 +160,8 @@ class ShakeIt: UIViewController {
         // condition variables init
         displayTimer = nil
         beatTimer = nil
+        
+        vibrationGenerator = UIImpactFeedbackGenerator(style: .heavy)
         
         //TODO: implement
         //chooseSong(tempoMin: minTempo, tempoMax: maxTempo)
@@ -264,6 +269,16 @@ class ShakeIt: UIViewController {
                                              repeats: true)
         })
         
+        // vibration
+        Timer.scheduledTimer(withTimeInterval: songStartOffsetTime, repeats: false, block: {_ in
+            self.vibrateOnBeat()
+            self.vibrateTimer = Timer.scheduledTimer(timeInterval: self.songBeatPeriod,
+                                                  target: self,
+                                                  selector: #selector(ShakeIt.vibrateOnBeat),
+                                                  userInfo: nil,
+                                                  repeats: true)
+        })
+        
         // can also achieve with separate timer
         songPlayer.completionHandler = {
             self.endGame()
@@ -297,6 +312,10 @@ class ShakeIt: UIViewController {
             beatTimer.invalidate()
             beatTimer = nil
         }
+        if vibrateTimer != nil {
+            vibrateTimer.invalidate()
+            vibrateTimer = nil
+        }
     }
     
     //TODO: make async if necessary (testing required)
@@ -310,6 +329,12 @@ class ShakeIt: UIViewController {
         beatNum += 1
         print("Beatnum: \(beatNum)")
         //print("Time discrepancy vs AKPlayer: \((beatNum * songBeatPeriod) - songPlayer.currentTime)")
+    }
+    
+    @objc func vibrateOnBeat() {
+        //debug
+        print("Vibrate!")
+        vibrationGenerator.impactOccurred()
     }
     
     func shakeEvent() {
