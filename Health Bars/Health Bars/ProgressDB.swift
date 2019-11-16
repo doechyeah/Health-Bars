@@ -12,9 +12,10 @@ import SQLite
 class ProgClass {
     var playerID: String
     var currentdate: String
-    
-    // Connect To Database
-    let db = try Connection("path/to/ProgressDB.sqlite3")
+    let path = NSSearchPathForDirectoriesInDomains(.documentDirectory,
+                                                   .userDomainMask,
+                                                   true
+    ).first!
     // Initialize tables
     let rhythm = Table("rhythm")
     let voice = Table("voice")
@@ -23,75 +24,71 @@ class ProgClass {
     let Stats = Table("stats")
     // Initialize entries
     let datetime = Expression<String>("datetime")
-    let score = Expression<Int64>("score")
-    let attempts = Expression<Int64>("attempts")
-    let CurrentStreak = Expression<Int64>("CurrentStreak")
+    let score = Expression<Int>("score")
+    let attempts = Expression<Int>("attempts")
+    let CurrentStreak = Expression<Int>("CurrentStreak")
     let CompletedDaily = Expression<Bool>("CompletedDaily")
-    let rscore = Expression<Int64>("rscore")
-    let vscore = Expression<Int64>("vscore")
-    let mscore = Expression<Int64>("mscore")
+    let rscore = Expression<Int>("rscore")
+    let vscore = Expression<Int>("vscore")
+    let mscore = Expression<Int>("mscore")
     let pID = Expression<String>("pID")
     
-    init () {
+    init (playID: String) {
+        playerID = playID
         let date = Date()
         let format = DateFormatter()
         format.dateFormat = "yyyy/MM/dd"
         currentdate = format.string(from: date)
-        
         do {
+            let db = try Connection("\(path)/ProgressDB.sqlite3")
             try db.run(rhythm.create(ifNotExists: true) {
                 t in
                 t.column(datetime, primaryKey: true)
                 t.column(score)
-                t.column(attempts)})
+                t.column(attempts)
+            })
             try db.run(voice.create(ifNotExists: true) {
                 t in
                 t.column(datetime, primaryKey: true)
                 t.column(score)
-                t.column(attempts)})
+                t.column(attempts)
+            })
             try db.run(memory.create(ifNotExists: true) {
                 t in
                 t.column(datetime, primaryKey: true)
                 t.column(score)
-                t.column(attempts)})
+                t.column(attempts)
+            })
             try db.run(DailyStreak.create(ifNotExists: true) {
                 t in
                 t.column(datetime, primaryKey: true)
                 t.column(CurrentStreak)
-                t.column(CompletedDaily)})
+                t.column(CompletedDaily)
+            })
             try db.run(Stats.create(ifNotExists: true) {
                 t in
                 t.column(datetime, primaryKey: true)
                 t.column(pID)
                 t.column(rscore)
                 t.column(vscore)
-                t.column(mscore)})
+                t.column(mscore)
+            })
         } catch {
             print("Error Opening Tables")
         }
     }
-    
+   
     func insert(table: String, actscore: Int) {
-        var DBtable: Table!
-        
-        switch table {
-        case "rhythm":
-            DBtable = rhythm
-        case "memory":
-            DBtable = memory
-        case "voice":
-            DBtable = voice
-        default:
-            print("invalid table")
-        }
+        let db = try! Connection("\(path)/ProgressDB.sqlite3")
+        let DBtable = Table(table)
         
         do {
             let dateExist = try db.scalar(DBtable.select(datetime.count))
             if dateExist == 0 {
                 do {
-                try db.run(DBtable.insert(datetime <- currentdate,
-                                          score <- Int64(actscore),
-                                          attempts <- 1))
+                    try db.run(DBtable.insert(datetime <- currentdate,
+                                              score <- actscore,
+                                              attempts <- 1))
                 }
                 catch let error {
                     print("Insert failed: \(error)")
@@ -100,16 +97,27 @@ class ProgClass {
             else {
                 let daterow = DBtable.filter(datetime == currentdate)
                 do {
-                try db.run(daterow.update(score += Int64(actscore),
-                                          attempts += 1))
+                    try db.run(daterow.update(score += actscore,
+                                              attempts += 1))
                 }
-                catch let error {
+                catch  let error {
                     print("Update failed: \(error)")
                 }
             }
         } catch let error {
             print("Error with checking date: \(error)")
         }
+    }
+    
+    func readTable(table: String) -> Dictionary<String, (Int, Int)> {
+        let db = try! Connection("\(path)/ProgressDB.sqlite3")
+        let DBtable = Table(table)
+        var rows: Dictionary<String, (Int, Int)> = [currentdate: (0,0)]
+        
+        for data in try! db.prepare(DBtable) {
+            rows[data[datetime]] = (data[score],data[attempts])
+        }
+        return rows
     }
     
     func genStats() {
