@@ -138,21 +138,24 @@ class ShakeIt: UIViewController {
         
         countdownNum = countdownLength
         
-        songName = ""
-        
         gameActive = false
         
         shakedToBeat = false
         beatNum = 0
         
-        songStartOffsetTime = 0
-        songEndTime = 0
-        playSongPeriod = 0
-        songBPM = 0
-        songBeatPeriod = 0
-        shakeAccuracyToleranceTime = 0
+        songName = ""
         
         success = false
+        
+        if segueKeepSameSong == false {
+            songStartOffsetTime = 0
+            songEndTime = 0
+            playSongPeriod = 0
+            songBPM = 0
+            songBeatPeriod = 0
+            shakeAccuracyToleranceTime = 0
+        }
+        
         //end game parameters init
         
         
@@ -165,7 +168,9 @@ class ShakeIt: UIViewController {
         //TODO: implement
         //chooseSong(tempoMin: minTempo, tempoMax: maxTempo)
         
-        chooseRandomSong()
+        if segueKeepSameSong == false {
+            chooseRandomSong()
+        }
         // AudioKit variables init
         // init (preload) player on view load so starting is faster
         initPlayer()
@@ -173,7 +178,9 @@ class ShakeIt: UIViewController {
         initAudioSession()
         // end AudioKit variables init
         
-        setGameParameters()
+        if segueKeepSameSong == false {
+            setGameParameters()
+        }
 
         // debug
         //NSLog("Done viewDidAppear()")
@@ -194,8 +201,8 @@ class ShakeIt: UIViewController {
         super.viewDidDisappear(animated)
 
         // destroy timers
-        //destroyTimers()
-        endGame()
+        destroyTimers()
+        //endGame()
 
         songPlayer.stop()
 
@@ -261,6 +268,7 @@ class ShakeIt: UIViewController {
         // have trigger right at end of first window
         DispatchQueue.global(qos: .userInitiated).async {
             let ti = Timer.scheduledTimer(withTimeInterval: self.songStartOffsetTime + self.shakeAccuracyToleranceTime, repeats: false, block: {_ in
+                self.updateShakeCondition()
                 self.beatTimer = Timer.scheduledTimer(timeInterval: self.songBeatPeriod,
                 target: self,
                 selector: #selector(ShakeIt.updateShakeCondition),
@@ -298,9 +306,19 @@ class ShakeIt: UIViewController {
         destroyTimers()
         updateStats()
         shakeLck.unlock()
+        
+        startButton.isEnabled = true
+        
+        if success == false {
+            segueKeepSameSong = true
+            performSegue(withIdentifier: "segue_gotoFailShakeIt", sender: self)
+        } else if success == true {
+            segueKeepSameSong = false
+            performSegue(withIdentifier: "segue_gotoSuccessShakeIt", sender: self)
+        }
     }
     
-    // display/save stats to our DB (IF WE HAD ONE)
+    // display/save stats to our DB
     func updateStats() {
         //TODO:
         var scrd = 0
@@ -341,14 +359,14 @@ class ShakeIt: UIViewController {
         }
         shakedToBeat = false
         beatNum += 1
-        print("Beatnum: \(beatNum)")
+        NSLog("Beatnum: \(beatNum)")
         //print("Time discrepancy vs AKPlayer: \((beatNum * songBeatPeriod) - songPlayer.currentTime)")
         shakeLck.unlock()
     }
     
     @objc func vibrateOnBeat() {
         //debug
-        print("Vibrate!")
+        //print("Vibrate!")
         vibrationGenerator.impactOccurred()
     }
     
@@ -360,8 +378,8 @@ class ShakeIt: UIViewController {
             // good shake timing window calculation
             shakeLck.lock()
             let currentTime = songPlayer.currentTime
-            let offset: Double = (songPlayer.currentTime - songStartOffsetTime).remainder(dividingBy: songBeatPeriod)
-            print("offset: \(offset)\ncurrent player time: \(currentTime)")
+            let offset: Double = (currentTime - songStartOffsetTime).remainder(dividingBy: songBeatPeriod)
+            NSLog("offset: \(offset)\ncurrent player time: \(currentTime)\nbeatNumAtShake: \(beatNum)")
             
             if abs(offset) < shakeAccuracyToleranceTime && !shakedToBeat{
                 shakeBeatHits += 1

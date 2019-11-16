@@ -85,7 +85,7 @@ class LongTones: UIViewController {
     // called when view first gets loaded into memory
     override func viewDidLoad() {
         // debug
-        //NSLog("viewDidLoad()")
+        NSLog("viewDidLoad()")
         super.viewDidLoad()
         
         // debug
@@ -95,7 +95,7 @@ class LongTones: UIViewController {
     // called when view appears fully
     override func viewDidAppear(_ animated: Bool) {
         // debug
-        //NSLog("viewDidAppear()")
+        NSLog("viewDidAppear()")
         super.viewDidAppear(animated)
         // simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
@@ -184,13 +184,24 @@ class LongTones: UIViewController {
     // called with view disappears fully
     override func viewDidDisappear(_ animated: Bool) {
         // debug
-        //NSLog("viewDidDisappear()")
+        NSLog("viewDidDisappear()")
         
         // destroy timers
         destroyTimers()
         
         do {
             try AudioKit.stop()
+            mic.stop()
+            AudioKit.disconnectAllInputs()
+            mic.detach()
+            bandpassfilter.detach()
+            tracker.detach()
+            silence.detach()
+            mixer.detach()
+            try AudioKit.shutdown()
+            //debug
+            AudioKit.printConnections()
+            
         } catch {
             AKLog("AudioKit did not stop!")
         }
@@ -276,10 +287,10 @@ class LongTones: UIViewController {
         
         if success == false {
             segueKeepSameTone = true
-            performSegue(withIdentifier: "segue_gotoFail", sender: self)
+            performSegue(withIdentifier: "segue_gotoFailLongTones", sender: self)
         } else if success == true {
             segueKeepSameTone = false
-            performSegue(withIdentifier: "segue_gotoSuccess", sender: self)
+            performSegue(withIdentifier: "segue_gotoSuccessLongTones", sender: self)
         }
     }
     
