@@ -24,13 +24,13 @@ class ProgClass {
     let Stats = Table("stats")
     // Initialize entries
     let datetime = Expression<String>("datetime")
-    let score = Expression<Int64>("score")
-    let attempts = Expression<Int64>("attempts")
-    let CurrentStreak = Expression<Int64>("CurrentStreak")
+    let score = Expression<Int>("score")
+    let attempts = Expression<Int>("attempts")
+    let CurrentStreak = Expression<Int>("CurrentStreak")
     let CompletedDaily = Expression<Bool>("CompletedDaily")
-    let rscore = Expression<Int64>("rscore")
-    let vscore = Expression<Int64>("vscore")
-    let mscore = Expression<Int64>("mscore")
+    let rscore = Expression<Int>("rscore")
+    let vscore = Expression<Int>("vscore")
+    let mscore = Expression<Int>("mscore")
     let pID = Expression<String>("pID")
     
     init (playID: String) {
@@ -87,7 +87,7 @@ class ProgClass {
             if dateExist == 0 {
                 do {
                     try db.run(DBtable.insert(datetime <- currentdate,
-                                              score <- Int64(actscore),
+                                              score <- actscore,
                                               attempts <- 1))
                 }
                 catch let error {
@@ -97,7 +97,7 @@ class ProgClass {
             else {
                 let daterow = DBtable.filter(datetime == currentdate)
                 do {
-                    try db.run(daterow.update(score += Int64(actscore),
+                    try db.run(daterow.update(score += actscore,
                                               attempts += 1))
                 }
                 catch  let error {
@@ -109,10 +109,10 @@ class ProgClass {
         }
     }
     
-    func readTable(table: String) -> Dictionary<String, (Int64, Int64)> {
+    func readTable(table: String) -> Dictionary<String, (Int, Int)> {
         let db = try! Connection("\(path)/ProgressDB.sqlite3")
         let DBtable = Table(table)
-        var rows: Dictionary<String, (Int64, Int64)> = [currentdate: (0,0)]
+        var rows: Dictionary<String, (Int, Int)> = [currentdate: (0,0)]
         
         for data in try! db.prepare(DBtable) {
             rows[data[datetime]] = (data[score],data[attempts])

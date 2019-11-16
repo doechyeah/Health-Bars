@@ -41,8 +41,8 @@ class ShakeIt: UIViewController {
                                 "Vivace": 156,
                                 "Presto": 168]
 
-    // Metronome
-    //let met = AKMetronome()
+    // DATABASE CLASS
+    let PDB = ProgClass(playID: "Player1")
 
     //MARK: Outlets
     @IBOutlet weak var startButton: UIButton!
@@ -290,9 +290,17 @@ class ShakeIt: UIViewController {
     // display/save stats to our DB (IF WE HAD ONE)
     func updateStats() {
         //TODO:
+        var scrd = 0
+        if shakeBeatHits/(shakeBeatHits+shakeBeatMisses) > beatMatchRatioForSuccess {
+            success = true
+            scrd = 1
+        }
+        PDB.insert(table: "rhythm", actscore: scrd)
         print("Hits: \(shakeBeatHits)")
         print("Misses: \(shakeBeatMisses)")
         print("Off Tempos: \(shakeBeatOffTempos)")
+        let debugdict = PDB.readTable(table: "rhythm")
+        dump(debugdict)
     }
     
     func destroyTimers() {
