@@ -56,12 +56,6 @@ class ShakeIt: UIViewController {
     var shakeBeatOffTempos: Int = 0
     
     var countdownNum: Int = 0
-    //MARK: Game parameters
-    var shakeBeatHits: Int = 0
-    var shakeBeatMisses: Int = 0
-    var shakeBeatOffTempos: Int = 0
-    
-    var countdownNum: Int = 0
     
     var songName: String = ""
     var songUrl: URL!
@@ -366,8 +360,9 @@ class ShakeIt: UIViewController {
             // good shake timing window calculation
             shakeLck.lock()
             let currentTime = songPlayer.currentTime
+            let offset: Double = (songPlayer.currentTime - songStartOffsetTime).remainder(dividingBy: songBeatPeriod)
             print("offset: \(offset)\ncurrent player time: \(currentTime)")
-            print("offset: \(offset)\ncurrent player time: \(currentTime)")
+            
             if abs(offset) < shakeAccuracyToleranceTime && !shakedToBeat{
                 shakeBeatHits += 1
                 shakedToBeat = true
@@ -425,49 +420,6 @@ class ShakeIt: UIViewController {
         } catch {
             //error
         }
-    }
-    
-    func chooseRandomSong() {
-        guard let urls = Bundle.main.urls(forResourcesWithExtension: "json", subdirectory: nil) else {
-            //TODO: pop up message and exit game here
-            NSLog("json urls array empty")
-            return
-        }
-        songUrl = urls[Int.random(in: 0..<urls.count)]
-        loadSongJsonParameters(url: songUrl)
-    }
-    
-    func loadSongJsonParameters(url: URL) {
-        let jsonString = try? String(contentsOf: url)
-        let json = JSON(parseJSON: jsonString!)
-        //debug
-        for (key, subJson):(String, JSON) in json {
-            print("\(key): \(subJson)")
-        }
-        //print("\(json["songName"])")
-        songName = json["songName"].stringValue
-        //TODO: maybe support for different extensions/formats
-        songUrl = Bundle.main.url(forResource: songName, withExtension: "mp3")
-        
-        //print("\(json["BPM"])")
-        songBPM = json["BPM"].doubleValue
-        
-        //print("\(json["endTime"])")
-        songEndTime = json["endTime"].doubleValue
-        
-        //print("\(json["offsetStartTime"])")
-        songStartOffsetTime = json["offsetStartTime"].doubleValue
-        
-        
-        
-    }
-    
-    func setGameParameters() {
-        
-        songBeatPeriod = 60.0 / songBPM
-        shakeAccuracyToleranceTime = shakeAccuracyToleranceRatio * songBeatPeriod
-        print("shakeAccuracyToleranceTime: \(shakeAccuracyToleranceTime)")
-        playSongPeriod = songEndTime - songStartOffsetTime
     }
     
     func chooseRandomSong() {

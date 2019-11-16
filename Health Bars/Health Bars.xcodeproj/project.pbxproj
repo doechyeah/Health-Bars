@@ -32,13 +32,7 @@
 		0CA377DE23694484001DAB00 /* Fail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377DD23694484001DAB00 /* Fail.swift */; };
 		0CCB411A236A97DB0031AB67 /* NavigationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */; };
 		0CCB43812378CC6F00FCC3DE /* AllExercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB43802378CC6F00FCC3DE /* AllExercises.swift */; };
-<<<<<<< HEAD
-		0CD191BE237F488900A69AED /* songTest_Classical.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CD191BD237F488900A69AED /* songTest_Classical.mp3 */; };
-		0CD191C0237F499800A69AED /* songTest_Classical.json2 in Resources */ = {isa = PBXBuildFile; fileRef = 0CD191BF237F499800A69AED /* songTest_Classical.json2 */; };
-		0CD191C2237F4AFF00A69AED /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD191C1237F4AFF00A69AED /* SwiftyJSON.swift */; };
-=======
 		0CD191F6237F75DF00A69AED /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CD191F5237F75DF00A69AED /* SQLite.framework */; };
->>>>>>> ASYNC_DB
 		0CF23E4E236C1EA400283DFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CF23E4D236C1EA400283DFD /* Assets.xcassets */; };
 		0CF4103B236CA3BE00F11054 /* ComingSoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF4103A236CA3BE00F11054 /* ComingSoon.swift */; };
 		5C071B1A237F5BAD0006A921 /* ProgressDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C071B12237F5BAC0006A921 /* ProgressDB.swift */; };
@@ -194,14 +188,8 @@
 		0CA377DD23694484001DAB00 /* Fail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fail.swift; sourceTree = "<group>"; };
 		0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMenu.swift; sourceTree = "<group>"; };
 		0CCB43802378CC6F00FCC3DE /* AllExercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllExercises.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		0CD191BD237F488900A69AED /* songTest_Classical.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = songTest_Classical.mp3; sourceTree = "<group>"; };
-		0CD191BF237F499800A69AED /* songTest_Classical.json2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = songTest_Classical.json2; sourceTree = "<group>"; };
-		0CD191C1237F4AFF00A69AED /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-=======
 		0CD191DD237F759E00A69AED /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "Health Bars/SQLite.swift-0.12.2/SQLite.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		0CD191F5237F75DF00A69AED /* SQLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SQLite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
->>>>>>> ASYNC_DB
 		0CF23E4D236C1EA400283DFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CF4103A236CA3BE00F11054 /* ComingSoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoon.swift; sourceTree = "<group>"; };
 		5C009B98237F45CB006C3FAB /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = ../../SQLite.swift/SQLite.xcodeproj; sourceTree = "<group>"; };
@@ -242,8 +230,6 @@
 			children = (
 				0C7B24192379F94F00E59378 /* songTest_Hardbass.mp3 */,
 				0C524148237EA10100CA2C98 /* songTest_HardBass.json */,
-				0CD191BD237F488900A69AED /* songTest_Classical.mp3 */,
-				0CD191BF237F499800A69AED /* songTest_Classical.json2 */,
 			);
 			path = Songs;
 			sourceTree = "<group>";
@@ -284,10 +270,9 @@
 				0CA377DD23694484001DAB00 /* Fail.swift */,
 				0CF4103A236CA3BE00F11054 /* ComingSoon.swift */,
 				0CA377B123694264001DAB00 /* Main.storyboard */,
-				0CA377B623694266001DAB00 /* LaunchScreen.storyboard */,
 				0CF23E4D236C1EA400283DFD /* Assets.xcassets */,
+				0CA377B623694266001DAB00 /* LaunchScreen.storyboard */,
 				0CA377B923694266001DAB00 /* Info.plist */,
-				0CD191C1237F4AFF00A69AED /* SwiftyJSON.swift */,
 				E1452833236D63E0000DDF3E /* Notes */,
 				0C7B24182379F86900E59378 /* Songs */,
 			);
@@ -600,12 +585,10 @@
 				0C887215236FF9E400B4193A /* D#.mp3 in Resources */,
 				0C88721C236FF9E400B4193A /* C.mp3 in Resources */,
 				0C88721D236FF9E400B4193A /* F.mp3 in Resources */,
-				0CD191C0237F499800A69AED /* songTest_Classical.json2 in Resources */,
 				0CA377B823694266001DAB00 /* LaunchScreen.storyboard in Resources */,
 				0C88721E236FF9E400B4193A /* F#.mp3 in Resources */,
 				0C88721F236FF9E400B4193A /* A#.mp3 in Resources */,
 				0CF23E4E236C1EA400283DFD /* Assets.xcassets in Resources */,
-				0CD191BE237F488900A69AED /* songTest_Classical.mp3 in Resources */,
 				0C887219236FF9E400B4193A /* D.mp3 in Resources */,
 				0C887214236FF9E400B4193A /* C#.mp3 in Resources */,
 				0CA377B323694264001DAB00 /* Main.storyboard in Resources */,
@@ -662,7 +645,6 @@
 				0CA377B023694264001DAB00 /* LongTones.swift in Sources */,
 				0CA377DE23694484001DAB00 /* Fail.swift in Sources */,
 				0CA377DC23694427001DAB00 /* Success.swift in Sources */,
-				0CD191C2237F4AFF00A69AED /* SwiftyJSON.swift in Sources */,
 				0CA377AE23694264001DAB00 /* AppDelegate.swift in Sources */,
 				0CF4103B236CA3BE00F11054 /* ComingSoon.swift in Sources */,
 			);
