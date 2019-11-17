@@ -47,8 +47,7 @@ class ShakeIt: UIViewController {
 
     //MARK: Outlets
     @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var pretendShakeButton: UIButton!
-    @IBOutlet weak var amplitudeLabel: UILabel!
+    //@IBOutlet weak var pretendShakeButton: UIButton!
     @IBOutlet weak var countdownLabel: UILabel!
     
     //MARK: Game parameters
@@ -81,9 +80,8 @@ class ShakeIt: UIViewController {
     // special variable for keeping the same song when coming from fail screen
     var segueKeepSameSong: Bool = false
 
-    var displayTimer: Timer!
-    var beatTimer: Timer!
-    var vibrateTimer: Timer!
+    var beatDisplayTimer: Timer!
+    var beatResetTimer: Timer!
     
     var vibrationGenerator: UIImpactFeedbackGenerator!
     
@@ -129,7 +127,6 @@ class ShakeIt: UIViewController {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         // UI Init
-        amplitudeLabel.text = "Amplitude"
         countdownLabel.text = "Countdown"
         // end UI Init
         // game parameters init
@@ -161,8 +158,8 @@ class ShakeIt: UIViewController {
         
         
         // condition variables init
-        displayTimer = nil
-        beatTimer = nil
+        beatDisplayTimer = nil
+        beatResetTimer = nil
         
         vibrationGenerator = UIImpactFeedbackGenerator(style: .heavy)
         
@@ -222,12 +219,6 @@ class ShakeIt: UIViewController {
         startButton.isEnabled = false
         countdownStart()
     }
-        
-
-    @IBAction func pretendShakePressed(_ sender: UIButton) {
-        //print("Shake event from Pretend shake button")
-        shakeEvent()
-    }
 
     // unwind segue function, called from other views
     @IBAction func unwindToShakeIt(_ unwindSegue: UIStoryboardSegue) {
@@ -235,15 +226,8 @@ class ShakeIt: UIViewController {
         // Use data from the view controller which initiated the unwind segue
     }
 
-    // updates current tone text and gets current mic input frequency
-    @objc func updateUI() {
-        // debug
-        //NSLog("updateUI()")
-        amplitudeLabel.text = "\(amplitudeTracker.amplitude)"
-
-    }
-
     @objc func countdownStart() {
+        countdownLabel.text = "\(countdownNum)"
         if countdownNum > 0 {
             print("Countdown: \(countdownNum)")
             countdownNum -= 1
@@ -259,18 +243,13 @@ class ShakeIt: UIViewController {
     
     func startGame() {
         print("Start Game!")
-        
-        displayTimer = Timer.scheduledTimer(timeInterval: displayTimerInterval,
-                                            target: self,
-                                            selector: #selector(ShakeIt.updateUI),
-                                            userInfo: nil,
-                                            repeats: true)
+        countdownLabel.text = "Game Started!"
         
         // have trigger right at end of first window
         DispatchQueue.global(qos: .userInitiated).async {
             let ti = Timer.scheduledTimer(withTimeInterval: self.songStartOffsetTime + self.shakeAccuracyToleranceTime, repeats: false, block: {_ in
                 self.updateShakeCondition()
-                self.beatTimer = Timer.scheduledTimer(timeInterval: self.songBeatPeriod,
+                self.beatResetTimer = Timer.scheduledTimer(timeInterval: self.songBeatPeriod,
                 target: self,
                 selector: #selector(ShakeIt.updateShakeCondition),
                 userInfo: nil,
@@ -283,7 +262,7 @@ class ShakeIt: UIViewController {
         
         // vibration
         self.vibrateOnBeat()
-        self.vibrateTimer = Timer.scheduledTimer(timeInterval: self.songBeatPeriod,
+        self.beatDisplayTimer = Timer.scheduledTimer(timeInterval: self.songBeatPeriod,
                                               target: self,
                                               selector: #selector(ShakeIt.vibrateOnBeat),
                                               userInfo: nil,
@@ -337,17 +316,13 @@ class ShakeIt: UIViewController {
     }
     
     func destroyTimers() {
-        if displayTimer != nil {
-            displayTimer.invalidate()
-            displayTimer = nil
+        if beatDisplayTimer != nil {
+            beatDisplayTimer.invalidate()
+            beatDisplayTimer = nil
         }
-        if beatTimer != nil {
-            beatTimer.invalidate()
-            beatTimer = nil
-        }
-        if vibrateTimer != nil {
-            vibrateTimer.invalidate()
-            vibrateTimer = nil
+        if beatResetTimer != nil {
+            beatResetTimer.invalidate()
+            beatResetTimer = nil
         }
     }
     

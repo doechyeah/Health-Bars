@@ -5,7 +5,6 @@
 //  Created by Alvin David on 2019-11-14.
 //  Copyright © 2019 Team Rhythm. All rights reserved.
 //
-import Foundation
 import UIKit
 import AudioKit
 
@@ -39,17 +38,21 @@ class GuessThatInstrument: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        // simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
 //        var index = 0
         
         //really bad implementation of unique RNG (I improved it bit - Daniel)
         var set = [0,1,2,3,4,5,6,7,8]
-        for index in 0...4 {
-            randInstrumentNumber = set.randomElement()//change if we get new instruments
+        for index in 0...3 {
+            randInstrumentNumber = set.randomElement() //change if we get new instruments
 //            if !(randInstruments.contains(instrumentNames[randInstrumentNumber])){
             randInstruments[index] = instrumentNames[randInstrumentNumber]
 //            index += 1
-            set.remove(at: randInstrumentNumber)
+            set.removeAll(where: { $0 == randInstrumentNumber } )
 //            }
+            NSLog(set.debugDescription)
         }
         
         //choose instruments out of these 4
@@ -70,65 +73,47 @@ class GuessThatInstrument: UIViewController {
         //do stuff see long tones by michael
         do{
             try AudioKit.stop()
-            try AudioKit.shutdown()
+            //try AudioKit.shutdown()
         }
         catch{
             //error
         }
     }
     
-    @IBAction func unwindToGTI(_ unwindSegue: UIStoryboardSegue){}
+    @IBAction func unwindToGTI(_ unwindSegue: UIStoryboardSegue) {}
     
-    @IBAction func playInstrumentButtonPressed(_ sender: UIButton){
+    @IBAction func playInstrumentButtonPressed(_ sender: UIButton) {
         instrumentPlayer.play(from: 0.0)
         
     }
     
+    //MARK: Instrument buttons
     @IBAction func instrumentButton1Pressed(_ sender: UIButton) {
-        if(correctInstrumentString == randInstruments[0]){
-            segueKeepSameinstrument = false
-            NSLog("Correct")
-        }
-        else{
-            //goto fail
-            segueKeepSameinstrument = true
-            NSLog("False")
-        }
+        checkCorrect(0)
     }
+    
     @IBAction func instrumentButton2Pressed(_ sender: UIButton) {
-        if(correctInstrumentString == randInstruments[1]){
-            segueKeepSameinstrument = false
-            NSLog("Correct")
-            //unwind segue (?) to pass
-        }
-        else{
-            //goto fail
-            NSLog("False")
-            segueKeepSameinstrument = true
-        }
+        checkCorrect(1)
     }
+    
     @IBAction func instrumentButton3Pressed(_ sender: UIButton) {
-        if(correctInstrumentString == randInstruments[2]){
-            segueKeepSameinstrument = false
-            NSLog("Correct")
-            //unwind segue (?) to pass
-        }
-        else{
-            NSLog("False")
-            //goto fail
-            segueKeepSameinstrument = true
-        }
+        checkCorrect(2)
     }
+    
     @IBAction func instrumentButton4Pressed(_ sender: UIButton) {
-        if(correctInstrumentString == randInstruments[3]){
+        checkCorrect(3)
+    }
+    
+    func checkCorrect(_ choice: Int) {
+        if(correctInstrumentString == randInstruments[choice]) {
             segueKeepSameinstrument = false
             NSLog("Correct")
-            //unwind segue (?) to pass
-        }
-        else{
+            performSegue(withIdentifier: "segue_gotoSuccessGuessThatInstrument", sender: self)
+        } else {
             //goto fail
-            NSLog("False")
             segueKeepSameinstrument = true
+            NSLog("False")
+            performSegue(withIdentifier: "segue_gotoFailGuessThatInstrument", sender: self)
         }
     }
     

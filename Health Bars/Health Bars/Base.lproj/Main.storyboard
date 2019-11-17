@@ -13,7 +13,7 @@
         <!--Navigation Menu-->
         <scene sceneID="ZNJ-88-cDs">
             <objects>
-                <viewController id="OGF-De-hVA" userLabel="Navigation Menu" sceneMemberID="viewController">
+                <viewController id="OGF-De-hVA" userLabel="Navigation Menu" customClass="NavigationMenu" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8SC-WT-xiH" userLabel="Navigation Menu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -169,7 +169,7 @@
         <!--All Exercises-->
         <scene sceneID="uyP-Ix-byB">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" id="BAB-rg-hwf" userLabel="All Exercises" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="BAB-rg-hwf" userLabel="All Exercises" customClass="AllExercises" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e9f-bF-uwn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -177,7 +177,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GPg-90-Tmt" userLabel="Long Tones">
                                 <rect key="frame" x="15" y="116" width="345" height="135"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="microphone" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tmu-RM-EGU">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="microphone" translatesAutoresizingMaskIntoConstraints="NO" id="Tmu-RM-EGU">
                                         <rect key="frame" x="30" y="15" width="105" height="105"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="105" id="VVP-6P-J52"/>
@@ -214,7 +214,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TzM-dG-ANW" userLabel="Shake it">
                                 <rect key="frame" x="15" y="276" width="345" height="135"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="equalizer" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k6V-sM-cLL">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="equalizer" translatesAutoresizingMaskIntoConstraints="NO" id="k6V-sM-cLL">
                                         <rect key="frame" x="30" y="15" width="105" height="105"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="105" id="Lmd-8d-Vo6"/>
@@ -251,7 +251,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ajl-cm-P5V" userLabel="Guess The Instrument">
                                 <rect key="frame" x="15" y="436" width="345" height="135"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="memory" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YTG-Uz-seY">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="memory" translatesAutoresizingMaskIntoConstraints="NO" id="YTG-Uz-seY">
                                         <rect key="frame" x="30" y="15" width="105" height="105"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="105" id="2oY-CJ-Wxa"/>
@@ -318,7 +318,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar V(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="O2O-ER-zhi">
-                                <rect key="frame" x="30" y="30" width="315" height="87"/>
+                                <rect key="frame" x="179.5" y="30" width="16" height="87"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONG TONES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hga-Zj-wO3">
                                 <rect key="frame" x="85" y="122" width="205.5" height="43.5"/>
@@ -841,15 +841,15 @@ NEXT EXERCISES
         <scene sceneID="v0g-Le-SS7">
             <objects>
                 <viewController id="umI-wS-8ws" customClass="GuessThatInstrument" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="w5i-Kx-jjI">
+                    <view key="view" contentMode="scaleToFill" id="w5i-Kx-jjI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar M(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="2gk-bx-Ggn">
-                                <rect key="frame" x="179.5" y="74" width="16" height="16"/>
+                                <rect key="frame" x="30" y="74" width="315" height="60"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GUESS THAT INSTRUMENT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Rej-qe-lNX">
-                                <rect key="frame" x="21" y="146.5" width="333.5" height="31.5"/>
+                                <rect key="frame" x="21" y="168.5" width="333.5" height="31.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="333.5" id="XKp-XL-FbY"/>
                                 </constraints>
@@ -858,20 +858,20 @@ NEXT EXERCISES
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Button_Hear" translatesAutoresizingMaskIntoConstraints="NO" id="WkG-Yx-PWZ">
-                                <rect key="frame" x="122.5" y="197" width="130" height="130"/>
+                                <rect key="frame" x="122.5" y="219" width="130" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="1eg-7l-FD0"/>
                                     <constraint firstAttribute="height" constant="130" id="zoy-uu-j6m"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal: Pick the correct instrument you hear" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCk-oj-8L0">
-                                <rect key="frame" x="94" y="357" width="187.5" height="50.5"/>
+                                <rect key="frame" x="94" y="379" width="187.5" height="50.5"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="21"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VrD-E9-VOA" userLabel="Instrument1">
-                                <rect key="frame" x="87.5" y="422" width="80" height="80"/>
+                                <rect key="frame" x="87.5" y="444" width="80" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ueY-CR-UiY">
                                         <rect key="frame" x="5" y="5" width="70" height="70"/>
@@ -897,7 +897,7 @@ NEXT EXERCISES
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="00j-VX-EuE" userLabel="Instrument2">
-                                <rect key="frame" x="207.5" y="422" width="80" height="80"/>
+                                <rect key="frame" x="207.5" y="444" width="80" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cSz-3e-3RG">
                                         <rect key="frame" x="5" y="5" width="70" height="70"/>
@@ -923,7 +923,7 @@ NEXT EXERCISES
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCe-82-tbn" userLabel="Instrument3">
-                                <rect key="frame" x="87.5" y="522" width="80" height="80"/>
+                                <rect key="frame" x="87.5" y="544" width="80" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9MS-WC-gF5">
                                         <rect key="frame" x="5" y="5" width="70" height="70"/>
@@ -949,7 +949,7 @@ NEXT EXERCISES
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbZ-1x-Ae8" userLabel="Instrument4">
-                                <rect key="frame" x="207.5" y="522" width="80" height="80"/>
+                                <rect key="frame" x="207.5" y="544" width="80" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uFg-Fi-YXO">
                                         <rect key="frame" x="5" y="5" width="70" height="70"/>
@@ -987,7 +987,6 @@ NEXT EXERCISES
                             <constraint firstItem="Rej-qe-lNX" firstAttribute="centerY" secondItem="2gk-bx-Ggn" secondAttribute="centerY" constant="80" id="4OG-bx-fwt"/>
                             <constraint firstItem="gbZ-1x-Ae8" firstAttribute="centerX" secondItem="w5i-Kx-jjI" secondAttribute="centerX" constant="60" id="7d9-bg-bV4"/>
                             <constraint firstItem="WkG-Yx-PWZ" firstAttribute="centerX" secondItem="w5i-Kx-jjI" secondAttribute="centerX" id="9fD-bO-NE7"/>
-                            <constraint firstItem="2gk-bx-Ggn" firstAttribute="centerY" secondItem="w5i-Kx-jjI" secondAttribute="centerY" constant="-260" id="EVh-Ux-yxD"/>
                             <constraint firstItem="2gk-bx-Ggn" firstAttribute="centerX" secondItem="w5i-Kx-jjI" secondAttribute="centerX" id="Eai-rr-eLk"/>
                             <constraint firstItem="gbZ-1x-Ae8" firstAttribute="centerY" secondItem="00j-VX-EuE" secondAttribute="centerY" constant="100" id="EkI-V4-TK6"/>
                             <constraint firstItem="WkG-Yx-PWZ" firstAttribute="centerY" secondItem="Rej-qe-lNX" secondAttribute="centerY" constant="100" id="H4W-0c-eoa"/>
@@ -1077,7 +1076,7 @@ NEXT EXERCISES
                                 <color key="textColor" red="0.1647058824" green="0.4823529412" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hhb-kL-RgZ">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hhb-kL-RgZ">
                                 <rect key="frame" x="102" y="504" width="171" height="100"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -1124,7 +1123,7 @@ NEXT EXERCISES
         <scene sceneID="j1G-ro-auC">
             <objects>
                 <viewController id="uOh-Xv-v8G" userLabel="Guess That Instrument Fail" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="LT3-Xe-q6V">
+                    <view key="view" contentMode="scaleToFill" id="LT3-Xe-q6V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1156,8 +1155,9 @@ NEXT EXERCISES
                                 <color key="textColor" red="0.67843137249999996" green="0.1647058824" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTP-PE-6Af">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTP-PE-6Af">
                                 <rect key="frame" x="24" y="499" width="137.5" height="110"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="bq5-fl-dG8"/>
                                 </constraints>
@@ -1167,9 +1167,13 @@ TO TRY AGAIN
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="mbA-zt-YIS" appends="YES" id="4cu-Yp-5FE"/>
+                                </connections>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRt-1B-apU">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRt-1B-apU">
                                 <rect key="frame" x="184.5" y="499" width="176.5" height="110"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="A7y-bv-Nvh"/>
                                 </constraints>
@@ -1179,6 +1183,9 @@ ALL EXERCISES
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Kh8-4n-lFa" appends="YES" id="2mW-SV-qli"/>
+                                </connections>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GUESS THAT INSTRUMENT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2hb-qw-dFm">
                                 <rect key="frame" x="38" y="158.5" width="299" height="31.5"/>
@@ -1198,7 +1205,6 @@ ALL EXERCISES
                             <constraint firstItem="iTP-PE-6Af" firstAttribute="centerX" secondItem="LT3-Xe-q6V" secondAttribute="centerX" constant="-95" id="S9U-Ok-fN1"/>
                             <constraint firstItem="2hb-qw-dFm" firstAttribute="centerX" secondItem="LT3-Xe-q6V" secondAttribute="centerX" id="W8e-qD-Hxg"/>
                             <constraint firstItem="eKg-I2-cBH" firstAttribute="centerX" secondItem="LT3-Xe-q6V" secondAttribute="centerX" id="XPc-2C-P4x"/>
-                            <constraint firstItem="9dn-3T-lyM" firstAttribute="centerY" secondItem="LT3-Xe-q6V" secondAttribute="centerY" constant="-260" id="c8I-0H-UIh"/>
                             <constraint firstItem="9dn-3T-lyM" firstAttribute="top" secondItem="EKG-l4-45W" secondAttribute="top" constant="10" id="cvL-TF-JZF"/>
                             <constraint firstItem="eKg-I2-cBH" firstAttribute="centerY" secondItem="a8f-Ia-aHD" secondAttribute="centerY" constant="150" id="qlm-2x-vDC"/>
                             <constraint firstItem="a8f-Ia-aHD" firstAttribute="centerY" secondItem="2hb-qw-dFm" secondAttribute="centerY" constant="140" id="vdD-Fr-5lz"/>
@@ -1207,13 +1213,24 @@ ALL EXERCISES
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ij-ex-eB4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="TU9-5B-HA8" userLabel="Exit" sceneMemberID="exit"/>
+                <swipeGestureRecognizer direction="left" id="mbA-zt-YIS" userLabel="left">
+                    <connections>
+                        <segue destination="TU9-5B-HA8" kind="unwind" unwindAction="unwindToGTI:" id="sbM-rt-YIx"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="Kh8-4n-lFa" userLabel="right">
+                    <connections>
+                        <segue destination="TU9-5B-HA8" kind="unwind" unwindAction="unwindToAllExercises:" id="eM5-nv-BO4"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3964" y="2235"/>
         </scene>
-        <!--Main Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="5s9-fE-pHx">
             <objects>
-                <navigationController storyboardIdentifier="MainNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="V4q-c3-nti" customClass="MainNavigationController" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="V4q-c3-nti" customClass="NavigationController" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YKQ-Xb-ZRx">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1238,16 +1255,16 @@ ALL EXERCISES
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar V(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="OiM-fG-XXa">
-                                <rect key="frame" x="179.5" y="74" width="16" height="16"/>
+                                <rect key="frame" x="30" y="74" width="315" height="60"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONG TONES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DJ9-cc-zNu">
-                                <rect key="frame" x="85" y="130.5" width="205.5" height="43.5"/>
+                                <rect key="frame" x="85" y="152.5" width="205.5" height="43.5"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIE-69-QBk" userLabel="Record Your Tone">
-                                <rect key="frame" x="30" y="337" width="315" height="110"/>
+                                <rect key="frame" x="30" y="359" width="315" height="110"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECORD YOUR TONE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="vCp-5J-00Q">
                                         <rect key="frame" x="125" y="10" width="185" height="100"/>
@@ -1284,7 +1301,7 @@ ALL EXERCISES
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal: Try to match  the tone you hear" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giE-e6-cFR">
-                                <rect key="frame" x="103" y="482" width="169.5" height="60"/>
+                                <rect key="frame" x="103" y="504" width="169.5" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="vU8-NV-tT8"/>
                                 </constraints>
@@ -1293,7 +1310,7 @@ ALL EXERCISES
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gtz-8g-wdS" userLabel="Hear The Tone">
-                                <rect key="frame" x="30" y="207" width="315" height="110"/>
+                                <rect key="frame" x="30" y="229" width="315" height="110"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speaker-with-waves" translatesAutoresizingMaskIntoConstraints="NO" id="hH5-w0-zAM">
                                         <rect key="frame" x="32.5" y="10" width="90" height="90"/>
@@ -1556,16 +1573,25 @@ ALL EXERCISES
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FT8-WU-ASc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="fSM-33-Hdt" userLabel="left"/>
-                <swipeGestureRecognizer direction="right" id="FjR-kd-bzc" userLabel="right"/>
+                <exit id="a5P-FK-hIv" userLabel="Exit" sceneMemberID="exit"/>
+                <swipeGestureRecognizer direction="left" id="fSM-33-Hdt" userLabel="left">
+                    <connections>
+                        <segue destination="a5P-FK-hIv" kind="unwind" unwindAction="unwindToLongTones:" id="wmR-52-2GY"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="FjR-kd-bzc" userLabel="right">
+                    <connections>
+                        <segue destination="a5P-FK-hIv" kind="unwind" unwindAction="unwindToAllExercises:" id="L7g-sb-ttX"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="5775" y="833"/>
         </scene>
         <!--Shake It-->
         <scene sceneID="zVf-sY-yRD">
             <objects>
-                <viewController id="5Nc-Ib-Y05" userLabel="Shake It" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="kl1-zR-gXz">
+                <viewController id="5Nc-Ib-Y05" userLabel="Shake It" customClass="ShakeIt" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kl1-zR-gXz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1578,46 +1604,78 @@ ALL EXERCISES
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Button_Hear" translatesAutoresizingMaskIntoConstraints="NO" id="jUC-ri-0yK">
-                                <rect key="frame" x="77.5" y="244" width="220" height="220"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="220" id="8Wt-hW-h2D"/>
-                                    <constraint firstAttribute="width" constant="220" id="mKH-CG-4av"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sO-Kd-xSt">
-                                <rect key="frame" x="42" y="506" width="291.5" height="76"/>
-                                <string key="text">Goal: After the first cycle, 
-shake the phone at the 
-same time you hear the beat.
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sO-Kd-xSt">
+                                <rect key="frame" x="62" y="506" width="251.5" height="76"/>
+                                <string key="text">Goal: Shake the phone or tap the button at the same time you hear the beat.
 </string>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Countdown" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTc-DI-4Tc">
+                                <rect key="frame" x="144" y="608" width="87" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehh-iq-q2r" userLabel="Button_Hear_View">
+                                <rect key="frame" x="67.5" y="225" width="240" height="240"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzp-Op-qOZ" userLabel="Start Button">
+                                        <rect key="frame" x="10" y="10" width="220" height="220"/>
+                                        <connections>
+                                            <action selector="startButtonPressed:" destination="5Nc-Ib-Y05" eventType="touchUpInside" id="lPs-si-vj2"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Button_Hear" translatesAutoresizingMaskIntoConstraints="NO" id="jUC-ri-0yK">
+                                        <rect key="frame" x="10" y="10" width="220" height="220"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="220" id="FDW-w7-aXs"/>
+                                            <constraint firstAttribute="width" constant="220" id="IZH-UL-sfU"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="kzp-Op-qOZ" firstAttribute="centerX" secondItem="ehh-iq-q2r" secondAttribute="centerX" id="0ed-Kj-jGs"/>
+                                    <constraint firstItem="kzp-Op-qOZ" firstAttribute="top" secondItem="ehh-iq-q2r" secondAttribute="top" constant="10" id="1c1-kb-nyz"/>
+                                    <constraint firstItem="jUC-ri-0yK" firstAttribute="leading" secondItem="ehh-iq-q2r" secondAttribute="leading" constant="10" id="71F-Bs-9ae"/>
+                                    <constraint firstAttribute="width" constant="240" id="EaS-pr-lTx"/>
+                                    <constraint firstItem="jUC-ri-0yK" firstAttribute="top" secondItem="ehh-iq-q2r" secondAttribute="top" constant="10" id="EmK-cw-S9Y"/>
+                                    <constraint firstItem="kzp-Op-qOZ" firstAttribute="leading" secondItem="ehh-iq-q2r" secondAttribute="leading" constant="10" id="X83-GG-CG4"/>
+                                    <constraint firstAttribute="height" constant="240" id="XNe-MU-mvr"/>
+                                    <constraint firstItem="kzp-Op-qOZ" firstAttribute="centerY" secondItem="ehh-iq-q2r" secondAttribute="centerY" id="XTs-4T-wYC"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zma-Qn-Gcb" firstAttribute="centerY" secondItem="kl1-zR-gXz" secondAttribute="centerY" constant="-260" id="0eP-NE-Alm"/>
-                            <constraint firstItem="jUC-ri-0yK" firstAttribute="centerY" secondItem="Vb8-tM-byJ" secondAttribute="centerY" constant="170" id="1VS-03-2Fi"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="vTc-DI-4Tc" secondAttribute="bottom" constant="38" id="Bf0-1s-zQh"/>
                             <constraint firstItem="Vb8-tM-byJ" firstAttribute="centerY" secondItem="zma-Qn-Gcb" secondAttribute="centerY" constant="80" id="C4B-qx-vRY"/>
-                            <constraint firstItem="2sO-Kd-xSt" firstAttribute="centerY" secondItem="jUC-ri-0yK" secondAttribute="centerY" constant="190" id="Pyd-Lj-xbo"/>
                             <constraint firstItem="zma-Qn-Gcb" firstAttribute="top" secondItem="ba6-bd-5ZW" secondAttribute="top" constant="10" id="QzC-ob-ivF"/>
                             <constraint firstItem="zma-Qn-Gcb" firstAttribute="centerX" secondItem="kl1-zR-gXz" secondAttribute="centerX" id="Vb2-sf-Ja3"/>
-                            <constraint firstItem="jUC-ri-0yK" firstAttribute="centerX" secondItem="kl1-zR-gXz" secondAttribute="centerX" id="d2x-ih-EgX"/>
+                            <constraint firstItem="vTc-DI-4Tc" firstAttribute="top" secondItem="kl1-zR-gXz" secondAttribute="top" constant="608" id="Zfx-FA-E5k"/>
+                            <constraint firstItem="vTc-DI-4Tc" firstAttribute="centerX" secondItem="kl1-zR-gXz" secondAttribute="centerX" id="dUD-TD-ya1"/>
+                            <constraint firstItem="vTc-DI-4Tc" firstAttribute="leading" secondItem="ba6-bd-5ZW" secondAttribute="leading" constant="144" id="dWi-Ab-hk5"/>
+                            <constraint firstItem="ehh-iq-q2r" firstAttribute="top" secondItem="Vb8-tM-byJ" secondAttribute="bottom" constant="19" id="n6X-HL-HQW"/>
                             <constraint firstItem="Vb8-tM-byJ" firstAttribute="centerX" secondItem="kl1-zR-gXz" secondAttribute="centerX" id="oMH-PG-xZo"/>
-                            <constraint firstItem="2sO-Kd-xSt" firstAttribute="centerX" secondItem="kl1-zR-gXz" secondAttribute="centerX" id="y7b-6W-GmK"/>
+                            <constraint firstItem="2sO-Kd-xSt" firstAttribute="centerX" secondItem="kl1-zR-gXz" secondAttribute="centerX" id="uP2-Lg-PAT"/>
+                            <constraint firstItem="vTc-DI-4Tc" firstAttribute="top" secondItem="2sO-Kd-xSt" secondAttribute="bottom" constant="26" id="xAS-VK-M2D"/>
+                            <constraint firstItem="ehh-iq-q2r" firstAttribute="centerX" secondItem="kl1-zR-gXz" secondAttribute="centerX" id="xqh-c7-fQg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ba6-bd-5ZW"/>
                     </view>
                     <connections>
+                        <outlet property="countdownLabel" destination="vTc-DI-4Tc" id="a1u-rS-Uuc"/>
+                        <outlet property="startButton" destination="kzp-Op-qOZ" id="4Q0-6g-19S"/>
                         <segue destination="gNP-lg-om2" kind="show" identifier="segue_gotoSuccessShakeIt" id="4nu-ST-PWk"/>
                         <segue destination="fVI-98-B3F" kind="show" identifier="segue_gotoFailShakeIt" id="CoI-Ux-Lq8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="937-yB-od7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4951" y="1897"/>
+            <point key="canvasLocation" x="4949.6000000000004" y="1896.7016491754125"/>
         </scene>
         <!--Shake It Success-->
         <scene sceneID="M9C-GZ-DHm">
@@ -1746,7 +1804,7 @@ same time you hear the beat.
 TO TRY AGAIN
 &lt;&lt;&lt;</string>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="ldp-qf-FLa" appends="YES" id="mLH-or-Lf5"/>
@@ -1762,7 +1820,7 @@ TO TRY AGAIN
 ALL EXERCISES
 &gt;&gt;&gt;</string>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="jRh-12-8Dg" appends="YES" id="YfF-4l-8BQ"/>
@@ -1814,8 +1872,17 @@ ALL EXERCISES
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mcM-pH-jWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="ldp-qf-FLa" userLabel="left"/>
-                <swipeGestureRecognizer direction="right" id="jRh-12-8Dg" userLabel="right"/>
+                <exit id="8xq-Hu-vrW" userLabel="Exit" sceneMemberID="exit"/>
+                <swipeGestureRecognizer direction="left" id="ldp-qf-FLa" userLabel="left">
+                    <connections>
+                        <segue destination="8xq-Hu-vrW" kind="unwind" unwindAction="unwindToShakeIt:" id="vSv-6h-CG3"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="jRh-12-8Dg" userLabel="right">
+                    <connections>
+                        <segue destination="8xq-Hu-vrW" kind="unwind" unwindAction="unwindToAllExercises:" id="iXl-1y-QZm"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="5774" y="2235"/>
         </scene>
@@ -2147,10 +2214,10 @@ DAILY EXERCISES
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar M(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="aUT-KK-M9x">
-                                <rect key="frame" x="179.5" y="30" width="16" height="87"/>
+                                <rect key="frame" x="179.5" y="30" width="16" height="16"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1AO-2P-ISi" userLabel="Badge: Vocal">
-                                <rect key="frame" x="7.5" y="187" width="120" height="100"/>
+                                <rect key="frame" x="7.5" y="116" width="120" height="100"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank-badge" translatesAutoresizingMaskIntoConstraints="NO" id="Q8A-wP-DOE">
                                         <rect key="frame" x="10" y="5" width="100" height="100"/>
@@ -2178,7 +2245,7 @@ DAILY EXERCISES
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="90u-2t-LGn" userLabel="Badge: Rhythm">
-                                <rect key="frame" x="127.5" y="187" width="120" height="100"/>
+                                <rect key="frame" x="127.5" y="116" width="120" height="100"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank-badge" translatesAutoresizingMaskIntoConstraints="NO" id="SCy-lM-yHV">
                                         <rect key="frame" x="10" y="5" width="100" height="100"/>
@@ -2206,7 +2273,7 @@ DAILY EXERCISES
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7v9-wu-Umj" userLabel="Badge: Memory">
-                                <rect key="frame" x="247.5" y="187" width="120" height="100"/>
+                                <rect key="frame" x="247.5" y="116" width="120" height="100"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank-badge" translatesAutoresizingMaskIntoConstraints="NO" id="HRy-r1-heH">
                                         <rect key="frame" x="10" y="5" width="100" height="100"/>
@@ -2234,7 +2301,7 @@ DAILY EXERCISES
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELL DONE!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6jP-Ks-n8G">
-                                <rect key="frame" x="15" y="347" width="345" height="70"/>
+                                <rect key="frame" x="15" y="276" width="345" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="ByO-fl-sF8"/>
                                 </constraints>
@@ -2243,7 +2310,7 @@ DAILY EXERCISES
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOU HAVE COMPLETED YOUR DAILY EXERCISES!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUi-Lw-myx">
-                                <rect key="frame" x="44.5" y="422" width="286.5" height="100"/>
+                                <rect key="frame" x="44.5" y="351" width="286.5" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="P4u-yH-s27"/>
                                 </constraints>
@@ -2252,7 +2319,7 @@ DAILY EXERCISES
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1im-CX-hSJ">
-                                <rect key="frame" x="77" y="503.5" width="221" height="100"/>
+                                <rect key="frame" x="77" y="468" width="221" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="FNY-r2-5V8"/>
                                 </constraints>

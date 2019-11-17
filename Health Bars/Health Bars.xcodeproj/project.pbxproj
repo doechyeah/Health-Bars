@@ -41,7 +41,6 @@
 		5C071B1A237F5BAD0006A921 /* ProgressDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C071B12237F5BAC0006A921 /* ProgressDB.swift */; };
 		5C44AD6A237F5A6900F7582B /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C44AD69237F5A6900F7582B /* AudioKit.framework */; };
 		5CF6802C237F8664005778E3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6801D237F8664005778E3 /* SwiftyJSON.swift */; };
-		E16477C92380E288009A7CCF /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E16477BC2380E273009A7CCF /* SQLite.framework */; };
 		E16477CA2380E30E009A7CCF /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E16477BC2380E273009A7CCF /* SQLite.framework */; };
 		E16477CB2380E30E009A7CCF /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E16477BC2380E273009A7CCF /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E179CB4C2380F17600130CDC /* GuessThatInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = E179CB452380F17600130CDC /* GuessThatInstrument.swift */; };
@@ -203,7 +202,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E16477C92380E288009A7CCF /* SQLite.framework in Frameworks */,
 				5C44AD6A237F5A6900F7582B /* AudioKit.framework in Frameworks */,
 				E16477CA2380E30E009A7CCF /* SQLite.framework in Frameworks */,
 			);
