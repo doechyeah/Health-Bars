@@ -336,7 +336,7 @@ class ShakeIt: UIViewController {
         }
         shakedToBeat = false
         beatNum += 1
-        NSLog("Beatnum: \(beatNum)")
+        //NSLog("Beatnum: \(beatNum)")
         //print("Time discrepancy vs AKPlayer: \((beatNum * songBeatPeriod) - songPlayer.currentTime)")
         shakeLck.unlock()
     }
@@ -356,7 +356,7 @@ class ShakeIt: UIViewController {
             shakeLck.lock()
             let currentTime = songPlayer.currentTime
             let offset: Double = (currentTime - songStartOffsetTime).remainder(dividingBy: songBeatPeriod)
-            NSLog("offset: \(offset)\ncurrent player time: \(currentTime)\nbeatNumAtShake: \(beatNum)")
+            print("offset: \(offset)\ncurrent player time: \(currentTime)\nbeatNumAtShake: \(beatNum)")
             
             if abs(offset) < shakeAccuracyToleranceTime && !shakedToBeat{
                 shakeBeatHits += 1
