@@ -44,6 +44,16 @@
 		E16477C92380E288009A7CCF /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E16477BC2380E273009A7CCF /* SQLite.framework */; };
 		E16477CA2380E30E009A7CCF /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E16477BC2380E273009A7CCF /* SQLite.framework */; };
 		E16477CB2380E30E009A7CCF /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E16477BC2380E273009A7CCF /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E179CB4C2380F17600130CDC /* GuessThatInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = E179CB452380F17600130CDC /* GuessThatInstrument.swift */; };
+		E179CB5F2381035F00130CDC /* trombone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E179CB502381035F00130CDC /* trombone.mp3 */; };
+		E179CB602381035F00130CDC /* trumpet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E179CB512381035F00130CDC /* trumpet.mp3 */; };
+		E179CB612381035F00130CDC /* sax.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E179CB522381035F00130CDC /* sax.mp3 */; };
+		E179CB622381035F00130CDC /* snare.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E179CB532381035F00130CDC /* snare.mp3 */; };
+		E179CB632381035F00130CDC /* violin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E179CB542381035F00130CDC /* violin.mp3 */; };
+		E179CB642381035F00130CDC /* piano.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E179CB552381035F00130CDC /* piano.mp3 */; };
+		E179CB652381035F00130CDC /* clarinet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E179CB562381035F00130CDC /* clarinet.mp3 */; };
+		E179CB662381035F00130CDC /* bells.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E179CB572381035F00130CDC /* bells.mp3 */; };
+		E179CB672381035F00130CDC /* flute.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E179CB582381035F00130CDC /* flute.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,6 +186,16 @@
 		5C44AD69237F5A6900F7582B /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AudioKit.framework; sourceTree = "<group>"; };
 		5CF6801D237F8664005778E3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		E16477B12380E272009A7CCF /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "SQLite.swift-0.12.2/SQLite.xcodeproj"; sourceTree = "<group>"; };
+		E179CB452380F17600130CDC /* GuessThatInstrument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuessThatInstrument.swift; sourceTree = "<group>"; };
+		E179CB502381035F00130CDC /* trombone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = trombone.mp3; sourceTree = "<group>"; };
+		E179CB512381035F00130CDC /* trumpet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = trumpet.mp3; sourceTree = "<group>"; };
+		E179CB522381035F00130CDC /* sax.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sax.mp3; sourceTree = "<group>"; };
+		E179CB532381035F00130CDC /* snare.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = snare.mp3; sourceTree = "<group>"; };
+		E179CB542381035F00130CDC /* violin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = violin.mp3; sourceTree = "<group>"; };
+		E179CB552381035F00130CDC /* piano.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = piano.mp3; sourceTree = "<group>"; };
+		E179CB562381035F00130CDC /* clarinet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clarinet.mp3; sourceTree = "<group>"; };
+		E179CB572381035F00130CDC /* bells.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bells.mp3; sourceTree = "<group>"; };
+		E179CB582381035F00130CDC /* flute.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = flute.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +262,7 @@
 		0CA377AC23694263001DAB00 /* Health Bars */ = {
 			isa = PBXGroup;
 			children = (
+				E179CB452380F17600130CDC /* GuessThatInstrument.swift */,
 				0CA377AD23694264001DAB00 /* AppDelegate.swift */,
 				0C7E92722380124500A5AC41 /* NavigationController.swift */,
 				0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */,
@@ -258,6 +279,7 @@
 				0CA377B623694266001DAB00 /* LaunchScreen.storyboard */,
 				0CA377B923694266001DAB00 /* Info.plist */,
 				5CF6801D237F8664005778E3 /* SwiftyJSON.swift */,
+				E179CB4F2381035F00130CDC /* Instruments */,
 				E1452833236D63E0000DDF3E /* Notes */,
 				0C7B24182379F86900E59378 /* Songs */,
 			);
@@ -322,6 +344,22 @@
 				E16477C82380E273009A7CCF /* SQLite.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E179CB4F2381035F00130CDC /* Instruments */ = {
+			isa = PBXGroup;
+			children = (
+				E179CB502381035F00130CDC /* trombone.mp3 */,
+				E179CB512381035F00130CDC /* trumpet.mp3 */,
+				E179CB522381035F00130CDC /* sax.mp3 */,
+				E179CB532381035F00130CDC /* snare.mp3 */,
+				E179CB542381035F00130CDC /* violin.mp3 */,
+				E179CB552381035F00130CDC /* piano.mp3 */,
+				E179CB562381035F00130CDC /* clarinet.mp3 */,
+				E179CB572381035F00130CDC /* bells.mp3 */,
+				E179CB582381035F00130CDC /* flute.mp3 */,
+			);
+			path = Instruments;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -499,16 +537,25 @@
 				0C88721A236FF9E400B4193A /* G.mp3 in Resources */,
 				0C887218236FF9E400B4193A /* E.mp3 in Resources */,
 				0C887216236FF9E400B4193A /* A.mp3 in Resources */,
+				E179CB612381035F00130CDC /* sax.mp3 in Resources */,
 				0CD1923D237FB19200A69AED /* songTest_Classical.mp3 in Resources */,
 				0C887217236FF9E400B4193A /* G#.mp3 in Resources */,
+				E179CB652381035F00130CDC /* clarinet.mp3 in Resources */,
+				E179CB662381035F00130CDC /* bells.mp3 in Resources */,
+				E179CB602381035F00130CDC /* trumpet.mp3 in Resources */,
 				0C887215236FF9E400B4193A /* D#.mp3 in Resources */,
 				0C88721C236FF9E400B4193A /* C.mp3 in Resources */,
 				0C88721D236FF9E400B4193A /* F.mp3 in Resources */,
+				E179CB642381035F00130CDC /* piano.mp3 in Resources */,
 				0CA377B823694266001DAB00 /* LaunchScreen.storyboard in Resources */,
 				0C88721E236FF9E400B4193A /* F#.mp3 in Resources */,
+				E179CB5F2381035F00130CDC /* trombone.mp3 in Resources */,
 				0C88721F236FF9E400B4193A /* A#.mp3 in Resources */,
 				0CF23E4E236C1EA400283DFD /* Assets.xcassets in Resources */,
+				E179CB632381035F00130CDC /* violin.mp3 in Resources */,
+				E179CB622381035F00130CDC /* snare.mp3 in Resources */,
 				0C887219236FF9E400B4193A /* D.mp3 in Resources */,
+				E179CB672381035F00130CDC /* flute.mp3 in Resources */,
 				0C887214236FF9E400B4193A /* C#.mp3 in Resources */,
 				0CA377B323694264001DAB00 /* Main.storyboard in Resources */,
 				0CD1923F237FB19C00A69AED /* songTest_Classical.json2 in Resources */,
@@ -557,6 +604,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E179CB4C2380F17600130CDC /* GuessThatInstrument.swift in Sources */,
 				0CCB43812378CC6F00FCC3DE /* AllExercises.swift in Sources */,
 				0C7E92732380124500A5AC41 /* NavigationController.swift in Sources */,
 				0C7B24172379F62600E59378 /* ShakeIt.swift in Sources */,

@@ -16,11 +16,10 @@ class GuessThatInstrument: UIViewController {
     @IBOutlet weak var instrumentButton3: UIButton!
     @IBOutlet weak var instrumentButton4: UIButton!
     
-    //change to pictures instead of text, this is to solely test randomization of the buttons
-    @IBOutlet weak var instrumentText1: UILabel!
-    @IBOutlet weak var instrumentText2: UILabel!
-    @IBOutlet weak var instrumentText3: UILabel!
-    @IBOutlet weak var instrumentText4: UILabel!
+    @IBOutlet weak var instrumentImage1: UIImageView!
+    @IBOutlet weak var instrumentImage2: UIImageView!
+    @IBOutlet weak var instrumentImage3: UIImageView!
+    @IBOutlet weak var instrumentImage4: UIImageView!
     
     let instrumentNames = ["clarinet","flute","sax","snare","trombone","trumpet","violin","piano","bells"]
     
@@ -51,58 +50,69 @@ class GuessThatInstrument: UIViewController {
             }
         }
         
-        instrumentText1.text = randInstruments[0]
-        instrumentText2.text = randInstruments[1]
-        instrumentText3.text = randInstruments[2]
-        instrumentText4.text = randInstruments[3]
-        
         //choose instruments out of these 4
         correctInstrumentNumber = Int.random(in: 0...3)
         correctInstrumentString = randInstruments[correctInstrumentNumber]
         
-        initAudioSession()
-        initPlayer()
+        instrumentImage1.image = UIImage(named: randInstruments[0])
+        instrumentImage2.image = UIImage(named: randInstruments[1])
+        instrumentImage3.image = UIImage(named: randInstruments[2])
+        instrumentImage4.image = UIImage(named: randInstruments[3])
         
+        initPlayer()
         AudioKit.output = instrumentPlayer
+        initAudioSession()
     }
     
     override func viewDidDisappear(_ animated: Bool){
         //do stuff see long tones by michael
+        do{
+            try AudioKit.stop()
+            try AudioKit.shutdown()
+        }
+        catch{
+            //error
+        }
     }
     
     @IBAction func unwindToGTI(_ unwindSegue: UIStoryboardSegue){}
     
     @IBAction func playInstrumentButtonPressed(_ sender: UIButton){
         instrumentPlayer.play(from: 0.0)
-        listenTimer = Timer.scheduledTimer(timeInterval: playTonePeriod, target: self, selector: #selector(LongTones.doneInstrumentButtonPressed), userInfo: nil, repeats: false) //do we need this lmao
+        
     }
     
     @IBAction func instrumentButton1Pressed(_ sender: UIButton) {
         if(correctInstrumentString == randInstruments[0]){
             segueKeepSameinstrument = false
-            //unwind segue (?) to pass
+            NSLog("Correct")
         }
         else{
             //goto fail
             segueKeepSameinstrument = true
+            NSLog("False")
         }
     }
     @IBAction func instrumentButton2Pressed(_ sender: UIButton) {
         if(correctInstrumentString == randInstruments[1]){
             segueKeepSameinstrument = false
+            NSLog("Correct")
             //unwind segue (?) to pass
         }
         else{
             //goto fail
+            NSLog("False")
             segueKeepSameinstrument = true
         }
     }
     @IBAction func instrumentButton3Pressed(_ sender: UIButton) {
         if(correctInstrumentString == randInstruments[2]){
             segueKeepSameinstrument = false
+            NSLog("Correct")
             //unwind segue (?) to pass
         }
         else{
+            NSLog("False")
             //goto fail
             segueKeepSameinstrument = true
         }
@@ -110,10 +120,12 @@ class GuessThatInstrument: UIViewController {
     @IBAction func instrumentButton4Pressed(_ sender: UIButton) {
         if(correctInstrumentString == randInstruments[3]){
             segueKeepSameinstrument = false
+            NSLog("Correct")
             //unwind segue (?) to pass
         }
         else{
             //goto fail
+            NSLog("False")
             segueKeepSameinstrument = true
         }
     }
@@ -139,3 +151,4 @@ class GuessThatInstrument: UIViewController {
         }
 }
 
+}

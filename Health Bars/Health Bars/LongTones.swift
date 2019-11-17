@@ -41,17 +41,17 @@ class LongTones: UIViewController {
     @IBOutlet weak var hearTheToneButton: UIButton!
     @IBOutlet weak var recordYourToneButton: UIButton!
     
-    @IBOutlet weak var toneToMatchStaticText: UILabel!
-    @IBOutlet weak var toneToMatchText: UILabel!
-    @IBOutlet weak var currentToneStaticText: UILabel!
-    @IBOutlet weak var currentToneText: UILabel!
+    //@IBOutlet weak var toneToMatchStaticText: UILabel!
+    //@IBOutlet weak var toneToMatchText: UILabel!
+    //@IBOutlet weak var currentToneStaticText: UILabel!
+    //@IBOutlet weak var currentToneText: UILabel!
     // debug text on UI
-    @IBOutlet weak var volumeStaticText: UILabel!
-    @IBOutlet weak var volumeText: UILabel!
-    @IBOutlet weak var progressStaticText: UILabel!
-    @IBOutlet weak var progressText: UILabel!
-    @IBOutlet weak var timerStaticText: UILabel!
-    @IBOutlet weak var timerText: UILabel!
+    //@IBOutlet weak var volumeStaticText: UILabel!
+    //@IBOutlet weak var volumeText: UILabel!
+    //@IBOutlet weak var progressStaticText: UILabel!
+    //@IBOutlet weak var progressText: UILabel!
+    //@IBOutlet weak var timerStaticText: UILabel!
+    //@IBOutlet weak var timerText: UILabel!
     
     var timerTestNum: Double!
     
@@ -118,26 +118,26 @@ class LongTones: UIViewController {
             recordYourToneButton.isHidden = false
             recordYourToneButton.isEnabled = false
         
-            toneToMatchStaticText.isHidden = true
-            toneToMatchText.isHidden = true
-            toneToMatchText.text = "__"
+            //toneToMatchStaticText.isHidden = true
+            //toneToMatchText.isHidden = true
+            //toneToMatchText.text = "__"
         }
         
-        currentToneStaticText.isHidden = true
-        currentToneText.isHidden = true
-        currentToneText.text = "_"
+        //currentToneStaticText.isHidden = true
+        //currentToneText.isHidden = true
+        //currentToneText.text = "_"
         
-        volumeStaticText.isHidden = true
-        volumeText.isHidden = true
-        volumeText.text = "__"
+        //volumeStaticText.isHidden = true
+        //volumeText.isHidden = true
+        //volumeText.text = "__"
         
-        progressStaticText.isHidden = true
-        progressText.isHidden = true
-        progressText.text = "__%"
+        //progressStaticText.isHidden = true
+        //progressText.isHidden = true
+        //progressText.text = "__%"
         
-        timerStaticText.isHidden = true
-        timerText.isHidden = true
-        timerText.text = String(format: "%0.2f", displayTimerPeriod)
+        //timerStaticText.isHidden = true
+        //timerText.isHidden = true
+        //timerText.text = String(format: "%0.2f", displayTimerPeriod)
         // end UI Init
         
         // condition variables init
@@ -213,8 +213,8 @@ class LongTones: UIViewController {
     @IBAction func hearTheToneButtonPressed(_ sender: UIButton) {
         lockButtons()
         notePlayer.play(from: 0.0)
-        unhideToneToMatchTexts()
-        toneToMatchText.text = noteNamesWithSharps[randNote]
+        //unhideToneToMatchTexts()
+        //toneToMatchText.text = noteNamesWithSharps[randNote]
         // let note play for 5 seconds
         listenTimer = Timer.scheduledTimer(timeInterval: playTonePeriod, target: self, selector: #selector(LongTones.doneHearTheToneButtonPressed), userInfo: nil, repeats: false)
     }
@@ -222,7 +222,7 @@ class LongTones: UIViewController {
     // start recording to match the pitch
     @IBAction func recordYourToneButtonPressed(_ sender: UIButton) {
         lockButtons()
-        unhideRecordTexts()
+        //unhideRecordTexts()
         // call updateUI every 0.1 seconds
         displayTimer = Timer.scheduledTimer(timeInterval: displayTimerInterval, target: self, selector: #selector(LongTones.updateUI), userInfo: nil, repeats: true)
         //displayTimer.tolerance = 0.1
@@ -250,11 +250,11 @@ class LongTones: UIViewController {
         
         timerTestNum -= displayTimerInterval
         
-        volumeText.text = String(format: "%0.2f", tracker.amplitude)
+        //volumeText.text = String(format: "%0.2f", tracker.amplitude)
         
-        timerText.text = String(format: "%0.2f",timerTestNum)
+        //timerText.text = String(format: "%0.2f",timerTestNum)
         //TODO: fix so it works for any number of periods
-        progressText.text = String(format: "%.0f%%", Double(noteSustainPeriods)*10)
+        //progressText.text = String(format: "%.0f%%", Double(noteSustainPeriods)*10)
         
         
         var matched: Bool = false
@@ -263,7 +263,7 @@ class LongTones: UIViewController {
             
             let (_, index) = findPitchFromFrequency(Double(tracker.frequency))
             
-            currentToneText.text = noteNamesWithSharps[index]
+            //currentToneText.text = noteNamesWithSharps[index]
             
             matched = matchPitch(index)
         }
@@ -363,17 +363,17 @@ class LongTones: UIViewController {
         hearTheToneButton.isEnabled = true
         recordYourToneButton.isEnabled = true
     }
-    
+    /*
     func unhideToneToMatchTexts() {
         toneToMatchStaticText.isHidden = false
         toneToMatchText.isHidden = false
     }
-    
+ 
     func unhideRecordTexts() {
         currentToneStaticText.isHidden = false
         currentToneText.isHidden = false
     }
-    
+    */
     //initializes the audio file to play
     func initPlayer() {
         do {
