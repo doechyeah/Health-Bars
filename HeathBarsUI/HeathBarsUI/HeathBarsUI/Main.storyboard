@@ -1739,7 +1739,7 @@ ALL EXERCISES
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8HE-nV-Iaq" userLabel="Instrument1">
                                 <rect key="frame" x="87.5" y="403.5" width="80" height="80"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drum" translatesAutoresizingMaskIntoConstraints="NO" id="FDH-bq-GB2">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flute" translatesAutoresizingMaskIntoConstraints="NO" id="FDH-bq-GB2">
                                         <rect key="frame" x="5" y="5" width="70" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="m31-bc-BhH"/>
@@ -1758,7 +1758,7 @@ ALL EXERCISES
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aCn-Jl-a9M" userLabel="Instrument2">
                                 <rect key="frame" x="207.5" y="403.5" width="80" height="80"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guitar" translatesAutoresizingMaskIntoConstraints="NO" id="A5J-3g-HNx">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sax" translatesAutoresizingMaskIntoConstraints="NO" id="A5J-3g-HNx">
                                         <rect key="frame" x="5" y="5" width="70" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="O0R-Nk-3h0"/>
@@ -1777,7 +1777,7 @@ ALL EXERCISES
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1m-OI-WS5" userLabel="Instrument3">
                                 <rect key="frame" x="87.5" y="503.5" width="80" height="80"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyboard" translatesAutoresizingMaskIntoConstraints="NO" id="6jh-by-6Ms">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="snare" translatesAutoresizingMaskIntoConstraints="NO" id="6jh-by-6Ms">
                                         <rect key="frame" x="5" y="5" width="70" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="9Yo-2b-u3b"/>
@@ -1796,7 +1796,7 @@ ALL EXERCISES
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waT-wp-3nN" userLabel="Instrument4">
                                 <rect key="frame" x="207.5" y="503.5" width="80" height="80"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="saxophone" translatesAutoresizingMaskIntoConstraints="NO" id="KrY-Ix-fMQ">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="violin" translatesAutoresizingMaskIntoConstraints="NO" id="KrY-Ix-fMQ">
                                         <rect key="frame" x="5" y="5" width="70" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="Kjh-eE-KDS"/>
@@ -2183,6 +2183,7 @@ NAVIGATION MENU
         <image name="blank-badge" width="512" height="512"/>
         <image name="drum" width="512" height="512"/>
         <image name="equalizer" width="512" height="512"/>
+        <image name="flute" width="512" height="512"/>
         <image name="guitar" width="512" height="512"/>
         <image name="keyboard" width="512" height="512"/>
         <image name="memory" width="512" height="512"/>
@@ -2191,8 +2192,11 @@ NAVIGATION MENU
         <image name="music" width="512" height="512"/>
         <image name="music-tape" width="512" height="512"/>
         <image name="no-music" width="512" height="512"/>
+        <image name="sax" width="512" height="512"/>
         <image name="saxophone" width="512" height="512"/>
+        <image name="snare" width="512" height="512"/>
         <image name="speaker-with-waves" width="512" height="512"/>
+        <image name="violin" width="512" height="512"/>
         <image name="volume" width="512" height="512"/>
     </resources>
 </document>
