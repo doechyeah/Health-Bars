@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D347B1E0237E720C00EF4262 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D347B1DF237E720C00EF4262 /* Main.storyboard */; };
 		D3651A42237921D000821B8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3651A41237921D000821B8B /* AppDelegate.swift */; };
-		D3651A47237921D000821B8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3651A45237921D000821B8B /* Main.storyboard */; };
 		D3651A4A237921D000821B8B /* HeathBarsUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3651A48237921D000821B8B /* HeathBarsUI.xcdatamodeld */; };
 		D3651A4C237921D200821B8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3651A4B237921D200821B8B /* Assets.xcassets */; };
 		D3651A4F237921D200821B8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3651A4D237921D200821B8B /* LaunchScreen.storyboard */; };
 		D3651A5A237921D300821B8B /* HeathBarsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3651A59237921D300821B8B /* HeathBarsUITests.swift */; };
 		D3651A65237921D300821B8B /* HeathBarsUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3651A64237921D300821B8B /* HeathBarsUIUITests.swift */; };
 		D3651A732379B23300821B8B /* HealthBarsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3651A722379B23300821B8B /* HealthBarsController.swift */; };
+		D3D4164E237E3773005CF000 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D4164D237E3772005CF000 /* MainNavigationController.swift */; };
+		D3D6E8D0237E125A00E8CA48 /* Navigation Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D6E8CF237E125A00E8CA48 /* Navigation Menu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,11 +37,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D347B1DF237E720C00EF4262 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D3651A3E237921D000821B8B /* HeathBarsUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeathBarsUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3651A41237921D000821B8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D3651A46237921D000821B8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D3651A49237921D000821B8B /* HeathBarsUI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HeathBarsUI.xcdatamodel; sourceTree = "<group>"; };
-		D3651A4B237921D200821B8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "/Volumes/AJMAC/XCode Projects/HeathBarsUI/HeathBarsUI/Assets.xcassets"; sourceTree = "<absolute>"; };
+		D3651A4B237921D200821B8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3651A4E237921D200821B8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3651A50237921D200821B8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3651A55237921D300821B8B /* HeathBarsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeathBarsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +51,8 @@
 		D3651A64237921D300821B8B /* HeathBarsUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeathBarsUIUITests.swift; sourceTree = "<group>"; };
 		D3651A66237921D300821B8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3651A722379B23300821B8B /* HealthBarsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBarsController.swift; sourceTree = "<group>"; };
+		D3D4164D237E3772005CF000 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		D3D6E8CF237E125A00E8CA48 /* Navigation Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Navigation Menu.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +103,15 @@
 		D3651A40237921D000821B8B /* HeathBarsUI */ = {
 			isa = PBXGroup;
 			children = (
+				D3D6E8D1237E126500E8CA48 /* View Controllers */,
 				D3651A41237921D000821B8B /* AppDelegate.swift */,
 				D3651A722379B23300821B8B /* HealthBarsController.swift */,
-				D3651A45237921D000821B8B /* Main.storyboard */,
 				D3651A4B237921D200821B8B /* Assets.xcassets */,
+				D347B1DF237E720C00EF4262 /* Main.storyboard */,
 				D3651A4D237921D200821B8B /* LaunchScreen.storyboard */,
 				D3651A50237921D200821B8B /* Info.plist */,
 				D3651A48237921D000821B8B /* HeathBarsUI.xcdatamodeld */,
+				D3D4164D237E3772005CF000 /* MainNavigationController.swift */,
 			);
 			path = HeathBarsUI;
 			sourceTree = "<group>";
@@ -126,6 +132,14 @@
 				D3651A66237921D300821B8B /* Info.plist */,
 			);
 			path = HeathBarsUIUITests;
+			sourceTree = "<group>";
+		};
+		D3D6E8D1237E126500E8CA48 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D3D6E8CF237E125A00E8CA48 /* Navigation Menu.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,9 +246,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D347B1E0237E720C00EF4262 /* Main.storyboard in Resources */,
 				D3651A4F237921D200821B8B /* LaunchScreen.storyboard in Resources */,
 				D3651A4C237921D200821B8B /* Assets.xcassets in Resources */,
-				D3651A47237921D000821B8B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +273,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3D4164E237E3773005CF000 /* MainNavigationController.swift in Sources */,
 				D3651A732379B23300821B8B /* HealthBarsController.swift in Sources */,
+				D3D6E8D0237E125A00E8CA48 /* Navigation Menu.swift in Sources */,
 				D3651A4A237921D000821B8B /* HeathBarsUI.xcdatamodeld in Sources */,
 				D3651A42237921D000821B8B /* AppDelegate.swift in Sources */,
 			);
@@ -297,14 +313,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D3651A45237921D000821B8B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D3651A46237921D000821B8B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D3651A4D237921D200821B8B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

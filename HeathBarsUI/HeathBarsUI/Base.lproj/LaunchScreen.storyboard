@@ -14,60 +14,54 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleAspectFill" semanticContentAttribute="spatial" id="Ze5-6b-2t3">
+                    <view key="view" contentMode="scaleAspectFill" semanticContentAttribute="spatial" preservesSuperviewLayoutMargins="YES" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="KOA-GP-f8p">
-                                <rect key="frame" x="37.5" y="83.5" width="300" height="460"/>
-                                <subviews>
-                                    <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" semanticContentAttribute="spatial" horizontalHuggingPriority="1" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" image="Health Bars" translatesAutoresizingMaskIntoConstraints="NO" id="OuL-89-tpK">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="300" id="Ydh-x4-9u1"/>
-                                            <constraint firstAttribute="height" constant="300" id="j3R-nh-eX7"/>
-                                            <constraint firstAttribute="width" secondItem="OuL-89-tpK" secondAttribute="height" multiplier="1:1" id="l2e-eA-LEX"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFW-NV-ncl">
-                                        <rect key="frame" x="25" y="320" width="250" height="80"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="250" id="KdI-5n-Vte"/>
-                                            <constraint firstAttribute="height" constant="80" id="c87-q8-QhP"/>
-                                        </constraints>
-                                        <attributedString key="attributedText">
-                                            <fragment content="Welcome to Health Bars !">
-                                                <attributes>
-                                                    <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <font key="NSFont" size="30" name="AppleSDGothicNeo-Bold"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
-                                        <nil key="highlightedColor"/>
-                                        <size key="shadowOffset" width="0.0" height="0.0"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;&lt; Keep a Strong Beat &gt;&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3ab-rB-ulZ">
-                                        <rect key="frame" x="0.0" y="420" width="300" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="300" id="14c-T9-5pj"/>
-                                            <constraint firstAttribute="height" constant="40" id="krh-ZG-I1U"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="30"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
+                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" semanticContentAttribute="spatial" horizontalHuggingPriority="1" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" image="Health Bars" translatesAutoresizingMaskIntoConstraints="NO" id="OuL-89-tpK">
+                                <rect key="frame" x="76" y="120" width="223" height="223"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="KOA-GP-f8p" secondAttribute="height" multiplier="15:23" id="dvr-Vl-MMt"/>
+                                    <constraint firstAttribute="width" secondItem="OuL-89-tpK" secondAttribute="height" multiplier="1:1" id="cpK-YK-qLU"/>
                                 </constraints>
-                                <viewLayoutGuide key="safeArea" id="URA-HM-EdW"/>
-                            </stackView>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="sFW-NV-ncl">
+                                <rect key="frame" x="19" y="358" width="337" height="108"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="sFW-NV-ncl" secondAttribute="height" multiplier="25:8" id="F7S-Ic-cuR"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Welcome to Health Bars !">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <font key="NSFont" size="30" name="AppleSDGothicNeo-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;&lt; Keep a Strong Beat &gt;&gt;" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3ab-rB-ulZ">
+                                <rect key="frame" x="22" y="481" width="331" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="3ab-rB-ulZ" secondAttribute="height" multiplier="15:2" id="5Is-Ch-8JQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.40784313729999999" green="0.67843137249999996" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="KOA-GP-f8p" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-20" id="CIf-Yh-0Wo"/>
-                            <constraint firstItem="KOA-GP-f8p" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="OBf-RR-xJw"/>
+                            <constraint firstItem="3ab-rB-ulZ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="MjQ-ai-M3T"/>
+                            <constraint firstItem="sFW-NV-ncl" firstAttribute="top" secondItem="OuL-89-tpK" secondAttribute="bottom" constant="15" id="Wts-oY-01s"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OuL-89-tpK" secondAttribute="trailing" constant="60" id="iK1-Gk-dRC"/>
+                            <constraint firstItem="3ab-rB-ulZ" firstAttribute="top" secondItem="sFW-NV-ncl" secondAttribute="bottom" constant="15" id="kLb-79-jve"/>
+                            <constraint firstItem="OuL-89-tpK" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="60" id="mRj-Kl-yDz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3ab-rB-ulZ" secondAttribute="bottom" constant="142" id="tPg-C8-Rg8"/>
+                            <constraint firstItem="OuL-89-tpK" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" constant="100" id="usS-mL-5le"/>
+                            <constraint firstItem="OuL-89-tpK" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="vUM-by-RqV"/>
+                            <constraint firstItem="sFW-NV-ncl" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="yuO-wB-ZUa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

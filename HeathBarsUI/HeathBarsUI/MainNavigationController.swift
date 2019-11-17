@@ -1,20 +1,16 @@
 //
-//  HealthBarsController.swift
+//  MainNavigationController.swift
 //  HeathBarsUI
 //
-//  Created by Reem Mustafa on 2019-11-11.
+//  Created by Reem Mustafa on 2019-11-14.
 //  Copyright © 2019 ESKIKURT. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-class HealthBarsController: UIViewController {
-    
+class MainNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
-    
-    
 }
-
