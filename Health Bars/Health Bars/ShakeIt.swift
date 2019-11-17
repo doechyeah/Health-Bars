@@ -281,20 +281,19 @@ class ShakeIt: UIViewController {
         }
         
         // vibration
-        Timer.scheduledTimer(withTimeInterval: songStartOffsetTime, repeats: false, block: {_ in
-            self.vibrateOnBeat()
-            self.vibrateTimer = Timer.scheduledTimer(timeInterval: self.songBeatPeriod,
-                                                  target: self,
-                                                  selector: #selector(ShakeIt.vibrateOnBeat),
-                                                  userInfo: nil,
-                                                  repeats: true)
-        })
+        self.vibrateOnBeat()
+        self.vibrateTimer = Timer.scheduledTimer(timeInterval: self.songBeatPeriod,
+                                              target: self,
+                                              selector: #selector(ShakeIt.vibrateOnBeat),
+                                              userInfo: nil,
+                                              repeats: true)
         
         // can also achieve with separate timer
         songPlayer.completionHandler = {
             self.endGame()
         }
-        songPlayer.play(at: AVAudioTime.now())
+        songPlayer.play()
+        NSLog("starttime: \(songPlayer.currentTime)")
         gameActive = true
     }
     
@@ -416,7 +415,7 @@ class ShakeIt: UIViewController {
             print("song playtime duration: \(songEndTime)")
             
             // preload file into memory for fast starting
-            songPlayer.preroll(from: 0.0, to: songEndTime)
+            songPlayer.preroll(from: songStartOffsetTime, to: songEndTime)
             
         } catch {
             //error
