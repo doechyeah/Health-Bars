@@ -42,15 +42,13 @@ class GuessThatInstrument: UIViewController {
 //        var index = 0
         
         //really bad implementation of unique RNG (I improved it bit - Daniel)
-        var set = instrumentNames
+        var set = [0,1,2,3,4,5,6,7,8]
         for index in 0...4 {
-            randInst = set.randomElement()
-//            randInstrumentNumber = Int.random(in: 0...8)//change if we get new instruments
+            randInstrumentNumber = set.randomElement()//change if we get new instruments
 //            if !(randInstruments.contains(instrumentNames[randInstrumentNumber])){
-//            randInstruments[index] = instrumentNames[randInstrumentNumber]
-            randInstruments[index] = randInst
+            randInstruments[index] = instrumentNames[randInstrumentNumber]
 //            index += 1
-            set.remove(randInst)
+            set.remove(at: randInstrumentNumber)
 //            }
         }
         
