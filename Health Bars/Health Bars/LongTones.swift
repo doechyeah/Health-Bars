@@ -77,6 +77,9 @@ class LongTones: UIViewController {
     var silence: AKBooster!
     var mixer: AKMixer!
     
+    // Database Score
+    let PDB = ProgClass(playID: "Player1")
+    
     deinit {
         //debug
         //NSLog("deinit()")
@@ -286,9 +289,15 @@ class LongTones: UIViewController {
         unlockButtons()
         
         if success == false {
+            PDB.insert(table: "voice", actscore: 0)
+            let statchck = PDB.readStats()
+            dump(statchck)
             segueKeepSameTone = true
             performSegue(withIdentifier: "segue_gotoFailLongTones", sender: self)
         } else if success == true {
+            PDB.insert(table: "voice", actscore: 1)
+            let statchck = PDB.readStats()
+            dump(statchck)
             segueKeepSameTone = false
             performSegue(withIdentifier: "segue_gotoSuccessLongTones", sender: self)
         }

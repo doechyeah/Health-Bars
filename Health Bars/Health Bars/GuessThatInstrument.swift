@@ -39,15 +39,19 @@ class GuessThatInstrument: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        var index = 0
+//        var index = 0
         
-        //really bad implementation of unique RNG
-        while index < 4{
-            randInstrumentNumber = Int.random(in: 0...8)//change if we get new instruments
-            if !(randInstruments.contains(instrumentNames[randInstrumentNumber])){
-                randInstruments[index] = instrumentNames[randInstrumentNumber]
-                index += 1
-            }
+        //really bad implementation of unique RNG (I improved it bit - Daniel)
+        var set = instrumentNames
+        for index in 0...4 {
+            randInst = set.randomElement()
+//            randInstrumentNumber = Int.random(in: 0...8)//change if we get new instruments
+//            if !(randInstruments.contains(instrumentNames[randInstrumentNumber])){
+//            randInstruments[index] = instrumentNames[randInstrumentNumber]
+            randInstruments[index] = randInst
+//            index += 1
+            set.remove(randInst)
+//            }
         }
         
         //choose instruments out of these 4

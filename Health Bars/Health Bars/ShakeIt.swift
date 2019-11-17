@@ -32,6 +32,7 @@ class ShakeIt: UIViewController {
     let shakeAccuracyToleranceRatio: Double = 0.3
     let countdownLength: Int = 3
     
+    // DO WE STILL NEED THIS?
     let tempo: [String: Int] = ["Grave": 25,
                                 "Lento": 45,
                                 "Adagio": 66,
@@ -331,6 +332,8 @@ class ShakeIt: UIViewController {
         print("Off Tempos: \(shakeBeatOffTempos)")
         let debugdict = PDB.readTable(table: "rhythm")
         dump(debugdict)
+        let statchck = PDB.readStats()
+        dump(statchck)
     }
     
     func destroyTimers() {
