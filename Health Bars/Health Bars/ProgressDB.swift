@@ -1,9 +1,19 @@
-//
-//  File.swift
 //  Health Bars
 //
-//  Created by Daniel Song on 2019-11-12.
+//  Team: Team Rhythm
+//
+//  ProgressDB.swift
+//  Database that stores all local user data
+//
+//  Developers:
+//  Daniel Song
+//
 //  Copyright © 2019 Team Rhythm. All rights reserved.
+//
+//  Changelog:
+//  2019-11-10: Created
+//
+//  Bugs:
 //
 
 import Foundation

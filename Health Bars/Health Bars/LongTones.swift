@@ -3,7 +3,7 @@
 //  Team: Team Rhythm
 //
 //  LongTones.swift
-//  Long Tones activity, play a tone and replicate the tone through user input.
+//  Long Tones activity, app plays a tone and user must replicate that tone with their voice
 //
 //  Developers:
 //  Michael Lin
@@ -20,7 +20,7 @@
 //  Bugs:
 //  2019-11-03 Frequency detection can be slightly off, however works almost all of the time
 //
-// Majority of AudioKit code in this file is taken from AudioKit examples Hello World and Microphone Analysis
+//  Majority of AudioKit code in this file is taken from AudioKit examples Hello World and Microphone Analysis
 
 import AudioKit
 

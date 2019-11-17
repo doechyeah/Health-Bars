@@ -7,14 +7,17 @@
 //
 //  Developers:
 //  Michael Lin
+//  Daniel Song
 //
 //  Copyright © 2019 Team Rhythm. All rights reserved.
 //
 //  Changelog:
 //  2019-11-05: Created
+//  2019-11-14: Added asynchronous timers
 //
 //  Bugs:
 //  2019-11-15: NSTimer will drift slightly on simulator, results in accuracy drift, should not matter with shorter song durations
+//  2019-11-15: Database write sometimes does not occur
 //
 
 import UIKit
@@ -25,14 +28,12 @@ class ShakeIt: UIViewController {
 
 
     //MARK: Constants
-    // UI update time interval resolution
-    let displayTimerInterval: Double = 0.1
     let beatMatchRatioForSuccess: Double = 0.5
     // tolerance of accuracy of shake to beat as percentage of beat period, from center to edge (not negative to positive edge)
     let shakeAccuracyToleranceRatio: Double = 0.3
     let countdownLength: Int = 3
     
-    // DO WE STILL NEED THIS?
+    // Not used currently
     let tempo: [String: Int] = ["Grave": 25,
                                 "Lento": 45,
                                 "Adagio": 66,
@@ -42,12 +43,11 @@ class ShakeIt: UIViewController {
                                 "Vivace": 156,
                                 "Presto": 168]
 
-    // DATABASE CLASS
+    // Database class
     let PDB = ProgClass(playID: "Player1")
 
     //MARK: Outlets
     @IBOutlet weak var startButton: UIButton!
-    //@IBOutlet weak var pretendShakeButton: UIButton!
     @IBOutlet weak var countdownLabel: UILabel!
     
     //MARK: Game parameters
@@ -57,6 +57,7 @@ class ShakeIt: UIViewController {
     
     var countdownNum: Int = 0
     
+    var jsonUrl: URL!
     var songName: String = ""
     var songUrl: URL!
     
@@ -88,15 +89,17 @@ class ShakeIt: UIViewController {
     //MARK: AudioKit variables
     var songFile: AKAudioFile!
     var songPlayer: AKPlayer!
-    var amplitudeTracker: AKAmplitudeTracker!
     
     deinit {
         //debug
         //NSLog("deinit()")
     }
-
-    override func becomeFirstResponder() -> Bool {
-        return true
+    
+    // required for responding to shake gestures, not needed for iOS 8.0 and above
+    override var canBecomeFirstResponder: Bool {
+        get {
+            return true
+        }
     }
     
     // called by system when start of motion gesture has been detected
@@ -170,7 +173,6 @@ class ShakeIt: UIViewController {
             chooseRandomSong()
         }
         // AudioKit variables init
-        // init (preload) player on view load so starting is faster
         initPlayer()
         
         initAudioSession()
@@ -183,14 +185,6 @@ class ShakeIt: UIViewController {
         // debug
         //NSLog("Done viewDidAppear()")
     }
-    
-    /*
-    override var canBecomeFirstResponder: Bool {
-        get {
-            return true
-        }
-    }
- */
 
     // called with view disappears fully
     override func viewDidDisappear(_ animated: Bool) {
@@ -299,7 +293,6 @@ class ShakeIt: UIViewController {
     
     // display/save stats to our DB
     func updateStats() {
-        //TODO:
         var scrd = 0
         if shakeBeatHits/(shakeBeatHits+shakeBeatMisses) > beatMatchRatioForSuccess {
             success = true
@@ -326,7 +319,6 @@ class ShakeIt: UIViewController {
         }
     }
     
-    //TODO: make async if necessary (testing required)
     @objc func updateShakeCondition() {
         //NSLog("updateShakeCondition()")
         shakeLck.lock()
@@ -351,7 +343,6 @@ class ShakeIt: UIViewController {
         //debug
         //NSLog("shakeEvent()")
         if gameActive {
-            //NSLog("Current song time: \(songPlayer.currentTime)")
             // good shake timing window calculation
             shakeLck.lock()
             let currentTime = songPlayer.currentTime
@@ -374,7 +365,6 @@ class ShakeIt: UIViewController {
     
     
     //initializes the audio file to play
-    //TODO: choose random file and read song properties file, probably make another function
     func initPlayer() {
         do {
             
@@ -406,9 +396,7 @@ class ShakeIt: UIViewController {
             // workaround for bug in audiokit: https://github.com/AudioKit/AudioKit/issues/1799#issuecomment-506373157
             AKSettings.sampleRate = AudioKit.engine.inputNode.inputFormat(forBus: 0).sampleRate
             
-            amplitudeTracker = AKAmplitudeTracker(songPlayer)
-            
-            AudioKit.output = amplitudeTracker
+            AudioKit.output = songPlayer
             //try AKSettings.session.setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.mixWithOthers)
             try AKSettings.session.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
             try AudioKit.start()
@@ -423,8 +411,8 @@ class ShakeIt: UIViewController {
             NSLog("json urls array empty")
             return
         }
-        songUrl = urls[Int.random(in: 0..<urls.count)]
-        loadSongJsonParameters(url: songUrl)
+        jsonUrl = urls[Int.random(in: 0..<urls.count)]
+        loadSongJsonParameters(url: jsonUrl)
     }
     
     func loadSongJsonParameters(url: URL) {
@@ -453,7 +441,6 @@ class ShakeIt: UIViewController {
     }
     
     func setGameParameters() {
-        
         songBeatPeriod = 60.0 / songBPM
         shakeAccuracyToleranceTime = shakeAccuracyToleranceRatio * songBeatPeriod
         print("shakeAccuracyToleranceTime: \(shakeAccuracyToleranceTime)")

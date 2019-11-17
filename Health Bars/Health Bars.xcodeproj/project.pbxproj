@@ -11,7 +11,6 @@
 		0C7B24172379F62600E59378 /* ShakeIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B24162379F62600E59378 /* ShakeIt.swift */; };
 		0C7B241A2379F94F00E59378 /* songTest_Hardbass.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0C7B24192379F94F00E59378 /* songTest_Hardbass.mp3 */; };
 		0C7E926A23800EB000A5AC41 /* UnwindToActivitySegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E926923800EB000A5AC41 /* UnwindToActivitySegue.swift */; };
-		0C7E92732380124500A5AC41 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E92722380124500A5AC41 /* NavigationController.swift */; };
 		0C887214236FF9E400B4193A /* C#.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0C887208236FF9E300B4193A /* C#.mp3 */; };
 		0C887215236FF9E400B4193A /* D#.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0C887209236FF9E300B4193A /* D#.mp3 */; };
 		0C887216236FF9E400B4193A /* A.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0C88720A236FF9E300B4193A /* A.mp3 */; };
@@ -147,7 +146,6 @@
 		0C7B24162379F62600E59378 /* ShakeIt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeIt.swift; sourceTree = "<group>"; };
 		0C7B24192379F94F00E59378 /* songTest_Hardbass.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = songTest_Hardbass.mp3; sourceTree = "<group>"; };
 		0C7E926923800EB000A5AC41 /* UnwindToActivitySegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnwindToActivitySegue.swift; sourceTree = "<group>"; };
-		0C7E92722380124500A5AC41 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		0C887206236FF9AD00B4193A /*  */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ""; sourceTree = "<group>"; };
 		0C887208236FF9E300B4193A /* C#.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "C#.mp3"; sourceTree = "<group>"; };
 		0C887209236FF9E300B4193A /* D#.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "D#.mp3"; sourceTree = "<group>"; };
@@ -261,13 +259,12 @@
 		0CA377AC23694263001DAB00 /* Health Bars */ = {
 			isa = PBXGroup;
 			children = (
-				E179CB452380F17600130CDC /* GuessThatInstrument.swift */,
 				0CA377AD23694264001DAB00 /* AppDelegate.swift */,
-				0C7E92722380124500A5AC41 /* NavigationController.swift */,
 				0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */,
 				0CCB43802378CC6F00FCC3DE /* AllExercises.swift */,
 				0CA377AF23694264001DAB00 /* LongTones.swift */,
 				0C7B24162379F62600E59378 /* ShakeIt.swift */,
+				E179CB452380F17600130CDC /* GuessThatInstrument.swift */,
 				5C071B12237F5BAC0006A921 /* ProgressDB.swift */,
 				0CA377DB23694427001DAB00 /* Success.swift */,
 				0CA377DD23694484001DAB00 /* Fail.swift */,
@@ -606,7 +603,6 @@
 			files = (
 				E179CB4C2380F17600130CDC /* GuessThatInstrument.swift in Sources */,
 				0CCB43812378CC6F00FCC3DE /* AllExercises.swift in Sources */,
-				0C7E92732380124500A5AC41 /* NavigationController.swift in Sources */,
 				0C7B24172379F62600E59378 /* ShakeIt.swift in Sources */,
 				5C071B1A237F5BAD0006A921 /* ProgressDB.swift in Sources */,
 				5CF6802C237F8664005778E3 /* SwiftyJSON.swift in Sources */,

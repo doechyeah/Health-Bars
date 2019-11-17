@@ -685,7 +685,7 @@ ALL EXERCISES
         <!--Navigation Controller-->
         <scene sceneID="5s9-fE-pHx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="V4q-c3-nti" customClass="NavigationController" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="V4q-c3-nti" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YKQ-Xb-ZRx">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -835,7 +835,7 @@ ALL EXERCISES
         <!--Long Tones Success-->
         <scene sceneID="iNs-hy-kJi">
             <objects>
-                <viewController id="ppP-Zd-mrb" userLabel="Long Tones Success" customClass="Success" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ppP-Zd-mrb" userLabel="Long Tones Success" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UZf-k9-KKJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -931,7 +931,7 @@ ALL EXERCISES
         <!--Long Tones Fail-->
         <scene sceneID="prg-jn-POc">
             <objects>
-                <viewController id="ZsA-dk-8fh" userLabel="Long Tones Fail" customClass="Fail" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZsA-dk-8fh" userLabel="Long Tones Fail" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lmt-Ki-poT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

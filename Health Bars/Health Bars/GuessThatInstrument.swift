@@ -1,10 +1,21 @@
-//
-//  GuessThatInstrument.swift
 //  Health Bars
 //
-//  Created by Alvin David on 2019-11-14.
+//  Team: Team Rhythm
+//
+//  GuessThatInstrument.swift
+//  Guess That Instrument activity, play a musical instrument clip, and user selects correct instrument from 4 options
+//
+//  Developers:
+//  Alvin David
+//  Trevor Chow
+//
 //  Copyright © 2019 Team Rhythm. All rights reserved.
 //
+//  Changelog:
+//  2019-11-14: Created
+//
+
+
 import UIKit
 import AudioKit
 
@@ -36,26 +47,22 @@ class GuessThatInstrument: UIViewController {
         super.viewDidLoad()
         //load for the first time in memory
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-//        var index = 0
-        
-        //really bad implementation of unique RNG (I improved it bit - Daniel)
+        // choose random instrument clips to present
         var set = [0,1,2,3,4,5,6,7,8]
         for index in 0...3 {
-            randInstrumentNumber = set.randomElement() //change if we get new instruments
-//            if !(randInstruments.contains(instrumentNames[randInstrumentNumber])){
+            randInstrumentNumber = set.randomElement()
             randInstruments[index] = instrumentNames[randInstrumentNumber]
-//            index += 1
             set.removeAll(where: { $0 == randInstrumentNumber } )
-//            }
-            NSLog(set.debugDescription)
+            //NSLog(set.debugDescription)
         }
         
-        //choose instruments out of these 4
+        // choose correct instrument out of these 4
         correctInstrumentNumber = Int.random(in: 0...3)
         correctInstrumentString = randInstruments[correctInstrumentNumber]
         
@@ -70,12 +77,10 @@ class GuessThatInstrument: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool){
-        //do stuff see long tones by michael
         do{
             try AudioKit.stop()
             //try AudioKit.shutdown()
-        }
-        catch{
+        } catch{
             //error
         }
     }

@@ -12,7 +12,7 @@
 //  Copyright © 2019 Team Rhythm. All rights reserved.
 //
 //  Changelog:
-//  2019-11: Created
+//  2019-11-01: Created
 //
 
 import Foundation

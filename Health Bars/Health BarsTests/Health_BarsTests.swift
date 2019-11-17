@@ -1,9 +1,17 @@
+//  Health Bars
+//
+//  Team: Team Rhythm
 //
 //  Health_BarsTests.swift
-//  Health BarsTests
+//  Unit tests for Health Bars
 //
-//  Created by Michael Lin on 2019-10-29.
+//  Developers:
+//  Michael Lin
+//
 //  Copyright © 2019 Team Rhythm. All rights reserved.
+//
+//  Changelog:
+//  2019-11-01: Created
 //
 
 import XCTest
@@ -22,7 +30,7 @@ class Health_BarsTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        var sut = ShakeIt()
+        let sut = ShakeIt()
         sut.initPlayer()
         
         sut.initAudioSession()

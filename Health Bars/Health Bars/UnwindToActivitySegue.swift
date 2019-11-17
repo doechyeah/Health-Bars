@@ -1,9 +1,17 @@
-//
-//  UnwindToActivitySegue.swift
 //  Health Bars
 //
-//  Created by Michael Lin on 2019-11-16.
+//  Team: Team Rhythm
+//
+//  UnwindToActivitySegue.swift
+//  Custom animation for unwind segue to, animation is performed in the other direction
+//
+//  Developers:
+//  Michael Lin
+//
 //  Copyright © 2019 Team Rhythm. All rights reserved.
+//
+//  Changelog:
+//  2019-11-15: Created
 //
 
 import UIKit
