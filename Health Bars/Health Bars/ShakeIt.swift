@@ -386,7 +386,7 @@ class ShakeIt: UIViewController {
             songPlayer.preroll(from: songStartOffsetTime, to: songEndTime)
             
         } catch {
-            //error
+            NSLog("error in initPlayer()")
         }
     }
     
@@ -397,11 +397,11 @@ class ShakeIt: UIViewController {
             AKSettings.sampleRate = AudioKit.engine.inputNode.inputFormat(forBus: 0).sampleRate
             
             AudioKit.output = songPlayer
-            //try AKSettings.session.setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.mixWithOthers)
+            try AKSettings.session.setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.mixWithOthers)
             try AKSettings.session.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
             try AudioKit.start()
         } catch {
-            //error
+            NSLog("error in initAudioSession()")
         }
     }
     
@@ -435,9 +435,6 @@ class ShakeIt: UIViewController {
         
         //print("\(json["offsetStartTime"])")
         songStartOffsetTime = json["offsetStartTime"].doubleValue
-        
-        
-        
     }
     
     func setGameParameters() {
