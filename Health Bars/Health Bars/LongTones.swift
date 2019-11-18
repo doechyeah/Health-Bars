@@ -3,7 +3,8 @@
 //  Team: Team Rhythm
 //
 //  LongTones.swift
-//  Long Tones activity, play a tone and replicate the tone through user input.
+//  Long Tones activity, app plays a tone and user must replicate that tone with their voice
+//
 //  Developers:
 //  Michael Lin
 //  Alvin David
@@ -19,7 +20,7 @@
 //  Bugs:
 //  2019-11-03 Frequency detection can be slightly off, however works almost all of the time
 //
-// Majority of AudioKit code in this file is taken from AudioKit examples Hello World and Microphone Analysis
+//  Majority of AudioKit code in this file is taken from AudioKit examples Hello World and Microphone Analysis
 
 import AudioKit
 
@@ -45,12 +46,12 @@ class LongTones: UIViewController {
     @IBOutlet weak var currentToneStaticText: UILabel!
     @IBOutlet weak var currentToneText: UILabel!
     // debug text on UI
-    @IBOutlet weak var volumeStaticText: UILabel!
-    @IBOutlet weak var volumeText: UILabel!
-    @IBOutlet weak var progressStaticText: UILabel!
-    @IBOutlet weak var progressText: UILabel!
-    @IBOutlet weak var timerStaticText: UILabel!
-    @IBOutlet weak var timerText: UILabel!
+    //@IBOutlet weak var volumeStaticText: UILabel!
+    //@IBOutlet weak var volumeText: UILabel!
+    //@IBOutlet weak var progressStaticText: UILabel!
+    //@IBOutlet weak var progressText: UILabel!
+    //@IBOutlet weak var timerStaticText: UILabel!
+    //@IBOutlet weak var timerText: UILabel!
     
     var timerTestNum: Double!
     
@@ -68,13 +69,16 @@ class LongTones: UIViewController {
     
     //MARK: AudioKit variables
     var note: AKAudioFile!
-    var notePlayer: AKAudioPlayer!
+    var notePlayer: AKPlayer!
     
     var mic: AKMicrophone!
     var tracker: AKFrequencyTracker!
     var bandpassfilter: AKBandPassButterworthFilter!
     var silence: AKBooster!
     var mixer: AKMixer!
+    
+    // Database Score
+    let PDB = ProgClass(playID: "Player1")
     
     deinit {
         //debug
@@ -84,7 +88,7 @@ class LongTones: UIViewController {
     // called when view first gets loaded into memory
     override func viewDidLoad() {
         // debug
-        //NSLog("viewDidLoad()")
+        NSLog("viewDidLoad()")
         super.viewDidLoad()
         
         // debug
@@ -94,7 +98,7 @@ class LongTones: UIViewController {
     // called when view appears fully
     override func viewDidAppear(_ animated: Bool) {
         // debug
-        //NSLog("viewDidAppear()")
+        NSLog("viewDidAppear()")
         super.viewDidAppear(animated)
         // simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
@@ -117,26 +121,26 @@ class LongTones: UIViewController {
             recordYourToneButton.isHidden = false
             recordYourToneButton.isEnabled = false
         
-            toneToMatchStaticText.isHidden = true
-            toneToMatchText.isHidden = true
-            toneToMatchText.text = "__"
+            //toneToMatchStaticText.isHidden = true
+            //toneToMatchText.isHidden = true
+            //toneToMatchText.text = "__"
         }
         
-        currentToneStaticText.isHidden = true
-        currentToneText.isHidden = true
-        currentToneText.text = "_"
+        //currentToneStaticText.isHidden = true
+        //currentToneText.isHidden = true
+        //currentToneText.text = "_"
         
-        volumeStaticText.isHidden = true
-        volumeText.isHidden = true
-        volumeText.text = "__"
+        //volumeStaticText.isHidden = true
+        //volumeText.isHidden = true
+        //volumeText.text = "__"
         
-        progressStaticText.isHidden = true
-        progressText.isHidden = true
-        progressText.text = "__%"
+        //progressStaticText.isHidden = true
+        //progressText.isHidden = true
+        //progressText.text = "__%"
         
-        timerStaticText.isHidden = true
-        timerText.isHidden = true
-        timerText.text = String(format: "%0.2f", displayTimerPeriod)
+        //timerStaticText.isHidden = true
+        //timerText.isHidden = true
+        //timerText.text = String(format: "%0.2f", displayTimerPeriod)
         // end UI Init
         
         // condition variables init
@@ -183,13 +187,24 @@ class LongTones: UIViewController {
     // called with view disappears fully
     override func viewDidDisappear(_ animated: Bool) {
         // debug
-        //NSLog("viewDidDisappear()")
+        NSLog("viewDidDisappear()")
         
         // destroy timers
         destroyTimers()
         
         do {
             try AudioKit.stop()
+            mic.stop()
+            AudioKit.disconnectAllInputs()
+            mic.detach()
+            bandpassfilter.detach()
+            tracker.detach()
+            silence.detach()
+            mixer.detach()
+            try AudioKit.shutdown()
+            //debug
+            AudioKit.printConnections()
+            
         } catch {
             AKLog("AudioKit did not stop!")
         }
@@ -201,8 +216,8 @@ class LongTones: UIViewController {
     @IBAction func hearTheToneButtonPressed(_ sender: UIButton) {
         lockButtons()
         notePlayer.play(from: 0.0)
-        unhideToneToMatchTexts()
-        toneToMatchText.text = noteNamesWithSharps[randNote]
+        //unhideToneToMatchTexts()
+        //toneToMatchText.text = noteNamesWithSharps[randNote]
         // let note play for 5 seconds
         listenTimer = Timer.scheduledTimer(timeInterval: playTonePeriod, target: self, selector: #selector(LongTones.doneHearTheToneButtonPressed), userInfo: nil, repeats: false)
     }
@@ -210,7 +225,7 @@ class LongTones: UIViewController {
     // start recording to match the pitch
     @IBAction func recordYourToneButtonPressed(_ sender: UIButton) {
         lockButtons()
-        unhideRecordTexts()
+        //unhideRecordTexts()
         // call updateUI every 0.1 seconds
         displayTimer = Timer.scheduledTimer(timeInterval: displayTimerInterval, target: self, selector: #selector(LongTones.updateUI), userInfo: nil, repeats: true)
         //displayTimer.tolerance = 0.1
@@ -238,11 +253,11 @@ class LongTones: UIViewController {
         
         timerTestNum -= displayTimerInterval
         
-        volumeText.text = String(format: "%0.2f", tracker.amplitude)
+        //volumeText.text = String(format: "%0.2f", tracker.amplitude)
         
-        timerText.text = String(format: "%0.2f",timerTestNum)
+        //timerText.text = String(format: "%0.2f",timerTestNum)
         //TODO: fix so it works for any number of periods
-        progressText.text = String(format: "%.0f%%", Double(noteSustainPeriods)*10)
+        //progressText.text = String(format: "%.0f%%", Double(noteSustainPeriods)*10)
         
         
         var matched: Bool = false
@@ -251,7 +266,7 @@ class LongTones: UIViewController {
             
             let (_, index) = findPitchFromFrequency(Double(tracker.frequency))
             
-            currentToneText.text = noteNamesWithSharps[index]
+            //currentToneText.text = noteNamesWithSharps[index]
             
             matched = matchPitch(index)
         }
@@ -274,11 +289,17 @@ class LongTones: UIViewController {
         unlockButtons()
         
         if success == false {
+            PDB.insert(table: "voice", actscore: 0)
+            let statchck = PDB.readStats()
+            dump(statchck)
             segueKeepSameTone = true
-            performSegue(withIdentifier: "segue_gotoFail", sender: self)
+            performSegue(withIdentifier: "segue_gotoFailLongTones", sender: self)
         } else if success == true {
+            PDB.insert(table: "voice", actscore: 1)
+            let statchck = PDB.readStats()
+            dump(statchck)
             segueKeepSameTone = false
-            performSegue(withIdentifier: "segue_gotoSuccess", sender: self)
+            performSegue(withIdentifier: "segue_gotoSuccessLongTones", sender: self)
         }
     }
     
@@ -351,22 +372,22 @@ class LongTones: UIViewController {
         hearTheToneButton.isEnabled = true
         recordYourToneButton.isEnabled = true
     }
-    
+  
     func unhideToneToMatchTexts() {
         toneToMatchStaticText.isHidden = false
         toneToMatchText.isHidden = false
     }
-    
+ 
     func unhideRecordTexts() {
         currentToneStaticText.isHidden = false
         currentToneText.isHidden = false
     }
-    
+ 
     //initializes the audio file to play
     func initPlayer() {
         do {
             try note = AKAudioFile(readFileName: noteNamesWithSharps[randNote]+".mp3", baseDir: .resources)
-            try notePlayer = AKAudioPlayer(file: note!)
+            notePlayer = AKPlayer(audioFile: note)
         } catch {
             //error
         }

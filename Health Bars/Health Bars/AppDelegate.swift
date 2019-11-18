@@ -12,7 +12,7 @@
 //  Copyright © 2019 Team Rhythm. All rights reserved.
 //
 //  Changelog:
-//  2019-10: Created
+//  2019-10-14: Created
 //
 
 import UIKit

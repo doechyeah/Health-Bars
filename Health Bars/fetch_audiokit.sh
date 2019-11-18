@@ -1,8 +1,9 @@
 #!/bin/sh
 cd "${1}"
-my_deps="AudioKit.framework"
-if [ -d "${my_deps}" -o -L "${my_deps}"  ]; then
-  echo "AudioKit.framework already exists, skipping fetch"
+my_depAudio="AudioKit.framework"
+
+if [ -d "${my_depAudio}" -o -L "${my_depAudio}"  ]; then
+  echo "AudioKit already exists, skipping fetch"
 else
   echo "Fetching AudioKit.framework"
   curl -O -L https://github.com/AudioKit/AudioKit/releases/download/v4.7.2/AudioKit-iOS-4.7.2.zip

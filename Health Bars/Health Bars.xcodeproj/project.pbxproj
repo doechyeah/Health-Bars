@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C887207236FF9AD00B4193A /*  in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C887206236FF9AD00B4193A /*  */; };
+		0C524149237EA10200CA2C98 /* songTest_HardBass.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C524148237EA10100CA2C98 /* songTest_HardBass.json */; };
+		0C7B24172379F62600E59378 /* ShakeIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B24162379F62600E59378 /* ShakeIt.swift */; };
+		0C7B241A2379F94F00E59378 /* songTest_Hardbass.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0C7B24192379F94F00E59378 /* songTest_Hardbass.mp3 */; };
+		0C7E926A23800EB000A5AC41 /* UnwindToActivitySegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E926923800EB000A5AC41 /* UnwindToActivitySegue.swift */; };
 		0C887214236FF9E400B4193A /* C#.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0C887208236FF9E300B4193A /* C#.mp3 */; };
 		0C887215236FF9E400B4193A /* D#.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0C887209236FF9E300B4193A /* D#.mp3 */; };
 		0C887216236FF9E400B4193A /* A.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0C88720A236FF9E300B4193A /* A.mp3 */; };
@@ -22,15 +25,34 @@
 		0C88721F236FF9E400B4193A /* A#.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0C887213236FF9E400B4193A /* A#.mp3 */; };
 		0CA377AE23694264001DAB00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377AD23694264001DAB00 /* AppDelegate.swift */; };
 		0CA377B023694264001DAB00 /* LongTones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377AF23694264001DAB00 /* LongTones.swift */; };
-		0CA377B323694264001DAB00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA377B123694264001DAB00 /* Main.storyboard */; };
 		0CA377B823694266001DAB00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA377B623694266001DAB00 /* LaunchScreen.storyboard */; };
 		0CA377C323694266001DAB00 /* Health_BarsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377C223694266001DAB00 /* Health_BarsTests.swift */; };
 		0CA377CE23694266001DAB00 /* Health_BarsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377CD23694266001DAB00 /* Health_BarsUITests.swift */; };
 		0CA377DC23694427001DAB00 /* Success.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377DB23694427001DAB00 /* Success.swift */; };
 		0CA377DE23694484001DAB00 /* Fail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377DD23694484001DAB00 /* Fail.swift */; };
 		0CCB411A236A97DB0031AB67 /* NavigationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */; };
+		0CCB43812378CC6F00FCC3DE /* AllExercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB43802378CC6F00FCC3DE /* AllExercises.swift */; };
+		0CD1923D237FB19200A69AED /* songTest_Classical.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CD1923C237FB19200A69AED /* songTest_Classical.mp3 */; };
+		0CD1923F237FB19C00A69AED /* songTest_Classical.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CD1923E237FB19C00A69AED /* songTest_Classical.json */; };
 		0CF23E4E236C1EA400283DFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CF23E4D236C1EA400283DFD /* Assets.xcassets */; };
+		0CF2CC6F2381E73F00B4B9DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA377B123694264001DAB00 /* Main.storyboard */; };
 		0CF4103B236CA3BE00F11054 /* ComingSoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF4103A236CA3BE00F11054 /* ComingSoon.swift */; };
+		5C071B1A237F5BAD0006A921 /* ProgressDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C071B12237F5BAC0006A921 /* ProgressDB.swift */; };
+		5CF6802C237F8664005778E3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6801D237F8664005778E3 /* SwiftyJSON.swift */; };
+		E16477CA2380E30E009A7CCF /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E16477BC2380E273009A7CCF /* SQLite.framework */; };
+		E16477CB2380E30E009A7CCF /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E16477BC2380E273009A7CCF /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E179CB4C2380F17600130CDC /* GuessThatInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = E179CB452380F17600130CDC /* GuessThatInstrument.swift */; };
+		E179CB5F2381035F00130CDC /* trombone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E179CB502381035F00130CDC /* trombone.mp3 */; };
+		E179CB602381035F00130CDC /* trumpet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E179CB512381035F00130CDC /* trumpet.mp3 */; };
+		E179CB612381035F00130CDC /* sax.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E179CB522381035F00130CDC /* sax.mp3 */; };
+		E179CB622381035F00130CDC /* snare.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E179CB532381035F00130CDC /* snare.mp3 */; };
+		E179CB632381035F00130CDC /* violin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E179CB542381035F00130CDC /* violin.mp3 */; };
+		E179CB642381035F00130CDC /* piano.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E179CB552381035F00130CDC /* piano.mp3 */; };
+		E179CB652381035F00130CDC /* clarinet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E179CB562381035F00130CDC /* clarinet.mp3 */; };
+		E179CB662381035F00130CDC /* bells.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E179CB572381035F00130CDC /* bells.mp3 */; };
+		E179CB672381035F00130CDC /* flute.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E179CB582381035F00130CDC /* flute.mp3 */; };
+		F883DBAD2383373900163DCA /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F883DBAC2383373900163DCA /* AudioKit.framework */; };
+		F883DBAE2383373900163DCA /* AudioKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F883DBAC2383373900163DCA /* AudioKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,9 +70,84 @@
 			remoteGlobalIDString = 0CA377A923694263001DAB00;
 			remoteInfo = "Health Bars";
 		};
+		E16477BB2380E273009A7CCF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E16477B12380E272009A7CCF /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE247AD31C3F04ED00AE3E12;
+			remoteInfo = "SQLite iOS";
+		};
+		E16477BD2380E273009A7CCF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E16477B12380E272009A7CCF /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE247ADD1C3F04ED00AE3E12;
+			remoteInfo = "SQLiteTests iOS";
+		};
+		E16477BF2380E273009A7CCF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E16477B12380E272009A7CCF /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE247B3C1C3F3ED000AE3E12;
+			remoteInfo = "SQLite Mac";
+		};
+		E16477C12380E273009A7CCF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E16477B12380E272009A7CCF /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE247B451C3F3ED000AE3E12;
+			remoteInfo = "SQLiteTests Mac";
+		};
+		E16477C32380E273009A7CCF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E16477B12380E272009A7CCF /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03A65E5A1C6BB0F50062603F;
+			remoteInfo = "SQLite tvOS";
+		};
+		E16477C52380E273009A7CCF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E16477B12380E272009A7CCF /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03A65E631C6BB0F60062603F;
+			remoteInfo = "SQLiteTests tvOS";
+		};
+		E16477C72380E273009A7CCF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E16477B12380E272009A7CCF /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A121AC451CA35C79005A31D1;
+			remoteInfo = "SQLite watchOS";
+		};
+		E16477CC2380E30E009A7CCF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E16477B12380E272009A7CCF /* SQLite.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EE247AD21C3F04ED00AE3E12;
+			remoteInfo = "SQLite iOS";
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		E16477CE2380E30E009A7CCF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F883DBAE2383373900163DCA /* AudioKit.framework in Embed Frameworks */,
+				E16477CB2380E30E009A7CCF /* SQLite.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0C524148237EA10100CA2C98 /* songTest_HardBass.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = songTest_HardBass.json; sourceTree = "<group>"; };
+		0C7B24162379F62600E59378 /* ShakeIt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeIt.swift; sourceTree = "<group>"; };
+		0C7B24192379F94F00E59378 /* songTest_Hardbass.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = songTest_Hardbass.mp3; sourceTree = "<group>"; };
+		0C7E926923800EB000A5AC41 /* UnwindToActivitySegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnwindToActivitySegue.swift; sourceTree = "<group>"; };
 		0C887206236FF9AD00B4193A /*  */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ""; sourceTree = "<group>"; };
 		0C887208236FF9E300B4193A /* C#.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "C#.mp3"; sourceTree = "<group>"; };
 		0C887209236FF9E300B4193A /* D#.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "D#.mp3"; sourceTree = "<group>"; };
@@ -79,8 +176,26 @@
 		0CA377DB23694427001DAB00 /* Success.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Success.swift; sourceTree = "<group>"; };
 		0CA377DD23694484001DAB00 /* Fail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fail.swift; sourceTree = "<group>"; };
 		0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMenu.swift; sourceTree = "<group>"; };
+		0CCB43802378CC6F00FCC3DE /* AllExercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllExercises.swift; sourceTree = "<group>"; };
+		0CD1923C237FB19200A69AED /* songTest_Classical.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = songTest_Classical.mp3; sourceTree = "<group>"; };
+		0CD1923E237FB19C00A69AED /* songTest_Classical.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = songTest_Classical.json; sourceTree = "<group>"; };
 		0CF23E4D236C1EA400283DFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0CF2CC662381E5E700B4B9DB /* DailyExercises.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DailyExercises.storyboard; sourceTree = "<group>"; };
 		0CF4103A236CA3BE00F11054 /* ComingSoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoon.swift; sourceTree = "<group>"; };
+		5C071B12237F5BAC0006A921 /* ProgressDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressDB.swift; sourceTree = "<group>"; };
+		5CF6801D237F8664005778E3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		E16477B12380E272009A7CCF /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "SQLite.swift-0.12.2/SQLite.xcodeproj"; sourceTree = "<group>"; };
+		E179CB452380F17600130CDC /* GuessThatInstrument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuessThatInstrument.swift; sourceTree = "<group>"; };
+		E179CB502381035F00130CDC /* trombone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = trombone.mp3; sourceTree = "<group>"; };
+		E179CB512381035F00130CDC /* trumpet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = trumpet.mp3; sourceTree = "<group>"; };
+		E179CB522381035F00130CDC /* sax.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sax.mp3; sourceTree = "<group>"; };
+		E179CB532381035F00130CDC /* snare.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = snare.mp3; sourceTree = "<group>"; };
+		E179CB542381035F00130CDC /* violin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = violin.mp3; sourceTree = "<group>"; };
+		E179CB552381035F00130CDC /* piano.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = piano.mp3; sourceTree = "<group>"; };
+		E179CB562381035F00130CDC /* clarinet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clarinet.mp3; sourceTree = "<group>"; };
+		E179CB572381035F00130CDC /* bells.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bells.mp3; sourceTree = "<group>"; };
+		E179CB582381035F00130CDC /* flute.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = flute.mp3; sourceTree = "<group>"; };
+		F883DBAC2383373900163DCA /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AudioKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +203,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C887207236FF9AD00B4193A /*  in Frameworks */,
+				F883DBAD2383373900163DCA /* AudioKit.framework in Frameworks */,
+				E16477CA2380E30E009A7CCF /* SQLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,13 +225,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C7B24182379F86900E59378 /* Songs */ = {
+			isa = PBXGroup;
+			children = (
+				0C7B24192379F94F00E59378 /* songTest_Hardbass.mp3 */,
+				0C524148237EA10100CA2C98 /* songTest_HardBass.json */,
+				0CD1923C237FB19200A69AED /* songTest_Classical.mp3 */,
+				0CD1923E237FB19C00A69AED /* songTest_Classical.json */,
+			);
+			path = Songs;
+			sourceTree = "<group>";
+		};
 		0CA377A123694263001DAB00 = {
 			isa = PBXGroup;
 			children = (
+				E16477B12380E272009A7CCF /* SQLite.xcodeproj */,
 				0CA377AC23694263001DAB00 /* Health Bars */,
 				0CA377C123694266001DAB00 /* Health BarsTests */,
 				0CA377CC23694266001DAB00 /* Health BarsUITests */,
 				0CA377DF23694583001DAB00 /* Frameworks */,
+				0CA377AB23694263001DAB00 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,7 +256,6 @@
 				0CA377C923694266001DAB00 /* Health BarsUITests.xctest */,
 			);
 			name = Products;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		0CA377AC23694263001DAB00 /* Health Bars */ = {
@@ -135,16 +263,24 @@
 			children = (
 				0CA377AD23694264001DAB00 /* AppDelegate.swift */,
 				0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */,
+				0CCB43802378CC6F00FCC3DE /* AllExercises.swift */,
 				0CA377AF23694264001DAB00 /* LongTones.swift */,
+				0C7B24162379F62600E59378 /* ShakeIt.swift */,
+				E179CB452380F17600130CDC /* GuessThatInstrument.swift */,
+				5C071B12237F5BAC0006A921 /* ProgressDB.swift */,
 				0CA377DB23694427001DAB00 /* Success.swift */,
 				0CA377DD23694484001DAB00 /* Fail.swift */,
 				0CF4103A236CA3BE00F11054 /* ComingSoon.swift */,
-				0CA377AB23694263001DAB00 /* Products */,
+				0C7E926923800EB000A5AC41 /* UnwindToActivitySegue.swift */,
 				0CA377B123694264001DAB00 /* Main.storyboard */,
 				0CF23E4D236C1EA400283DFD /* Assets.xcassets */,
 				0CA377B623694266001DAB00 /* LaunchScreen.storyboard */,
+				0CF2CC662381E5E700B4B9DB /* DailyExercises.storyboard */,
 				0CA377B923694266001DAB00 /* Info.plist */,
+				5CF6801D237F8664005778E3 /* SwiftyJSON.swift */,
+				E179CB4F2381035F00130CDC /* Instruments */,
 				E1452833236D63E0000DDF3E /* Notes */,
+				0C7B24182379F86900E59378 /* Songs */,
 			);
 			path = "Health Bars";
 			sourceTree = "<group>";
@@ -171,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				0C887206236FF9AD00B4193A /*  */,
+				F883DBAC2383373900163DCA /* AudioKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -194,6 +331,36 @@
 			path = Notes;
 			sourceTree = "<group>";
 		};
+		E16477B22380E272009A7CCF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E16477BC2380E273009A7CCF /* SQLite.framework */,
+				E16477BE2380E273009A7CCF /* SQLiteTests iOS.xctest */,
+				E16477C02380E273009A7CCF /* SQLite.framework */,
+				E16477C22380E273009A7CCF /* SQLiteTests Mac.xctest */,
+				E16477C42380E273009A7CCF /* SQLite.framework */,
+				E16477C62380E273009A7CCF /* SQLiteTests tvOS.xctest */,
+				E16477C82380E273009A7CCF /* SQLite.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E179CB4F2381035F00130CDC /* Instruments */ = {
+			isa = PBXGroup;
+			children = (
+				E179CB502381035F00130CDC /* trombone.mp3 */,
+				E179CB512381035F00130CDC /* trumpet.mp3 */,
+				E179CB522381035F00130CDC /* sax.mp3 */,
+				E179CB532381035F00130CDC /* snare.mp3 */,
+				E179CB542381035F00130CDC /* violin.mp3 */,
+				E179CB552381035F00130CDC /* piano.mp3 */,
+				E179CB562381035F00130CDC /* clarinet.mp3 */,
+				E179CB572381035F00130CDC /* bells.mp3 */,
+				E179CB582381035F00130CDC /* flute.mp3 */,
+			);
+			path = Instruments;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -205,10 +372,12 @@
 				0CA377A623694263001DAB00 /* Sources */,
 				0CA377A723694263001DAB00 /* Frameworks */,
 				0CA377A823694263001DAB00 /* Resources */,
+				E16477CE2380E30E009A7CCF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E16477CD2380E30E009A7CCF /* PBXTargetDependency */,
 			);
 			name = "Health Bars";
 			productName = "Health Bars";
@@ -290,6 +459,12 @@
 			mainGroup = 0CA377A123694263001DAB00;
 			productRefGroup = 0CA377AB23694263001DAB00 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E16477B22380E272009A7CCF /* Products */;
+					ProjectRef = E16477B12380E272009A7CCF /* SQLite.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				0CA377A923694263001DAB00 /* Health Bars */,
@@ -299,26 +474,91 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		E16477BC2380E273009A7CCF /* SQLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SQLite.framework;
+			remoteRef = E16477BB2380E273009A7CCF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E16477BE2380E273009A7CCF /* SQLiteTests iOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SQLiteTests iOS.xctest";
+			remoteRef = E16477BD2380E273009A7CCF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E16477C02380E273009A7CCF /* SQLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SQLite.framework;
+			remoteRef = E16477BF2380E273009A7CCF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E16477C22380E273009A7CCF /* SQLiteTests Mac.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SQLiteTests Mac.xctest";
+			remoteRef = E16477C12380E273009A7CCF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E16477C42380E273009A7CCF /* SQLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SQLite.framework;
+			remoteRef = E16477C32380E273009A7CCF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E16477C62380E273009A7CCF /* SQLiteTests tvOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SQLiteTests tvOS.xctest";
+			remoteRef = E16477C52380E273009A7CCF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E16477C82380E273009A7CCF /* SQLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SQLite.framework;
+			remoteRef = E16477C72380E273009A7CCF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		0CA377A823694263001DAB00 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				0C88721B236FF9E400B4193A /* B.mp3 in Resources */,
+				0C7B241A2379F94F00E59378 /* songTest_Hardbass.mp3 in Resources */,
 				0C88721A236FF9E400B4193A /* G.mp3 in Resources */,
 				0C887218236FF9E400B4193A /* E.mp3 in Resources */,
 				0C887216236FF9E400B4193A /* A.mp3 in Resources */,
+				E179CB612381035F00130CDC /* sax.mp3 in Resources */,
+				0CD1923D237FB19200A69AED /* songTest_Classical.mp3 in Resources */,
 				0C887217236FF9E400B4193A /* G#.mp3 in Resources */,
+				E179CB652381035F00130CDC /* clarinet.mp3 in Resources */,
+				E179CB662381035F00130CDC /* bells.mp3 in Resources */,
+				E179CB602381035F00130CDC /* trumpet.mp3 in Resources */,
 				0C887215236FF9E400B4193A /* D#.mp3 in Resources */,
 				0C88721C236FF9E400B4193A /* C.mp3 in Resources */,
 				0C88721D236FF9E400B4193A /* F.mp3 in Resources */,
+				E179CB642381035F00130CDC /* piano.mp3 in Resources */,
 				0CA377B823694266001DAB00 /* LaunchScreen.storyboard in Resources */,
 				0C88721E236FF9E400B4193A /* F#.mp3 in Resources */,
+				E179CB5F2381035F00130CDC /* trombone.mp3 in Resources */,
 				0C88721F236FF9E400B4193A /* A#.mp3 in Resources */,
 				0CF23E4E236C1EA400283DFD /* Assets.xcassets in Resources */,
+				E179CB632381035F00130CDC /* violin.mp3 in Resources */,
+				E179CB622381035F00130CDC /* snare.mp3 in Resources */,
 				0C887219236FF9E400B4193A /* D.mp3 in Resources */,
+				E179CB672381035F00130CDC /* flute.mp3 in Resources */,
+				0CF2CC6F2381E73F00B4B9DB /* Main.storyboard in Resources */,
 				0C887214236FF9E400B4193A /* C#.mp3 in Resources */,
-				0CA377B323694264001DAB00 /* Main.storyboard in Resources */,
+				0CD1923F237FB19C00A69AED /* songTest_Classical.json in Resources */,
+				0C524149237EA10200CA2C98 /* songTest_HardBass.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,7 +603,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E179CB4C2380F17600130CDC /* GuessThatInstrument.swift in Sources */,
+				0CCB43812378CC6F00FCC3DE /* AllExercises.swift in Sources */,
+				0C7B24172379F62600E59378 /* ShakeIt.swift in Sources */,
+				5C071B1A237F5BAD0006A921 /* ProgressDB.swift in Sources */,
+				5CF6802C237F8664005778E3 /* SwiftyJSON.swift in Sources */,
 				0CCB411A236A97DB0031AB67 /* NavigationMenu.swift in Sources */,
+				0C7E926A23800EB000A5AC41 /* UnwindToActivitySegue.swift in Sources */,
 				0CA377B023694264001DAB00 /* LongTones.swift in Sources */,
 				0CA377DE23694484001DAB00 /* Fail.swift in Sources */,
 				0CA377DC23694427001DAB00 /* Success.swift in Sources */,
@@ -400,6 +646,11 @@
 			isa = PBXTargetDependency;
 			target = 0CA377A923694263001DAB00 /* Health Bars */;
 			targetProxy = 0CA377CA23694266001DAB00 /* PBXContainerItemProxy */;
+		};
+		E16477CD2380E30E009A7CCF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SQLite iOS";
+			targetProxy = E16477CC2380E30E009A7CCF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -460,7 +711,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = "${PROJECT_DIR}/";
+				FRAMEWORK_SEARCH_PATHS = "${PROJECT_DIR}";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -523,7 +774,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "${PROJECT_DIR}/";
+				FRAMEWORK_SEARCH_PATHS = "${PROJECT_DIR}";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -546,17 +797,21 @@
 		0CA377D323694266001DAB00 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AQ6W32PQC7;
-				FRAMEWORK_SEARCH_PATHS = "${PROJECT_DIR}";
+				DEVELOPMENT_TEAM = RVFXSQ8DV8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Health Bars/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.teamRhythm.Health-Bars";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.DanielRhythm.Health-Bars";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -566,17 +821,21 @@
 		0CA377D423694266001DAB00 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AQ6W32PQC7;
-				FRAMEWORK_SEARCH_PATHS = "${PROJECT_DIR}";
+				DEVELOPMENT_TEAM = RVFXSQ8DV8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Health Bars/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.teamRhythm.Health-Bars";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.DanielRhythm.Health-Bars";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -589,7 +848,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4K53HL69CH;
+				DEVELOPMENT_TEAM = AQ6W32PQC7;
 				INFOPLIST_FILE = "Health BarsTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -610,7 +869,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4K53HL69CH;
+				DEVELOPMENT_TEAM = AQ6W32PQC7;
 				INFOPLIST_FILE = "Health BarsTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

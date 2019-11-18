@@ -1,9 +1,17 @@
+//  Health Bars
+//
+//  Team: Team Rhythm
 //
 //  Health_BarsUITests.swift
-//  Health BarsUITests
+//  UI tests for Health Bars
 //
-//  Created by Michael Lin on 2019-10-29.
+//  Developers:
+//  Michael Lin
+//
 //  Copyright © 2019 Team Rhythm. All rights reserved.
+//
+//  Changelog:
+//  2019-11-01: Created
 //
 
 import XCTest
