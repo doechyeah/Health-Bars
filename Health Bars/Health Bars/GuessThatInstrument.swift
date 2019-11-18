@@ -14,6 +14,8 @@
 //  Changelog:
 //  2019-11-14: Created
 //
+// Bugs:
+// 11-18-2019: If unable to access Audio then the app crashes.
 
 
 import UIKit
@@ -42,6 +44,8 @@ class GuessThatInstrument: UIViewController {
     //MARK: Audio Player Variables
     var instrument: AKAudioFile!
     var instrumentPlayer: AKAudioPlayer!
+    
+    let PDB = ProgClass(playID: "Player1")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +76,6 @@ class GuessThatInstrument: UIViewController {
         instrumentImage4.image = UIImage(named: randInstruments[3])
         
         initPlayer()
-        AudioKit.output = instrumentPlayer
         initAudioSession()
     }
     
@@ -114,10 +117,20 @@ class GuessThatInstrument: UIViewController {
     func checkCorrect(_ choice: Int) {
         if(correctInstrumentString == randInstruments[choice]) {
             segueKeepSameinstrument = false
+            PDB.insert(table: "memory", actscore: 1)
+            let debugdict = PDB.readTable(table: "memory")
+            dump(debugdict)
+            let statchck = PDB.readStats()
+            dump(statchck)
             NSLog("Correct")
             performSegue(withIdentifier: "segue_gotoSuccessGuessThatInstrument", sender: self)
         } else {
             //goto fail
+            PDB.insert(table: "memory", actscore: 0)
+            let debugdict = PDB.readTable(table: "memory")
+            dump(debugdict)
+            let statchck = PDB.readStats()
+            dump(statchck)
             segueKeepSameinstrument = true
             NSLog("False")
             performSegue(withIdentifier: "segue_gotoFailGuessThatInstrument", sender: self)
@@ -139,6 +152,7 @@ class GuessThatInstrument: UIViewController {
         do {
             // workaround for bug in audiokit: https://github.com/AudioKit/AudioKit/issues/1799#issuecomment-506373157
             AKSettings.sampleRate = AudioKit.engine.inputNode.inputFormat(forBus: 0).sampleRate
+            AudioKit.output = instrumentPlayer
             try AKSettings.session.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.mixWithOthers)
             try AKSettings.session.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
             try AudioKit.start()

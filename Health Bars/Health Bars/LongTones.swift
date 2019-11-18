@@ -41,10 +41,10 @@ class LongTones: UIViewController {
     @IBOutlet weak var hearTheToneButton: UIButton!
     @IBOutlet weak var recordYourToneButton: UIButton!
     
-    //@IBOutlet weak var toneToMatchStaticText: UILabel!
-    //@IBOutlet weak var toneToMatchText: UILabel!
-    //@IBOutlet weak var currentToneStaticText: UILabel!
-    //@IBOutlet weak var currentToneText: UILabel!
+    @IBOutlet weak var toneToMatchStaticText: UILabel!
+    @IBOutlet weak var toneToMatchText: UILabel!
+    @IBOutlet weak var currentToneStaticText: UILabel!
+    @IBOutlet weak var currentToneText: UILabel!
     // debug text on UI
     //@IBOutlet weak var volumeStaticText: UILabel!
     //@IBOutlet weak var volumeText: UILabel!
@@ -372,7 +372,7 @@ class LongTones: UIViewController {
         hearTheToneButton.isEnabled = true
         recordYourToneButton.isEnabled = true
     }
-    /*
+  
     func unhideToneToMatchTexts() {
         toneToMatchStaticText.isHidden = false
         toneToMatchText.isHidden = false
@@ -382,7 +382,7 @@ class LongTones: UIViewController {
         currentToneStaticText.isHidden = false
         currentToneText.isHidden = false
     }
-    */
+ 
     //initializes the audio file to play
     func initPlayer() {
         do {
