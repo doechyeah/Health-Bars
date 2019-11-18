@@ -77,12 +77,14 @@ class GuessThatInstrument: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool){
-        do{
+        instrumentPlayer.stop()
+        
+        do {
             try AudioKit.stop()
-            //try AudioKit.shutdown()
-        } catch{
-            //error
+        } catch {
+            AKLog("AudioKit did not stop!")
         }
+
     }
     
     @IBAction func unwindToGTI(_ unwindSegue: UIStoryboardSegue) {}
@@ -135,6 +137,8 @@ class GuessThatInstrument: UIViewController {
     
     func initAudioSession() {
         do {
+            // workaround for bug in audiokit: https://github.com/AudioKit/AudioKit/issues/1799#issuecomment-506373157
+            AKSettings.sampleRate = AudioKit.engine.inputNode.inputFormat(forBus: 0).sampleRate
             try AKSettings.session.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.mixWithOthers)
             try AKSettings.session.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
             try AudioKit.start()
