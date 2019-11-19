@@ -18,10 +18,11 @@
 //  Bugs:
 //  2019-11-15: NSTimer will drift slightly on simulator, results in accuracy drift, should not matter with shorter song durations
 //  2019-11-15: Database write sometimes does not occur
-//
+//  2019-11-18: If using AirPods and you pull out (auto-pause) then vibrate detection no longer works.
 
 import UIKit
 
+import AudioToolbox
 import AudioKit
 
 class ShakeIt: UIViewController {
@@ -49,6 +50,12 @@ class ShakeIt: UIViewController {
     //MARK: Outlets
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var countdownLabel: UILabel!
+    //debug
+    @IBOutlet weak var hitsLabel: UILabel!
+    @IBOutlet weak var missesLabel: UILabel!
+    @IBOutlet weak var offTempoLabel: UILabel!
+    @IBOutlet weak var imgvAvatar: UIImageView!
+
     
     //MARK: Game parameters
     var shakeBeatHits: Int = 0
@@ -77,6 +84,9 @@ class ShakeIt: UIViewController {
     
     // Mutex
     let shakeLck = NSLock()
+    
+    // Animation
+    var pulseLayers = [CAShapeLayer]()
 
     // special variable for keeping the same song when coming from fail screen
     var segueKeepSameSong: Bool = false
@@ -131,6 +141,9 @@ class ShakeIt: UIViewController {
         
         // UI Init
         countdownLabel.text = "Countdown"
+        hitsLabel.text = "Hits"
+        missesLabel.text = "Misses"
+        offTempoLabel.text = "off Tempo"
         // end UI Init
         // game parameters init
         shakeBeatHits = 0
@@ -261,7 +274,7 @@ class ShakeIt: UIViewController {
                                               selector: #selector(ShakeIt.vibrateOnBeat),
                                               userInfo: nil,
                                               repeats: true)
-        
+//
         // can also achieve with separate timer
         songPlayer.completionHandler = {
             self.endGame()
@@ -333,10 +346,16 @@ class ShakeIt: UIViewController {
         shakeLck.unlock()
     }
     
+//    Will Implement later. Coming in V3
     @objc func vibrateOnBeat() {
         //debug
         //print("Vibrate!")
-        vibrationGenerator.impactOccurred()
+        //vibrationGenerator.impactOccurred()
+        NSLog("vibrateOnBeat()")
+        //AudioServicesPlaySystemSound(1520)
+        //AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+        //AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+        //createPulse()
     }
     
     func shakeEvent() {
@@ -353,10 +372,14 @@ class ShakeIt: UIViewController {
                 shakeBeatHits += 1
                 shakedToBeat = true
                 print("shake Hit")
+                vibrationGenerator.impactOccurred()
+                hitsLabel.text = "\(shakeBeatHits)"
             } else {
                 shakeBeatOffTempos += 1
                 print("shake Off Tempo")
+                offTempoLabel.text = "\(shakeBeatOffTempos)"
             }
+            missesLabel.text = "\(shakeBeatMisses)"
             shakeLck.unlock()
         } else {
             print("Game not started yet")
@@ -443,6 +466,52 @@ class ShakeIt: UIViewController {
         print("shakeAccuracyToleranceTime: \(shakeAccuracyToleranceTime)")
         playSongPeriod = songEndTime - songStartOffsetTime
     }
+    
+//    func createPulse() {
+//        for _ in 0...2 {
+//            let circularPath = UIBezierPath(arcCenter: .zero, radius: UIScreen.main.bounds.size.width/2.0, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
+//            let pulseLayer = CAShapeLayer()
+//            pulseLayer.path = circularPath.cgPath
+//            pulseLayer.lineWidth = 2.0
+//            pulseLayer.fillColor = UIColor.clear.cgColor
+//            pulseLayer.lineCap = CAShapeLayerLineCap.round
+//            pulseLayer.position = CGPoint(x: imgvAvatar.frame.size.width/2.0, y: imgvAvatar.frame.size.width/2.0)
+//            imgvAvatar.layer.addSublayer(pulseLayer)
+//            pulseLayers.append(pulseLayer)
+//        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+//            self.animatePulse(index: 0)
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+//                self.animatePulse(index: 1)
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//                    self.animatePulse(index: 2)
+//                }
+//            }
+//        }
+//    }
+//
+//    func animatePulse(index: Int) {
+//        pulseLayers[index].strokeColor = UIColor.black.cgColor
+//
+//        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
+//        scaleAnimation.duration = 2.0
+//        scaleAnimation.fromValue = 0.0
+//        scaleAnimation.toValue = 0.9
+//        scaleAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+//        scaleAnimation.repeatCount = .greatestFiniteMagnitude
+//        pulseLayers[index].add(scaleAnimation, forKey: "scale")
+//
+//        let opacityAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
+//        opacityAnimation.duration = 2.0
+//        opacityAnimation.fromValue = 0.9
+//        opacityAnimation.toValue = 0.0
+//        opacityAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+//        opacityAnimation.repeatCount = .greatestFiniteMagnitude
+//        pulseLayers[index].add(opacityAnimation, forKey: "opacity")
+//
+//
+//
+//    }
 
     /*
     // MARK: - Navigation

@@ -38,7 +38,6 @@
 		0CF2CC6F2381E73F00B4B9DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA377B123694264001DAB00 /* Main.storyboard */; };
 		0CF4103B236CA3BE00F11054 /* ComingSoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF4103A236CA3BE00F11054 /* ComingSoon.swift */; };
 		5C071B1A237F5BAD0006A921 /* ProgressDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C071B12237F5BAC0006A921 /* ProgressDB.swift */; };
-		5C44AD6A237F5A6900F7582B /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C44AD69237F5A6900F7582B /* AudioKit.framework */; };
 		5CF6802C237F8664005778E3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6801D237F8664005778E3 /* SwiftyJSON.swift */; };
 		E16477CA2380E30E009A7CCF /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E16477BC2380E273009A7CCF /* SQLite.framework */; };
 		E16477CB2380E30E009A7CCF /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E16477BC2380E273009A7CCF /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -52,6 +51,8 @@
 		E179CB652381035F00130CDC /* clarinet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E179CB562381035F00130CDC /* clarinet.mp3 */; };
 		E179CB662381035F00130CDC /* bells.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E179CB572381035F00130CDC /* bells.mp3 */; };
 		E179CB672381035F00130CDC /* flute.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E179CB582381035F00130CDC /* flute.mp3 */; };
+		F883DBAD2383373900163DCA /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F883DBAC2383373900163DCA /* AudioKit.framework */; };
+		F883DBAE2383373900163DCA /* AudioKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F883DBAC2383373900163DCA /* AudioKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F883DBAE2383373900163DCA /* AudioKit.framework in Embed Frameworks */,
 				E16477CB2380E30E009A7CCF /* SQLite.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -181,7 +183,6 @@
 		0CF2CC662381E5E700B4B9DB /* DailyExercises.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DailyExercises.storyboard; sourceTree = "<group>"; };
 		0CF4103A236CA3BE00F11054 /* ComingSoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoon.swift; sourceTree = "<group>"; };
 		5C071B12237F5BAC0006A921 /* ProgressDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressDB.swift; sourceTree = "<group>"; };
-		5C44AD69237F5A6900F7582B /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AudioKit.framework; sourceTree = "<group>"; };
 		5CF6801D237F8664005778E3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		E16477B12380E272009A7CCF /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "SQLite.swift-0.12.2/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		E179CB452380F17600130CDC /* GuessThatInstrument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuessThatInstrument.swift; sourceTree = "<group>"; };
@@ -194,6 +195,7 @@
 		E179CB562381035F00130CDC /* clarinet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clarinet.mp3; sourceTree = "<group>"; };
 		E179CB572381035F00130CDC /* bells.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bells.mp3; sourceTree = "<group>"; };
 		E179CB582381035F00130CDC /* flute.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = flute.mp3; sourceTree = "<group>"; };
+		F883DBAC2383373900163DCA /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AudioKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,7 +203,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C44AD6A237F5A6900F7582B /* AudioKit.framework in Frameworks */,
+				F883DBAD2383373900163DCA /* AudioKit.framework in Frameworks */,
 				E16477CA2380E30E009A7CCF /* SQLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,7 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				0C887206236FF9AD00B4193A /*  */,
-				5C44AD69237F5A6900F7582B /* AudioKit.framework */,
+				F883DBAC2383373900163DCA /* AudioKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -796,15 +798,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AQ6W32PQC7;
+				DEVELOPMENT_TEAM = RVFXSQ8DV8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Health Bars/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.MichaelRhythm.Health-Bars";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.DanielRhythm.Health-Bars";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -815,15 +822,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AQ6W32PQC7;
+				DEVELOPMENT_TEAM = RVFXSQ8DV8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Health Bars/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.MichaelRhythm.Health-Bars";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.DanielRhythm.Health-Bars";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

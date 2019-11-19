@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="V4q-c3-nti">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="V4q-c3-nti">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -177,7 +175,7 @@
                                             <constraint firstAttribute="height" constant="105" id="9Ya-Lz-3lT"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="33"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KaO-aE-iAh">
@@ -214,7 +212,7 @@
                                             <constraint firstAttribute="height" constant="105" id="RJl-Jc-6af"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="33"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vbd-X5-5TM">
@@ -251,7 +249,7 @@
                                             <constraint firstAttribute="height" constant="105" id="OzQ-6Q-ppw"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="33"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I3A-Tc-0T5">
@@ -305,29 +303,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar M(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="2gk-bx-Ggn">
-                                <rect key="frame" x="30" y="74" width="315" height="60"/>
+                                <rect key="frame" x="30" y="54" width="315" height="60"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GUESS THAT INSTRUMENT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Rej-qe-lNX">
-                                <rect key="frame" x="38" y="168.5" width="299" height="31.5"/>
+                                <rect key="frame" x="38" y="148.5" width="299" height="31.5"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="26"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Button_Hear" translatesAutoresizingMaskIntoConstraints="NO" id="WkG-Yx-PWZ">
-                                <rect key="frame" x="122.5" y="219" width="130" height="130"/>
+                                <rect key="frame" x="122.5" y="199" width="130" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="1eg-7l-FD0"/>
                                     <constraint firstAttribute="height" constant="130" id="zoy-uu-j6m"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal: Pick the correct instrument you hear" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCk-oj-8L0">
-                                <rect key="frame" x="94" y="379" width="187.5" height="50.5"/>
+                                <rect key="frame" x="94" y="359" width="187.5" height="50.5"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="21"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VrD-E9-VOA" userLabel="Instrument1">
-                                <rect key="frame" x="87.5" y="444" width="80" height="80"/>
+                                <rect key="frame" x="87.5" y="424" width="80" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ueY-CR-UiY">
                                         <rect key="frame" x="5" y="5" width="70" height="70"/>
@@ -353,7 +351,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="00j-VX-EuE" userLabel="Instrument2">
-                                <rect key="frame" x="207.5" y="444" width="80" height="80"/>
+                                <rect key="frame" x="207.5" y="424" width="80" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cSz-3e-3RG">
                                         <rect key="frame" x="5" y="5" width="70" height="70"/>
@@ -379,7 +377,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCe-82-tbn" userLabel="Instrument3">
-                                <rect key="frame" x="87.5" y="544" width="80" height="80"/>
+                                <rect key="frame" x="87.5" y="524" width="80" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9MS-WC-gF5">
                                         <rect key="frame" x="5" y="5" width="70" height="70"/>
@@ -405,7 +403,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbZ-1x-Ae8" userLabel="Instrument4">
-                                <rect key="frame" x="207.5" y="544" width="80" height="80"/>
+                                <rect key="frame" x="207.5" y="524" width="80" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uFg-Fi-YXO">
                                         <rect key="frame" x="5" y="5" width="70" height="70"/>
@@ -487,16 +485,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar M(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="dWn-4T-URu">
-                                <rect key="frame" x="30" y="74" width="315" height="60"/>
+                                <rect key="frame" x="30" y="54" width="315" height="60"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GUESS THAT INSTRUMENT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="bol-nu-vGQ">
-                                <rect key="frame" x="38" y="158.5" width="299" height="31.5"/>
+                                <rect key="frame" x="38" y="138.5" width="299" height="31.5"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="26"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBZ-yU-NWU" userLabel="Badge: Memory">
-                                <rect key="frame" x="62.5" y="214" width="250" height="200"/>
+                                <rect key="frame" x="62.5" y="194" width="250" height="200"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank-badge" translatesAutoresizingMaskIntoConstraints="NO" id="qDs-Xd-fzk">
                                         <rect key="frame" x="30" y="10" width="180" height="180"/>
@@ -524,16 +522,16 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELL DONE!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MxH-b6-JyC">
-                                <rect key="frame" x="15" y="429" width="345" height="70"/>
+                                <rect key="frame" x="15" y="409" width="345" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="qxX-61-2ob"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="60"/>
-                                <color key="textColor" red="0.1647058824" green="0.4823529412" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.16262605786323547" green="0.4822314977645874" blue="0.5331805944442749" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hhb-kL-RgZ">
-                                <rect key="frame" x="102" y="504" width="171" height="100"/>
+                                <rect key="frame" x="102" y="484" width="171" height="100"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="am9-4z-Smu"/>
@@ -583,10 +581,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar M(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="9dn-3T-lyM">
-                                <rect key="frame" x="30" y="74" width="315" height="60"/>
+                                <rect key="frame" x="30" y="54" width="315" height="60"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a8f-Ia-aHD" userLabel="Fail">
-                                <rect key="frame" x="87.5" y="214" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="194" width="200" height="200"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-music" translatesAutoresizingMaskIntoConstraints="NO" id="e1N-xl-8Ez">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
@@ -605,13 +603,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRY AGAIN!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKg-I2-cBH">
-                                <rect key="frame" x="29" y="428" width="317" height="72"/>
+                                <rect key="frame" x="29" y="408" width="317" height="72"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="60"/>
                                 <color key="textColor" red="0.67843137249999996" green="0.1647058824" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTP-PE-6Af">
-                                <rect key="frame" x="24" y="499" width="137.5" height="110"/>
+                                <rect key="frame" x="24" y="479" width="137.5" height="110"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="bq5-fl-dG8"/>
@@ -627,7 +625,7 @@ TO TRY AGAIN
                                 </connections>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRt-1B-apU">
-                                <rect key="frame" x="184.5" y="499" width="176.5" height="110"/>
+                                <rect key="frame" x="184.5" y="479" width="176.5" height="110"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="A7y-bv-Nvh"/>
@@ -643,9 +641,9 @@ ALL EXERCISES
                                 </connections>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GUESS THAT INSTRUMENT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2hb-qw-dFm">
-                                <rect key="frame" x="38" y="158.5" width="299" height="31.5"/>
+                                <rect key="frame" x="38" y="138.5" width="299" height="31.5"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="26"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -688,7 +686,7 @@ ALL EXERCISES
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="V4q-c3-nti" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YKQ-Xb-ZRx">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.40784313729999999" green="0.67843137249999996" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
@@ -710,16 +708,16 @@ ALL EXERCISES
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar V(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="OiM-fG-XXa">
-                                <rect key="frame" x="30" y="74" width="315" height="60"/>
+                                <rect key="frame" x="30" y="54" width="315" height="60"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONG TONES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DJ9-cc-zNu">
-                                <rect key="frame" x="85" y="152.5" width="205.5" height="43.5"/>
+                                <rect key="frame" x="85" y="132.5" width="205.5" height="43.5"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="36"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIE-69-QBk" userLabel="Record Your Tone">
-                                <rect key="frame" x="30" y="359" width="315" height="110"/>
+                                <rect key="frame" x="30" y="339" width="315" height="110"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECORD YOUR TONE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="vCp-5J-00Q">
                                         <rect key="frame" x="125" y="10" width="185" height="100"/>
@@ -756,7 +754,7 @@ ALL EXERCISES
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal: Try to match  the tone you hear" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giE-e6-cFR">
-                                <rect key="frame" x="103" y="504" width="169.5" height="60"/>
+                                <rect key="frame" x="103" y="484" width="169.5" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="vU8-NV-tT8"/>
                                 </constraints>
@@ -765,7 +763,7 @@ ALL EXERCISES
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gtz-8g-wdS" userLabel="Hear The Tone">
-                                <rect key="frame" x="30" y="229" width="315" height="110"/>
+                                <rect key="frame" x="30" y="209" width="315" height="110"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speaker-with-waves" translatesAutoresizingMaskIntoConstraints="NO" id="hH5-w0-zAM">
                                         <rect key="frame" x="32.5" y="10" width="90" height="90"/>
@@ -841,16 +839,16 @@ ALL EXERCISES
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar V(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="p6T-L8-gMA">
-                                <rect key="frame" x="30" y="74" width="315" height="60"/>
+                                <rect key="frame" x="30" y="54" width="315" height="60"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONG TONES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPu-K2-4tq">
-                                <rect key="frame" x="85" y="162" width="205.5" height="44"/>
+                                <rect key="frame" x="85" y="142" width="205.5" height="44"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="36"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SGB-gj-GcV" userLabel="Badge: Vocal">
-                                <rect key="frame" x="62.5" y="224" width="250" height="200"/>
+                                <rect key="frame" x="62.5" y="204" width="250" height="200"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank-badge" translatesAutoresizingMaskIntoConstraints="NO" id="pMC-Jr-FBa">
                                         <rect key="frame" x="30" y="10" width="180" height="180"/>
@@ -878,7 +876,7 @@ ALL EXERCISES
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELL DONE!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pm-k0-Pt4">
-                                <rect key="frame" x="15.5" y="439" width="344.5" height="70"/>
+                                <rect key="frame" x="15.5" y="419" width="344.5" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="d0y-fk-nue"/>
                                 </constraints>
@@ -887,7 +885,7 @@ ALL EXERCISES
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKQ-Rc-N1y">
-                                <rect key="frame" x="102" y="514" width="171" height="100"/>
+                                <rect key="frame" x="102" y="494" width="171" height="100"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="eUw-eW-RiU"/>
@@ -937,16 +935,16 @@ ALL EXERCISES
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar V(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="t5J-j0-WKI">
-                                <rect key="frame" x="30" y="74" width="315" height="60"/>
+                                <rect key="frame" x="30" y="54" width="315" height="60"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONG TONES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSO-VX-YFQ">
-                                <rect key="frame" x="85" y="162" width="205.5" height="44"/>
+                                <rect key="frame" x="85" y="142" width="205.5" height="44"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="36"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GAE-nK-px7" userLabel="Fail">
-                                <rect key="frame" x="87.5" y="224" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="204" width="200" height="200"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-music" translatesAutoresizingMaskIntoConstraints="NO" id="QOd-uy-F24">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
@@ -965,7 +963,7 @@ ALL EXERCISES
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRY AGAIN!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exL-su-Tij">
-                                <rect key="frame" x="29" y="439" width="317" height="70"/>
+                                <rect key="frame" x="29" y="419" width="317" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="7Oz-uj-9fI"/>
                                 </constraints>
@@ -974,7 +972,7 @@ ALL EXERCISES
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZE-Oa-jpf">
-                                <rect key="frame" x="24" y="509" width="137.5" height="110"/>
+                                <rect key="frame" x="24" y="489" width="137.5" height="110"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="ZDS-Qg-ZWi"/>
@@ -990,7 +988,7 @@ TO TRY AGAIN
                                 </connections>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVQ-05-gC8">
-                                <rect key="frame" x="184.5" y="509" width="176.5" height="110"/>
+                                <rect key="frame" x="184.5" y="489" width="176.5" height="110"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="k0q-uI-WOG"/>
@@ -1048,12 +1046,12 @@ ALL EXERCISES
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar R(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="zma-Qn-Gcb">
-                                <rect key="frame" x="30" y="74" width="315" height="60"/>
+                                <rect key="frame" x="30" y="54" width="315" height="60"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHAKE - IT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vb8-tM-byJ">
-                                <rect key="frame" x="103" y="162" width="169" height="44"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="36"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="100" y="142" width="175" height="44"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="36"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sO-Kd-xSt">
@@ -1067,11 +1065,11 @@ ALL EXERCISES
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Countdown" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTc-DI-4Tc">
                                 <rect key="frame" x="144" y="608" width="87" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehh-iq-q2r" userLabel="Button_Hear_View">
-                                <rect key="frame" x="67.5" y="225" width="240" height="240"/>
+                                <rect key="frame" x="67.5" y="205" width="240" height="240"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzp-Op-qOZ" userLabel="Start Button">
                                         <rect key="frame" x="10" y="10" width="220" height="220"/>
@@ -1079,7 +1077,7 @@ ALL EXERCISES
                                             <action selector="startButtonPressed:" destination="5Nc-Ib-Y05" eventType="touchUpInside" id="lPs-si-vj2"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Button_Hear" translatesAutoresizingMaskIntoConstraints="NO" id="jUC-ri-0yK">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Button_Hear" translatesAutoresizingMaskIntoConstraints="NO" id="jUC-ri-0yK">
                                         <rect key="frame" x="10" y="10" width="220" height="220"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="220" id="FDW-w7-aXs"/>
@@ -1099,6 +1097,27 @@ ALL EXERCISES
                                     <constraint firstItem="kzp-Op-qOZ" firstAttribute="centerY" secondItem="ehh-iq-q2r" secondAttribute="centerY" id="XTs-4T-wYC"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Misses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cs-sN-xlS">
+                                <rect key="frame" x="166" y="477" width="53" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Off Tempo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Mq-mG-Lhd">
+                                <rect key="frame" x="264" y="477" width="81" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBg-bi-IPA">
+                                <rect key="frame" x="67" y="477" width="31" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1119,6 +1138,10 @@ ALL EXERCISES
                     </view>
                     <connections>
                         <outlet property="countdownLabel" destination="vTc-DI-4Tc" id="a1u-rS-Uuc"/>
+                        <outlet property="hitsLabel" destination="uBg-bi-IPA" id="J0M-NF-r6D"/>
+                        <outlet property="imgvAvatar" destination="jUC-ri-0yK" id="fvb-gT-3PK"/>
+                        <outlet property="missesLabel" destination="5cs-sN-xlS" id="Use-M2-pzC"/>
+                        <outlet property="offTempoLabel" destination="7Mq-mG-Lhd" id="B9h-El-AAA"/>
                         <outlet property="startButton" destination="kzp-Op-qOZ" id="4Q0-6g-19S"/>
                         <segue destination="gNP-lg-om2" kind="show" identifier="segue_gotoSuccessShakeIt" id="4nu-ST-PWk"/>
                         <segue destination="fVI-98-B3F" kind="show" identifier="segue_gotoFailShakeIt" id="CoI-Ux-Lq8"/>
@@ -1137,10 +1160,10 @@ ALL EXERCISES
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar R(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="cRd-2b-VY9">
-                                <rect key="frame" x="30" y="74" width="315" height="60"/>
+                                <rect key="frame" x="30" y="54" width="315" height="60"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fme-p7-uwf" userLabel="Badge: Rhythm">
-                                <rect key="frame" x="62.5" y="224" width="250" height="200"/>
+                                <rect key="frame" x="62.5" y="204" width="250" height="200"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank-badge" translatesAutoresizingMaskIntoConstraints="NO" id="S8a-JL-6b7">
                                         <rect key="frame" x="30" y="10" width="180" height="180"/>
@@ -1168,16 +1191,16 @@ ALL EXERCISES
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELL DONE!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fR-pR-iWA">
-                                <rect key="frame" x="15" y="439" width="345" height="70"/>
+                                <rect key="frame" x="15" y="419" width="345" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="isP-PE-MVK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="60"/>
-                                <color key="textColor" red="0.1647058824" green="0.4823529412" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.14855983853340149" green="0.48609346151351929" blue="0.5412057638168335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWQ-cn-U5W">
-                                <rect key="frame" x="102" y="514" width="171" height="100"/>
+                                <rect key="frame" x="102" y="494" width="171" height="100"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="qVB-rc-dPp"/>
@@ -1192,9 +1215,9 @@ ALL EXERCISES
                                 </connections>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHAKE - IT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRY-tL-r5q">
-                                <rect key="frame" x="103" y="162" width="169" height="44"/>
+                                <rect key="frame" x="103" y="142" width="169" height="44"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="36"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1233,10 +1256,10 @@ ALL EXERCISES
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar R(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="3dB-64-WaU">
-                                <rect key="frame" x="30" y="74" width="315" height="60"/>
+                                <rect key="frame" x="30" y="54" width="315" height="60"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRY AGAIN!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCZ-cB-WuI">
-                                <rect key="frame" x="29" y="439" width="317" height="70"/>
+                                <rect key="frame" x="29" y="419" width="317" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="YbC-Mn-YBG"/>
                                 </constraints>
@@ -1245,7 +1268,7 @@ ALL EXERCISES
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oe5-o9-g8X">
-                                <rect key="frame" x="24" y="509" width="137.5" height="110"/>
+                                <rect key="frame" x="24" y="489" width="137.5" height="110"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="KQw-VB-d3u"/>
@@ -1261,7 +1284,7 @@ TO TRY AGAIN
                                 </connections>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDw-ue-KNp">
-                                <rect key="frame" x="184.5" y="509" width="176.5" height="110"/>
+                                <rect key="frame" x="184.5" y="489" width="176.5" height="110"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="P8s-hv-pR4"/>
@@ -1277,13 +1300,13 @@ ALL EXERCISES
                                 </connections>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHAKE - IT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AgV-d3-dPV">
-                                <rect key="frame" x="103" y="162" width="169" height="44"/>
+                                <rect key="frame" x="103" y="142" width="169" height="44"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="36"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Plj-co-r7u" userLabel="Fail">
-                                <rect key="frame" x="87.5" y="224" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="204" width="200" height="200"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-music" translatesAutoresizingMaskIntoConstraints="NO" id="dJr-ux-hHb">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
@@ -1344,14 +1367,14 @@ ALL EXERCISES
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Coming Soon !!!" translatesAutoresizingMaskIntoConstraints="NO" id="NUz-95-LeI">
-                                <rect key="frame" x="9" y="201" width="357" height="128"/>
+                                <rect key="frame" x="9" y="181" width="357" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="357" id="Q5w-td-mL6"/>
                                     <constraint firstAttribute="height" constant="128" id="zey-ya-lhQ"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwM-jK-5Fz">
-                                <rect key="frame" x="33" y="377" width="309" height="103"/>
+                                <rect key="frame" x="33" y="357" width="309" height="103"/>
                                 <color key="backgroundColor" red="0.93870705369999996" green="0.70375639199999995" blue="0.2574125826" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="103" id="Fz4-ea-ziY"/>
