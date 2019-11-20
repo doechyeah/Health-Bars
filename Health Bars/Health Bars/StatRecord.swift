@@ -56,13 +56,9 @@ class StatRecord {
 //        }
     }
     
-    func updateScore(result: Int) -> Int {
-        if result > 0 {
-            self.score += result
-            self.attempts += 1
-            return 0
-        }
-        return -1
+    func updateScore(result: Int) {
+        self.score += result
+        self.attempts += 1
     }
     
 }
