@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C4D2F1F23860FFE00426065 /* AudioKitConductor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D2F1E23860FFE00426065 /* AudioKitConductor.swift */; };
 		0C524149237EA10200CA2C98 /* songTest_HardBass.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C524148237EA10100CA2C98 /* songTest_HardBass.json */; };
 		0C7B24172379F62600E59378 /* ShakeIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B24162379F62600E59378 /* ShakeIt.swift */; };
 		0C7B241A2379F94F00E59378 /* songTest_Hardbass.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0C7B24192379F94F00E59378 /* songTest_Hardbass.mp3 */; };
@@ -144,6 +145,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0C4D2F1E23860FFE00426065 /* AudioKitConductor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioKitConductor.swift; sourceTree = "<group>"; };
 		0C524148237EA10100CA2C98 /* songTest_HardBass.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = songTest_HardBass.json; sourceTree = "<group>"; };
 		0C7B24162379F62600E59378 /* ShakeIt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeIt.swift; sourceTree = "<group>"; };
 		0C7B24192379F94F00E59378 /* songTest_Hardbass.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = songTest_Hardbass.mp3; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				0CA377AD23694264001DAB00 /* AppDelegate.swift */,
+				0C4D2F1E23860FFE00426065 /* AudioKitConductor.swift */,
 				0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */,
 				0CCB43802378CC6F00FCC3DE /* AllExercises.swift */,
 				0CA377AF23694264001DAB00 /* LongTones.swift */,
@@ -613,6 +616,7 @@
 				0CA377B023694264001DAB00 /* LongTones.swift in Sources */,
 				0CA377DE23694484001DAB00 /* Fail.swift in Sources */,
 				0CA377DC23694427001DAB00 /* Success.swift in Sources */,
+				0C4D2F1F23860FFE00426065 /* AudioKitConductor.swift in Sources */,
 				0CA377AE23694264001DAB00 /* AppDelegate.swift in Sources */,
 				0CF4103B236CA3BE00F11054 /* ComingSoon.swift in Sources */,
 			);
