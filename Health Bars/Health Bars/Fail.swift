@@ -19,7 +19,21 @@ import UIKit
 
 class Fail: UIViewController {
     
-    var activity: Activity = ._default
+    var activity: Activity!
+    
+    @IBAction func swipeLeftGesture(_ sender: UISwipeGestureRecognizer) {
+        switch activity {
+        case .LongTones:
+            performSegue(withIdentifier: "segue_unwindtoLongTones", sender: self)
+        case .ShakeIt:
+            performSegue(withIdentifier: "segue_unwindtoShakeIt", sender: self)
+        case .GuessThatInstrument:
+            performSegue(withIdentifier: "segue_unwindtoGTI", sender: self)
+            
+        case ._default:
+            NSLog("activity is _default in Fail screen, this should never happen")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

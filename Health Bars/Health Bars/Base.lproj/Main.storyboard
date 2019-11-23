@@ -468,13 +468,11 @@
                         <outlet property="instrumentImage3" destination="9MS-WC-gF5" id="wNU-ow-fQc"/>
                         <outlet property="instrumentImage4" destination="uFg-Fi-YXO" id="4Cq-Lc-utZ"/>
                         <outlet property="playInstrumentButton" destination="1ZV-Zh-9Jm" id="N1P-9d-5ww"/>
-                        <segue destination="uOh-Xv-v8G" kind="show" identifier="segue_gotoFailGuessThatInstrument" id="gKE-bx-ex0"/>
-                        <segue destination="3Wv-aI-voD" kind="show" identifier="segue_gotoSuccessGuessThatInstrument" id="wuT-JJ-3aw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Q9-Hu-s6l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3116" y="1897.6011994002999"/>
+            <point key="canvasLocation" x="4950" y="1307"/>
         </scene>
         <!--Guess That Instrument Success-->
         <scene sceneID="3wT-EP-xBl">
@@ -485,16 +483,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar M(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="dWn-4T-URu">
-                                <rect key="frame" x="30" y="54" width="315" height="60"/>
+                                <rect key="frame" x="30" y="10" width="315" height="60"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GUESS THAT INSTRUMENT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="bol-nu-vGQ">
-                                <rect key="frame" x="38" y="138.5" width="299" height="31.5"/>
+                                <rect key="frame" x="38" y="94.5" width="299" height="31.5"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="26"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBZ-yU-NWU" userLabel="Badge: Memory">
-                                <rect key="frame" x="62.5" y="194" width="250" height="200"/>
+                                <rect key="frame" x="62.5" y="150" width="250" height="200"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank-badge" translatesAutoresizingMaskIntoConstraints="NO" id="qDs-Xd-fzk">
                                         <rect key="frame" x="30" y="10" width="180" height="180"/>
@@ -522,7 +520,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELL DONE!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MxH-b6-JyC">
-                                <rect key="frame" x="15" y="409" width="345" height="70"/>
+                                <rect key="frame" x="15" y="365" width="345" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="qxX-61-2ob"/>
                                 </constraints>
@@ -531,7 +529,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hhb-kL-RgZ">
-                                <rect key="frame" x="102" y="484" width="171" height="100"/>
+                                <rect key="frame" x="102" y="440" width="171" height="100"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="am9-4z-Smu"/>
@@ -581,10 +579,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar M(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="9dn-3T-lyM">
-                                <rect key="frame" x="30" y="54" width="315" height="60"/>
+                                <rect key="frame" x="30" y="10" width="315" height="60"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a8f-Ia-aHD" userLabel="Fail">
-                                <rect key="frame" x="87.5" y="194" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="150" width="200" height="200"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-music" translatesAutoresizingMaskIntoConstraints="NO" id="e1N-xl-8Ez">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
@@ -603,13 +601,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRY AGAIN!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKg-I2-cBH">
-                                <rect key="frame" x="29" y="408" width="317" height="72"/>
+                                <rect key="frame" x="29" y="364" width="317" height="72"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="60"/>
                                 <color key="textColor" red="0.67843137249999996" green="0.1647058824" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTP-PE-6Af">
-                                <rect key="frame" x="24" y="479" width="137.5" height="110"/>
+                                <rect key="frame" x="24" y="435" width="137.5" height="110"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="bq5-fl-dG8"/>
@@ -625,7 +623,7 @@ TO TRY AGAIN
                                 </connections>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRt-1B-apU">
-                                <rect key="frame" x="184.5" y="479" width="176.5" height="110"/>
+                                <rect key="frame" x="184.5" y="435" width="176.5" height="110"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="A7y-bv-Nvh"/>
@@ -641,7 +639,7 @@ ALL EXERCISES
                                 </connections>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GUESS THAT INSTRUMENT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2hb-qw-dFm">
-                                <rect key="frame" x="38" y="138.5" width="299" height="31.5"/>
+                                <rect key="frame" x="38" y="94.5" width="299" height="31.5"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="26"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -866,13 +864,11 @@ ALL EXERCISES
                         <outlet property="recordYourToneButton" destination="uJj-jq-fdf" id="ETp-us-Yvm"/>
                         <outlet property="toneToMatchStaticText" destination="cjs-mp-QBV" id="Nnq-WO-yNR"/>
                         <outlet property="toneToMatchText" destination="jcY-Qj-xxw" id="1KM-0b-NTN"/>
-                        <segue destination="ppP-Zd-mrb" kind="show" identifier="segue_gotoSuccessLongTones" id="FZE-vD-14u"/>
-                        <segue destination="ZsA-dk-8fh" kind="show" identifier="segue_gotoFailLongTones" id="fD7-on-MjQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="la6-3Q-onk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4904.8000000000002" y="494.30284857571218"/>
+            <point key="canvasLocation" x="4950" y="-349"/>
         </scene>
         <!--Long Tones Success-->
         <scene sceneID="iNs-hy-kJi">
@@ -883,16 +879,16 @@ ALL EXERCISES
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar V(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="p6T-L8-gMA">
-                                <rect key="frame" x="30" y="54" width="315" height="60"/>
+                                <rect key="frame" x="30" y="10" width="315" height="60"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONG TONES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPu-K2-4tq">
-                                <rect key="frame" x="85" y="142" width="205.5" height="44"/>
+                                <rect key="frame" x="85" y="98" width="205.5" height="44"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="36"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SGB-gj-GcV" userLabel="Badge: Vocal">
-                                <rect key="frame" x="62.5" y="204" width="250" height="200"/>
+                                <rect key="frame" x="62.5" y="160" width="250" height="200"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank-badge" translatesAutoresizingMaskIntoConstraints="NO" id="pMC-Jr-FBa">
                                         <rect key="frame" x="30" y="10" width="180" height="180"/>
@@ -920,7 +916,7 @@ ALL EXERCISES
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELL DONE!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pm-k0-Pt4">
-                                <rect key="frame" x="15.5" y="419" width="344.5" height="70"/>
+                                <rect key="frame" x="15.5" y="375" width="344.5" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="d0y-fk-nue"/>
                                 </constraints>
@@ -929,7 +925,7 @@ ALL EXERCISES
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKQ-Rc-N1y">
-                                <rect key="frame" x="102" y="494" width="171" height="100"/>
+                                <rect key="frame" x="102" y="450" width="171" height="100"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="eUw-eW-RiU"/>
@@ -968,7 +964,7 @@ ALL EXERCISES
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5775" y="158"/>
+            <point key="canvasLocation" x="2612" y="1559"/>
         </scene>
         <!--Long Tones Fail-->
         <scene sceneID="prg-jn-POc">
@@ -979,16 +975,16 @@ ALL EXERCISES
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar V(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="t5J-j0-WKI">
-                                <rect key="frame" x="30" y="54" width="315" height="60"/>
+                                <rect key="frame" x="30" y="10" width="315" height="60"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONG TONES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSO-VX-YFQ">
-                                <rect key="frame" x="85" y="142" width="205.5" height="44"/>
+                                <rect key="frame" x="85" y="98" width="205.5" height="44"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="36"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GAE-nK-px7" userLabel="Fail">
-                                <rect key="frame" x="87.5" y="204" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="160" width="200" height="200"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-music" translatesAutoresizingMaskIntoConstraints="NO" id="QOd-uy-F24">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
@@ -1007,7 +1003,7 @@ ALL EXERCISES
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRY AGAIN!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exL-su-Tij">
-                                <rect key="frame" x="29" y="419" width="317" height="70"/>
+                                <rect key="frame" x="29" y="375" width="317" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="7Oz-uj-9fI"/>
                                 </constraints>
@@ -1016,7 +1012,7 @@ ALL EXERCISES
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZE-Oa-jpf">
-                                <rect key="frame" x="24" y="489" width="137.5" height="110"/>
+                                <rect key="frame" x="24" y="445" width="137.5" height="110"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="ZDS-Qg-ZWi"/>
@@ -1032,7 +1028,7 @@ TO TRY AGAIN
                                 </connections>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVQ-05-gC8">
-                                <rect key="frame" x="184.5" y="489" width="176.5" height="110"/>
+                                <rect key="frame" x="184.5" y="445" width="176.5" height="110"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="k0q-uI-WOG"/>
@@ -1079,7 +1075,7 @@ ALL EXERCISES
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5775" y="833"/>
+            <point key="canvasLocation" x="2612" y="2235"/>
         </scene>
         <!--Shake It-->
         <scene sceneID="zVf-sY-yRD">
@@ -1187,13 +1183,13 @@ ALL EXERCISES
                         <outlet property="missesLabel" destination="5cs-sN-xlS" id="Use-M2-pzC"/>
                         <outlet property="offTempoLabel" destination="7Mq-mG-Lhd" id="B9h-El-AAA"/>
                         <outlet property="startButton" destination="kzp-Op-qOZ" id="4Q0-6g-19S"/>
-                        <segue destination="gNP-lg-om2" kind="show" identifier="segue_gotoSuccessShakeIt" id="4nu-ST-PWk"/>
-                        <segue destination="fVI-98-B3F" kind="show" identifier="segue_gotoFailShakeIt" id="CoI-Ux-Lq8"/>
+                        <segue destination="NeQ-Ht-Zxa" kind="show" identifier="segue_gotoSuccessShakeIt" id="O95-dR-ved"/>
+                        <segue destination="mXv-aH-Opl" kind="show" identifier="segue_gotoFailShakeIt" id="ACt-Xz-HpB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="937-yB-od7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4949.6000000000004" y="1896.7016491754125"/>
+            <point key="canvasLocation" x="4950" y="495"/>
         </scene>
         <!--Shake It Success-->
         <scene sceneID="M9C-GZ-DHm">
@@ -1204,10 +1200,10 @@ ALL EXERCISES
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar R(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="cRd-2b-VY9">
-                                <rect key="frame" x="30" y="54" width="315" height="60"/>
+                                <rect key="frame" x="30" y="10" width="315" height="60"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fme-p7-uwf" userLabel="Badge: Rhythm">
-                                <rect key="frame" x="62.5" y="204" width="250" height="200"/>
+                                <rect key="frame" x="62.5" y="160" width="250" height="200"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank-badge" translatesAutoresizingMaskIntoConstraints="NO" id="S8a-JL-6b7">
                                         <rect key="frame" x="30" y="10" width="180" height="180"/>
@@ -1235,7 +1231,7 @@ ALL EXERCISES
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELL DONE!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fR-pR-iWA">
-                                <rect key="frame" x="15" y="419" width="345" height="70"/>
+                                <rect key="frame" x="15" y="375" width="345" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="isP-PE-MVK"/>
                                 </constraints>
@@ -1244,7 +1240,7 @@ ALL EXERCISES
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWQ-cn-U5W">
-                                <rect key="frame" x="102" y="494" width="171" height="100"/>
+                                <rect key="frame" x="102" y="450" width="171" height="100"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="qVB-rc-dPp"/>
@@ -1259,7 +1255,7 @@ ALL EXERCISES
                                 </connections>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHAKE - IT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRY-tL-r5q">
-                                <rect key="frame" x="103" y="142" width="169" height="44"/>
+                                <rect key="frame" x="103" y="98" width="169" height="44"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="36"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1289,7 +1285,7 @@ ALL EXERCISES
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5774" y="1560"/>
+            <point key="canvasLocation" x="3303" y="1558"/>
         </scene>
         <!--Shake It Fail-->
         <scene sceneID="g6d-eZ-Iyf">
@@ -1300,10 +1296,10 @@ ALL EXERCISES
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar R(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="3dB-64-WaU">
-                                <rect key="frame" x="30" y="54" width="315" height="60"/>
+                                <rect key="frame" x="30" y="10" width="315" height="60"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRY AGAIN!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCZ-cB-WuI">
-                                <rect key="frame" x="29" y="419" width="317" height="70"/>
+                                <rect key="frame" x="29" y="375" width="317" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="YbC-Mn-YBG"/>
                                 </constraints>
@@ -1312,7 +1308,7 @@ ALL EXERCISES
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oe5-o9-g8X">
-                                <rect key="frame" x="24" y="489" width="137.5" height="110"/>
+                                <rect key="frame" x="24" y="445" width="137.5" height="110"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="KQw-VB-d3u"/>
@@ -1328,7 +1324,7 @@ TO TRY AGAIN
                                 </connections>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDw-ue-KNp">
-                                <rect key="frame" x="184.5" y="489" width="176.5" height="110"/>
+                                <rect key="frame" x="184.5" y="445" width="176.5" height="110"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="P8s-hv-pR4"/>
@@ -1344,13 +1340,13 @@ ALL EXERCISES
                                 </connections>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHAKE - IT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AgV-d3-dPV">
-                                <rect key="frame" x="103" y="142" width="169" height="44"/>
+                                <rect key="frame" x="103" y="98" width="169" height="44"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="36"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Plj-co-r7u" userLabel="Fail">
-                                <rect key="frame" x="87.5" y="204" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="160" width="200" height="200"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-music" translatesAutoresizingMaskIntoConstraints="NO" id="dJr-ux-hHb">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
@@ -1400,7 +1396,7 @@ ALL EXERCISES
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5774" y="2235"/>
+            <point key="canvasLocation" x="3302" y="2235"/>
         </scene>
         <!--Coming Soon-->
         <scene sceneID="Zpx-c6-PMR">
@@ -1447,6 +1443,224 @@ ALL EXERCISES
                 <exit id="UG3-Xq-uMg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2172" y="-869"/>
+        </scene>
+        <!--Success-->
+        <scene sceneID="V3k-C2-yrV">
+            <objects>
+                <viewController id="NeQ-Ht-Zxa" userLabel="Success" customClass="Success" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h5a-Gb-Rdu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar V(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="M8C-u1-HDz">
+                                <rect key="frame" x="30" y="54" width="315" height="60"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONG TONES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHq-kW-tdr">
+                                <rect key="frame" x="85" y="142" width="205.5" height="44"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="36"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XEN-fc-wR8" userLabel="Badge: Vocal">
+                                <rect key="frame" x="62.5" y="204" width="250" height="200"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank-badge" translatesAutoresizingMaskIntoConstraints="NO" id="C60-Cg-r4M">
+                                        <rect key="frame" x="30" y="10" width="180" height="180"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="180" id="kfP-iw-sFE"/>
+                                            <constraint firstAttribute="width" constant="180" id="w0s-6p-GPu"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="microphone" translatesAutoresizingMaskIntoConstraints="NO" id="Z0g-wu-CzA">
+                                        <rect key="frame" x="60" y="35" width="120" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="J2p-wE-Hog"/>
+                                            <constraint firstAttribute="height" constant="120" id="hAe-jt-4uR"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="7bV-Iy-u8G"/>
+                                    <constraint firstItem="Z0g-wu-CzA" firstAttribute="leading" secondItem="XEN-fc-wR8" secondAttribute="leading" constant="60" id="Sln-2R-xP7"/>
+                                    <constraint firstAttribute="height" constant="200" id="dis-xB-FLn"/>
+                                    <constraint firstItem="C60-Cg-r4M" firstAttribute="leading" secondItem="XEN-fc-wR8" secondAttribute="leading" constant="30" id="e1P-vf-p7A"/>
+                                    <constraint firstItem="C60-Cg-r4M" firstAttribute="top" secondItem="XEN-fc-wR8" secondAttribute="top" constant="10" id="jM7-Cu-tpE"/>
+                                    <constraint firstItem="Z0g-wu-CzA" firstAttribute="top" secondItem="XEN-fc-wR8" secondAttribute="top" constant="35" id="n1l-qq-9ET"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELL DONE!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pv9-hs-v8G">
+                                <rect key="frame" x="15.5" y="419" width="344.5" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="cFM-m5-HAO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="60"/>
+                                <color key="textColor" red="0.1647058824" green="0.4823529412" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Akp-gI-Jtf">
+                                <rect key="frame" x="102" y="494" width="171" height="100"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="FYw-Vd-Wem"/>
+                                </constraints>
+                                <string key="text">SWIPE RIGHT FOR ALL EXERCISES
+&gt;&gt;&gt;</string>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="n6F-Cd-hWH" appends="YES" id="KW3-t8-gbV"/>
+                                </connections>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XEN-fc-wR8" firstAttribute="centerY" secondItem="tHq-kW-tdr" secondAttribute="centerY" constant="140" id="4q8-9u-vN6"/>
+                            <constraint firstItem="pv9-hs-v8G" firstAttribute="centerY" secondItem="XEN-fc-wR8" secondAttribute="centerY" constant="150" id="732-Ak-aX9"/>
+                            <constraint firstItem="Akp-gI-Jtf" firstAttribute="centerY" secondItem="pv9-hs-v8G" secondAttribute="centerY" constant="90" id="8gG-Ig-4EV"/>
+                            <constraint firstItem="pv9-hs-v8G" firstAttribute="centerX" secondItem="h5a-Gb-Rdu" secondAttribute="centerX" id="ASP-7Y-ESJ"/>
+                            <constraint firstItem="M8C-u1-HDz" firstAttribute="top" secondItem="qs6-WL-eEk" secondAttribute="top" constant="10" id="Txk-to-VfC"/>
+                            <constraint firstItem="tHq-kW-tdr" firstAttribute="centerY" secondItem="M8C-u1-HDz" secondAttribute="centerY" constant="80" id="Wpb-8j-HKM"/>
+                            <constraint firstItem="Akp-gI-Jtf" firstAttribute="centerX" secondItem="h5a-Gb-Rdu" secondAttribute="centerX" id="X15-in-z0Q"/>
+                            <constraint firstItem="M8C-u1-HDz" firstAttribute="centerX" secondItem="h5a-Gb-Rdu" secondAttribute="centerX" id="cKG-rf-tTl"/>
+                            <constraint firstItem="tHq-kW-tdr" firstAttribute="centerX" secondItem="h5a-Gb-Rdu" secondAttribute="centerX" id="gGK-En-YTw"/>
+                            <constraint firstItem="XEN-fc-wR8" firstAttribute="centerX" secondItem="h5a-Gb-Rdu" secondAttribute="centerX" id="xmI-ac-ifJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qs6-WL-eEk"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ko8-zB-nAv"/>
+                    <connections>
+                        <outlet property="activityIconImage" destination="Z0g-wu-CzA" id="hzO-Yr-6wx"/>
+                        <outlet property="activityNameLabel" destination="tHq-kW-tdr" id="a8e-l4-4A8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fSC-K1-s5Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="vPg-ol-N8Q" userLabel="Exit" sceneMemberID="exit"/>
+                <swipeGestureRecognizer direction="right" id="n6F-Cd-hWH" userLabel="right">
+                    <connections>
+                        <segue destination="vPg-ol-N8Q" kind="unwind" unwindAction="unwindToAllExercises:" id="yFJ-1W-sf2"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="6364" y="102"/>
+        </scene>
+        <!--Fail-->
+        <scene sceneID="g9J-vz-4jV">
+            <objects>
+                <viewController id="mXv-aH-Opl" userLabel="Fail" customClass="Fail" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YDx-L8-NDW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar V(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="Ueo-Vi-gbh">
+                                <rect key="frame" x="30" y="54" width="315" height="60"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONG TONES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8h-LG-sT3">
+                                <rect key="frame" x="85" y="142" width="205.5" height="44"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="36"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9um-Ak-FHJ" userLabel="Fail">
+                                <rect key="frame" x="87.5" y="204" width="200" height="200"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-music" translatesAutoresizingMaskIntoConstraints="NO" id="bJO-MB-cLi">
+                                        <rect key="frame" x="10" y="10" width="180" height="180"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="180" id="7KF-zp-XbV"/>
+                                            <constraint firstAttribute="width" constant="180" id="oe5-l4-Zo4"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="21U-3c-lgK"/>
+                                    <constraint firstItem="bJO-MB-cLi" firstAttribute="top" secondItem="9um-Ak-FHJ" secondAttribute="top" constant="10" id="VpF-Ql-9Bd"/>
+                                    <constraint firstAttribute="width" constant="200" id="amR-Uy-RtD"/>
+                                    <constraint firstItem="bJO-MB-cLi" firstAttribute="leading" secondItem="9um-Ak-FHJ" secondAttribute="leading" constant="10" id="uiJ-vD-TGd"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRY AGAIN!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56G-1l-BDM">
+                                <rect key="frame" x="29" y="419" width="317" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="JaY-12-mPY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="60"/>
+                                <color key="textColor" red="0.67843137249999996" green="0.1647058824" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DcK-Hl-8Nn">
+                                <rect key="frame" x="24" y="489" width="137.5" height="110"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="uhr-Vz-6IX"/>
+                                </constraints>
+                                <string key="text">SWIPE LEFT 
+TO TRY AGAIN
+&lt;&lt;&lt;</string>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="7rV-Mq-ibg" appends="YES" id="lnx-RF-sxN"/>
+                                </connections>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bc2-BT-gp6">
+                                <rect key="frame" x="184.5" y="489" width="176.5" height="110"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="r2g-xZ-bJz"/>
+                                </constraints>
+                                <string key="text">SWIPE RIGHT FOR 
+ALL EXERCISES
+&gt;&gt;&gt;</string>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="KYm-rc-vNv" appends="YES" id="Snh-6G-X0e"/>
+                                </connections>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Bc2-BT-gp6" firstAttribute="centerY" secondItem="DcK-Hl-8Nn" secondAttribute="centerY" id="11M-ac-UE7"/>
+                            <constraint firstItem="J8h-LG-sT3" firstAttribute="centerX" secondItem="YDx-L8-NDW" secondAttribute="centerX" id="C2K-aS-AXT"/>
+                            <constraint firstItem="Bc2-BT-gp6" firstAttribute="centerX" secondItem="DcK-Hl-8Nn" secondAttribute="centerX" constant="180" id="DFW-IC-cop"/>
+                            <constraint firstItem="56G-1l-BDM" firstAttribute="centerY" secondItem="9um-Ak-FHJ" secondAttribute="centerY" constant="150" id="ICu-nD-L7N"/>
+                            <constraint firstItem="DcK-Hl-8Nn" firstAttribute="centerX" secondItem="YDx-L8-NDW" secondAttribute="centerX" constant="-95" id="LaD-oR-zKD"/>
+                            <constraint firstItem="DcK-Hl-8Nn" firstAttribute="centerY" secondItem="56G-1l-BDM" secondAttribute="centerY" constant="90" id="PT8-dl-r6o"/>
+                            <constraint firstItem="Ueo-Vi-gbh" firstAttribute="centerX" secondItem="YDx-L8-NDW" secondAttribute="centerX" id="b9n-8A-9br"/>
+                            <constraint firstItem="9um-Ak-FHJ" firstAttribute="centerY" secondItem="J8h-LG-sT3" secondAttribute="centerY" constant="140" id="me5-Kn-jpb"/>
+                            <constraint firstItem="56G-1l-BDM" firstAttribute="centerX" secondItem="YDx-L8-NDW" secondAttribute="centerX" id="pcF-wK-IK9"/>
+                            <constraint firstItem="9um-Ak-FHJ" firstAttribute="centerX" secondItem="YDx-L8-NDW" secondAttribute="centerX" id="s99-hx-Jvt"/>
+                            <constraint firstItem="Ueo-Vi-gbh" firstAttribute="top" secondItem="PB3-Sh-03q" secondAttribute="top" constant="10" id="uuX-X1-sQi"/>
+                            <constraint firstItem="J8h-LG-sT3" firstAttribute="centerY" secondItem="Ueo-Vi-gbh" secondAttribute="centerY" constant="80" id="xPz-4y-b02"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PB3-Sh-03q"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="95T-B2-OLU"/>
+                    <connections>
+                        <segue destination="f5F-s3-Qla" kind="unwind" identifier="segue_unwindtoLongTones" unwindAction="unwindToLongTones:" id="w1l-j6-ZNm"/>
+                        <segue destination="f5F-s3-Qla" kind="unwind" identifier="segue_unwindtoShakeIt" unwindAction="unwindToShakeIt:" id="eOg-p7-UmZ"/>
+                        <segue destination="f5F-s3-Qla" kind="unwind" identifier="segue_unwindtoGTI" unwindAction="unwindToGTI:" id="zZ4-xm-ie9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M6v-uU-HCg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="f5F-s3-Qla" userLabel="Exit" sceneMemberID="exit"/>
+                <swipeGestureRecognizer direction="left" id="7rV-Mq-ibg" userLabel="left">
+                    <connections>
+                        <action selector="swipeLeftGesture:" destination="mXv-aH-Opl" id="TO5-fp-bYr"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="KYm-rc-vNv" userLabel="right">
+                    <connections>
+                        <segue destination="f5F-s3-Qla" kind="unwind" unwindAction="unwindToAllExercises:" id="65W-KI-Scc"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="6364" y="907"/>
         </scene>
     </scenes>
     <resources>
