@@ -16,6 +16,7 @@
 //  2019-10-28: Added frequency detection and pitch evaluation
 //  2019-10-29: Converted to Xcode 10.3
 //  2019-11-02: Added audio file playback
+//  2019-11-22: Refactored with new AudioKitConductor class
 //
 //  Bugs:
 //  2019-11-03 Frequency detection can be slightly off, however works almost all of the time
@@ -36,6 +37,13 @@ class LongTones: UIViewController {
     let displayTimerInterval = 0.1
     let displayTimerPeriod = 5.0
     let noteSustainPeriodsForSuccess = 10
+    
+    //MARK: Shared AudioKit conductor
+    let conductor = AudioKitConductor.sharedInstance
+    
+    //MARK: Database Score
+    let PDB = ProgClass(playID: "Player1")
+    
     
     //MARK: Outlets
     @IBOutlet weak var hearTheToneButton: UIButton!
@@ -68,17 +76,8 @@ class LongTones: UIViewController {
     var noteSame: Int = -1
     
     //MARK: AudioKit variables
-    var note: AKAudioFile!
-    var notePlayer: AKPlayer!
+    var songFile: AKAudioFile!
     
-    var mic: AKMicrophone!
-    var tracker: AKFrequencyTracker!
-    var bandpassfilter: AKBandPassButterworthFilter!
-    var silence: AKBooster!
-    var mixer: AKMixer!
-    
-    // Database Score
-    let PDB = ProgClass(playID: "Player1")
     
     deinit {
         //debug
@@ -96,7 +95,7 @@ class LongTones: UIViewController {
     }
     
     // called when view appears fully
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         // debug
         NSLog("viewDidAppear()")
         super.viewDidAppear(animated)
@@ -121,14 +120,14 @@ class LongTones: UIViewController {
             recordYourToneButton.isHidden = false
             recordYourToneButton.isEnabled = false
         
-            //toneToMatchStaticText.isHidden = true
-            //toneToMatchText.isHidden = true
-            //toneToMatchText.text = "__"
+            toneToMatchStaticText.isHidden = true
+            toneToMatchText.isHidden = true
+            toneToMatchText.text = "__"
         }
         
-        //currentToneStaticText.isHidden = true
-        //currentToneText.isHidden = true
-        //currentToneText.text = "_"
+        currentToneStaticText.isHidden = true
+        currentToneText.isHidden = true
+        currentToneText.text = "_"
         
         //volumeStaticText.isHidden = true
         //volumeText.isHidden = true
@@ -150,35 +149,6 @@ class LongTones: UIViewController {
         //read pitch from filename/contents
         currentPitchIndexToMatch = randNote
         
-        // AudioKit variables init
-        AKSettings.audioInputEnabled = true
-        // workaround for bug in audiokit: https://github.com/AudioKit/AudioKit/issues/1799#issuecomment-506373157
-        AKSettings.sampleRate = AudioKit.engine.inputNode.inputFormat(forBus: 0).sampleRate
-        
-        mic = AKMicrophone()
-        // filter out non-vocal frequencies
-        bandpassfilter = AKBandPassButterworthFilter(mic, centerFrequency: 800, bandwidth: 750)
-        tracker = AKFrequencyTracker(bandpassfilter)
-        // must to connect the frequencytracker to an output for functionality.
-        silence = AKBooster(tracker, gain: 0)
-        mixer = AKMixer(notePlayer, silence)
-        
-        // set mic input to first (may not be necessary)
-        if let inputs = AudioKit.inputDevices {
-            do {
-                try AudioKit.setInputDevice(inputs[0])
-                try mic.setDevice(inputs[0])
-            } catch {
-                AKLog("failed to get mic")
-            }
-        } else {
-            AKLog("failed to get mic")
-        }
-        
-        AudioKit.output = mixer
-        initAudioSession()
-        // end AudioKit variables init
-        
         // debug
         //NSLog("Done viewDidAppear()")
         
@@ -192,22 +162,8 @@ class LongTones: UIViewController {
         // destroy timers
         destroyTimers()
         
-        do {
-            try AudioKit.stop()
-            mic.stop()
-            AudioKit.disconnectAllInputs()
-            mic.detach()
-            bandpassfilter.detach()
-            tracker.detach()
-            silence.detach()
-            mixer.detach()
-            try AudioKit.shutdown()
-            //debug
-            AudioKit.printConnections()
-            
-        } catch {
-            AKLog("AudioKit did not stop!")
-        }
+        conductor.stop()
+        //conductor.resetPlayer()
         
         // debug
         //NSLog("Done viewDidDisappear()")
@@ -215,9 +171,10 @@ class LongTones: UIViewController {
     
     @IBAction func hearTheToneButtonPressed(_ sender: UIButton) {
         lockButtons()
-        notePlayer.play(from: 0.0)
-        //unhideToneToMatchTexts()
-        //toneToMatchText.text = noteNamesWithSharps[randNote]
+        conductor.prerollPlayer(from: 0.0, to: playTonePeriod)
+        conductor.play()
+        unhideToneToMatchTexts()
+        toneToMatchText.text = noteNamesWithSharps[randNote]
         // let note play for 5 seconds
         listenTimer = Timer.scheduledTimer(timeInterval: playTonePeriod, target: self, selector: #selector(LongTones.doneHearTheToneButtonPressed), userInfo: nil, repeats: false)
     }
@@ -225,7 +182,7 @@ class LongTones: UIViewController {
     // start recording to match the pitch
     @IBAction func recordYourToneButtonPressed(_ sender: UIButton) {
         lockButtons()
-        //unhideRecordTexts()
+        unhideRecordTexts()
         // call updateUI every 0.1 seconds
         displayTimer = Timer.scheduledTimer(timeInterval: displayTimerInterval, target: self, selector: #selector(LongTones.updateUI), userInfo: nil, repeats: true)
         //displayTimer.tolerance = 0.1
@@ -242,7 +199,7 @@ class LongTones: UIViewController {
             listenTimer.invalidate()
             listenTimer = nil
         }
-        notePlayer.stop()
+        conductor.stop()
         unlockButtons()
     }
     
@@ -262,11 +219,11 @@ class LongTones: UIViewController {
         
         var matched: Bool = false
         
-        if tracker.amplitude > 0.1 {
+        if conductor.tracker.amplitude > 0.1 {
             
-            let (_, index) = findPitchFromFrequency(Double(tracker.frequency))
+            let (_, index) = findPitchFromFrequency(Double(conductor.tracker.frequency))
             
-            //currentToneText.text = noteNamesWithSharps[index]
+            currentToneText.text = noteNamesWithSharps[index]
             
             matched = matchPitch(index)
         }
@@ -385,22 +342,12 @@ class LongTones: UIViewController {
  
     //initializes the audio file to play
     func initPlayer() {
+        NSLog("Long Tones initPlayer()")
         do {
-            try note = AKAudioFile(readFileName: noteNamesWithSharps[randNote]+".mp3", baseDir: .resources)
-            notePlayer = AKPlayer(audioFile: note)
+            try songFile = AKAudioFile(readFileName: noteNamesWithSharps[randNote]+".mp3", baseDir: .resources)
+            conductor.loadFile(my_file: songFile)
         } catch {
-            //error
-        }
-    }
-    
-    //initializes audio session to play audio on device speakers
-    func initAudioSession() {
-        do {
-            try AKSettings.session.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.mixWithOthers)
-            try AKSettings.session.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
-            try AudioKit.start()
-        } catch {
-            //error
+            NSLog("error in initPlayer()")
         }
     }
 }

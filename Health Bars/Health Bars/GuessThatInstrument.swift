@@ -8,20 +8,33 @@
 //  Developers:
 //  Alvin David
 //  Trevor Chow
+//  Michael Lin
 //
 //  Copyright © 2019 Team Rhythm. All rights reserved.
 //
 //  Changelog:
 //  2019-11-14: Created
+//  2019-11-22: Refactored with new AudioKitConductor class
 //
-// Bugs:
-// 11-18-2019: If unable to access Audio then the app crashes.
+//  Bugs:
+//  2019-11-18: If unable to access Audio then the app crashes.
 
 
 import UIKit
 import AudioKit
 
 class GuessThatInstrument: UIViewController {
+    
+    //MARK: Shared AudioKit conductor
+    let conductor = AudioKitConductor.sharedInstance
+    
+    //MARK: Database class
+    let PDB = ProgClass(playID: "Player1")
+    
+    //MARK: Constants
+    let instrumentNames = ["clarinet","flute","sax","snare","trombone","trumpet","violin","piano","bells"]
+    
+    //MARK: Outlets
     @IBOutlet weak var playInstrumentButton: UIButton!
     @IBOutlet weak var instrumentButton1: UIButton!
     @IBOutlet weak var instrumentButton2: UIButton!
@@ -33,8 +46,7 @@ class GuessThatInstrument: UIViewController {
     @IBOutlet weak var instrumentImage3: UIImageView!
     @IBOutlet weak var instrumentImage4: UIImageView!
     
-    let instrumentNames = ["clarinet","flute","sax","snare","trombone","trumpet","violin","piano","bells"]
-    
+    //MARK: Game variables
     var segueKeepSameinstrument: Bool!
     var randInstrumentNumber: Int!
     var correctInstrumentNumber: Int!
@@ -43,16 +55,14 @@ class GuessThatInstrument: UIViewController {
     
     //MARK: Audio Player Variables
     var instrument: AKAudioFile!
-    var instrumentPlayer: AKAudioPlayer!
-    
-    let PDB = ProgClass(playID: "Player1")
+    //var instrumentPlayer: AKAudioPlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //load for the first time in memory
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
@@ -76,11 +86,10 @@ class GuessThatInstrument: UIViewController {
         instrumentImage4.image = UIImage(named: randInstruments[3])
         
         initPlayer()
-        initAudioSession()
     }
     
     override func viewDidDisappear(_ animated: Bool){
-        instrumentPlayer.stop()
+        conductor.stop()
         
         do {
             try AudioKit.stop()
@@ -93,7 +102,7 @@ class GuessThatInstrument: UIViewController {
     @IBAction func unwindToGTI(_ unwindSegue: UIStoryboardSegue) {}
     
     @IBAction func playInstrumentButtonPressed(_ sender: UIButton) {
-        instrumentPlayer.play(from: 0.0)
+        conductor.play()
         
     }
     
@@ -141,24 +150,10 @@ class GuessThatInstrument: UIViewController {
     func initPlayer() {
         do {
             try instrument = AKAudioFile(readFileName: correctInstrumentString+".mp3", baseDir: .resources)
-            try instrumentPlayer = AKAudioPlayer(file: instrument!)
+            conductor.loadFile(my_file: instrument)
         } catch {
             //error
         }
     }
-    
-    
-    func initAudioSession() {
-        do {
-            // workaround for bug in audiokit: https://github.com/AudioKit/AudioKit/issues/1799#issuecomment-506373157
-            AKSettings.sampleRate = AudioKit.engine.inputNode.inputFormat(forBus: 0).sampleRate
-            AudioKit.output = instrumentPlayer
-            try AKSettings.session.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.mixWithOthers)
-            try AKSettings.session.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
-            try AudioKit.start()
-        } catch {
-            //error
-        }
-}
 
 }

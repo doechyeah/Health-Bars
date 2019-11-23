@@ -14,6 +14,7 @@
 //  Changelog:
 //  2019-11-05: Created
 //  2019-11-14: Added asynchronous timers
+//  2019-11-22: Refactored with new AudioKitConductor class
 //
 //  Bugs:
 //  2019-11-15: NSTimer will drift slightly on simulator, results in accuracy drift, should not matter with shorter song durations
@@ -27,12 +28,17 @@ import AudioKit
 
 class ShakeIt: UIViewController {
 
-
     //MARK: Constants
     let beatMatchRatioForSuccess: Double = 0.5
     // tolerance of accuracy of shake to beat as percentage of beat period, from center to edge (not negative to positive edge)
     let shakeAccuracyToleranceRatio: Double = 0.3
     let countdownLength: Int = 3
+    
+    //MARK: Shared AudioKit conductor
+    let conductor = AudioKitConductor.sharedInstance
+    
+    //MARK: Database class
+    let PDB = ProgClass(playID: "Player1")
     
     // Not used currently
     let tempo: [String: Int] = ["Grave": 25,
@@ -44,8 +50,6 @@ class ShakeIt: UIViewController {
                                 "Vivace": 156,
                                 "Presto": 168]
 
-    // Database class
-    let PDB = ProgClass(playID: "Player1")
 
     //MARK: Outlets
     @IBOutlet weak var startButton: UIButton!
@@ -98,7 +102,6 @@ class ShakeIt: UIViewController {
     
     //MARK: AudioKit variables
     var songFile: AKAudioFile!
-    var songPlayer: AKPlayer!
     
     deinit {
         //debug
@@ -120,6 +123,13 @@ class ShakeIt: UIViewController {
         }
     }
     
+    // send data with segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? Success {
+            vc.
+        }
+    }
+    
 
     // called when view first gets loaded into memory
     override func viewDidLoad() {
@@ -132,7 +142,7 @@ class ShakeIt: UIViewController {
     }
 
     // called when view appears fully
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         // debug
         //NSLog("viewDidAppear()")
         super.viewDidAppear(animated)
@@ -188,7 +198,6 @@ class ShakeIt: UIViewController {
         // AudioKit variables init
         initPlayer()
         
-        initAudioSession()
         // end AudioKit variables init
         
         if segueKeepSameSong == false {
@@ -209,7 +218,7 @@ class ShakeIt: UIViewController {
         destroyTimers()
         //endGame()
 
-        songPlayer.stop()
+        conductor.stop()
 
         do {
             try AudioKit.stop()
@@ -276,11 +285,11 @@ class ShakeIt: UIViewController {
                                               repeats: true)
 //
         // can also achieve with separate timer
-        songPlayer.completionHandler = {
+        conductor.player.completionHandler = {
             self.endGame()
         }
-        songPlayer.play()
-        NSLog("starttime: \(songPlayer.currentTime)")
+        conductor.player.play()
+        NSLog("starttime: \(conductor.player.currentTime)")
         gameActive = true
     }
     
@@ -364,7 +373,7 @@ class ShakeIt: UIViewController {
         if gameActive {
             // good shake timing window calculation
             shakeLck.lock()
-            let currentTime = songPlayer.currentTime
+            let currentTime = conductor.player.currentTime
             let offset: Double = (currentTime - songStartOffsetTime).remainder(dividingBy: songBeatPeriod)
             print("offset: \(offset)\ncurrent player time: \(currentTime)\nbeatNumAtShake: \(beatNum)")
             
@@ -389,42 +398,24 @@ class ShakeIt: UIViewController {
     
     //initializes the audio file to play
     func initPlayer() {
+        NSLog("Shake It initPlayer()")
         do {
-            
             try songFile = AKAudioFile(forReading: songUrl)
-            songPlayer = AKPlayer(audioFile: songFile)
-            
-            if songPlayer.duration < playSongPeriod {
+            conductor.loadFile(my_file: songFile)
+            if conductor.player.duration < playSongPeriod {
                 // should never happen
-                print("song is \(songPlayer.duration) but playback duration is \(playSongPeriod)")
+                print("song is \(conductor.player.duration) but playback duration is \(playSongPeriod)")
             }
-            
             // less than 0 for play until end
             if songEndTime < 0 {
-                songEndTime = songPlayer.duration
+                songEndTime = conductor.player.duration
             }
             print("song playtime duration: \(songEndTime)")
             
-            // preload file into memory for fast starting
-            songPlayer.preroll(from: songStartOffsetTime, to: songEndTime)
+            conductor.prerollPlayer(from: songStartOffsetTime, to: songEndTime)
             
         } catch {
             NSLog("error in initPlayer()")
-        }
-    }
-    
-    //initializes audio session to play audio on device speakers
-    func initAudioSession() {
-        do {
-            // workaround for bug in audiokit: https://github.com/AudioKit/AudioKit/issues/1799#issuecomment-506373157
-            AKSettings.sampleRate = AudioKit.engine.inputNode.inputFormat(forBus: 0).sampleRate
-            
-            AudioKit.output = songPlayer
-            try AKSettings.session.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.mixWithOthers)
-            try AKSettings.session.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
-            try AudioKit.start()
-        } catch {
-            NSLog("error in initAudioSession()")
         }
     }
     

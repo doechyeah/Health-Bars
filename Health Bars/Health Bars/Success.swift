@@ -19,6 +19,8 @@ import UIKit
 
 class Success: UIViewController {
     
+    var activity: Activity = ._default
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
