@@ -27,7 +27,7 @@
 		0CA377AE23694264001DAB00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377AD23694264001DAB00 /* AppDelegate.swift */; };
 		0CA377B023694264001DAB00 /* LongTones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377AF23694264001DAB00 /* LongTones.swift */; };
 		0CA377B823694266001DAB00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA377B623694266001DAB00 /* LaunchScreen.storyboard */; };
-		0CA377C323694266001DAB00 /* Health_BarsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377C223694266001DAB00 /* Health_BarsTests.swift */; };
+		0CA377C323694266001DAB00 /* Health_BarsTests_LongTones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377C223694266001DAB00 /* Health_BarsTests_LongTones.swift */; };
 		0CA377CE23694266001DAB00 /* Health_BarsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377CD23694266001DAB00 /* Health_BarsUITests.swift */; };
 		0CA377DC23694427001DAB00 /* Success.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377DB23694427001DAB00 /* Success.swift */; };
 		0CA377DE23694484001DAB00 /* Fail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377DD23694484001DAB00 /* Fail.swift */; };
@@ -171,7 +171,7 @@
 		0CA377B723694266001DAB00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CA377B923694266001DAB00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CA377BE23694266001DAB00 /* Health BarsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Health BarsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0CA377C223694266001DAB00 /* Health_BarsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health_BarsTests.swift; sourceTree = "<group>"; };
+		0CA377C223694266001DAB00 /* Health_BarsTests_LongTones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health_BarsTests_LongTones.swift; sourceTree = "<group>"; };
 		0CA377C423694266001DAB00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CA377C923694266001DAB00 /* Health BarsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Health BarsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA377CD23694266001DAB00 /* Health_BarsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health_BarsUITests.swift; sourceTree = "<group>"; };
@@ -294,7 +294,7 @@
 		0CA377C123694266001DAB00 /* Health BarsTests */ = {
 			isa = PBXGroup;
 			children = (
-				0CA377C223694266001DAB00 /* Health_BarsTests.swift */,
+				0CA377C223694266001DAB00 /* Health_BarsTests_LongTones.swift */,
 				0CA377C423694266001DAB00 /* Info.plist */,
 			);
 			path = "Health BarsTests";
@@ -630,7 +630,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CA377C323694266001DAB00 /* Health_BarsTests.swift in Sources */,
+				0CA377C323694266001DAB00 /* Health_BarsTests_LongTones.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
