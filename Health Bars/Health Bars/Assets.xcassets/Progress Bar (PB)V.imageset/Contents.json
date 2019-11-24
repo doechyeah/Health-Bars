@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Progress Bar (PB).png",
+      "filename" : "Progress Bar (PB)V.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Progress Bar (PB)@2x.png",
+      "filename" : "Progress Bar (PB)V@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Progress Bar (PB)@3x.png",
+      "filename" : "Progress Bar (PB)V@3x.png",
       "scale" : "3x"
     }
   ],
