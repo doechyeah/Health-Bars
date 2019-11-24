@@ -164,6 +164,7 @@
 		0C887211236FF9E400B4193A /* F.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = F.mp3; sourceTree = "<group>"; };
 		0C887212236FF9E400B4193A /* F#.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "F#.mp3"; sourceTree = "<group>"; };
 		0C887213236FF9E400B4193A /* A#.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A#.mp3"; sourceTree = "<group>"; };
+		0C91F6BE238A57A100D296DB /* OldPassFailScreens.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OldPassFailScreens.storyboard; sourceTree = "<group>"; };
 		0CA377AA23694263001DAB00 /* Health Bars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Health Bars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA377AD23694264001DAB00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CA377AF23694264001DAB00 /* LongTones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTones.swift; sourceTree = "<group>"; };
@@ -282,6 +283,7 @@
 				0CF23E4D236C1EA400283DFD /* Assets.xcassets */,
 				0CA377B623694266001DAB00 /* LaunchScreen.storyboard */,
 				0CF2CC662381E5E700B4B9DB /* DailyExercises.storyboard */,
+				0C91F6BE238A57A100D296DB /* OldPassFailScreens.storyboard */,
 				0CA377B923694266001DAB00 /* Info.plist */,
 				5CF6801D237F8664005778E3 /* SwiftyJSON.swift */,
 				E179CB4F2381035F00130CDC /* Instruments */,
