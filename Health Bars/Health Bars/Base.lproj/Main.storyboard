@@ -468,6 +468,8 @@
                         <outlet property="instrumentImage3" destination="9MS-WC-gF5" id="wNU-ow-fQc"/>
                         <outlet property="instrumentImage4" destination="uFg-Fi-YXO" id="4Cq-Lc-utZ"/>
                         <outlet property="playInstrumentButton" destination="1ZV-Zh-9Jm" id="N1P-9d-5ww"/>
+                        <segue destination="NeQ-Ht-Zxa" kind="show" identifier="segue_gotoSuccessGTI" id="7cC-hw-HfW"/>
+                        <segue destination="mXv-aH-Opl" kind="show" identifier="segue_gotoFailGTI" id="XHS-7m-Fdy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Q9-Hu-s6l" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -864,6 +866,8 @@ ALL EXERCISES
                         <outlet property="recordYourToneButton" destination="uJj-jq-fdf" id="ETp-us-Yvm"/>
                         <outlet property="toneToMatchStaticText" destination="cjs-mp-QBV" id="Nnq-WO-yNR"/>
                         <outlet property="toneToMatchText" destination="jcY-Qj-xxw" id="1KM-0b-NTN"/>
+                        <segue destination="NeQ-Ht-Zxa" kind="show" identifier="segue_gotoSuccessLongTones" id="Fej-un-AKn"/>
+                        <segue destination="mXv-aH-Opl" kind="show" identifier="segue_gotoFailLongTones" id="mJ0-Sz-7xd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="la6-3Q-onk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1642,6 +1646,7 @@ ALL EXERCISES
                     </view>
                     <navigationItem key="navigationItem" id="95T-B2-OLU"/>
                     <connections>
+                        <outlet property="activityNameLabel" destination="J8h-LG-sT3" id="aCV-Dz-JQg"/>
                         <segue destination="f5F-s3-Qla" kind="unwind" identifier="segue_unwindtoLongTones" unwindAction="unwindToLongTones:" id="w1l-j6-ZNm"/>
                         <segue destination="f5F-s3-Qla" kind="unwind" identifier="segue_unwindtoShakeIt" unwindAction="unwindToShakeIt:" id="eOg-p7-UmZ"/>
                         <segue destination="f5F-s3-Qla" kind="unwind" identifier="segue_unwindtoGTI" unwindAction="unwindToGTI:" id="zZ4-xm-ie9"/>
@@ -1681,6 +1686,8 @@ ALL EXERCISES
         <image name="volume" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="mJ0-Sz-7xd"/>
+        <segue reference="Fej-un-AKn"/>
         <segue reference="zWg-0f-Zhr"/>
     </inferredMetricsTieBreakers>
 </document>

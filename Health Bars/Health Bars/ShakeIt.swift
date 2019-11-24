@@ -126,10 +126,13 @@ class ShakeIt: UIViewController {
     // send data with segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         NSLog("shakeit prepare()")
+        NSLog(segue.destination.debugDescription)
         if let vc = segue.destination as? Success {
+            NSLog("is Success")
             vc.activity = .ShakeIt
         }
         if let vc = segue.destination as? Fail {
+            NSLog("is Fail")
             vc.activity = .ShakeIt
         }
     }

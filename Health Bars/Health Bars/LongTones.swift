@@ -169,6 +169,20 @@ class LongTones: UIViewController {
         //NSLog("Done viewDidDisappear()")
     }
     
+    // send data with segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        NSLog("long tones prepare()")
+        NSLog(segue.destination.debugDescription)
+        if let vc = segue.destination as? Success {
+            NSLog("is Success")
+            vc.activity = .LongTones
+        }
+        if let vc = segue.destination as? Fail {
+            NSLog("is Fail")
+            vc.activity = .LongTones
+        }
+    }
+    
     @IBAction func hearTheToneButtonPressed(_ sender: UIButton) {
         lockButtons()
         conductor.prerollPlayer(from: 0.0, to: playTonePeriod)

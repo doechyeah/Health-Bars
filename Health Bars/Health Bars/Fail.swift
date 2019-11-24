@@ -19,7 +19,10 @@ import UIKit
 
 class Fail: UIViewController {
     
-    var activity: Activity!
+    var activity: Activity = ._default
+    
+    //MARK: Outlets
+    @IBOutlet weak var activityNameLabel: UILabel!
     
     @IBAction func swipeLeftGesture(_ sender: UISwipeGestureRecognizer) {
         switch activity {
@@ -37,8 +40,23 @@ class Fail: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NSLog(self.debugDescription)
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        switch activity {
+        case .LongTones:
+            activityNameLabel.text = "LONG TONES"
+        case .ShakeIt:
+            activityNameLabel.text = "SHAKE IT"
+        case .GuessThatInstrument:
+            //TODO: make text dynamic so this fits properly
+            activityNameLabel.text = "GUESS THAT INSTRUMENT"
+            
+        case ._default:
+            NSLog("activity is _default in Fail screen, this should never happen")
+        }
     }
     
     /*

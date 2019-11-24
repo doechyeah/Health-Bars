@@ -99,6 +99,20 @@ class GuessThatInstrument: UIViewController {
 
     }
     
+    // send data with segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        NSLog("GTI prepare()")
+        NSLog(segue.destination.debugDescription)
+        if let vc = segue.destination as? Success {
+            NSLog("is Success")
+            vc.activity = .GuessThatInstrument
+        }
+        if let vc = segue.destination as? Fail {
+            NSLog("is Fail")
+            vc.activity = .GuessThatInstrument
+        }
+    }
+    
     @IBAction func unwindToGTI(_ unwindSegue: UIStoryboardSegue) {}
     
     @IBAction func playInstrumentButtonPressed(_ sender: UIButton) {
@@ -132,7 +146,7 @@ class GuessThatInstrument: UIViewController {
             let statchck = PDB.readStats()
             dump(statchck)
             NSLog("Correct")
-            performSegue(withIdentifier: "segue_gotoSuccessGuessThatInstrument", sender: self)
+            performSegue(withIdentifier: "segue_gotoSuccessGTI", sender: self)
         } else {
             //goto fail
             PDB.insert(table: "memory", actscore: 0)
@@ -142,7 +156,7 @@ class GuessThatInstrument: UIViewController {
             dump(statchck)
             segueKeepSameinstrument = true
             NSLog("False")
-            performSegue(withIdentifier: "segue_gotoFailGuessThatInstrument", sender: self)
+            performSegue(withIdentifier: "segue_gotoFailGTI", sender: self)
         }
     }
     
