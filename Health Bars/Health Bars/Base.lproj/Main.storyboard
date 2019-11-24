@@ -682,22 +682,16 @@
                                 <rect key="frame" x="30" y="54" width="315" height="60"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHAKE - IT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vb8-tM-byJ">
-                                <rect key="frame" x="100" y="142" width="175" height="44"/>
+                                <rect key="frame" x="100" y="142.5" width="175" height="43.5"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="36"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sO-Kd-xSt">
-                                <rect key="frame" x="62" y="506" width="251.5" height="76"/>
-                                <string key="text">Goal: Shake the phone or tap the button at the same time you hear the beat.
+                                <rect key="frame" x="82.5" y="505.5" width="210" height="76"/>
+                                <string key="text">Goal: Shake the phone at the same time you hear the beat.
 </string>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Countdown" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTc-DI-4Tc">
-                                <rect key="frame" x="144" y="608" width="87" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -730,41 +724,82 @@
                                     <constraint firstItem="kzp-Op-qOZ" firstAttribute="centerY" secondItem="ehh-iq-q2r" secondAttribute="centerY" id="XTs-4T-wYC"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Misses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cs-sN-xlS">
-                                <rect key="frame" x="166" y="477" width="53" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Countdown" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTc-DI-4Tc">
+                                <rect key="frame" x="143.5" y="469" width="88" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Off Tempo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Mq-mG-Lhd">
-                                <rect key="frame" x="264" y="477" width="81" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBg-bi-IPA">
-                                <rect key="frame" x="67" y="477" width="31" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="6IQ-ED-mOU" userLabel="Counters Labels">
+                                <rect key="frame" x="60.5" y="597.5" width="254" height="45"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="BV1-6L-S8V">
+                                        <rect key="frame" x="0.0" y="0.0" width="30.5" height="45"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Nz-Wu-xS4" userLabel="Hits Label">
+                                                <rect key="frame" x="0.0" y="0.0" width="30.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBg-bi-IPA" userLabel="Hits">
+                                                <rect key="frame" x="0.0" y="24.5" width="30.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="gwb-bn-5JB">
+                                        <rect key="frame" x="88" y="0.0" width="53" height="45"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Misses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooE-tk-F68" userLabel="Misses Label">
+                                                <rect key="frame" x="0.0" y="0.0" width="53" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cs-sN-xlS" userLabel="Misses">
+                                                <rect key="frame" x="0.0" y="24.5" width="53" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="boZ-g7-Xa5">
+                                        <rect key="frame" x="173" y="0.0" width="81" height="45"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Off Tempo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tq1-d4-XR2" userLabel="Off Tempo Label">
+                                                <rect key="frame" x="0.0" y="0.0" width="81" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Mq-mG-Lhd" userLabel="Off Tempo">
+                                                <rect key="frame" x="0.0" y="24.5" width="81" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottomMargin" secondItem="vTc-DI-4Tc" secondAttribute="bottom" constant="38" id="Bf0-1s-zQh"/>
                             <constraint firstItem="Vb8-tM-byJ" firstAttribute="centerY" secondItem="zma-Qn-Gcb" secondAttribute="centerY" constant="80" id="C4B-qx-vRY"/>
+                            <constraint firstItem="6IQ-ED-mOU" firstAttribute="centerX" secondItem="kl1-zR-gXz" secondAttribute="centerX" id="E4I-DQ-xp8"/>
+                            <constraint firstItem="6IQ-ED-mOU" firstAttribute="top" secondItem="2sO-Kd-xSt" secondAttribute="bottom" constant="16" id="JTX-Od-v9v"/>
                             <constraint firstItem="zma-Qn-Gcb" firstAttribute="top" secondItem="ba6-bd-5ZW" secondAttribute="top" constant="10" id="QzC-ob-ivF"/>
                             <constraint firstItem="zma-Qn-Gcb" firstAttribute="centerX" secondItem="kl1-zR-gXz" secondAttribute="centerX" id="Vb2-sf-Ja3"/>
-                            <constraint firstItem="vTc-DI-4Tc" firstAttribute="top" secondItem="kl1-zR-gXz" secondAttribute="top" constant="608" id="Zfx-FA-E5k"/>
-                            <constraint firstItem="vTc-DI-4Tc" firstAttribute="centerX" secondItem="kl1-zR-gXz" secondAttribute="centerX" id="dUD-TD-ya1"/>
-                            <constraint firstItem="vTc-DI-4Tc" firstAttribute="leading" secondItem="ba6-bd-5ZW" secondAttribute="leading" constant="144" id="dWi-Ab-hk5"/>
+                            <constraint firstItem="vTc-DI-4Tc" firstAttribute="centerX" secondItem="kl1-zR-gXz" secondAttribute="centerX" id="Z88-5Z-OTW"/>
                             <constraint firstItem="ehh-iq-q2r" firstAttribute="top" secondItem="Vb8-tM-byJ" secondAttribute="bottom" constant="19" id="n6X-HL-HQW"/>
                             <constraint firstItem="Vb8-tM-byJ" firstAttribute="centerX" secondItem="kl1-zR-gXz" secondAttribute="centerX" id="oMH-PG-xZo"/>
+                            <constraint firstItem="vTc-DI-4Tc" firstAttribute="top" secondItem="ehh-iq-q2r" secondAttribute="bottom" constant="24" id="pFC-sc-mZd"/>
+                            <constraint firstItem="2sO-Kd-xSt" firstAttribute="top" secondItem="vTc-DI-4Tc" secondAttribute="bottom" constant="16" id="szL-90-m55"/>
                             <constraint firstItem="2sO-Kd-xSt" firstAttribute="centerX" secondItem="kl1-zR-gXz" secondAttribute="centerX" id="uP2-Lg-PAT"/>
-                            <constraint firstItem="vTc-DI-4Tc" firstAttribute="top" secondItem="2sO-Kd-xSt" secondAttribute="bottom" constant="26" id="xAS-VK-M2D"/>
                             <constraint firstItem="ehh-iq-q2r" firstAttribute="centerX" secondItem="kl1-zR-gXz" secondAttribute="centerX" id="xqh-c7-fQg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ba6-bd-5ZW"/>
@@ -1068,8 +1103,8 @@ ALL EXERCISES
         <image name="volume" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XHS-7m-Fdy"/>
-        <segue reference="7cC-hw-HfW"/>
+        <segue reference="ACt-Xz-HpB"/>
+        <segue reference="O95-dR-ved"/>
         <segue reference="zWg-0f-Zhr"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -158,9 +158,9 @@ class ShakeIt: UIViewController {
         
         // UI Init
         countdownLabel.text = "Countdown"
-        hitsLabel.text = "Hits"
-        missesLabel.text = "Misses"
-        offTempoLabel.text = "off Tempo"
+        hitsLabel.text = "_"
+        missesLabel.text = "_"
+        offTempoLabel.text = "_"
         // end UI Init
         // game parameters init
         shakeBeatHits = 0
@@ -271,6 +271,7 @@ class ShakeIt: UIViewController {
         // have trigger right at end of first window
         DispatchQueue.global(qos: .userInitiated).async {
             let ti = Timer.scheduledTimer(withTimeInterval: self.songStartOffsetTime + self.shakeAccuracyToleranceTime, repeats: false, block: {_ in
+        //Timer.scheduledTimer(withTimeInterval: self.songStartOffsetTime + self.shakeAccuracyToleranceTime, repeats: false, block: {_ in
                 self.updateShakeCondition()
                 self.beatResetTimer = Timer.scheduledTimer(timeInterval: self.songBeatPeriod,
                 target: self,
@@ -290,7 +291,7 @@ class ShakeIt: UIViewController {
                                               selector: #selector(ShakeIt.vibrateOnBeat),
                                               userInfo: nil,
                                               repeats: true)
-//
+        
         // can also achieve with separate timer
         conductor.player.completionHandler = {
             self.endGame()
@@ -354,6 +355,9 @@ class ShakeIt: UIViewController {
         if !shakedToBeat {
             shakeBeatMisses += 1
             print("shake Miss")
+            DispatchQueue.main.async {
+                self.updateCounters()
+            }
         }
         shakedToBeat = false
         beatNum += 1
@@ -389,13 +393,11 @@ class ShakeIt: UIViewController {
                 shakedToBeat = true
                 print("shake Hit")
                 vibrationGenerator.impactOccurred()
-                hitsLabel.text = "\(shakeBeatHits)"
             } else {
                 shakeBeatOffTempos += 1
                 print("shake Off Tempo")
-                offTempoLabel.text = "\(shakeBeatOffTempos)"
             }
-            missesLabel.text = "\(shakeBeatMisses)"
+            updateCounters()
             shakeLck.unlock()
         } else {
             print("Game not started yet")
@@ -463,6 +465,12 @@ class ShakeIt: UIViewController {
         shakeAccuracyToleranceTime = shakeAccuracyToleranceRatio * songBeatPeriod
         print("shakeAccuracyToleranceTime: \(shakeAccuracyToleranceTime)")
         playSongPeriod = songEndTime - songStartOffsetTime
+    }
+    
+    func updateCounters() {
+        hitsLabel.text = String(shakeBeatHits)
+        missesLabel.text = String(shakeBeatMisses)
+        offTempoLabel.text = String(shakeBeatOffTempos)
     }
     
 //    func createPulse() {
