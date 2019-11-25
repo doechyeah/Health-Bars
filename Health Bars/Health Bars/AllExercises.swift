@@ -20,6 +20,14 @@ import Foundation
 import UIKit
 
 class NavigationMenu: UIViewController {
+    
+    @IBOutlet weak var testView: ProgressBar!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        testView.setVars(new_titleText: "MAIN MENU")
+    }
+    
     // unwind segue function, called from other views
     @IBAction func unwindToNavigationMenu(_ unwindSegue: UIStoryboardSegue) {
         //let sourceViewController = unwindSegue.source

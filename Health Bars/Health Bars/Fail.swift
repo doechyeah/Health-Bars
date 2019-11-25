@@ -19,7 +19,7 @@ import UIKit
 
 class Fail: UIViewController {
     
-    var activity: Activity = ._default
+    var activity: Activity = ._none
     
     //MARK: Outlets
     @IBOutlet weak var activityNameLabel: UILabel!
@@ -33,7 +33,7 @@ class Fail: UIViewController {
         case .GuessThatInstrument:
             performSegue(withIdentifier: "segue_unwindtoGTI", sender: self)
             
-        case ._default:
+        case ._none:
             NSLog("activity is _default in Fail screen, this should never happen")
         }
     }
@@ -54,7 +54,7 @@ class Fail: UIViewController {
             //TODO: make text dynamic so this fits properly
             activityNameLabel.text = "GUESS THAT INSTRUMENT"
             
-        case ._default:
+        case ._none:
             NSLog("activity is _default in Fail screen, this should never happen")
         }
     }

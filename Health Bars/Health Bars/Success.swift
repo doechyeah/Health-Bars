@@ -19,7 +19,7 @@ import UIKit
 
 class Success: UIViewController {
     
-    var activity: Activity = ._default
+    var activity: Activity = ._none
     
     //MARK: Outlets
     @IBOutlet weak var activityNameLabel: UILabel!
@@ -44,7 +44,7 @@ class Success: UIViewController {
             activityNameLabel.text = "GUESS THAT INSTRUMENT"
             activityIconImage.image = UIImage(named: "memory")
             
-        case ._default:
+        case ._none:
             NSLog("activity is _default in Success screen, this should never happen")
         }
     }

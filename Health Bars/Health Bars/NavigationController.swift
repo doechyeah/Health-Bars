@@ -10,10 +10,18 @@ import UIKit
 
 // the three activities
 enum Activity {
-    case _default  // should never be used except for initialization
+    // avoid conflict with optionals' .none
+    case _none
     case LongTones
     case ShakeIt
     case GuessThatInstrument
+}
+
+enum ActivityMode {
+    // avoid conflict with optionals' .none
+    case _none
+    case AllExercises
+    case DailyExercises
 }
 
 class NavigationController: UINavigationController {
