@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol ProgressBarProtocol {
+    func unwindSegueFromView()
+}
+
 //TODO: add database reading
 class ProgressBar: UIView {
 
+    var delegate: ProgressBarProtocol?
+    
     //MARK: Status variables
     var activityMode: ActivityMode!
     var currentActivity: Activity!
@@ -53,9 +59,16 @@ class ProgressBar: UIView {
         setVisibleElements()
     }
     
+    @IBAction func unwindToNavigationMenuButton(_ sender: UIButton) {
+        NSLog("Progress Bar home button pressed")
+        self.delegate?.unwindSegueFromView()
+    }
+    
     //TODO: read database here or make another function for that
     func setVisibleElements() {
-        
+        if activityMode == ._none {
+            iconsStackView.isHidden = true
+        }
     }
     
     // add checkmark on top of icon if completed for daily exercises
