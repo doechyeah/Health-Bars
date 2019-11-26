@@ -17,7 +17,7 @@
 
 import UIKit
 
-class Fail: UIViewController {
+class Fail: UIViewController, ProgressBarProtocol {
     
     var activity: Activity = ._none
     
@@ -37,26 +37,38 @@ class Fail: UIViewController {
             NSLog("activity is _default in Fail screen, this should never happen")
         }
     }
+    func unwindSegueFromView() {
+        NSLog("Success delegate unwind function")
+        performSegue(withIdentifier: "segue_unwindtoNavigationMenu", sender: self)
+    }
+    
+    
+    @IBOutlet weak var progressBar: ProgressBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSLog(self.debugDescription)
-        // Do any additional setup after loading the view.
+        progressBar.delegate = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        //TODO: pass data that was sent from AllExercises
+        var titleText: String = ""
+        
         switch activity {
         case .LongTones:
-            activityNameLabel.text = "LONG TONES"
+            titleText = "LONG TONES"
         case .ShakeIt:
-            activityNameLabel.text = "SHAKE IT"
+            titleText = "SHAKE IT"
         case .GuessThatInstrument:
             //TODO: make text dynamic so this fits properly
-            activityNameLabel.text = "GUESS THAT INSTRUMENT"
+            titleText = "GUESS THAT INSTRUMENT"
             
         case ._none:
             NSLog("activity is _default in Fail screen, this should never happen")
         }
+        progressBar.setVars(new_titleText: titleText)
+        
     }
     
     /*

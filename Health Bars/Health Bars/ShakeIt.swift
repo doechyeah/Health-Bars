@@ -26,7 +26,7 @@ import UIKit
 import AudioToolbox
 import AudioKit
 
-class ShakeIt: UIViewController {
+class ShakeIt: UIViewController, ProgressBarProtocol {
 
     //MARK: Constants
     let beatMatchRatioForSuccess: Double = 0.5
@@ -123,6 +123,21 @@ class ShakeIt: UIViewController {
         }
     }
     
+    func unwindSegueFromView() {
+        NSLog("Shake It delegate unwind function")
+        performSegue(withIdentifier: "segue_unwindtoNavigationMenu", sender: self)
+    }
+    
+    
+    @IBOutlet weak var progressBar: ProgressBar!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        progressBar.delegate = self
+        //TODO: pass data that was sent from AllExercises
+        progressBar.setVars(new_activityMode: .AllExercises, new_currentActivity: .ShakeIt, new_titleText: "SHAKE IT")
+    }
+    
     // send data with segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         NSLog("shakeit prepare()")
@@ -135,17 +150,6 @@ class ShakeIt: UIViewController {
             NSLog("is Fail")
             vc.activity = .ShakeIt
         }
-    }
-    
-
-    // called when view first gets loaded into memory
-    override func viewDidLoad() {
-        // debug
-        //NSLog("viewDidLoad()")
-        super.viewDidLoad()
-
-        // debug
-        //NSLog("Done viewDidLoad()")
     }
 
     // called when view appears fully

@@ -23,7 +23,7 @@
 import UIKit
 import AudioKit
 
-class GuessThatInstrument: UIViewController {
+class GuessThatInstrument: UIViewController, ProgressBarProtocol {
     
     //MARK: Shared AudioKit conductor
     let conductor = AudioKitConductor.sharedInstance
@@ -57,9 +57,18 @@ class GuessThatInstrument: UIViewController {
     var instrument: AKAudioFile!
     //var instrumentPlayer: AKAudioPlayer!
     
+    
+    func unwindSegueFromView() {
+        NSLog("GTI delegate unwind function")
+        performSegue(withIdentifier: "segue_unwindtoNavigationMenu", sender: self)
+    }
+    @IBOutlet weak var progressBar: ProgressBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //load for the first time in memory
+        progressBar.delegate = self
+        //TODO: pass data that was sent from AllExercises
+        progressBar.setVars(new_activityMode: .AllExercises, new_currentActivity: .GuessThatInstrument, new_titleText: "GUESS THAT INSTRUMENT")
     }
     
     override func viewWillAppear(_ animated: Bool) {

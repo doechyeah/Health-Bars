@@ -19,6 +19,7 @@ import Foundation
 import UIKit
 
 class AllExercises: UIViewController, ProgressBarProtocol {
+    
     func unwindSegueFromView() {
         NSLog("All Exercises delegate unwind function")
         performSegue(withIdentifier: "segue_unwindtoNavigationMenu", sender: self)

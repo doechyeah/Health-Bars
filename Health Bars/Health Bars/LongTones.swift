@@ -27,7 +27,7 @@ import AudioKit
 
 import UIKit
 
-class LongTones: UIViewController {
+class LongTones: UIViewController, ProgressBarProtocol {
     
     //MARK: Constants
     let noteFrequencies = [16.35, 17.32, 18.35, 19.45, 20.6, 21.83, 23.12, 24.5, 25.96, 27.5, 29.14, 30.87]
@@ -84,14 +84,18 @@ class LongTones: UIViewController {
         //NSLog("deinit()")
     }
     
-    // called when view first gets loaded into memory
+    
+    func unwindSegueFromView() {
+        NSLog("Long Tones delegate unwind function")
+        performSegue(withIdentifier: "segue_unwindtoNavigationMenu", sender: self)
+    }
+    @IBOutlet weak var progressBar: ProgressBar!
+    
     override func viewDidLoad() {
-        // debug
-        NSLog("viewDidLoad()")
         super.viewDidLoad()
-        
-        // debug
-        //NSLog("Done viewDidLoad()")
+        progressBar.delegate = self
+        //TODO: pass data that was sent from AllExercises
+        progressBar.setVars(new_activityMode: .AllExercises, new_currentActivity: .LongTones, new_titleText: "LONG TONES")
     }
     
     // called when view appears fully

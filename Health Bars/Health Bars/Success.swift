@@ -17,36 +17,48 @@
 
 import UIKit
 
-class Success: UIViewController {
+class Success: UIViewController, ProgressBarProtocol {
     
     var activity: Activity = ._none
     
     //MARK: Outlets
-    @IBOutlet weak var activityNameLabel: UILabel!
     @IBOutlet weak var activityIconImage: UIImageView!
+    
+    func unwindSegueFromView() {
+        NSLog("Success delegate unwind function")
+        performSegue(withIdentifier: "segue_unwindtoNavigationMenu", sender: self)
+    }
+    
+    
+    @IBOutlet weak var progressBar: ProgressBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        progressBar.delegate = self
         
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        //TODO: pass data that was sent from AllExercises
+        var titleText: String = ""
+        
         switch activity {
         case .LongTones:
-            activityNameLabel.text = "LONG TONES"
+            titleText = "LONG TONES"
             activityIconImage.image = UIImage(named: "microphone")
         case .ShakeIt:
-            activityNameLabel.text = "SHAKE IT"
+            titleText = "SHAKE IT"
             activityIconImage.image = UIImage(named: "equalizer")
         case .GuessThatInstrument:
             //TODO: make text dynamic so this fits properly
-            activityNameLabel.text = "GUESS THAT INSTRUMENT"
+            titleText = "GUESS THAT INSTRUMENT"
             activityIconImage.image = UIImage(named: "memory")
             
         case ._none:
             NSLog("activity is _default in Success screen, this should never happen")
         }
+        progressBar.setVars(new_titleText: titleText)
+        
     }
     
     /*
