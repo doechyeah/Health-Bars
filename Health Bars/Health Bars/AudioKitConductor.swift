@@ -16,6 +16,7 @@
 //
 
 import AudioKit
+import UIKit
 
 class AudioKitConductor {
     static let sharedInstance = AudioKitConductor()
@@ -52,11 +53,13 @@ class AudioKitConductor {
         tracker = AKFrequencyTracker(bandpassFilter)
         // must connect the frequencytracker to an output for functionality.
         silence = AKBooster(tracker, gain: 0)
-        //mixer = AKMixer(player, silence)
+        //mixer = AKMixer(player, silence)/Users/Alvin/Desktop/Health-Bars/Health Bars/Health Bars/ProgressDB.swift
         
         do {
             try AKSettings.session.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.mixWithOthers)
-            try AKSettings.session.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
+            //try AKSettings.session.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
+            try AKSettings.session.setAllowHapticsAndSystemSoundsDuringRecording(true)
+            NSLog("FUCKING SHIT FUCK")
         } catch {
             AKLog("Could not set output port to speaker")
         }
@@ -133,7 +136,10 @@ class AudioKitConductor {
     internal func AudioKitStart() {
         AKLog("AudioKitStart()")
         do {
+            
+            try AKSettings.session.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
             try AudioKit.start()
+            
         } catch {
             AKLog("AudioKit did not start correctly")
         }

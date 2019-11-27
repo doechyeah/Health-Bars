@@ -373,12 +373,12 @@ class ShakeIt: UIViewController, ProgressBarProtocol {
 //    Will Implement later. Coming in V3
     @objc func vibrateOnBeat() {
         //debug
-        //print("Vibrate!")
+        print("Vibrate!")
         //vibrationGenerator.impactOccurred()
         NSLog("vibrateOnBeat()")
         //AudioServicesPlaySystemSound(1520)
         //AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
-        //AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
         //createPulse()
     }
     
