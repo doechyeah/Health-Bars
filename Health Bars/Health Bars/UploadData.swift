@@ -27,7 +27,7 @@ class UploadClass {
     // TWO WAYS OF IMPLEMENTING TO ENSURE NO DOUBLE SENDING OF DATA. CREATE A BOOL IN THE STATS TABLE IF SENT OR READ LATEST DATE AND ONLY UPDATE THOSE GREATER TO IT
     let ReadURL = "https://advanture.wixsite.com/health-bars-g9/_functions/DoIExist"
     // final URL will have at end \playerID
-    let SendURL = "https://advanture.wixsite.com/health-bars-g9/_functions/uploadMe"
+    let SendURL = "https://advanture.wixsite.com/health-bars-g9/_functions/UploadMe"
     // final URL will have at end \playerID\date\rscore\vscore\mscore
     
     init() {
@@ -40,22 +40,22 @@ class UploadClass {
     }
     
     // Template. Need to be tested
-    func DoIExist() {
-//        let format = DateFormatter()
-//        format.dateFormat = "yyyy/MM/dd"
-//        let datecurr = format.date(from: currentdate)
-        AF.request("\(ReadURL)/\(playerID)").responseString { response in
-            // FIND LAST DATE IF IT EXISTS HERE OR SET SENDALL AS TRUE
-            if response.value == "NoExist" {
-                self.sendAll = true
-            }
-            else {
-                self.lastdatesent = response.value ?? self.currentdate
-            }
-        }
-    }
-    
-    func uploadMe() {
+//    func DoIExist() {
+////        let format = DateFormatter()
+////        format.dateFormat = "yyyy/MM/dd"
+////        let datecurr = format.date(from: currentdate)
+//        AF.request("\(ReadURL)/\(playerID)").responseString { response in
+//            // FIND LAST DATE IF IT EXISTS HERE OR SET SENDALL AS TRUE
+//            if response.value == "NoExist" {
+//                self.sendAll = true
+//            }
+//            else {
+//                self.lastdatesent = response.value ?? self.currentdate
+//            }
+//        }
+//    }
+    // FOR AJ: THIS IS A TEMPLATE BUT MAY NOT BE CORRECT. CHECK OUT https://www.raywenderlich.com/35-alamofire-tutorial-getting-started for put requests.
+    func UploadMe() {
         var jsonSend = try! JSONSerialization.data(withJSONObject: "", options: [])
         if sendAll {
             jsonSend = try! JSONSerialization.data(withJSONObject: statset, options: [])
@@ -69,7 +69,17 @@ class UploadClass {
     }
     
 }
-func CreatePlayer() -> Dictionary<String,String> {
-    let test: Dictionary<String, String> = ["_id": "test"]
+func CreatePlayer() -> Dictionary<String,Any> {
+    var test: Dictionary<String, Any> = [:]
+    AF.request("https://advanture.wixsite.com/health-bars-g9/_functions/CreatePlayer", method: .post,  parameters: test, encoding: JSONEncoding.default)
+        .responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                test = value as! Dictionary<String, Any>
+                dump(test)
+            case .failure(let error):
+                print(error)
+            }
+    }
     return test
 }
