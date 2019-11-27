@@ -78,7 +78,7 @@ class LongTones: UIViewController {
     var mixer: AKMixer!
     
     // Database Score
-    let PDB = ProgClass(playID: "Player1")
+    let PDB = ProgClass()
     
     deinit {
         //debug

@@ -21,7 +21,7 @@ import SQLite
 
 class ProgClass {
     // MARK: Class variables
-    var playerID: String
+    var playerID: String = ""
     var currentdate: String
     var yesterday: String
     let path = NSSearchPathForDirectoriesInDomains(.documentDirectory,
@@ -34,6 +34,7 @@ class ProgClass {
     let memory = Table("memory")
     let DailyStreak = Table("streak")
     let Stats = Table("stats")
+    let PlayData = Table("playdata")
     // MARK: Attribute Variables
     let datetime = Expression<String>("datetime")
     let score = Expression<Int>("score")
@@ -44,13 +45,15 @@ class ProgClass {
     let rhythmscore = Expression<Int>("rhythmscore")
     let voicescore = Expression<Int>("voicescore")
     let memoryscore = Expression<Int>("memoryscore")
+    let sent = Expression<Bool>("sent")
     let pID = Expression<String>("pID")
+    let lastSent = Expression<String>("lastSent")
     
     
     // MARK: Initializer
-    init (playID: String) {
+    init () {
         // Initialize the progClass with the players ID
-        playerID = playID
+//        playerID = playID
         let date = Date()
         let yesdate = Calendar.current.date(byAdding: .day, value: -1, to: date)
         let format = DateFormatter()
@@ -62,6 +65,23 @@ class ProgClass {
         
         // Try to create tables if they do not exist already
         do {
+            try db.run(PlayData.create(ifNotExists: true) {
+                t in
+                t.column(pID)
+                t.column(lastSent)
+            })
+            let count = try db.scalar(PlayData.count)
+            if count == 0 {
+                let playDict = CreatePlayer()
+                playerID = playDict["_id"]!
+                try db.run(PlayData.insert(pID <- playerID,
+                                          lastSent <- currentdate
+                ))
+            } else {
+                for x in try db.prepare(PlayData) {
+                    playerID = x[pID]
+                }
+            }
             try db.run(DailyStreak.create(ifNotExists: true) {
                 t in
                 t.column(datetime, primaryKey: true)
@@ -111,14 +131,16 @@ class ProgClass {
                                               CurrentStreak <- 0,
                                               CompletedDaily <- 0))
                 try db.run(Stats.insert(datetime <- currentdate,
-                                        pID <- playID,
+                                        pID <- playerID,
                                         rhythmscore <- 0,
                                         voicescore <- 0,
-                                        memoryscore <- 0))
+                                        memoryscore <- 0,
+                                        sent <- false))
             } catch let error {
                 print("Insert failed: \(error)")
             }
         }
+        
     }
     
     // MARK: Destructor
@@ -158,16 +180,17 @@ class ProgClass {
         return rows
     }
     
-    func readStats() -> Dictionary<String, (String, Int, Int, Int)> {
+    func readStats() -> Dictionary<String, (String, Int, Int, Int, Bool)> {
         // This function will aggregate the data and update the stat table
         let db = try! Connection("\(path)/ProgressDB.sqlite3")
-        var results: Dictionary<String, (String, Int, Int, Int)> = [:]
+        var results: Dictionary<String, (String, Int, Int, Int, Bool)> = [:]
         do {
             for data in try db.prepare(Stats) {
                 results[data[datetime]] = (data[pID],
                                            data[rhythmscore],
                                            data[voicescore],
-                                           data[memoryscore])
+                                           data[memoryscore],
+                                           data[sent])
             }
         } catch let error {
             print("Error reading Daily streaks: \(error)")
@@ -254,7 +277,7 @@ class ProgClass {
         format.dateFormat = "yyyy/MM/dd"
         var current = format.date(from: dated)!
         var next = dated
-        while current <= format.date(from: currentdate)! {
+        while current < format.date(from: currentdate)! {
             let rrand = Int.random(in: 0...10)
             let vrand = Int.random(in: 0...10)
             let mrand = Int.random(in: 0...10)

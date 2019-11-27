@@ -45,7 +45,7 @@ class GuessThatInstrument: UIViewController {
     var instrument: AKAudioFile!
     var instrumentPlayer: AKAudioPlayer!
     
-    let PDB = ProgClass(playID: "Player1")
+    let PDB = ProgClass()
     
     override func viewDidLoad() {
         super.viewDidLoad()

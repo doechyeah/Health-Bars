@@ -17,8 +17,8 @@ struct SendData: Codable {
 }
 
 class UploadClass {
-    let PDB = ProgClass(playID: "Player1")
-    var statset: Dictionary<String, (String, Int, Int, Int)>
+    let PDB = ProgClass()
+    var statset: Dictionary<String, (String, Int, Int, Int, Bool)>
     var currentdate: String
     var lastdatesent: String
     var sendAll: Bool = false
@@ -68,4 +68,8 @@ class UploadClass {
         }
     }
     
+}
+func CreatePlayer() -> Dictionary<String,String> {
+    let test: Dictionary<String, String> = ["_id": "test"]
+    return test
 }

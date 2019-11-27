@@ -45,7 +45,7 @@ class ShakeIt: UIViewController {
                                 "Presto": 168]
 
     // Database class
-    let PDB = ProgClass(playID: "Player1")
+    let PDB = ProgClass()
 
     //MARK: Outlets
     @IBOutlet weak var startButton: UIButton!
