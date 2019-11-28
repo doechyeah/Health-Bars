@@ -1,9 +1,15 @@
-//
-//  StatRecord.swift
 //  Health Bars
 //
-//  Created by Daniel Song on 2019-11-16.
+//  Team: Team Rhythm
+//
+//  Statistics.swift
+//
+//  Developers:
+//  Daniel Song
+//
 //  Copyright © 2019 Team Rhythm. All rights reserved.
+//
+//  Changelog:
 //
 
 import Foundation

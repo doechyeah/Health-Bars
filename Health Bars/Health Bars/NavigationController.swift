@@ -1,9 +1,17 @@
-//
-//  NavigationController.swift
 //  Health Bars
 //
-//  Created by Michael Lin on 2019-11-22.
+//  Team: Team Rhythm
+//
+//  NavigationController.swift
+//  Manager for View Controllers under it
+//
+//  Developers:
+//  Michael Lin
+//
 //  Copyright © 2019 Team Rhythm. All rights reserved.
+//
+//  Changelog:
+//  2019-11-20: Created
 //
 
 import UIKit

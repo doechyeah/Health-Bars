@@ -1,13 +1,23 @@
-//
-//  ProgressBar.swift
 //  Health Bars
 //
-//  Created by Michael Lin on 2019-11-24.
+//  Team: Team Rhythm
+//
+//  ProgressBar.swift
+//  Progress bar at top of views, replaces navigation bar
+//
+//  Developers:
+//  Michael Lin
+//
 //  Copyright © 2019 Team Rhythm. All rights reserved.
+//
+//  Changelog:
+//  2019-11-23: Created
 //
 
 import UIKit
 
+// protocol meeded so that home button can be called from view controller (which adopts this protocol)
+// segues can only be called from view controllers
 protocol ProgressBarProtocol {
     func unwindSegueFromView()
 }
@@ -52,6 +62,7 @@ class ProgressBar: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
+    // every view controller that uses Progress Bar must call this function via outlet before displaying
     func setVars(new_activityMode: ActivityMode = ._none, new_currentActivity: Activity = ._none, new_titleText: String) {
         activityMode = new_activityMode
         currentActivity = new_currentActivity
@@ -59,6 +70,7 @@ class ProgressBar: UIView {
         setVisibleElements()
     }
     
+    // home button
     @IBAction func unwindToNavigationMenuButton(_ sender: UIButton) {
         NSLog("Progress Bar home button pressed")
         self.delegate?.unwindSegueFromView()
