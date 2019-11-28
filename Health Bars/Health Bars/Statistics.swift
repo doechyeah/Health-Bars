@@ -37,19 +37,31 @@ class grabTest {
     }
 }
 
-class Statistics: UIViewController {
+class Statistics: UIViewController, ProgressBarProtocol {
     @IBOutlet weak var barChartView: BarChartView!
+    
     let AggData = grabTest()
-
+    
+    func unwindSegueFromView() {
+        NSLog("Statistics delegate unwind function")
+        performSegue(withIdentifier: "segue_unwindtoNavigationMenu", sender: self)
+    }
+    
+    @IBOutlet weak var progressBar: ProgressBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // EXTRA RANDOM DATA TO INPUT INTO THE GAME FOR DISPLAY
- 
-        //load for the first time in memory
-        barChartView.noDataText = "You need to provide data for the chart."
+        
+       // EXTRA RANDOM DATA TO INPUT INTO THE GAME FOR DISPLAY
+
+       //load for the first time in memory
+       barChartView.noDataText = "You need to provide data for the chart."
+        
+        progressBar.delegate = self
+        progressBar.setVars(new_titleText: "STATISTICS")
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        super.viewDidAppear(animated)
     }
 }

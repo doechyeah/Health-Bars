@@ -1116,16 +1116,36 @@ ALL EXERCISES
         <!--Statistics-->
         <scene sceneID="4Wf-aS-KXk">
             <objects>
-                <viewController title="Statistics" id="OBM-qj-cwA" sceneMemberID="viewController">
+                <viewController title="Statistics" id="OBM-qj-cwA" customClass="Statistics" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UNt-UM-523">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o3B-YO-mFm" userLabel="Progress Bar" customClass="ProgressBar" customModule="Health_Bars" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="FIy-rd-TQ3"/>
+                                    <constraint firstAttribute="height" constant="120" id="hBD-sn-uaj"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="o3B-YO-mFm" firstAttribute="leading" secondItem="Lfw-wz-mEk" secondAttribute="leading" id="0m3-Ne-hOd"/>
+                            <constraint firstItem="o3B-YO-mFm" firstAttribute="trailing" secondItem="Lfw-wz-mEk" secondAttribute="trailing" id="KSf-wb-bJo"/>
+                            <constraint firstItem="o3B-YO-mFm" firstAttribute="top" secondItem="UNt-UM-523" secondAttribute="top" id="zlt-b5-MIA"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Lfw-wz-mEk"/>
                     </view>
                     <navigationItem key="navigationItem" title="Statistics" id="Mp2-Wc-NFz"/>
+                    <connections>
+                        <outlet property="progressBar" destination="o3B-YO-mFm" id="oTY-0g-uUr"/>
+                        <segue destination="iaF-Td-ROO" kind="unwind" identifier="segue_unwindtoNavigationMenu" unwindAction="unwindToNavigationMenu:" id="NPS-Wg-3q1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ve-rp-1B3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="iaF-Td-ROO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2022" y="991"/>
         </scene>

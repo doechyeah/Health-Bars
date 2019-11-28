@@ -25,7 +25,6 @@ class AllExercises: UIViewController, ProgressBarProtocol {
         performSegue(withIdentifier: "segue_unwindtoNavigationMenu", sender: self)
     }
     
-    
     @IBOutlet weak var progressBar: ProgressBar!
     
     override func viewDidLoad() {

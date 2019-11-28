@@ -61,6 +61,9 @@ class LongTones: UIViewController, ProgressBarProtocol {
     //@IBOutlet weak var timerStaticText: UILabel!
     //@IBOutlet weak var timerText: UILabel!
     
+    // if daily exercises, all exercises view controller has to set to .DailyExercises with prepare function before segue
+    var activityMode: ActivityMode = .AllExercises
+    
     var timerTestNum: Double!
     
     //MARK: Condition variables
@@ -274,7 +277,17 @@ class LongTones: UIViewController, ProgressBarProtocol {
             let statchck = PDB.readStats()
             dump(statchck)
             segueKeepSameTone = false
-            performSegue(withIdentifier: "segue_gotoSuccessLongTones", sender: self)
+            if activityMode == .AllExercises {
+                performSegue(withIdentifier: "segue_gotoSuccessLongTones", sender: self)
+            } else if activityMode == .DailyExercises {
+                //TODO: read from PDB class to determine next segue destination
+                performSegue(withIdentifier: "segue_gotoNextExerciseShakeIt", sender: self)
+                //performSegue(withIdentifier: "segue_gotoNextExerciseGTI", sender: self)
+                //performSegue(withIdentifier: "segue_gotoDoneDailyExercises", sender: self)
+            } else if activityMode == ._none {
+                NSLog("activityMode is _none in Long Tones, this should never happen")
+                performSegue(withIdentifier: "segue_gotoSuccessLongTones", sender: self)
+            }
         }
     }
     

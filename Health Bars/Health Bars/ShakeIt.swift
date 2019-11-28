@@ -60,6 +60,7 @@ class ShakeIt: UIViewController, ProgressBarProtocol {
     @IBOutlet weak var offTempoLabel: UILabel!
     @IBOutlet weak var imgvAvatar: UIImageView!
 
+    var activityMode: ActivityMode = ._none
     
     //MARK: Game parameters
     var shakeBeatHits: Int = 0
@@ -321,7 +322,16 @@ class ShakeIt: UIViewController, ProgressBarProtocol {
             performSegue(withIdentifier: "segue_gotoFailShakeIt", sender: self)
         } else if success == true {
             segueKeepSameSong = false
-            performSegue(withIdentifier: "segue_gotoSuccessShakeIt", sender: self)
+            if activityMode == .AllExercises {
+                performSegue(withIdentifier: "segue_gotoSuccessShakeIt", sender: self)
+            } else if activityMode == .DailyExercises {
+                //TODO: read from PDB class to determine next segue destination
+                performSegue(withIdentifier: "segue_gotoNextExerciseGTI", sender: self)
+                //performSegue(withIdentifier: "segue_gotoDoneDailyExercises", sender: self)
+            } else if activityMode == ._none {
+                NSLog("activityMode is _none in Long Tones, this should never happen")
+                performSegue(withIdentifier: "segue_gotoSuccessShakeIt", sender: self)
+            }
         }
     }
     

@@ -46,6 +46,8 @@ class GuessThatInstrument: UIViewController, ProgressBarProtocol {
     @IBOutlet weak var instrumentImage3: UIImageView!
     @IBOutlet weak var instrumentImage4: UIImageView!
     
+    var activityMode: ActivityMode = ._none
+    
     //MARK: Game variables
     var segueKeepSameinstrument: Bool!
     var randInstrumentNumber: Int!
@@ -155,7 +157,15 @@ class GuessThatInstrument: UIViewController, ProgressBarProtocol {
             let statchck = PDB.readStats()
             dump(statchck)
             NSLog("Correct")
-            performSegue(withIdentifier: "segue_gotoSuccessGTI", sender: self)
+            if activityMode == .AllExercises {
+                performSegue(withIdentifier: "segue_gotoSuccessGTI", sender: self)
+            } else if activityMode == .DailyExercises {
+                //TODO: read from PDB class to determine next segue destination
+                performSegue(withIdentifier: "segue_gotoDoneDailyExercises", sender: self)
+            } else if activityMode == ._none {
+                NSLog("activityMode is _none in Long Tones, this should never happen")
+                performSegue(withIdentifier: "segue_gotoSuccessGTI", sender: self)
+            }
         } else {
             //goto fail
             PDB.insert(table: "memory", actscore: 0)

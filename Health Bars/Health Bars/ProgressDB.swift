@@ -73,7 +73,8 @@ class ProgClass {
             let count = try db.scalar(PlayData.count)
             if count == 0 {
                 let playDict = CreatePlayer()
-                playerID = playDict["_id"] as! String
+                //playerID = playDict["_id"] as! String
+                playerID = "testid_temp"
                 try db.run(PlayData.insert(pID <- playerID,
                                           lastSent <- currentdate
                 ))

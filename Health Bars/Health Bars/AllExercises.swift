@@ -19,6 +19,7 @@ import Foundation
 
 import UIKit
 
+// don't need progress bar protocol because unwind button is not needed
 class NavigationMenu: UIViewController {
     
     @IBOutlet weak var progressBar: ProgressBar!
