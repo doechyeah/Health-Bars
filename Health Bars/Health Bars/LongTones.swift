@@ -42,7 +42,7 @@ class LongTones: UIViewController, ProgressBarProtocol {
     let conductor = AudioKitConductor.sharedInstance
     
     //MARK: Database Score
-    let PDB = ProgClass(playID: "Player1")
+    let PDB = ProgClass()
     
     
     //MARK: Outlets

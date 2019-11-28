@@ -29,7 +29,7 @@ class GuessThatInstrument: UIViewController, ProgressBarProtocol {
     let conductor = AudioKitConductor.sharedInstance
     
     //MARK: Database class
-    let PDB = ProgClass(playID: "Player1")
+    let PDB = ProgClass()
     
     //MARK: Constants
     let instrumentNames = ["clarinet","flute","sax","snare","trombone","trumpet","violin","piano","bells"]

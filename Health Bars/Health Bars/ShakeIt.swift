@@ -38,7 +38,7 @@ class ShakeIt: UIViewController, ProgressBarProtocol {
     let conductor = AudioKitConductor.sharedInstance
     
     //MARK: Database class
-    let PDB = ProgClass(playID: "Player1")
+    let PDB = ProgClass()
     
     // Not used currently
     let tempo: [String: Int] = ["Grave": 25,
