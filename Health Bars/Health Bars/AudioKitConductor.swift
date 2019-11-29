@@ -59,7 +59,6 @@ class AudioKitConductor {
             try AKSettings.session.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.mixWithOthers)
             //try AKSettings.session.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
             try AKSettings.session.setAllowHapticsAndSystemSoundsDuringRecording(true)
-            NSLog("FUCKING SHIT FUCK")
         } catch {
             AKLog("Could not set output port to speaker")
         }

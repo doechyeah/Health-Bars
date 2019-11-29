@@ -19,6 +19,7 @@ import UIKit
 
 class Success: UIViewController, ProgressBarProtocol {
     
+    var activityMode: ActivityMode = ._none
     var activity: Activity = ._none
     
     //MARK: Outlets
@@ -59,8 +60,13 @@ class Success: UIViewController, ProgressBarProtocol {
         }
         progressBar.setVars(new_titleText: titleText)
         
+        NSLog("\(activityMode)")
     }
     
+    @IBAction func swipeRightGesture(_ sender: UISwipeGestureRecognizer) {
+        NSLog("success swipe right")
+        //TODO: determine whether to go back to all exercises or continue to next activity
+    }
     /*
      // MARK: - Navigation
      

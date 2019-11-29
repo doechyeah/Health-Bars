@@ -19,6 +19,7 @@ import UIKit
 
 class Fail: UIViewController, ProgressBarProtocol {
     
+    var activityMode: ActivityMode = ._none
     var activity: Activity = ._none
     
     //MARK: Outlets

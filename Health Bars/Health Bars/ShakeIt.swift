@@ -61,6 +61,7 @@ class ShakeIt: UIViewController, ProgressBarProtocol {
     @IBOutlet weak var imgvAvatar: UIImageView!
 
     var activityMode: ActivityMode = ._none
+    var activity: Activity = ._none
     
     //MARK: Game parameters
     var shakeBeatHits: Int = 0
@@ -145,10 +146,12 @@ class ShakeIt: UIViewController, ProgressBarProtocol {
         NSLog(segue.destination.debugDescription)
         if let vc = segue.destination as? Success {
             NSLog("is Success")
+            vc.activityMode = activityMode
             vc.activity = .ShakeIt
         }
         if let vc = segue.destination as? Fail {
             NSLog("is Fail")
+            vc.activityMode = activityMode
             vc.activity = .ShakeIt
         }
     }

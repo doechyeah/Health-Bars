@@ -33,10 +33,10 @@
 		0CA377DE23694484001DAB00 /* Fail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377DD23694484001DAB00 /* Fail.swift */; };
 		0CA9115D238B361400A7F514 /* ProgressBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CA9115C238B361400A7F514 /* ProgressBar.xib */; };
 		0CA91165238B375D00A7F514 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA91164238B375C00A7F514 /* ProgressBar.swift */; };
-		0CCB411A236A97DB0031AB67 /* NavigationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */; };
-		0CCB43812378CC6F00FCC3DE /* AllExercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB43802378CC6F00FCC3DE /* AllExercises.swift */; };
 		0CD1923D237FB19200A69AED /* songTest_Classical.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CD1923C237FB19200A69AED /* songTest_Classical.mp3 */; };
 		0CD1923F237FB19C00A69AED /* songTest_Classical.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CD1923E237FB19C00A69AED /* songTest_Classical.json */; };
+		0CE4CC10239104820006AB71 /* NavigationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4CC0F239104820006AB71 /* NavigationMenu.swift */; };
+		0CE4CC122391048E0006AB71 /* AllExercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4CC112391048E0006AB71 /* AllExercises.swift */; };
 		0CEEB1C92388BD2000D126DC /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEB1C82388BD2000D126DC /* NavigationController.swift */; };
 		0CF23E4E236C1EA400283DFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CF23E4D236C1EA400283DFD /* Assets.xcassets */; };
 		0CF2CC6F2381E73F00B4B9DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA377B123694264001DAB00 /* Main.storyboard */; };
@@ -269,10 +269,10 @@
 		0CA377DD23694484001DAB00 /* Fail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fail.swift; sourceTree = "<group>"; };
 		0CA9115C238B361400A7F514 /* ProgressBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressBar.xib; sourceTree = "<group>"; };
 		0CA91164238B375C00A7F514 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
-		0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMenu.swift; sourceTree = "<group>"; };
-		0CCB43802378CC6F00FCC3DE /* AllExercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllExercises.swift; sourceTree = "<group>"; };
 		0CD1923C237FB19200A69AED /* songTest_Classical.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = songTest_Classical.mp3; sourceTree = "<group>"; };
 		0CD1923E237FB19C00A69AED /* songTest_Classical.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = songTest_Classical.json; sourceTree = "<group>"; };
+		0CE4CC0F239104820006AB71 /* NavigationMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationMenu.swift; sourceTree = "<group>"; };
+		0CE4CC112391048E0006AB71 /* AllExercises.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllExercises.swift; sourceTree = "<group>"; };
 		0CEEB1C82388BD2000D126DC /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		0CF23E4D236C1EA400283DFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CF2CC662381E5E700B4B9DB /* DailyExercises.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DailyExercises.storyboard; sourceTree = "<group>"; };
@@ -368,17 +368,17 @@
 				0CA377AD23694264001DAB00 /* AppDelegate.swift */,
 				0CEEB1C82388BD2000D126DC /* NavigationController.swift */,
 				0C4D2F1E23860FFE00426065 /* AudioKitConductor.swift */,
-				0CCB4119236A97DB0031AB67 /* NavigationMenu.swift */,
 				5C2011FE2384A7B1004D2EF3 /* Statistics.swift */,
-				0CCB43802378CC6F00FCC3DE /* AllExercises.swift */,
+				0CE4CC0F239104820006AB71 /* NavigationMenu.swift */,
+				0CE4CC112391048E0006AB71 /* AllExercises.swift */,
 				0CA377AF23694264001DAB00 /* LongTones.swift */,
 				0C7B24162379F62600E59378 /* ShakeIt.swift */,
 				E179CB452380F17600130CDC /* GuessThatInstrument.swift */,
 				5C20EBF42384C1A80052CAB8 /* UploadData.swift */,
 				5C071B12237F5BAC0006A921 /* ProgressDB.swift */,
 				0CA377DB23694427001DAB00 /* Success.swift */,
-				5C43D9F823849A0200A17976 /* StatRecord.swift */,
 				0CA377DD23694484001DAB00 /* Fail.swift */,
+				5C43D9F823849A0200A17976 /* StatRecord.swift */,
 				0CF4103A236CA3BE00F11054 /* ComingSoon.swift */,
 				0C7E926923800EB000A5AC41 /* UnwindToActivitySegue.swift */,
 				0CA377B123694264001DAB00 /* Main.storyboard */,
@@ -814,14 +814,14 @@
 			files = (
 				5C2011FF2384A7B1004D2EF3 /* Statistics.swift in Sources */,
 				E179CB4C2380F17600130CDC /* GuessThatInstrument.swift in Sources */,
-				0CCB43812378CC6F00FCC3DE /* AllExercises.swift in Sources */,
 				5C43D9FF23849A0300A17976 /* StatRecord.swift in Sources */,
 				0C7B24172379F62600E59378 /* ShakeIt.swift in Sources */,
+				0CE4CC10239104820006AB71 /* NavigationMenu.swift in Sources */,
 				5C071B1A237F5BAD0006A921 /* ProgressDB.swift in Sources */,
 				5CF6802C237F8664005778E3 /* SwiftyJSON.swift in Sources */,
 				0CEEB1C92388BD2000D126DC /* NavigationController.swift in Sources */,
-				0CCB411A236A97DB0031AB67 /* NavigationMenu.swift in Sources */,
 				0C7E926A23800EB000A5AC41 /* UnwindToActivitySegue.swift in Sources */,
+				0CE4CC122391048E0006AB71 /* AllExercises.swift in Sources */,
 				5C20EBF52384C1A80052CAB8 /* UploadData.swift in Sources */,
 				0CA377B023694264001DAB00 /* LongTones.swift in Sources */,
 				0CA377DE23694484001DAB00 /* Fail.swift in Sources */,

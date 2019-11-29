@@ -62,7 +62,8 @@ class LongTones: UIViewController, ProgressBarProtocol {
     //@IBOutlet weak var timerText: UILabel!
     
     // if daily exercises, all exercises view controller has to set to .DailyExercises with prepare function before segue
-    var activityMode: ActivityMode = .AllExercises
+    var activityMode: ActivityMode = ._none
+    var activity: Activity = ._none
     
     var timerTestNum: Double!
     
@@ -182,10 +183,12 @@ class LongTones: UIViewController, ProgressBarProtocol {
         NSLog(segue.destination.debugDescription)
         if let vc = segue.destination as? Success {
             NSLog("is Success")
+            vc.activityMode = activityMode
             vc.activity = .LongTones
         }
         if let vc = segue.destination as? Fail {
             NSLog("is Fail")
+            vc.activityMode = activityMode
             vc.activity = .LongTones
         }
     }

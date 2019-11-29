@@ -47,6 +47,7 @@ class GuessThatInstrument: UIViewController, ProgressBarProtocol {
     @IBOutlet weak var instrumentImage4: UIImageView!
     
     var activityMode: ActivityMode = ._none
+    var activity: Activity = ._none
     
     //MARK: Game variables
     var segueKeepSameinstrument: Bool!
@@ -116,10 +117,12 @@ class GuessThatInstrument: UIViewController, ProgressBarProtocol {
         NSLog(segue.destination.debugDescription)
         if let vc = segue.destination as? Success {
             NSLog("is Success")
+            vc.activityMode = activityMode
             vc.activity = .GuessThatInstrument
         }
         if let vc = segue.destination as? Fail {
             NSLog("is Fail")
+            vc.activityMode = activityMode
             vc.activity = .GuessThatInstrument
         }
     }

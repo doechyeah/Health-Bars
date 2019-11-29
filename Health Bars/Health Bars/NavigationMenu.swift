@@ -13,28 +13,34 @@
 //  2019-11-14: Created
 //
 
-
-import Foundation
-
 import UIKit
 
-class AllExercises: UIViewController, ProgressBarProtocol {
-    
-    func unwindSegueFromView() {
-        NSLog("All Exercises delegate unwind function")
-        performSegue(withIdentifier: "segue_unwindtoNavigationMenu", sender: self)
-    }
+//TODO: read from db and choose where to go for daily exercises
+class NavigationMenu: UIViewController {
     
     @IBOutlet weak var progressBar: ProgressBar!
     
+    var completedExercises: Array<Activity> = []
+    var doneAllDailyExercises: Bool = false
+    var nextDailyExercise: Activity = ._none
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        progressBar.delegate = self
-        progressBar.setVars(new_titleText: "ALL EXERCISES")
+        progressBar.setVars(new_titleText: "MAIN MENU")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //read from db here
+    }
+    
+    @IBAction func dailyExercisesPressed(_ sender: UIButton) {
+        NSLog("Daily Exercises button pressed")
+        
     }
     
     // unwind segue function, called from other views
-    @IBAction func unwindToAllExercises(_ unwindSegue: UIStoryboardSegue) {
+    @IBAction func unwindToNavigationMenu(_ unwindSegue: UIStoryboardSegue) {
         //let sourceViewController = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
     }

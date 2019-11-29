@@ -11,7 +11,7 @@
         <scene sceneID="ZNJ-88-cDs">
             <objects>
                 <viewController id="OGF-De-hVA" userLabel="Navigation Menu" customClass="NavigationMenu" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8SC-WT-xiH" userLabel="Navigation Menu">
+                    <view key="view" contentMode="scaleToFill" id="8SC-WT-xiH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -38,7 +38,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="345" height="135"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
-                                            <segue destination="Huj-GF-WJu" kind="show" id="zWg-0f-Zhr"/>
+                                            <action selector="dailyExercisesPressed:" destination="OGF-De-hVA" eventType="touchUpInside" id="0LF-On-9AX"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -157,7 +157,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="NAVIGATION MENU" id="9gG-4c-YBN"/>
                     <connections>
-                        <outlet property="progressBar" destination="Gov-kP-yCk" id="rfp-2L-nGN"/>
+                        <outlet property="progressBar" destination="Gov-kP-yCk" id="Qld-KI-Dqr"/>
+                        <segue destination="CCd-Jf-xds" kind="show" identifier="segue_gotoDailyExercisesLongTones" id="27b-a7-7qF"/>
+                        <segue destination="5Nc-Ib-Y05" kind="show" identifier="segue_gotoDailyExercisesShakeIt" id="Ogq-gb-PwT"/>
+                        <segue destination="umI-wS-8ws" kind="show" identifier="segue_gotoDailyExercisesGTI" id="LzZ-B9-pHq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b1T-Ps-fgY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -314,7 +317,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="ALL EXERCISES" id="aFV-40-8gd"/>
                     <connections>
-                        <outlet property="progressBar" destination="DU9-Y6-2ms" id="3uL-aM-IjD"/>
+                        <outlet property="progressBar" destination="DU9-Y6-2ms" id="FMK-6r-c9h"/>
                         <segue destination="Llh-3f-98V" kind="unwind" identifier="segue_unwindtoNavigationMenu" unwindAction="unwindToNavigationMenu:" id="XwS-eh-XrN"/>
                     </connections>
                 </viewController>
@@ -328,7 +331,7 @@
             <objects>
                 <viewController id="umI-wS-8ws" customClass="GuessThatInstrument" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w5i-Kx-jjI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal: Pick the correct instrument you hear" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCk-oj-8L0">
@@ -482,6 +485,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uhO-Tp-v7J"/>
                     </view>
+                    <navigationItem key="navigationItem" id="50F-I0-OWU"/>
                     <connections>
                         <outlet property="instrumentButton1" destination="GCi-4Z-QMW" id="j4l-Ww-32O"/>
                         <outlet property="instrumentButton2" destination="GXq-1a-f5l" id="Zd4-WZ-BcO"/>
@@ -705,7 +709,7 @@
             <objects>
                 <viewController id="5Nc-Ib-Y05" userLabel="Shake It" customClass="ShakeIt" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kl1-zR-gXz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sO-Kd-xSt">
@@ -832,6 +836,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ba6-bd-5ZW"/>
                     </view>
+                    <navigationItem key="navigationItem" id="J7T-ni-Zzb"/>
                     <connections>
                         <outlet property="countdownLabel" destination="vTc-DI-4Tc" id="a1u-rS-Uuc"/>
                         <outlet property="hitsLabel" destination="uBg-bi-IPA" id="J0M-NF-r6D"/>
@@ -901,7 +906,7 @@
             <objects>
                 <viewController id="NeQ-Ht-Zxa" userLabel="Success" customClass="Success" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h5a-Gb-Rdu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XEN-fc-wR8" userLabel="Badge: Vocal">
@@ -984,13 +989,16 @@
                         <outlet property="activityIconImage" destination="Z0g-wu-CzA" id="hzO-Yr-6wx"/>
                         <outlet property="progressBar" destination="LFG-Bj-jqd" id="gh0-UL-wWq"/>
                         <segue destination="vPg-ol-N8Q" kind="unwind" identifier="segue_unwindtoNavigationMenu" unwindAction="unwindToNavigationMenu:" id="mwJ-cT-pPu"/>
+                        <segue destination="5Nc-Ib-Y05" kind="show" identifier="segue_gotoShakeIt" id="idZ-R2-k9c"/>
+                        <segue destination="umI-wS-8ws" kind="show" identifier="segue_gotoGTI" id="Fjg-aL-w8L"/>
+                        <segue destination="vPg-ol-N8Q" kind="unwind" identifier="segue_unwindtoAllExercises" unwindAction="unwindToAllExercises:" id="zS3-3s-ycE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fSC-K1-s5Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="vPg-ol-N8Q" userLabel="Exit" sceneMemberID="exit"/>
                 <swipeGestureRecognizer direction="right" id="n6F-Cd-hWH" userLabel="right">
                     <connections>
-                        <segue destination="vPg-ol-N8Q" kind="unwind" unwindAction="unwindToAllExercises:" id="yFJ-1W-sf2"/>
+                        <action selector="swipeRightGesture:" destination="NeQ-Ht-Zxa" id="0PX-69-Exo"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -1001,7 +1009,7 @@
             <objects>
                 <viewController id="mXv-aH-Opl" userLabel="Fail" customClass="Fail" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YDx-L8-NDW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9um-Ak-FHJ" userLabel="Fail">
@@ -1165,7 +1173,10 @@ ALL EXERCISES
         <image name="volume" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ACt-Xz-HpB"/>
-        <segue reference="O95-dR-ved"/>
+        <segue reference="XHS-7m-Fdy"/>
+        <segue reference="7cC-hw-HfW"/>
+        <segue reference="idZ-R2-k9c"/>
+        <segue reference="27b-a7-7qF"/>
+        <segue reference="Fjg-aL-w8L"/>
     </inferredMetricsTieBreakers>
 </document>
