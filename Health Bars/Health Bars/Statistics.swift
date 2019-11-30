@@ -101,6 +101,10 @@ class grabTest {
 }
 
 class Statistics: UIViewController, ProgressBarProtocol {
+    //badges pic
+    @IBOutlet weak var mic: UIImageView!
+    @IBOutlet weak var equalizer: UIImageView!
+    @IBOutlet weak var memory: UIImageView!
     
     var score:Int!
     
