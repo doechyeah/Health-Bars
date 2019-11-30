@@ -14,6 +14,7 @@
 //  Changelog:
 //  2019-11-05: Created
 //  2019-11-14: Added asynchronous timers
+//  2019-11-22: Refactored with new AudioKitConductor class
 //
 //  Bugs:
 //  2019-11-15: NSTimer will drift slightly on simulator, results in accuracy drift, should not matter with shorter song durations
@@ -25,14 +26,19 @@ import UIKit
 import AudioToolbox
 import AudioKit
 
-class ShakeIt: UIViewController {
-
+class ShakeIt: UIViewController, ProgressBarProtocol {
 
     //MARK: Constants
     let beatMatchRatioForSuccess: Double = 0.5
     // tolerance of accuracy of shake to beat as percentage of beat period, from center to edge (not negative to positive edge)
     let shakeAccuracyToleranceRatio: Double = 0.3
     let countdownLength: Int = 3
+    
+    //MARK: Shared AudioKit conductor
+    let conductor = AudioKitConductor.sharedInstance
+    
+    //MARK: Database class
+    let PDB = ProgClass.sharedInstance
     
     // Not used currently
     let tempo: [String: Int] = ["Grave": 25,
@@ -44,8 +50,6 @@ class ShakeIt: UIViewController {
                                 "Vivace": 156,
                                 "Presto": 168]
 
-    // Database class
-    let PDB = ProgClass(playID: "Player1")
 
     //MARK: Outlets
     @IBOutlet weak var startButton: UIButton!
@@ -56,6 +60,9 @@ class ShakeIt: UIViewController {
     @IBOutlet weak var offTempoLabel: UILabel!
     @IBOutlet weak var imgvAvatar: UIImageView!
 
+    var activityMode: ActivityMode = ._none
+    var activity: Activity = .ShakeIt
+    var dailyExercisesDoneToday: [Bool] = [false, false, false]
     
     //MARK: Game parameters
     var shakeBeatHits: Int = 0
@@ -98,7 +105,6 @@ class ShakeIt: UIViewController {
     
     //MARK: AudioKit variables
     var songFile: AKAudioFile!
-    var songPlayer: AKPlayer!
     
     deinit {
         //debug
@@ -120,30 +126,37 @@ class ShakeIt: UIViewController {
         }
     }
     
-
-    // called when view first gets loaded into memory
+    func unwindSegueFromView() {
+        NSLog("Shake It delegate unwind function")
+        performSegue(withIdentifier: "segue_unwindtoNavigationMenu", sender: self)
+    }
+    
+    
+    @IBOutlet weak var progressBar: ProgressBar!
+    
     override func viewDidLoad() {
-        // debug
-        //NSLog("viewDidLoad()")
         super.viewDidLoad()
-
-        // debug
-        //NSLog("Done viewDidLoad()")
+        progressBar.delegate = self
+        //TODO: pass data that was sent from AllExercises
+        progressBar.setVars(new_activityMode: .AllExercises, new_currentActivity: .ShakeIt, new_titleText: "SHAKE IT")
     }
 
     // called when view appears fully
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         // debug
         //NSLog("viewDidAppear()")
         super.viewDidAppear(animated)
         // simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
+        dailyExercisesDoneToday = PDB.readDAct()
+        progressBar.setCompletedActivities(activitiesCompleted: dailyExercisesDoneToday)
+        
         // UI Init
         countdownLabel.text = "Countdown"
-        hitsLabel.text = "Hits"
-        missesLabel.text = "Misses"
-        offTempoLabel.text = "off Tempo"
+        hitsLabel.text = "_"
+        missesLabel.text = "_"
+        offTempoLabel.text = "_"
         // end UI Init
         // game parameters init
         shakeBeatHits = 0
@@ -188,7 +201,6 @@ class ShakeIt: UIViewController {
         // AudioKit variables init
         initPlayer()
         
-        initAudioSession()
         // end AudioKit variables init
         
         if segueKeepSameSong == false {
@@ -209,7 +221,7 @@ class ShakeIt: UIViewController {
         destroyTimers()
         //endGame()
 
-        songPlayer.stop()
+        conductor.stop()
 
         do {
             try AudioKit.stop()
@@ -219,6 +231,22 @@ class ShakeIt: UIViewController {
 
         // debug
         //NSLog("Done viewDidDisappear()")
+    }
+    
+    // send data with segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        NSLog("shake it prepare()")
+        NSLog(segue.destination.debugDescription)
+        if let vc = segue.destination as? Success {
+            NSLog("is Success")
+            vc.activityMode = activityMode
+            vc.activity = activity
+        }
+        if let vc = segue.destination as? Fail {
+            NSLog("is Fail")
+            vc.activityMode = activityMode
+            vc.activity = activity
+        }
     }
 
     //MARK: Actions
@@ -255,6 +283,7 @@ class ShakeIt: UIViewController {
         // have trigger right at end of first window
         DispatchQueue.global(qos: .userInitiated).async {
             let ti = Timer.scheduledTimer(withTimeInterval: self.songStartOffsetTime + self.shakeAccuracyToleranceTime, repeats: false, block: {_ in
+        //Timer.scheduledTimer(withTimeInterval: self.songStartOffsetTime + self.shakeAccuracyToleranceTime, repeats: false, block: {_ in
                 self.updateShakeCondition()
                 self.beatResetTimer = Timer.scheduledTimer(timeInterval: self.songBeatPeriod,
                 target: self,
@@ -274,13 +303,13 @@ class ShakeIt: UIViewController {
                                               selector: #selector(ShakeIt.vibrateOnBeat),
                                               userInfo: nil,
                                               repeats: true)
-//
+        
         // can also achieve with separate timer
-        songPlayer.completionHandler = {
+        conductor.player.completionHandler = {
             self.endGame()
         }
-        songPlayer.play()
-        NSLog("starttime: \(songPlayer.currentTime)")
+        conductor.player.play()
+        NSLog("starttime: \(conductor.player.currentTime)")
         gameActive = true
     }
     
@@ -304,21 +333,19 @@ class ShakeIt: UIViewController {
         }
     }
     
-    // display/save stats to our DB
+    // save stats to our DB
     func updateStats() {
-        var scrd = 0
+        // 0 is fail, 1 is success
+        var activityScore = 0
         if shakeBeatHits/(shakeBeatHits+shakeBeatMisses) > beatMatchRatioForSuccess {
             success = true
-            scrd = 1
+            activityScore = 1
         }
-        PDB.insert(table: "rhythm", actscore: scrd)
+        PDB.insert(table: "rhythm", actscore: activityScore)
         print("Hits: \(shakeBeatHits)")
         print("Misses: \(shakeBeatMisses)")
         print("Off Tempos: \(shakeBeatOffTempos)")
-        let debugdict = PDB.readTable(table: "rhythm")
-        dump(debugdict)
-        let statchck = PDB.readStats()
-        dump(statchck)
+        PDB.dumpAll()
     }
     
     func destroyTimers() {
@@ -338,6 +365,9 @@ class ShakeIt: UIViewController {
         if !shakedToBeat {
             shakeBeatMisses += 1
             print("shake Miss")
+            DispatchQueue.main.async {
+                self.updateCounters()
+            }
         }
         shakedToBeat = false
         beatNum += 1
@@ -349,12 +379,12 @@ class ShakeIt: UIViewController {
 //    Will Implement later. Coming in V3
     @objc func vibrateOnBeat() {
         //debug
-        //print("Vibrate!")
+        print("Vibrate!")
         //vibrationGenerator.impactOccurred()
         NSLog("vibrateOnBeat()")
         //AudioServicesPlaySystemSound(1520)
         //AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
-        //AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
         //createPulse()
     }
     
@@ -364,7 +394,7 @@ class ShakeIt: UIViewController {
         if gameActive {
             // good shake timing window calculation
             shakeLck.lock()
-            let currentTime = songPlayer.currentTime
+            let currentTime = conductor.player.currentTime
             let offset: Double = (currentTime - songStartOffsetTime).remainder(dividingBy: songBeatPeriod)
             print("offset: \(offset)\ncurrent player time: \(currentTime)\nbeatNumAtShake: \(beatNum)")
             
@@ -373,13 +403,11 @@ class ShakeIt: UIViewController {
                 shakedToBeat = true
                 print("shake Hit")
                 vibrationGenerator.impactOccurred()
-                hitsLabel.text = "\(shakeBeatHits)"
             } else {
                 shakeBeatOffTempos += 1
                 print("shake Off Tempo")
-                offTempoLabel.text = "\(shakeBeatOffTempos)"
             }
-            missesLabel.text = "\(shakeBeatMisses)"
+            updateCounters()
             shakeLck.unlock()
         } else {
             print("Game not started yet")
@@ -389,42 +417,24 @@ class ShakeIt: UIViewController {
     
     //initializes the audio file to play
     func initPlayer() {
+        NSLog("Shake It initPlayer()")
         do {
-            
             try songFile = AKAudioFile(forReading: songUrl)
-            songPlayer = AKPlayer(audioFile: songFile)
-            
-            if songPlayer.duration < playSongPeriod {
+            conductor.loadFile(my_file: songFile)
+            if conductor.player.duration < playSongPeriod {
                 // should never happen
-                print("song is \(songPlayer.duration) but playback duration is \(playSongPeriod)")
+                print("song is \(conductor.player.duration) but playback duration is \(playSongPeriod)")
             }
-            
             // less than 0 for play until end
             if songEndTime < 0 {
-                songEndTime = songPlayer.duration
+                songEndTime = conductor.player.duration
             }
             print("song playtime duration: \(songEndTime)")
             
-            // preload file into memory for fast starting
-            songPlayer.preroll(from: songStartOffsetTime, to: songEndTime)
+            conductor.prerollPlayer(from: songStartOffsetTime, to: songEndTime)
             
         } catch {
             NSLog("error in initPlayer()")
-        }
-    }
-    
-    //initializes audio session to play audio on device speakers
-    func initAudioSession() {
-        do {
-            // workaround for bug in audiokit: https://github.com/AudioKit/AudioKit/issues/1799#issuecomment-506373157
-            AKSettings.sampleRate = AudioKit.engine.inputNode.inputFormat(forBus: 0).sampleRate
-            
-            AudioKit.output = songPlayer
-            try AKSettings.session.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.mixWithOthers)
-            try AKSettings.session.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
-            try AudioKit.start()
-        } catch {
-            NSLog("error in initAudioSession()")
         }
     }
     
@@ -465,6 +475,12 @@ class ShakeIt: UIViewController {
         shakeAccuracyToleranceTime = shakeAccuracyToleranceRatio * songBeatPeriod
         print("shakeAccuracyToleranceTime: \(shakeAccuracyToleranceTime)")
         playSongPeriod = songEndTime - songStartOffsetTime
+    }
+    
+    func updateCounters() {
+        hitsLabel.text = String(shakeBeatHits)
+        missesLabel.text = String(shakeBeatMisses)
+        offTempoLabel.text = String(shakeBeatOffTempos)
     }
     
 //    func createPulse() {
