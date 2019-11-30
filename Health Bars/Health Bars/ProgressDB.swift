@@ -65,24 +65,24 @@ class ProgClass {
         
         // Try to create tables if they do not exist already
         do {
-            try db.run(PlayData.create(ifNotExists: true) {
-                t in
-                t.column(pID)
-                t.column(lastSent)
-            })
-            let count = try db.scalar(PlayData.count)
-            if count == 0 {
-                let playDict = CreatePlayer()
-                //playerID = playDict["_id"] as! String
-                playerID = "testid_temp"
-                try db.run(PlayData.insert(pID <- playerID,
-                                          lastSent <- currentdate
-                ))
-            } else {
-                for x in try db.prepare(PlayData) {
-                    playerID = x[pID]
-                }
-            }
+            playerID = "testid"
+//            try db.run(PlayData.create(ifNotExists: true) {
+//                t in
+//                t.column(pID)
+//                t.column(lastSent)
+//            })
+//            let count = try db.scalar(PlayData.count)
+//            if count == 0 {
+//                let playDict = CreatePlayer()
+//                playerID = playDict["_id"] as! String
+//                try db.run(PlayData.insert(pID <- playerID,
+//                                          lastSent <- currentdate
+//                ))
+//            } else {
+//                for x in try db.prepare(PlayData) {
+//                    playerID = x[pID]
+//                }
+//            }
             try db.run(DailyStreak.create(ifNotExists: true) {
                 t in
                 t.column(datetime, primaryKey: true)
@@ -156,11 +156,20 @@ class ProgClass {
         let db = try! Connection("\(path)/ProgressDB.sqlite3")
         let DBtable = Table(table)
         let daterow = DBtable.filter(datetime == currentdate)
+        var daily = 0;
+        if table == "voice" {daily = 1}
+        if table == "rhythm" {daily = 2}
+        if table == "memory" {daily = 4}
+        var dbool = false;
         do {
+            for x in try db.prepare(daterow) {
+                if x[score] == 0 {dbool = true}
+            }
             try db.run(daterow.update(score += actscore,
                                       attempts += 1))
             let addstatrow = Expression<Int>("\(table)score")
             try db.run(Stats.filter(datetime == currentdate).update(addstatrow += actscore))
+            if dbool { try db.run(DailyStreak.filter(datetime == currentdate).update(CompletedDaily += daily))}
         } catch  let error {
             print("Insert failed: \(error)")
         }
@@ -199,6 +208,39 @@ class ProgClass {
         return results
     }
     
+    func readDAct() -> [Bool] {
+        let db = try! Connection("\(path)/ProgressDB.sqlite3")
+        var ret: [Bool] = [false,false,false]
+        let daterow = DailyStreak.filter(datetime == currentdate)
+        do {
+            for data in try db.prepare(daterow) {
+                let x = data[CompletedDaily]
+                switch x {
+                case 1:
+                    ret = [false, false, true]
+                case 2:
+                    ret = [false, true, false]
+                case 3:
+                    ret = [false, true, true]
+                case 4:
+                    ret = [true, false, false]
+                case 5:
+                    ret = [true, false, true]
+                case 6:
+                    ret = [true, true, false]
+                case 7:
+                    ret = [true, true, true]
+                default:
+                    ret = [false, false, false]
+                }
+            }
+        } catch let error {
+            print("Error reading Daily streaks: \(error)")
+        }
+        return ret
+    }
+    
+    
     func readDaily() -> Dictionary<String, (Int, Int)> {
         // This function will aggregate the data and update the stat table
         let db = try! Connection("\(path)/ProgressDB.sqlite3")
@@ -214,60 +256,57 @@ class ProgClass {
         return results
     }
     
-    // MARK: Daily stats logic
+    // MARK: Daily stats update streak when the class is deinit or explicityly called (in statistics)
     func updateDaily() {
         // This function will aggregate the data and update the dailystreak table
         let db = try! Connection("\(path)/ProgressDB.sqlite3")
-        var skipUpdate: Bool = false
-        
+//        var skipUpdate: Bool = false
         do {
             for x in try db.prepare(DailyStreak.filter(datetime == currentdate)) {
                 if x[CompletedDaily] == 7 {
-                    skipUpdate = true
+                    let dailyrow = DailyStreak.filter(datetime == currentdate)
+                    let yestrow = DailyStreak.filter(datetime == yesterday)
+                    var streak: Int = 0
+                    do {
+                        for yestdata in try db.prepare(yestrow) {
+                            if yestdata[CompletedDaily] == 7 {
+                                streak = yestdata[CurrentStreak]
+                            }
+                        }
+                        try db.run(dailyrow.update(CurrentStreak <- 1+streak))
+                    } catch  let error {
+                        print("Streak Update failed: \(error)")
+                    }
+                    
                 }
             }
         } catch let error {
             print("Error performing daily update check: \(error)")
         }
         
-        if !skipUpdate {
-            var dailytruth: Int = 0
-            activities.forEach { x in
-                do {
-                    for datarow in try db.prepare(Table(x).filter(datetime == currentdate)) {
-                        if datarow[attempts] > 0 {
-                            switch x {
-                            case "voice":
-                                dailytruth += 1
-                            case "rhythm":
-                                dailytruth += 2
-                            case "memory":
-                                dailytruth += 4
-                            default:
-                                print("ERROR IN UPDATING DAILY")
-                            }
-                        }
-                    }
-                } catch let error {
-                    print("The daily streak update failed: \(error)")
-                }
-            }
-
-            let dailyrow = DailyStreak.filter(datetime == currentdate)
-            let yestrow = DailyStreak.filter(datetime == yesterday)
-            var streak: Int = 0
-            do {
-                for yestdata in try db.prepare(yestrow) {
-                    if yestdata[CompletedDaily] == 7 {
-                        streak = yestdata[CurrentStreak]
-                    }
-                }
-                try db.run(dailyrow.update(CurrentStreak <- 1+streak,
-                                           CompletedDaily <- dailytruth))
-            } catch  let error {
-                print("Streak Update failed: \(error)")
-            }
-        }
+//        if !skipUpdate {
+//            var dailytruth: Int = 0
+//            activities.forEach { x in
+//                do {
+//                    for datarow in try db.prepare(Table(x).filter(datetime == currentdate)) {
+//                        if datarow[attempts] > 0 {
+//                            switch x {
+//                            case "voice":
+//                                dailytruth += 1
+//                            case "rhythm":
+//                                dailytruth += 2
+//                            case "memory":
+//                                dailytruth += 4
+//                            default:
+//                                print("ERROR IN UPDATING DAILY")
+//                            }
+//                        }
+//                    }
+//                } catch let error {
+//                    print("The daily streak update failed: \(error)")
+//                }
+//            }
+//        }
         // END OF dailyUpdate()
     }
     
@@ -307,7 +346,8 @@ class ProgClass {
                                             pID <- playerID,
                                             voicescore <- vrand,
                                             memoryscore <- mrand,
-                                            rhythmscore <- rrand))
+                                            rhythmscore <- rrand,
+                                            sent <- false))
             } catch let error {
                 print("Insert failed: \(error)")
             }
