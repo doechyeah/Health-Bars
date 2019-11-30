@@ -163,7 +163,7 @@ class ProgClass {
         var dbool = false;
         do {
             for x in try db.prepare(daterow) {
-                if x[score] == 0 {dbool = true}
+                if x[score] == 0 && actscore == 1 {dbool = true}
             }
             try db.run(daterow.update(score += actscore,
                                       attempts += 1))
