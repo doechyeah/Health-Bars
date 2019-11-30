@@ -43,6 +43,12 @@ class ProgressBar: UIView {
     @IBOutlet weak var rhythmIcon: UIImageView!
     @IBOutlet weak var memoryIcon: UIImageView!
     
+    // starts out hidden
+    @IBOutlet weak var voiceCheckmark: UIImageView!
+    @IBOutlet weak var rhythmCheckmark: UIImageView!
+    @IBOutlet weak var memoryCheckmark: UIImageView!
+    
+    
     // Custom view in code
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -60,6 +66,20 @@ class ProgressBar: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
+    
+    // set checkmarks on activity icons
+    // order is memory rhythm voice
+    func setCompletedActivities(activitiesCompleted: [Bool]) {
+        if activitiesCompleted[0] {
+            memoryCheckmark.isHidden = false
+        }
+        if activitiesCompleted[1] {
+            rhythmCheckmark.isHidden = false
+        }
+        if activitiesCompleted[2] {
+            voiceCheckmark.isHidden = false
+        }
     }
     
     // every view controller that uses Progress Bar must call this function via outlet before displaying
@@ -81,11 +101,6 @@ class ProgressBar: UIView {
         if activityMode == ._none {
             iconsStackView.isHidden = true
         }
-    }
-    
-    // add checkmark on top of icon if completed for daily exercises
-    func setCompletedActivityMarks() {
-        
     }
     
     // show current activity with green circle border

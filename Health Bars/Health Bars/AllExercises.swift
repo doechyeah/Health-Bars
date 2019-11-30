@@ -42,19 +42,15 @@ class AllExercises: UIViewController, ProgressBarProtocol {
         if let vc = segue.destination as? LongTones {
             NSLog("is LongTones")
             vc.activityMode = .AllExercises
-            vc.activity = .LongTones
         }
         if let vc = segue.destination as? ShakeIt {
             NSLog("is ShakeIt")
             vc.activityMode = .AllExercises
-            vc.activity = .ShakeIt
         }
         if let vc = segue.destination as? GuessThatInstrument {
             NSLog("is GuessThatInstrument")
             vc.activityMode = .AllExercises
-            vc.activity = .GuessThatInstrument
         }
- 
     }
     
     // unwind segue function, called from other views

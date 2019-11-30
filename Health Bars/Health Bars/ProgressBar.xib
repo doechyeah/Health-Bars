@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,9 +12,12 @@
                 <outlet property="contentView" destination="iN0-l3-epB" id="rzY-11-bF4"/>
                 <outlet property="homeButton" destination="nwf-9q-eoG" id="7du-6A-rO4"/>
                 <outlet property="iconsStackView" destination="ZE6-LC-nfg" id="nb2-ye-1FN"/>
+                <outlet property="memoryCheckmark" destination="OJZ-1Y-wHY" id="yYn-XM-8fS"/>
                 <outlet property="memoryIcon" destination="XKf-hK-NNU" id="qCb-hr-dSZ"/>
+                <outlet property="rhythmCheckmark" destination="dPu-8s-nPk" id="EHK-Ga-1Ca"/>
                 <outlet property="rhythmIcon" destination="csM-TI-ixf" id="yId-rK-GAG"/>
                 <outlet property="titleTextLabel" destination="gnR-wM-BfL" id="6jO-G7-quW"/>
+                <outlet property="voiceCheckmark" destination="h37-1w-30B" id="r0F-Hx-z49"/>
                 <outlet property="voiceIcon" destination="Yr3-bV-VCm" id="Rmj-nY-aBG"/>
             </connections>
         </placeholder>
@@ -51,13 +53,20 @@
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="microphone" translatesAutoresizingMaskIntoConstraints="NO" id="Yr3-bV-VCm">
                                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                 </imageView>
+                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="green_checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="h37-1w-30B" userLabel="Voice Checkmark">
+                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                </imageView>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="P59-LN-vt0" secondAttribute="height" multiplier="1:1" id="BCG-cm-t50"/>
                                 <constraint firstAttribute="bottom" secondItem="Yr3-bV-VCm" secondAttribute="bottom" id="BF5-FT-TIT"/>
+                                <constraint firstItem="h37-1w-30B" firstAttribute="leading" secondItem="P59-LN-vt0" secondAttribute="leading" id="JzM-Ry-aAg"/>
+                                <constraint firstAttribute="bottom" secondItem="h37-1w-30B" secondAttribute="bottom" id="N6M-s5-PGv"/>
                                 <constraint firstAttribute="trailing" secondItem="Yr3-bV-VCm" secondAttribute="trailing" id="TY7-Qp-NZt"/>
+                                <constraint firstItem="h37-1w-30B" firstAttribute="top" secondItem="P59-LN-vt0" secondAttribute="top" id="ZsY-Xf-nuP"/>
                                 <constraint firstAttribute="width" constant="40" id="i4i-ip-CfQ"/>
                                 <constraint firstItem="Yr3-bV-VCm" firstAttribute="leading" secondItem="P59-LN-vt0" secondAttribute="leading" id="nwd-8f-8Do"/>
+                                <constraint firstAttribute="trailing" secondItem="h37-1w-30B" secondAttribute="trailing" id="oxa-qM-z9T"/>
                                 <constraint firstItem="Yr3-bV-VCm" firstAttribute="top" secondItem="P59-LN-vt0" secondAttribute="top" id="qA9-qF-E9O"/>
                             </constraints>
                         </view>
@@ -67,13 +76,20 @@
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="equalizer" translatesAutoresizingMaskIntoConstraints="NO" id="csM-TI-ixf">
                                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                 </imageView>
+                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="green_checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="dPu-8s-nPk" userLabel="Rhythm Checkmark">
+                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                </imageView>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="csM-TI-ixf" secondAttribute="trailing" id="AJU-Tb-JcU"/>
                                 <constraint firstAttribute="width" constant="40" id="FKI-IC-X9b"/>
                                 <constraint firstAttribute="bottom" secondItem="csM-TI-ixf" secondAttribute="bottom" id="JzO-MH-JzW"/>
                                 <constraint firstItem="csM-TI-ixf" firstAttribute="leading" secondItem="V0m-ds-N0s" secondAttribute="leading" id="K6w-nL-hm2"/>
+                                <constraint firstItem="dPu-8s-nPk" firstAttribute="top" secondItem="V0m-ds-N0s" secondAttribute="top" id="P61-uH-9jh"/>
+                                <constraint firstAttribute="trailing" secondItem="dPu-8s-nPk" secondAttribute="trailing" id="PbE-vC-ntY"/>
                                 <constraint firstItem="csM-TI-ixf" firstAttribute="top" secondItem="V0m-ds-N0s" secondAttribute="top" id="QFP-IW-mjs"/>
+                                <constraint firstItem="dPu-8s-nPk" firstAttribute="leading" secondItem="V0m-ds-N0s" secondAttribute="leading" id="ZHA-hd-884"/>
+                                <constraint firstAttribute="bottom" secondItem="dPu-8s-nPk" secondAttribute="bottom" id="aDf-VB-6Ij"/>
                                 <constraint firstAttribute="width" secondItem="V0m-ds-N0s" secondAttribute="height" multiplier="1:1" id="hmA-Zp-G5n"/>
                             </constraints>
                         </view>
@@ -83,10 +99,17 @@
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="memory" translatesAutoresizingMaskIntoConstraints="NO" id="XKf-hK-NNU">
                                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                 </imageView>
+                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="green_checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="OJZ-1Y-wHY" userLabel="Memory Checkmark">
+                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                </imageView>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="kmu-UW-15k" secondAttribute="height" multiplier="1:1" id="0t0-gX-y50"/>
                                 <constraint firstItem="XKf-hK-NNU" firstAttribute="top" secondItem="kmu-UW-15k" secondAttribute="top" id="2p8-9h-i6y"/>
+                                <constraint firstAttribute="bottom" secondItem="OJZ-1Y-wHY" secondAttribute="bottom" id="GOR-fW-glo"/>
+                                <constraint firstItem="OJZ-1Y-wHY" firstAttribute="leading" secondItem="kmu-UW-15k" secondAttribute="leading" id="JVg-pb-LXg"/>
+                                <constraint firstAttribute="trailing" secondItem="OJZ-1Y-wHY" secondAttribute="trailing" id="Kq9-xg-ftj"/>
+                                <constraint firstItem="OJZ-1Y-wHY" firstAttribute="top" secondItem="kmu-UW-15k" secondAttribute="top" id="LW9-wo-R7Y"/>
                                 <constraint firstAttribute="bottom" secondItem="XKf-hK-NNU" secondAttribute="bottom" id="beA-ke-LLr"/>
                                 <constraint firstAttribute="trailing" secondItem="XKf-hK-NNU" secondAttribute="trailing" id="cMV-6J-fFA"/>
                                 <constraint firstAttribute="width" constant="40" id="eol-OI-54a"/>
@@ -115,6 +138,7 @@
     <resources>
         <image name="Home" width="22.5" height="25"/>
         <image name="equalizer" width="512" height="512"/>
+        <image name="green_checkmark" width="512" height="512"/>
         <image name="memory" width="512" height="512"/>
         <image name="microphone" width="512" height="512"/>
     </resources>

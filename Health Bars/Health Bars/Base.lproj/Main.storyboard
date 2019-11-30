@@ -157,6 +157,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="NAVIGATION MENU" id="9gG-4c-YBN"/>
                     <connections>
+                        <outlet property="dailyExercisesButton" destination="D5a-4n-gqy" id="fmY-ZK-n2P"/>
+                        <outlet property="dailyExercisesButtonView" destination="D9k-Hl-efF" id="qbB-ZP-tAh"/>
                         <outlet property="progressBar" destination="Gov-kP-yCk" id="Qld-KI-Dqr"/>
                         <segue destination="CCd-Jf-xds" kind="show" identifier="segue_gotoDailyExercisesLongTones" id="27b-a7-7qF"/>
                         <segue destination="5Nc-Ib-Y05" kind="show" identifier="segue_gotoDailyExercisesShakeIt" id="Ogq-gb-PwT"/>
@@ -988,6 +990,7 @@
                     <connections>
                         <outlet property="activityIconImage" destination="Z0g-wu-CzA" id="hzO-Yr-6wx"/>
                         <outlet property="progressBar" destination="LFG-Bj-jqd" id="gh0-UL-wWq"/>
+                        <outlet property="swipeBoxLabel" destination="Akp-gI-Jtf" id="DWk-ec-2Be"/>
                         <segue destination="vPg-ol-N8Q" kind="unwind" identifier="segue_unwindtoNavigationMenu" unwindAction="unwindToNavigationMenu:" id="mwJ-cT-pPu"/>
                         <segue destination="5Nc-Ib-Y05" kind="show" identifier="segue_gotoShakeIt" id="idZ-R2-k9c"/>
                         <segue destination="umI-wS-8ws" kind="show" identifier="segue_gotoGTI" id="Fjg-aL-w8L"/>
@@ -1100,10 +1103,14 @@ ALL EXERCISES
                     <navigationItem key="navigationItem" id="95T-B2-OLU"/>
                     <connections>
                         <outlet property="progressBar" destination="Wd5-jN-bNe" id="Rzz-EY-CmT"/>
+                        <outlet property="swipeBoxLabel" destination="Bc2-BT-gp6" id="h7O-Wk-JR6"/>
                         <segue destination="f5F-s3-Qla" kind="unwind" identifier="segue_unwindtoLongTones" unwindAction="unwindToLongTones:" id="w1l-j6-ZNm"/>
                         <segue destination="f5F-s3-Qla" kind="unwind" identifier="segue_unwindtoShakeIt" unwindAction="unwindToShakeIt:" id="eOg-p7-UmZ"/>
                         <segue destination="f5F-s3-Qla" kind="unwind" identifier="segue_unwindtoGTI" unwindAction="unwindToGTI:" id="zZ4-xm-ie9"/>
                         <segue destination="f5F-s3-Qla" kind="unwind" identifier="segue_unwindtoNavigationMenu" unwindAction="unwindToNavigationMenu:" id="KBI-3A-DMe"/>
+                        <segue destination="5Nc-Ib-Y05" kind="show" identifier="segue_gotoShakeIt" id="upO-pT-sVT"/>
+                        <segue destination="umI-wS-8ws" kind="show" identifier="segue_gotoGTI" id="rVi-lB-wax"/>
+                        <segue destination="f5F-s3-Qla" kind="unwind" identifier="segue_unwindtoAllExercises" unwindAction="unwindToAllExercises:" id="CE4-V0-lS9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M6v-uU-HCg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1115,7 +1122,7 @@ ALL EXERCISES
                 </swipeGestureRecognizer>
                 <swipeGestureRecognizer direction="right" id="KYm-rc-vNv" userLabel="right">
                     <connections>
-                        <segue destination="f5F-s3-Qla" kind="unwind" unwindAction="unwindToAllExercises:" id="0KW-Q3-A29"/>
+                        <action selector="swipeRightGesture:" destination="mXv-aH-Opl" id="ueR-vb-i6H"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -1175,8 +1182,8 @@ ALL EXERCISES
     <inferredMetricsTieBreakers>
         <segue reference="XHS-7m-Fdy"/>
         <segue reference="7cC-hw-HfW"/>
-        <segue reference="idZ-R2-k9c"/>
+        <segue reference="upO-pT-sVT"/>
         <segue reference="27b-a7-7qF"/>
-        <segue reference="Fjg-aL-w8L"/>
+        <segue reference="rVi-lB-wax"/>
     </inferredMetricsTieBreakers>
 </document>

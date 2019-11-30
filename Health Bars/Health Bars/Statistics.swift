@@ -55,7 +55,7 @@ class Statistics: UIViewController, ProgressBarProtocol {
        // EXTRA RANDOM DATA TO INPUT INTO THE GAME FOR DISPLAY
 
        //load for the first time in memory
-       barChartView.noDataText = "You need to provide data for the chart."
+       //barChartView.noDataText = "You need to provide data for the chart."
         
         progressBar.delegate = self
         progressBar.setVars(new_titleText: "STATISTICS")

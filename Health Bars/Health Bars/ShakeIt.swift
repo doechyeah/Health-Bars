@@ -38,7 +38,7 @@ class ShakeIt: UIViewController, ProgressBarProtocol {
     let conductor = AudioKitConductor.sharedInstance
     
     //MARK: Database class
-    let PDB = ProgClass()
+    let PDB = ProgClass.sharedInstance
     
     // Not used currently
     let tempo: [String: Int] = ["Grave": 25,
@@ -61,7 +61,8 @@ class ShakeIt: UIViewController, ProgressBarProtocol {
     @IBOutlet weak var imgvAvatar: UIImageView!
 
     var activityMode: ActivityMode = ._none
-    var activity: Activity = ._none
+    var activity: Activity = .ShakeIt
+    var dailyExercisesDoneToday: [Bool] = [false, false, false]
     
     //MARK: Game parameters
     var shakeBeatHits: Int = 0
@@ -139,22 +140,6 @@ class ShakeIt: UIViewController, ProgressBarProtocol {
         //TODO: pass data that was sent from AllExercises
         progressBar.setVars(new_activityMode: .AllExercises, new_currentActivity: .ShakeIt, new_titleText: "SHAKE IT")
     }
-    
-    // send data with segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        NSLog("shakeit prepare()")
-        NSLog(segue.destination.debugDescription)
-        if let vc = segue.destination as? Success {
-            NSLog("is Success")
-            vc.activityMode = activityMode
-            vc.activity = .ShakeIt
-        }
-        if let vc = segue.destination as? Fail {
-            NSLog("is Fail")
-            vc.activityMode = activityMode
-            vc.activity = .ShakeIt
-        }
-    }
 
     // called when view appears fully
     override func viewWillAppear(_ animated: Bool) {
@@ -163,6 +148,9 @@ class ShakeIt: UIViewController, ProgressBarProtocol {
         super.viewDidAppear(animated)
         // simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        dailyExercisesDoneToday = PDB.readDAct()
+        progressBar.setCompletedActivities(activitiesCompleted: dailyExercisesDoneToday)
         
         // UI Init
         countdownLabel.text = "Countdown"
@@ -243,6 +231,22 @@ class ShakeIt: UIViewController, ProgressBarProtocol {
 
         // debug
         //NSLog("Done viewDidDisappear()")
+    }
+    
+    // send data with segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        NSLog("shake it prepare()")
+        NSLog(segue.destination.debugDescription)
+        if let vc = segue.destination as? Success {
+            NSLog("is Success")
+            vc.activityMode = activityMode
+            vc.activity = activity
+        }
+        if let vc = segue.destination as? Fail {
+            NSLog("is Fail")
+            vc.activityMode = activityMode
+            vc.activity = activity
+        }
     }
 
     //MARK: Actions
@@ -325,34 +329,23 @@ class ShakeIt: UIViewController, ProgressBarProtocol {
             performSegue(withIdentifier: "segue_gotoFailShakeIt", sender: self)
         } else if success == true {
             segueKeepSameSong = false
-            if activityMode == .AllExercises {
-                performSegue(withIdentifier: "segue_gotoSuccessShakeIt", sender: self)
-            } else if activityMode == .DailyExercises {
-                //TODO: read from PDB class to determine next segue destination
-                performSegue(withIdentifier: "segue_gotoNextExerciseGTI", sender: self)
-                //performSegue(withIdentifier: "segue_gotoDoneDailyExercises", sender: self)
-            } else if activityMode == ._none {
-                NSLog("activityMode is _none in Long Tones, this should never happen")
-                performSegue(withIdentifier: "segue_gotoSuccessShakeIt", sender: self)
-            }
+            performSegue(withIdentifier: "segue_gotoSuccessShakeIt", sender: self)
         }
     }
     
-    // display/save stats to our DB
+    // save stats to our DB
     func updateStats() {
-        var scrd = 0
+        // 0 is fail, 1 is success
+        var activityScore = 0
         if shakeBeatHits/(shakeBeatHits+shakeBeatMisses) > beatMatchRatioForSuccess {
             success = true
-            scrd = 1
+            activityScore = 1
         }
-        PDB.insert(table: "rhythm", actscore: scrd)
+        PDB.insert(table: "rhythm", actscore: activityScore)
         print("Hits: \(shakeBeatHits)")
         print("Misses: \(shakeBeatMisses)")
         print("Off Tempos: \(shakeBeatOffTempos)")
-        let debugdict = PDB.readTable(table: "rhythm")
-        dump(debugdict)
-        let statchck = PDB.readStats()
-        dump(statchck)
+        PDB.dumpAll()
     }
     
     func destroyTimers() {

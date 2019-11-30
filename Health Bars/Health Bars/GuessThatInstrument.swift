@@ -29,7 +29,7 @@ class GuessThatInstrument: UIViewController, ProgressBarProtocol {
     let conductor = AudioKitConductor.sharedInstance
     
     //MARK: Database class
-    let PDB = ProgClass()
+    let PDB = ProgClass.sharedInstance
     
     //MARK: Constants
     let instrumentNames = ["clarinet","flute","sax","snare","trombone","trumpet","violin","piano","bells"]
@@ -47,7 +47,8 @@ class GuessThatInstrument: UIViewController, ProgressBarProtocol {
     @IBOutlet weak var instrumentImage4: UIImageView!
     
     var activityMode: ActivityMode = ._none
-    var activity: Activity = ._none
+    var activity: Activity = .GuessThatInstrument
+    var dailyExercisesDoneToday: [Bool] = [false, false, false]
     
     //MARK: Game variables
     var segueKeepSameinstrument: Bool!
@@ -55,6 +56,7 @@ class GuessThatInstrument: UIViewController, ProgressBarProtocol {
     var correctInstrumentNumber: Int!
     var correctInstrumentString: String!
     var randInstruments = ["instrument1","instrument2","instrument3","instrument4"]
+    var success: Bool = false
     
     //MARK: Audio Player Variables
     var instrument: AKAudioFile!
@@ -78,6 +80,11 @@ class GuessThatInstrument: UIViewController, ProgressBarProtocol {
         super.viewDidAppear(animated)
         // simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        dailyExercisesDoneToday = PDB.readDAct()
+        progressBar.setCompletedActivities(activitiesCompleted: dailyExercisesDoneToday)
+        
+        success = false
         
         // choose random instrument clips to present
         var set = [0,1,2,3,4,5,6,7,8]
@@ -118,12 +125,12 @@ class GuessThatInstrument: UIViewController, ProgressBarProtocol {
         if let vc = segue.destination as? Success {
             NSLog("is Success")
             vc.activityMode = activityMode
-            vc.activity = .GuessThatInstrument
+            vc.activity = activity
         }
         if let vc = segue.destination as? Fail {
             NSLog("is Fail")
             vc.activityMode = activityMode
-            vc.activity = .GuessThatInstrument
+            vc.activity = activity
         }
     }
     
@@ -153,33 +160,30 @@ class GuessThatInstrument: UIViewController, ProgressBarProtocol {
     
     func checkCorrect(_ choice: Int) {
         if(correctInstrumentString == randInstruments[choice]) {
+            success = true
             segueKeepSameinstrument = false
-            PDB.insert(table: "memory", actscore: 1)
-            let debugdict = PDB.readTable(table: "memory")
-            dump(debugdict)
-            let statchck = PDB.readStats()
-            dump(statchck)
+        }
+        updateStats()
+        if success {
             NSLog("Correct")
-            if activityMode == .AllExercises {
-                performSegue(withIdentifier: "segue_gotoSuccessGTI", sender: self)
-            } else if activityMode == .DailyExercises {
-                //TODO: read from PDB class to determine next segue destination
-                performSegue(withIdentifier: "segue_gotoDoneDailyExercises", sender: self)
-            } else if activityMode == ._none {
-                NSLog("activityMode is _none in Long Tones, this should never happen")
-                performSegue(withIdentifier: "segue_gotoSuccessGTI", sender: self)
-            }
+            performSegue(withIdentifier: "segue_gotoSuccessGTI", sender: self)
         } else {
             //goto fail
-            PDB.insert(table: "memory", actscore: 0)
-            let debugdict = PDB.readTable(table: "memory")
-            dump(debugdict)
-            let statchck = PDB.readStats()
-            dump(statchck)
             segueKeepSameinstrument = true
             NSLog("False")
             performSegue(withIdentifier: "segue_gotoFailGTI", sender: self)
         }
+    }
+    
+    // save stats to our DB
+    func updateStats() {
+        // 0 is fail, 1 is success
+        var activityScore = 0
+        if success {
+            activityScore = 1
+        }
+        PDB.insert(table: "memory", actscore: activityScore)
+        PDB.dumpAll()
     }
     
     //initializes the audio file to play

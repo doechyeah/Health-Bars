@@ -42,7 +42,7 @@ class LongTones: UIViewController, ProgressBarProtocol {
     let conductor = AudioKitConductor.sharedInstance
     
     //MARK: Database Score
-    let PDB = ProgClass()
+    let PDB = ProgClass.sharedInstance
     
     
     //MARK: Outlets
@@ -63,7 +63,8 @@ class LongTones: UIViewController, ProgressBarProtocol {
     
     // if daily exercises, all exercises view controller has to set to .DailyExercises with prepare function before segue
     var activityMode: ActivityMode = ._none
-    var activity: Activity = ._none
+    var activity: Activity = .LongTones
+    var dailyExercisesDoneToday: [Bool] = [false, false, false]
     
     var timerTestNum: Double!
     
@@ -109,6 +110,9 @@ class LongTones: UIViewController, ProgressBarProtocol {
         super.viewDidAppear(animated)
         // simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        dailyExercisesDoneToday = PDB.readDAct()
+        progressBar.setCompletedActivities(activitiesCompleted: dailyExercisesDoneToday)
         
         if(!segueKeepSameTone){
             randNote =  Int.random(in: 0...11)
@@ -184,12 +188,12 @@ class LongTones: UIViewController, ProgressBarProtocol {
         if let vc = segue.destination as? Success {
             NSLog("is Success")
             vc.activityMode = activityMode
-            vc.activity = .LongTones
+            vc.activity = activity
         }
         if let vc = segue.destination as? Fail {
             NSLog("is Fail")
             vc.activityMode = activityMode
-            vc.activity = .LongTones
+            vc.activity = activity
         }
     }
     
@@ -269,36 +273,35 @@ class LongTones: UIViewController, ProgressBarProtocol {
 
         unlockButtons()
         
+        updateStats()
+        
         if success == false {
-            PDB.insert(table: "voice", actscore: 0)
-            let statchck = PDB.readStats()
-            dump(statchck)
             segueKeepSameTone = true
             performSegue(withIdentifier: "segue_gotoFailLongTones", sender: self)
         } else if success == true {
-            PDB.insert(table: "voice", actscore: 1)
-            let statchck = PDB.readStats()
-            dump(statchck)
             segueKeepSameTone = false
-            if activityMode == .AllExercises {
-                performSegue(withIdentifier: "segue_gotoSuccessLongTones", sender: self)
-            } else if activityMode == .DailyExercises {
-                //TODO: read from PDB class to determine next segue destination
-                performSegue(withIdentifier: "segue_gotoNextExerciseShakeIt", sender: self)
-                //performSegue(withIdentifier: "segue_gotoNextExerciseGTI", sender: self)
-                //performSegue(withIdentifier: "segue_gotoDoneDailyExercises", sender: self)
-            } else if activityMode == ._none {
-                NSLog("activityMode is _none in Long Tones, this should never happen")
-                performSegue(withIdentifier: "segue_gotoSuccessLongTones", sender: self)
-            }
+            performSegue(withIdentifier: "segue_gotoSuccessLongTones", sender: self)
         }
     }
     
     //MARK: helper functions
+    
+    // save stats to our DB
+    func updateStats() {
+        // 0 is fail, 1 is success
+        var activityScore = 0
+        if success {
+            activityScore = 1
+        }
+        PDB.insert(table: "voice", actscore: activityScore)
+        PDB.dumpAll()
+    }
+    
     // check if input pitch is same as pitch to match
     func matchPitch(_ pitch: Int) -> Bool {
         if currentPitchIndexToMatch == pitch {
             noteSustainPeriods += 1
+            print("\(noteSustainPeriods)")
         }
         if noteSustainPeriods >= noteSustainPeriodsForSuccess {
             noteSustainPeriods = 0

@@ -19,6 +19,7 @@ import AudioKit
 import UIKit
 
 class AudioKitConductor {
+    //singleton object
     static let sharedInstance = AudioKitConductor()
     
     //MARK: Common variables
@@ -40,7 +41,7 @@ class AudioKitConductor {
     //MARK: Guess That Instrument variables
     // not needed
     
-    init() {
+    private init() {
         AKLog("conductor init()")
         
         AKSettings.audioInputEnabled = true
