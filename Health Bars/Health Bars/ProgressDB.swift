@@ -18,11 +18,13 @@
 
 import Foundation
 import SQLite
+import Alamofire
 
 class ProgClass {
     static let sharedInstance = ProgClass()
     // MARK: Class variables
-    var playerID: String = ""
+//    var playerID: String = ""
+    let SendURL = "https://advanture.wixsite.com/health-bars-g9/_functions-dev/UpdateStats"
     var currentdate: String
     var yesterday: String
     let path = NSSearchPathForDirectoriesInDomains(.documentDirectory,
@@ -46,15 +48,17 @@ class ProgClass {
     let rhythmscore = Expression<Int>("rhythmscore")
     let voicescore = Expression<Int>("voicescore")
     let memoryscore = Expression<Int>("memoryscore")
-    let sent = Expression<Bool>("sent")
-    let pID = Expression<String>("pID")
-    let lastSent = Expression<String>("lastSent")
+    let rhythmAttempts = Expression<Int>("rhythmAttempts")
+    let memoryAttempts = Expression<Int>("memoryAttempts")
+    let voiceAttempts = Expression<Int>("voiceAttempts")
+    let inst = Expression<Int>("inst")
     
     
     // MARK: Initializer
     init () {
         // Initialize the progClass with the players ID
 //        playerID = playID
+        
         let date = Date()
         let yesdate = Calendar.current.date(byAdding: .day, value: -1, to: date)
         let format = DateFormatter()
@@ -66,24 +70,26 @@ class ProgClass {
         
         // Try to create tables if they do not exist already
         do {
-            playerID = "test"
-//            try db.run(PlayData.create(ifNotExists: true) {
-//                t in
-//                t.column(pID)
-//                t.column(lastSent)
-//            })
-//            let count = try db.scalar(PlayData.count)
-//            if count == 0 {
-//                let playDict = CreatePlayer()
-//                playerID = playDict["_id"] as! String
-//                try db.run(PlayData.insert(pID <- playerID,
-//                                          lastSent <- currentdate
-//                ))
-//            } else {
-//                for x in try db.prepare(PlayData) {
-//                    playerID = x[pID]
-//                }
-//            }
+            try db.run(PlayData.create(ifNotExists: true) {
+                t in
+                t.column(inst, primaryKey: true)
+                t.column(voicescore)
+                t.column(memoryscore)
+                t.column(rhythmscore)
+                t.column(voiceAttempts)
+                t.column(memoryAttempts)
+                t.column(rhythmAttempts)
+            })
+            let count = try db.scalar(PlayData.count)
+            if count == 0 {
+                try db.run(PlayData.insert(inst <- 1,
+                                           rhythmscore <- 0,
+                                           voicescore <- 0,
+                                           memoryscore <- 0,
+                                           rhythmAttempts <- 0,
+                                           voiceAttempts <- 0,
+                                           memoryAttempts <- 0))
+            }
             try db.run(DailyStreak.create(ifNotExists: true) {
                 t in
                 t.column(datetime, primaryKey: true)
@@ -93,11 +99,9 @@ class ProgClass {
             try db.run(Stats.create(ifNotExists: true) {
                 t in
                 t.column(datetime, primaryKey: true)
-                t.column(pID)
                 t.column(rhythmscore)
                 t.column(voicescore)
                 t.column(memoryscore)
-                t.column(sent)
             })
         } catch let error{
             print("Error Opening Tables: \(error)")
@@ -134,11 +138,10 @@ class ProgClass {
                                               CurrentStreak <- 0,
                                               CompletedDaily <- 0))
                 try db.run(Stats.insert(datetime <- currentdate,
-                                        pID <- playerID,
+//                                        pID <- playerID,
                                         rhythmscore <- 0,
                                         voicescore <- 0,
-                                        memoryscore <- 0,
-                                        sent <- false))
+                                        memoryscore <- 0))
             } catch let error {
                 print("Insert failed: \(error)")
             }
@@ -149,7 +152,7 @@ class ProgClass {
     // MARK: Destructor
     deinit {
         // Destroy the class by updating the daily streaks table
-//        updateDaily()
+        updateDaily()
     }
    
     //MARK: Functions
@@ -171,18 +174,26 @@ class ProgClass {
             case "voice":
                 daily = 1
                 try db.run(statrow.update(voicescore += actscore))
+                try db.run(PlayData.filter(inst == 1).update(voicescore += actscore,                                                               voiceAttempts += 1))
             case "rhythm":
                 daily = 2
                 try db.run(statrow.update(rhythmscore += actscore))
+                try db.run(PlayData.filter(inst == 1).update(rhythmscore += actscore,
+                                                             rhythmAttempts += 1))
             case "memory":
                 daily = 4
                 try db.run(statrow.update(memoryscore += actscore))
+                try db.run(PlayData.filter(inst == 1).update(memoryscore += actscore,
+                                                             memoryAttempts += 1))
             default:
                 print("ERROR ACTIVITY DIDN'T EXIST")
             }
             
             if dbool { try db.run(DailyStreak.filter(datetime == currentdate).update(CompletedDaily += daily))}
-        } catch  let error {
+            
+//            readPlayer()
+            
+        } catch let error {
             print("Insert failed: \(error)")
         }
     }
@@ -202,23 +213,84 @@ class ProgClass {
         return rows
     }
     
-    func readStats() -> Dictionary<String, (String, Int, Int, Int, Bool)> {
+    func readPlayer() -> Dictionary<Int, (Int, Int, Int, Int, Int, Int)> {
+        // This function will read the entries at the desired table
+        let db = try! Connection("\(path)/ProgressDB.sqlite3")
+        var rows: Dictionary<Int, (Int, Int, Int, Int, Int, Int)> = [:]
+        do {
+            for data in try db.prepare(PlayData) {
+                rows[1] = (data[rhythmscore],
+                           data[rhythmAttempts],
+                           data[memoryscore],
+                           data[memoryAttempts],
+                           data[voicescore],
+                           data[voiceAttempts])
+            }
+            
+            Alamofire.request(SendURL,
+                              method: .put,
+                              parameters: ["title": "Rhythm",
+                                           "_id":"6ac071a8-b084-486c-8e0a-000caf23d1e0",
+                                           "voice":rows[1]!.1,
+                                           "totalSuccesses":rows[1]!.0],
+                              encoding: JSONEncoding.default)
+                .responseString { response in
+                if response.value == "failed" {
+                    print("Oh No")
+                }
+            }
+            Alamofire.request(SendURL,
+                              method: .put,
+                              parameters: ["title": "Memory",
+                                           "_id":"e7e64a06-71ec-44d3-a03e-6a112495d355",
+                                           "voice":rows[1]!.3,
+                                           "totalSuccesses":rows[1]!.2],
+                              encoding: JSONEncoding.default)
+                .responseString { response in
+                if response.value == "failed" {
+                    print("Oh No")
+                }
+            }
+            Alamofire.request(SendURL,
+                              method: .put,
+                              parameters: ["title": "Voice",
+                                           "_id":"f28cd49e-b62f-4c12-8bd5-3838bdd067b6",
+                                           "voice":rows[1]!.5,
+                                           "totalSuccesses":rows[1]!.4],
+                              encoding: JSONEncoding.default)
+                .responseString { response in
+                if response.value == "failed" {
+                    print("Oh No")
+                }
+            }
+            try db.run(PlayData.filter(inst == 1).update(rhythmscore <- 0,
+                                                                 voicescore <- 0,
+                                                                 memoryscore <- 0,
+                                                                 rhythmAttempts <- 0,
+                                                                 voiceAttempts <- 0,
+                                                                 memoryAttempts <- 0))
+        } catch let error {
+            print("Error reading stat: \(error)")
+        }
+        return rows
+    }
+    
+    func readStats() -> Dictionary<String, (Int, Int, Int)> {
         // This function will aggregate the data and update the stat table
         let db = try! Connection("\(path)/ProgressDB.sqlite3")
-        var results: Dictionary<String, (String, Int, Int, Int, Bool)> = [:]
+        var results: Dictionary<String, (Int, Int, Int)> = [:]
         do {
             for data in try db.prepare(Stats) {
-                results[data[datetime]] = (data[pID],
-                                           data[rhythmscore],
+                results[data[datetime]] = (data[rhythmscore],
                                            data[voicescore],
-                                           data[memoryscore],
-                                           data[sent])
+                                           data[memoryscore])
             }
         } catch let error {
             print("Error reading Daily streaks: \(error)")
         }
         return results
     }
+    
     
     func readDAct() -> [Bool] {
         // ORDER OF RET: MEMORY RHYTHM VOICE
@@ -298,67 +370,15 @@ class ProgClass {
             print("Error performing daily update check: \(error)")
         }
     }
-    func reEnterDaily() {
-        // This function will aggregate the data and update the dailystreak table
-        let db = try! Connection("\(path)/ProgressDB.sqlite3")
-        var skipUpdate: Bool = false
-        do {
-            for x in try db.prepare(DailyStreak.filter(datetime == currentdate)) {
-                if x[CompletedDaily] == 7 {
-//                    let dailyrow = DailyStreak.filter(datetime == currentdate)
-//                    let yestrow = DailyStreak.filter(datetime == yesterday)
-//                    var streak: Int = 0
-//                    do {
-//                        for yestdata in try db.prepare(yestrow) {
-//                            if yestdata[CompletedDaily] == 7 {
-//                                streak = yestdata[CurrentStreak]
-//                            }
-//                        }
-//                        try db.run(dailyrow.update(CurrentStreak <- 1+streak))
-//                    } catch  let error {
-//                        print("Streak Update failed: \(error)")
-//                    }
-                    skipUpdate = true;
-                    
-                }
-            }
-        } catch let error {
-            print("Error performing daily update check: \(error)")
-        }
-        
-        if !skipUpdate {
-            var dailytruth: Int = 0
-            activities.forEach { x in
-                do {
-                    for datarow in try db.prepare(Table(x).filter(datetime == currentdate)) {
-                        if datarow[attempts] > 0 {
-                            switch x {
-                            case "voice":
-                                dailytruth += 1
-                            case "rhythm":
-                                dailytruth += 2
-                            case "memory":
-                                dailytruth += 4
-                            default:
-                                print("ERROR IN UPDATING DAILY")
-                            }
-                        }
-                    }
-                } catch let error {
-                    print("The daily streak update failed: \(error)")
-                }
-            }
-        }
-        // END OF dailyUpdate()
-    }
     
-    // MARK: Test Functions
+    // MARK: Test Functions (Uncomment in statistics.swift to enter test data.
     func InsertTest(dated: String) {
         let db = try! Connection("\(path)/ProgressDB.sqlite3")
         let format = DateFormatter()
         format.dateFormat = "yyyy/MM/dd"
         var current = format.date(from: dated)!
         var next = dated
+        var streak: Int = 0
         while current < format.date(from: currentdate)! {
             let rrand = Int.random(in: 0...10)
             let vrand = Int.random(in: 0...10)
@@ -366,17 +386,21 @@ class ProgClass {
             let ratte = Int.random(in: rrand...10)
             let vatte = Int.random(in: vrand...10)
             let matte = Int.random(in: mrand...10)
+            var dailytruth: Int = 0
             do {
                 activities.forEach { x in
                     var scored = 0
                     var attempted = 0
                     if x == "rhythm" {
+                        if rrand > 0 {dailytruth += 2}
                         scored = rrand
                         attempted = ratte
                     } else if x == "voice" {
+                        if vrand > 0 {dailytruth += 1}
                         scored = vrand
                         attempted = vatte
                     } else if x == "memory" {
+                        if mrand > 0 {dailytruth += 4}
                         scored = mrand
                         attempted = matte
                     }
@@ -388,13 +412,26 @@ class ProgClass {
                         print("Insert failed: \(error)")
                     }
                 }
-                print("RUN ERROR2222")
+                if dailytruth == 7 {
+                    streak += 1
+                } else {
+                    streak = 0
+                }
+//                print("RUN ERROR2222")
                 try db.run(Stats.insert(datetime <- next,
-                                            pID <- playerID,
+//                                            pID <- playerID,
                                             voicescore <- vrand,
                                             memoryscore <- mrand,
-                                            rhythmscore <- rrand,
-                                            sent <- false))
+                                            rhythmscore <- rrand))
+                try db.run(DailyStreak.insert(datetime <- next,
+                                              CurrentStreak <- streak,
+                                              CompletedDaily <- dailytruth))
+                try db.run(PlayData.filter(inst == 1).update(rhythmscore <- rrand,
+                                                             voicescore <- vrand,
+                                                             memoryscore <- mrand,
+                                                             rhythmAttempts <- ratte,
+                                                             voiceAttempts <- vatte,
+                                                             memoryAttempts <- matte))
             } catch let error {
                 print("Insert failed: \(error)")
             }
@@ -403,43 +440,7 @@ class ProgClass {
         }
     }
     
-    func DailyTest(dated: String) {
-        let db = try! Connection("\(path)/ProgressDB.sqlite3")
-        var dailytruth: Int = 0
-        let format = DateFormatter()
-        format.dateFormat = "yyyy/MM/dd"
-        var current = format.date(from: dated)!
-        var streak = 0
-        var next = dated
-        
-        while current <= format.date(from: currentdate)! {
-            do {
-                for datarow in try db.prepare(Stats.filter(datetime == dated)) {
-                    if datarow[voicescore] > 0 {
-                        dailytruth += 1
-                    } else if datarow[rhythmscore] > 0{
-                        dailytruth += 2
-                    } else if datarow[memoryscore] > 0 {
-                        dailytruth += 4
-                    }
-                }
-                if dailytruth == 7 {
-                    streak += 1
-                } else {
-                    streak = 0
-                }
-                print("RUN ERROR")
-                try db.run(DailyStreak.insert(datetime <- next,
-                                              CurrentStreak <- streak,
-                                              CompletedDaily <- dailytruth))
-            } catch  let error {
-                print("Streak Update failed: \(error)")
-            }
-            current = Calendar.current.date(byAdding: .day, value: +1, to: current)!
-            next = format.string(from: current)
-        }
-
-    }
+  
     func dumpAll() {
         NSLog("readStats()")
         dump(readStats())
@@ -455,4 +456,3 @@ class ProgClass {
         dump(readTable(table: "voice"))
     }
 }
-
