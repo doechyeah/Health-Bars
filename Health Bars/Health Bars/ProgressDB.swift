@@ -121,7 +121,8 @@ class ProgClass {
         }
 
         // Create base entries of todays stats if they do not already exist.
-        let dateExist = try! db.scalar(dailyStreak.select(datetime.count))
+        let streakFilter = dailyStreak.filter(datetime == currentdate)
+        let dateExist = try! db.scalar(streakFilter.count)
         if dateExist == 0 {
             activities.forEach { table in
                 let DBtable = Table(table)
