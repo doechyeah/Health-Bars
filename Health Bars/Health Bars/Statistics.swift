@@ -20,27 +20,22 @@ import Charts
 
 class grabTest {
     var dailydata: Dictionary<String, (Int, Int)>
-    var statsdata: Dictionary<String, (String, Int, Int, Int, Bool)>
-    var rdata: Dictionary<String, (Int, Int)>
-    var mdata: Dictionary<String, (Int, Int)>
-    var vdata: Dictionary<String, (Int, Int)>
-    var dailyComplete: Int!
+    var statsdata: Dictionary<String, (Int, Int, Int)>
+//    var rdata: Dictionary<String, (Int, Int)>
+//    var mdata: Dictionary<String, (Int, Int)>
+//    var vdata: Dictionary<String, (Int, Int)>
+    var dailyComplete: [Bool]
     var date: String!
     var yesterday: String!
     var copy_date: String!
-    var v_score: Int!
-    var m_score: Int!
-    var r_score: Int!
-    var v_total_attempts: Int!
-    var r_total_attempts: Int!
-    var m_total_attempts: Int!
-    var v_attempt_array: Dictionary<Int,Int> = [:]
-    var r_attempt_array: Dictionary<Int,Int> = [:]
-    var m_attempt_array: Dictionary<Int,Int> = [:]
+    var voiceSuccessData: Dictionary<Int,Int> = [:]
+    var rhythmSuccessData: Dictionary<Int,Int> = [:]
+    var mmemorySuccessData: Dictionary<Int,Int> = [:]
+    var streaktoday: Int
     
     init() {
-        let PDB = ProgClass()
-        let test_date = "2019/11/26"
+        let PDB = ProgClass.sharedInstance
+//        let test_date = "2019/11/26"
         //let yesdate = Calendar.current.date(byAdding: .day, value: -1, to: current_date)
         let date = Date()
         let twodate = Calendar.current.date(byAdding: .day, value: -1, to: date)
@@ -53,24 +48,30 @@ class grabTest {
         let threeday = format.string(from: threedate!)
         let fourday = format.string(from: fourdate!)
         let dateArray = [currentdate, twoday, threeday, fourday]
-        
-        PDB.InsertTest(dated: test_date)
-        PDB.DailyTest(dated: test_date)
+        // MARK: TEST FUNCTION UNCOMMENT TO ENTER FAKE DATA
+//        PDB.InsertTest(dated: test_date)
+        PDB.updateDaily()
         dailydata = PDB.readDaily()
+        streaktoday = dailydata[currentdate]!.0
         statsdata = PDB.readStats()
-        rdata = PDB.readTable(table: "rhythm")
-        mdata = PDB.readTable(table: "memory")
-        vdata = PDB.readTable(table: "voice")
-        dailyComplete = dailydata[currentdate]!.1
-        //r_score = statsdata[date]!.1
-        //v_score = statsdata[date]!.2
-        //m_score = statsdata[date]!.3
-        
+//        rdata = PDB.readTable(table: "rhythm")
+//        mdata = PDB.readTable(table: "memory")
+//        vdata = PDB.readTable(table: "voice")
+        dailyComplete = PDB.readDAct()
+        _ = PDB.readPlayer()
+
         var i = 3
         dateArray.forEach { x in
-            v_attempt_array[i] = statsdata[x]!.2
-            m_attempt_array[i] = statsdata[x]!.3
-            r_attempt_array[i] = statsdata[x]!.1
+            if statsdata[x] != nil {
+                voiceSuccessData[i] = statsdata[x]!.1
+                mmemorySuccessData[i] = statsdata[x]!.2
+                rhythmSuccessData[i] = statsdata[x]!.0
+            } else {
+                voiceSuccessData[i] = 0
+                mmemorySuccessData[i] = 0
+                rhythmSuccessData[i] = 0
+            }
+ 
             i -= 1
         }
         
@@ -88,6 +89,8 @@ class Statistics: UIViewController, ProgressBarProtocol {
     @IBOutlet weak var equalizer: UIImageView!
     @IBOutlet weak var memory: UIImageView!
     
+    @IBOutlet weak var current_label: UILabel!
+    
     @IBOutlet weak var barChartView: BarChartView!
     
     let myData = grabTest()
@@ -101,16 +104,16 @@ class Statistics: UIViewController, ProgressBarProtocol {
         var entry3: [BarChartDataEntry] = []
         
         for i in 0...3{
-            entry1.append(BarChartDataEntry(x: Double(i), y: Double(myData.v_attempt_array[i]!)))
-            entry2.append(BarChartDataEntry(x: Double(i), y: Double(myData.r_attempt_array[i]!)))
-            entry3.append(BarChartDataEntry(x: Double(i), y: Double(myData.m_attempt_array[i]!)))
+            entry1.append(BarChartDataEntry(x: Double(i), y: Double(myData.voiceSuccessData[i]!)))
+            entry2.append(BarChartDataEntry(x: Double(i), y: Double(myData.rhythmSuccessData[i]!)))
+            entry3.append(BarChartDataEntry(x: Double(i), y: Double(myData.mmemorySuccessData[i]!)))
         }
 //        let entry1 = BarChartDataEntry(x: 1.0, y: Double(number1.value))
 //        let entry2 = BarChartDataEntry(x: 2.0, y: Double(number2.value))
 //        let entry3 = BarChartDataEntry(x: 3.0, y: Double(number3.value))
-        let chartDataSet1 = BarChartDataSet(entries: entry1, label: "voice game attempts")
-        let chartDataSet2 = BarChartDataSet(entries: entry2, label: "rhythm game attempts")
-        let chartDataSet3 = BarChartDataSet(entries: entry3, label: "memory game attempts")
+        let chartDataSet1 = BarChartDataSet(entries: entry1, label: "voice success")
+        let chartDataSet2 = BarChartDataSet(entries: entry2, label: "rhythm success")
+        let chartDataSet3 = BarChartDataSet(entries: entry3, label: "memory success")
         
         let dataSets: [BarChartDataSet] = [chartDataSet1,chartDataSet2,chartDataSet3]
         chartDataSet1.colors = [UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1)]
@@ -123,7 +126,7 @@ class Statistics: UIViewController, ProgressBarProtocol {
         let barSpace = 0.04
         let barWidth = 0.2
         
-        let NumofGroup = 3
+        let NumofGroup = 4
         chartData.barWidth = barWidth;
         barChartView.xAxis.axisMinimum = 0
         let gg = chartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
@@ -163,6 +166,7 @@ class Statistics: UIViewController, ProgressBarProtocol {
         super.viewDidLoad()
         
        // EXTRA RANDOM DATA TO INPUT INTO THE GAME FOR DISPLAY
+        current_label.text = String(AggData.streaktoday)
         
         //For group bar
        //load for the first time in memory
@@ -184,7 +188,7 @@ class Statistics: UIViewController, ProgressBarProtocol {
          xaxis.drawGridLinesEnabled = true
          xaxis.labelPosition = .bottom
          xaxis.centerAxisLabelsEnabled = true
-         xaxis.valueFormatter = IndexAxisValueFormatter(values:["Two days ago","Yesterday", "Today"])
+         xaxis.valueFormatter = IndexAxisValueFormatter(values:["Three days ago","Two days ago","Yesterday", "Today"])
          xaxis.granularity = 1
 
 
@@ -212,60 +216,18 @@ class Statistics: UIViewController, ProgressBarProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
-        //For the 3 badges at the top of the screen
-        if AggData.dailyComplete == 0
-        {
-            //no exercises complete, all badges grey
-            //mic.isHighlighted = true
-        }
-        else if AggData.dailyComplete == 1
-        {
-            //make voice badge green, others black
-            mic.isHighlighted = true
-        }
-        else if AggData.dailyComplete == 2
-        {
-            //make rhythm badge green, others black
-            equalizer.isHighlighted = true
-        }
-        else if AggData.dailyComplete == 3
-        {
-            //make voice and rhythm badge green, other black
-            mic.isHighlighted = true
-            equalizer.isHighlighted = true
-        }
-        else if AggData.dailyComplete == 4
-        {
-            //make memory badge green, others black
-            memory.isHighlighted = true
-        }
-        else if AggData.dailyComplete == 5
-        {
-            //make voice and memory badge green, other black
-            mic.isHighlighted = true
-            memory.isHighlighted = true
-        }
-        else if AggData.dailyComplete == 6
-        {
-            //make rhythm and memory badge green, other black
-            equalizer.isHighlighted = true
-            memory.isHighlighted = true
-        }
-        else if AggData.dailyComplete == 7
-        {
             //make all badges green
-            mic.isHighlighted = true
-            equalizer.isHighlighted = true
-            memory.isHighlighted = true
-        }
+        mic.isHighlighted = AggData.dailyComplete[2]
+        equalizer.isHighlighted = AggData.dailyComplete[1]
+        memory.isHighlighted = AggData.dailyComplete[0]
+
         
         //for bar graph that displays number of games played for each day:
         //values are stored in these arrays for each activity
         //0 = current day, 1 = previous day, 2 = 2 days before, 3 = 3 days before
-        //AggData.v_attempt_array[0]
-        //AggData.r_attempt_array[0]
-        //AggData.m_attempt_array[0]
+        //AggData.voiceSuccessData[0]
+        //AggData.rhythmSuccessData[0]
+        //AggData.mmemorySuccessData[0]
         
         
         /*for bar graph that displays success rate:

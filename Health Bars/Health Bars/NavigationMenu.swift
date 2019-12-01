@@ -34,6 +34,7 @@ class NavigationMenu: UIViewController {
         super.viewDidLoad()
         progressBar.setVars(new_titleText: "MAIN MENU")
         progressBar.iconsStackView.isHidden = false
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {

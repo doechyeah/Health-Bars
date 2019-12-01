@@ -1210,8 +1210,8 @@ ALL EXERCISES
                                                     <constraint firstAttribute="width" constant="106" id="KUg-aw-QaJ"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAMES PLAYED FOR EACH CATEGORY" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04y-46-hQN">
-                                                <rect key="frame" x="36.5" y="193.5" width="302" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SUCCESS FOR EACH CATEGORY" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04y-46-hQN">
+                                                <rect key="frame" x="60.5" y="193.5" width="254.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1223,12 +1223,19 @@ ALL EXERCISES
                                                     <constraint firstAttribute="height" constant="272" id="EYK-06-lzU"/>
                                                 </constraints>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CurrentStreak" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npD-0i-7fH">
+                                                <rect key="frame" x="133.5" y="151.5" width="108" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="04y-46-hQN" firstAttribute="top" secondItem="N5o-V6-qmD" secondAttribute="bottom" constant="45" id="0tU-1P-vME"/>
                                             <constraint firstItem="N5o-V6-qmD" firstAttribute="top" secondItem="u0F-zV-jGz" secondAttribute="bottom" constant="20" id="ALB-bO-gAX"/>
                                             <constraint firstItem="u0F-zV-jGz" firstAttribute="top" secondItem="Ukn-gw-98o" secondAttribute="top" id="DpV-xc-y0U"/>
+                                            <constraint firstItem="npD-0i-7fH" firstAttribute="centerX" secondItem="Ukn-gw-98o" secondAttribute="centerX" id="EQd-Z6-wCW"/>
                                             <constraint firstItem="FMN-sL-KMV" firstAttribute="centerX" secondItem="Ukn-gw-98o" secondAttribute="centerX" constant="-116" id="GcA-MT-GK1"/>
                                             <constraint firstItem="7R9-u8-s6m" firstAttribute="top" secondItem="04y-46-hQN" secondAttribute="bottom" constant="30" id="Juc-jY-JjN"/>
                                             <constraint firstItem="FMN-sL-KMV" firstAttribute="top" secondItem="u0F-zV-jGz" secondAttribute="bottom" constant="20" id="PcE-Qb-FL0"/>
@@ -1236,6 +1243,7 @@ ALL EXERCISES
                                             <constraint firstItem="5qP-sC-arP" firstAttribute="centerX" secondItem="Ukn-gw-98o" secondAttribute="centerX" constant="116" id="VaU-8w-lbI"/>
                                             <constraint firstItem="04y-46-hQN" firstAttribute="centerX" secondItem="Ukn-gw-98o" secondAttribute="centerX" id="Vfr-7U-aWj"/>
                                             <constraint firstItem="N5o-V6-qmD" firstAttribute="centerX" secondItem="Ukn-gw-98o" secondAttribute="centerX" id="W4s-j6-cL0"/>
+                                            <constraint firstItem="npD-0i-7fH" firstAttribute="top" secondItem="N5o-V6-qmD" secondAttribute="bottom" constant="3" id="ZGa-pt-wnD"/>
                                             <constraint firstItem="5qP-sC-arP" firstAttribute="top" secondItem="u0F-zV-jGz" secondAttribute="bottom" constant="20" id="gjy-7g-vz8"/>
                                             <constraint firstItem="7R9-u8-s6m" firstAttribute="leading" secondItem="Ukn-gw-98o" secondAttribute="leading" constant="3" id="i3e-Lj-szQ"/>
                                             <constraint firstItem="u0F-zV-jGz" firstAttribute="centerX" secondItem="Ukn-gw-98o" secondAttribute="centerX" id="lKz-hh-kE1"/>
@@ -1269,6 +1277,7 @@ ALL EXERCISES
                     <navigationItem key="navigationItem" title="Statistics" id="re0-Fl-2mp"/>
                     <connections>
                         <outlet property="barChartView" destination="7R9-u8-s6m" id="Xii-Q1-slz"/>
+                        <outlet property="current_label" destination="npD-0i-7fH" id="sZd-hZ-kFP"/>
                         <outlet property="equalizer" destination="N3V-jY-EZw" id="P2J-nA-fyY"/>
                         <outlet property="memory" destination="mfR-tl-NL5" id="FRU-Y5-WEh"/>
                         <outlet property="mic" destination="z4Q-r0-90g" id="uaO-qO-Y8c"/>
