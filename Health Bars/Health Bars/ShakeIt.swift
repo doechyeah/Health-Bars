@@ -100,6 +100,7 @@ class ShakeIt: UIViewController, ProgressBarProtocol {
 
     var beatDisplayTimer: Timer!
     var beatResetTimer: Timer!
+    var countdownTimer: Timer!
     
     var vibrationGenerator: UIImpactFeedbackGenerator!
     
@@ -266,7 +267,7 @@ class ShakeIt: UIViewController, ProgressBarProtocol {
         if countdownNum > 0 {
             print("Countdown: \(countdownNum)")
             countdownNum -= 1
-            Timer.scheduledTimer(timeInterval: 1.0,
+            countdownTimer = Timer.scheduledTimer(timeInterval: 1.0,
                                             target: self,
                                             selector: #selector(ShakeIt.countdownStart),
                                             userInfo: nil,
@@ -356,6 +357,10 @@ class ShakeIt: UIViewController, ProgressBarProtocol {
         if beatResetTimer != nil {
             beatResetTimer.invalidate()
             beatResetTimer = nil
+        }
+        if countdownTimer != nil {
+            countdownTimer.invalidate()
+            countdownTimer = nil
         }
     }
     
