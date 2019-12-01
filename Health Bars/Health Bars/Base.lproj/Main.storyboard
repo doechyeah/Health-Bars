@@ -1131,9 +1131,9 @@ ALL EXERCISES
         <!--Statistics-->
         <scene sceneID="b7V-YP-rBE">
             <objects>
-                <viewController title="Statistics" id="eY8-I3-4fb" customClass="Statistics" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Statistics" automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="eY8-I3-4fb" customClass="Statistics" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xIs-OW-ISj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nGb-xk-X0F" userLabel="Progress Bar" customClass="ProgressBar" customModule="Health_Bars" customModuleProvider="target">
@@ -1145,10 +1145,10 @@ ALL EXERCISES
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QT9-nr-OUa">
-                                <rect key="frame" x="0.0" y="120" width="375" height="1080"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ukn-gw-98o">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1080"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="547"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAILY EXERCISE COMPLETED FOR THE DAY" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0F-zV-jGz">
                                                 <rect key="frame" x="16.5" y="0.0" width="342.5" height="20.5"/>
@@ -1163,7 +1163,7 @@ ALL EXERCISES
                                                         <rect key="frame" x="33" y="33" width="40" height="43"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="blank-badge" translatesAutoresizingMaskIntoConstraints="NO" id="N3V-jY-EZw">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="blank-badge" highlightedImage="green_equalizer" translatesAutoresizingMaskIntoConstraints="NO" id="N3V-jY-EZw">
                                                         <rect key="frame" x="20" y="20" width="66" height="68"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
@@ -1181,7 +1181,7 @@ ALL EXERCISES
                                                         <rect key="frame" x="33" y="33" width="40" height="43"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="blank-badge" translatesAutoresizingMaskIntoConstraints="NO" id="z4Q-r0-90g">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="blank-badge" highlightedImage="green_mic" translatesAutoresizingMaskIntoConstraints="NO" id="z4Q-r0-90g">
                                                         <rect key="frame" x="20" y="20" width="66" height="68"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
@@ -1199,7 +1199,7 @@ ALL EXERCISES
                                                         <rect key="frame" x="33" y="33" width="40" height="43"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="blank-badge" translatesAutoresizingMaskIntoConstraints="NO" id="mfR-tl-NL5">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="blank-badge" highlightedImage="green_mem" translatesAutoresizingMaskIntoConstraints="NO" id="mfR-tl-NL5">
                                                         <rect key="frame" x="20" y="20" width="66" height="68"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
@@ -1210,12 +1210,19 @@ ALL EXERCISES
                                                     <constraint firstAttribute="width" constant="106" id="KUg-aw-QaJ"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAMES PALYED FOR EACH CATEGORY" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04y-46-hQN">
-                                                <rect key="frame" x="37" y="193.5" width="301" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAMES PLAYED FOR EACH CATEGORY" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04y-46-hQN">
+                                                <rect key="frame" x="36.5" y="193.5" width="302" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7R9-u8-s6m" customClass="BarChartView" customModule="Charts">
+                                                <rect key="frame" x="3" y="244" width="369" height="272"/>
+                                                <color key="backgroundColor" red="1" green="0.8431192380235587" blue="0.99816029980518506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="272" id="EYK-06-lzU"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
@@ -1223,11 +1230,14 @@ ALL EXERCISES
                                             <constraint firstItem="N5o-V6-qmD" firstAttribute="top" secondItem="u0F-zV-jGz" secondAttribute="bottom" constant="20" id="ALB-bO-gAX"/>
                                             <constraint firstItem="u0F-zV-jGz" firstAttribute="top" secondItem="Ukn-gw-98o" secondAttribute="top" id="DpV-xc-y0U"/>
                                             <constraint firstItem="FMN-sL-KMV" firstAttribute="centerX" secondItem="Ukn-gw-98o" secondAttribute="centerX" constant="-116" id="GcA-MT-GK1"/>
+                                            <constraint firstItem="7R9-u8-s6m" firstAttribute="top" secondItem="04y-46-hQN" secondAttribute="bottom" constant="30" id="Juc-jY-JjN"/>
                                             <constraint firstItem="FMN-sL-KMV" firstAttribute="top" secondItem="u0F-zV-jGz" secondAttribute="bottom" constant="20" id="PcE-Qb-FL0"/>
+                                            <constraint firstAttribute="trailing" secondItem="7R9-u8-s6m" secondAttribute="trailing" constant="3" id="Uvd-Jw-It8"/>
                                             <constraint firstItem="5qP-sC-arP" firstAttribute="centerX" secondItem="Ukn-gw-98o" secondAttribute="centerX" constant="116" id="VaU-8w-lbI"/>
                                             <constraint firstItem="04y-46-hQN" firstAttribute="centerX" secondItem="Ukn-gw-98o" secondAttribute="centerX" id="Vfr-7U-aWj"/>
                                             <constraint firstItem="N5o-V6-qmD" firstAttribute="centerX" secondItem="Ukn-gw-98o" secondAttribute="centerX" id="W4s-j6-cL0"/>
                                             <constraint firstItem="5qP-sC-arP" firstAttribute="top" secondItem="u0F-zV-jGz" secondAttribute="bottom" constant="20" id="gjy-7g-vz8"/>
+                                            <constraint firstItem="7R9-u8-s6m" firstAttribute="leading" secondItem="Ukn-gw-98o" secondAttribute="leading" constant="3" id="i3e-Lj-szQ"/>
                                             <constraint firstItem="u0F-zV-jGz" firstAttribute="centerX" secondItem="Ukn-gw-98o" secondAttribute="centerX" id="lKz-hh-kE1"/>
                                         </constraints>
                                     </view>
@@ -1257,11 +1267,11 @@ ALL EXERCISES
                         <viewLayoutGuide key="safeArea" id="OAc-CV-aD2"/>
                     </view>
                     <navigationItem key="navigationItem" title="Statistics" id="re0-Fl-2mp"/>
-                    <size key="freeformSize" width="375" height="1200"/>
                     <connections>
-                        <outlet property="equalizer" destination="cLU-eX-KBb" id="Jgp-2F-XR9"/>
-                        <outlet property="memory" destination="AJW-a2-xl9" id="I6Y-0K-kcS"/>
-                        <outlet property="mic" destination="Bp7-KU-NfY" id="4mN-Fg-IfZ"/>
+                        <outlet property="barChartView" destination="7R9-u8-s6m" id="Xii-Q1-slz"/>
+                        <outlet property="equalizer" destination="N3V-jY-EZw" id="P2J-nA-fyY"/>
+                        <outlet property="memory" destination="mfR-tl-NL5" id="FRU-Y5-WEh"/>
+                        <outlet property="mic" destination="z4Q-r0-90g" id="uaO-qO-Y8c"/>
                         <outlet property="progressBar" destination="nGb-xk-X0F" id="7dS-Bg-L7z"/>
                         <segue destination="wXJ-Zy-r3T" kind="unwind" identifier="segue_unwindtoNavigationMenu" unwindAction="unwindToNavigationMenu:" id="0ep-o6-7Nd"/>
                     </connections>
@@ -1269,7 +1279,7 @@ ALL EXERCISES
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bou-Cy-Zn6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="wXJ-Zy-r3T" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2316" y="1325.0374812593705"/>
+            <point key="canvasLocation" x="2316" y="1324.5877061469266"/>
         </scene>
     </scenes>
     <resources>
@@ -1277,6 +1287,9 @@ ALL EXERCISES
         <image name="Coming Soon !!!" width="357" height="340"/>
         <image name="blank-badge" width="512" height="512"/>
         <image name="equalizer" width="512" height="512"/>
+        <image name="green_equalizer" width="1500" height="1500"/>
+        <image name="green_mem" width="1500" height="1500"/>
+        <image name="green_mic" width="1500" height="1500"/>
         <image name="memory" width="512" height="512"/>
         <image name="microphone" width="512" height="512"/>
         <image name="microphone (1)" width="512" height="512"/>
