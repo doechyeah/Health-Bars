@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Guess That Instrument Success-->
+        <scene sceneID="Nl0-qs-FCP">
+            <objects>
+                <viewController id="53j-UI-c3P" userLabel="Guess That Instrument Success" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6la-5h-586">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar M(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="ynf-pd-rhV">
+                                <rect key="frame" x="30" y="10" width="315" height="60"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GUESS THAT INSTRUMENT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="imL-V2-AKg">
+                                <rect key="frame" x="38" y="94.5" width="299" height="31.5"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="26"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FcY-hV-RI2" userLabel="Badge: Memory">
+                                <rect key="frame" x="62.5" y="150" width="250" height="200"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank-badge" translatesAutoresizingMaskIntoConstraints="NO" id="bdX-zO-Kim">
+                                        <rect key="frame" x="30" y="10" width="180" height="180"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="H7s-2a-EaF"/>
+                                            <constraint firstAttribute="height" constant="180" id="vFT-eJ-xU3"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="memory" translatesAutoresizingMaskIntoConstraints="NO" id="Hi7-fQ-uGm">
+                                        <rect key="frame" x="60" y="35" width="120" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="GIV-c6-VBt"/>
+                                            <constraint firstAttribute="width" constant="120" id="Vko-fN-Kbm"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="bdX-zO-Kim" firstAttribute="top" secondItem="FcY-hV-RI2" secondAttribute="top" constant="10" id="EW8-gp-L1m"/>
+                                    <constraint firstItem="Hi7-fQ-uGm" firstAttribute="top" secondItem="FcY-hV-RI2" secondAttribute="top" constant="35" id="Lyd-sM-Gvz"/>
+                                    <constraint firstAttribute="height" constant="200" id="YJe-nU-WxN"/>
+                                    <constraint firstItem="bdX-zO-Kim" firstAttribute="leading" secondItem="FcY-hV-RI2" secondAttribute="leading" constant="30" id="iKt-Kq-xRM"/>
+                                    <constraint firstAttribute="width" constant="250" id="oYp-rX-M7H"/>
+                                    <constraint firstItem="Hi7-fQ-uGm" firstAttribute="leading" secondItem="FcY-hV-RI2" secondAttribute="leading" constant="60" id="w5s-Z9-w3j"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELL DONE!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGN-8y-QBe">
+                                <rect key="frame" x="15" y="365" width="345" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="cJA-He-FBA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="60"/>
+                                <color key="textColor" red="0.16262605790000001" green="0.48223149780000002" blue="0.53318059439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Luw-zc-fwX">
+                                <rect key="frame" x="102" y="440" width="171" height="100"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="1Yp-U6-8sl"/>
+                                </constraints>
+                                <string key="text">SWIPE RIGHT FOR ALL EXERCISES
+&gt;&gt;&gt;</string>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="gkc-MM-Gyf" appends="YES" id="FM3-uo-q6q"/>
+                                </connections>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Luw-zc-fwX" firstAttribute="centerX" secondItem="6la-5h-586" secondAttribute="centerX" id="7H3-qQ-yct"/>
+                            <constraint firstItem="FcY-hV-RI2" firstAttribute="centerX" secondItem="6la-5h-586" secondAttribute="centerX" id="Fx5-2Q-5HG"/>
+                            <constraint firstItem="imL-V2-AKg" firstAttribute="centerY" secondItem="ynf-pd-rhV" secondAttribute="centerY" constant="70" id="OYO-ke-e50"/>
+                            <constraint firstItem="ynf-pd-rhV" firstAttribute="top" secondItem="WwS-9z-xEY" secondAttribute="top" constant="10" id="Z02-Ng-awE"/>
+                            <constraint firstItem="bGN-8y-QBe" firstAttribute="centerX" secondItem="6la-5h-586" secondAttribute="centerX" id="bAS-hF-ASM"/>
+                            <constraint firstItem="Luw-zc-fwX" firstAttribute="centerY" secondItem="bGN-8y-QBe" secondAttribute="centerY" constant="90" id="bq9-Cj-BjJ"/>
+                            <constraint firstItem="ynf-pd-rhV" firstAttribute="centerX" secondItem="6la-5h-586" secondAttribute="centerX" id="iAg-e8-mRj"/>
+                            <constraint firstItem="imL-V2-AKg" firstAttribute="centerX" secondItem="6la-5h-586" secondAttribute="centerX" id="miz-8J-QAt"/>
+                            <constraint firstItem="FcY-hV-RI2" firstAttribute="centerY" secondItem="imL-V2-AKg" secondAttribute="centerY" constant="140" id="pdP-ML-nTE"/>
+                            <constraint firstItem="bGN-8y-QBe" firstAttribute="centerY" secondItem="FcY-hV-RI2" secondAttribute="centerY" constant="150" id="rnu-bL-tD2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WwS-9z-xEY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uqi-T7-Kky" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="dCN-YS-ZbO" userLabel="Exit" sceneMemberID="exit"/>
+                <swipeGestureRecognizer direction="right" id="gkc-MM-Gyf" userLabel="right">
+                    <connections>
+                        <segue destination="dCN-YS-ZbO" kind="unwind" unwindAction="unwindToAllExercises:" id="NA6-YU-Dhz"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3964" y="1561"/>
+        </scene>
+        <!--Guess That Instrument Fail-->
+        <scene sceneID="Vin-7A-fqa">
+            <objects>
+                <viewController id="cnz-zh-FIb" userLabel="Guess That Instrument Fail" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c0S-1y-SCl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar M(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="g7f-wJ-Jxm">
+                                <rect key="frame" x="30" y="10" width="315" height="60"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DlG-I6-cwO" userLabel="Fail">
+                                <rect key="frame" x="87.5" y="150" width="200" height="200"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-music" translatesAutoresizingMaskIntoConstraints="NO" id="jOm-NH-zMr">
+                                        <rect key="frame" x="10" y="10" width="180" height="180"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="180" id="3Uk-5B-ajM"/>
+                                            <constraint firstAttribute="width" constant="180" id="WeF-uI-c8m"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="4Hn-Rx-amP"/>
+                                    <constraint firstItem="jOm-NH-zMr" firstAttribute="leading" secondItem="DlG-I6-cwO" secondAttribute="leading" constant="10" id="hk8-sH-6sE"/>
+                                    <constraint firstItem="jOm-NH-zMr" firstAttribute="top" secondItem="DlG-I6-cwO" secondAttribute="top" constant="10" id="igI-fS-AbA"/>
+                                    <constraint firstAttribute="height" constant="200" id="qAT-AY-qlr"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRY AGAIN!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJt-H4-xKH">
+                                <rect key="frame" x="29" y="364" width="317" height="72"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="60"/>
+                                <color key="textColor" red="0.67843137249999996" green="0.1647058824" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOk-xQ-qkr">
+                                <rect key="frame" x="24" y="435" width="137.5" height="110"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="Hu9-3f-DAd"/>
+                                </constraints>
+                                <string key="text">SWIPE LEFT 
+TO TRY AGAIN
+&lt;&lt;&lt;</string>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="PDm-gD-1uw" appends="YES" id="3nX-QQ-Z60"/>
+                                </connections>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xva-JG-Vwr">
+                                <rect key="frame" x="184.5" y="435" width="176.5" height="110"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="NQP-1u-gkh"/>
+                                </constraints>
+                                <string key="text">SWIPE RIGHT FOR 
+ALL EXERCISES
+&gt;&gt;&gt;</string>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="i0V-Gf-B7Y" appends="YES" id="L88-DI-Afn"/>
+                                </connections>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GUESS THAT INSTRUMENT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="gJ7-pz-76d">
+                                <rect key="frame" x="38" y="94.5" width="299" height="31.5"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="26"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="g7f-wJ-Jxm" firstAttribute="top" secondItem="bx6-et-PmZ" secondAttribute="top" constant="10" id="3v9-OP-6di"/>
+                            <constraint firstItem="gJ7-pz-76d" firstAttribute="centerX" secondItem="c0S-1y-SCl" secondAttribute="centerX" id="9ZB-Ug-1be"/>
+                            <constraint firstItem="gJ7-pz-76d" firstAttribute="centerY" secondItem="g7f-wJ-Jxm" secondAttribute="centerY" constant="70" id="D0c-3G-9wQ"/>
+                            <constraint firstItem="AJt-H4-xKH" firstAttribute="centerY" secondItem="DlG-I6-cwO" secondAttribute="centerY" constant="150" id="Gol-0R-5Zn"/>
+                            <constraint firstItem="DlG-I6-cwO" firstAttribute="centerY" secondItem="gJ7-pz-76d" secondAttribute="centerY" constant="140" id="Ihr-1R-bIK"/>
+                            <constraint firstItem="eOk-xQ-qkr" firstAttribute="centerY" secondItem="AJt-H4-xKH" secondAttribute="centerY" constant="90" id="L3t-Qc-HDL"/>
+                            <constraint firstItem="DlG-I6-cwO" firstAttribute="centerX" secondItem="c0S-1y-SCl" secondAttribute="centerX" id="Lnc-pD-mCe"/>
+                            <constraint firstItem="xva-JG-Vwr" firstAttribute="centerX" secondItem="eOk-xQ-qkr" secondAttribute="centerX" constant="180" id="Ncr-U2-yEd"/>
+                            <constraint firstItem="eOk-xQ-qkr" firstAttribute="centerX" secondItem="c0S-1y-SCl" secondAttribute="centerX" constant="-95" id="bnH-L4-t5a"/>
+                            <constraint firstItem="g7f-wJ-Jxm" firstAttribute="centerX" secondItem="c0S-1y-SCl" secondAttribute="centerX" id="nvz-Ih-9bc"/>
+                            <constraint firstItem="xva-JG-Vwr" firstAttribute="centerY" secondItem="eOk-xQ-qkr" secondAttribute="centerY" id="ymC-wF-Whe"/>
+                            <constraint firstItem="AJt-H4-xKH" firstAttribute="centerX" secondItem="c0S-1y-SCl" secondAttribute="centerX" id="zEN-Ya-aPR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bx6-et-PmZ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nEO-rQ-y46" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="klD-wc-qdA" userLabel="Exit" sceneMemberID="exit"/>
+                <swipeGestureRecognizer direction="left" id="PDm-gD-1uw" userLabel="left">
+                    <connections>
+                        <segue destination="klD-wc-qdA" kind="unwind" unwindAction="unwindToGTI:" id="TiH-v4-bxY"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="i0V-Gf-B7Y" userLabel="right">
+                    <connections>
+                        <segue destination="klD-wc-qdA" kind="unwind" unwindAction="unwindToAllExercises:" id="f6B-vc-bnf"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3964" y="2235"/>
+        </scene>
+        <!--Long Tones Success-->
+        <scene sceneID="Q3U-Q7-piM">
+            <objects>
+                <swipeGestureRecognizer direction="right" id="InT-6U-ZPq" userLabel="right">
+                    <connections>
+                        <segue destination="I7K-f2-2eW" kind="unwind" unwindAction="unwindToAllExercises:" id="D7u-9j-arh"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <exit id="I7K-f2-2eW" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zh7-Vd-PSb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="nhm-BV-rkI" userLabel="Long Tones Success" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q6D-Jr-eST">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar V(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="1TJ-ft-oJR">
+                                <rect key="frame" x="30" y="10" width="315" height="60"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONG TONES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADv-Un-AQm">
+                                <rect key="frame" x="85" y="98" width="205" height="44"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="36"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTU-Dg-ZQz" userLabel="Badge: Vocal">
+                                <rect key="frame" x="62.5" y="160" width="250" height="200"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank-badge" translatesAutoresizingMaskIntoConstraints="NO" id="bV3-46-s5z">
+                                        <rect key="frame" x="30" y="10" width="180" height="180"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="2WX-nZ-Rqc"/>
+                                            <constraint firstAttribute="height" constant="180" id="mAJ-UB-tDS"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="microphone" translatesAutoresizingMaskIntoConstraints="NO" id="cUc-aO-48v">
+                                        <rect key="frame" x="60" y="35" width="120" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="1Nq-KW-fhq"/>
+                                            <constraint firstAttribute="width" constant="120" id="uDb-Oy-JwU"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="bV3-46-s5z" firstAttribute="leading" secondItem="LTU-Dg-ZQz" secondAttribute="leading" constant="30" id="0HX-Tt-qCs"/>
+                                    <constraint firstItem="cUc-aO-48v" firstAttribute="leading" secondItem="LTU-Dg-ZQz" secondAttribute="leading" constant="60" id="0kc-3Q-gFt"/>
+                                    <constraint firstAttribute="height" constant="200" id="L3c-Cy-zQF"/>
+                                    <constraint firstAttribute="width" constant="250" id="j1Q-kU-6gV"/>
+                                    <constraint firstItem="bV3-46-s5z" firstAttribute="top" secondItem="LTU-Dg-ZQz" secondAttribute="top" constant="10" id="kal-uZ-OYa"/>
+                                    <constraint firstItem="cUc-aO-48v" firstAttribute="top" secondItem="LTU-Dg-ZQz" secondAttribute="top" constant="35" id="xGl-rD-tPu"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELL DONE!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eW8-dF-7pe">
+                                <rect key="frame" x="15.5" y="375" width="344.5" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="agY-FO-3fY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="60"/>
+                                <color key="textColor" red="0.1647058824" green="0.4823529412" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amf-NO-rtL">
+                                <rect key="frame" x="102" y="450" width="171" height="100"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="dpY-rh-G4J"/>
+                                </constraints>
+                                <string key="text">SWIPE RIGHT FOR ALL EXERCISES
+&gt;&gt;&gt;</string>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="InT-6U-ZPq" appends="YES" id="xEs-0R-Z01"/>
+                                </connections>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1TJ-ft-oJR" firstAttribute="centerX" secondItem="Q6D-Jr-eST" secondAttribute="centerX" id="0eT-Tj-gi4"/>
+                            <constraint firstItem="1TJ-ft-oJR" firstAttribute="top" secondItem="Ydl-DX-Tlp" secondAttribute="top" constant="10" id="6gK-m9-EjN"/>
+                            <constraint firstItem="ADv-Un-AQm" firstAttribute="centerY" secondItem="1TJ-ft-oJR" secondAttribute="centerY" constant="80" id="9a9-hh-AYY"/>
+                            <constraint firstItem="eW8-dF-7pe" firstAttribute="centerY" secondItem="LTU-Dg-ZQz" secondAttribute="centerY" constant="150" id="BUu-Lg-bOv"/>
+                            <constraint firstItem="LTU-Dg-ZQz" firstAttribute="centerX" secondItem="Q6D-Jr-eST" secondAttribute="centerX" id="NIK-Ws-8Sc"/>
+                            <constraint firstItem="amf-NO-rtL" firstAttribute="centerX" secondItem="Q6D-Jr-eST" secondAttribute="centerX" id="Sua-Vz-OSO"/>
+                            <constraint firstItem="LTU-Dg-ZQz" firstAttribute="centerY" secondItem="ADv-Un-AQm" secondAttribute="centerY" constant="140" id="Zvc-6Z-Laq"/>
+                            <constraint firstItem="ADv-Un-AQm" firstAttribute="centerX" secondItem="Q6D-Jr-eST" secondAttribute="centerX" id="iNi-PZ-3VR"/>
+                            <constraint firstItem="eW8-dF-7pe" firstAttribute="centerX" secondItem="Q6D-Jr-eST" secondAttribute="centerX" id="rkW-yh-15d"/>
+                            <constraint firstItem="amf-NO-rtL" firstAttribute="centerY" secondItem="eW8-dF-7pe" secondAttribute="centerY" constant="90" id="w0U-hg-vab"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ydl-DX-Tlp"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2612" y="1559"/>
+        </scene>
+        <!--Long Tones Fail-->
+        <scene sceneID="kHm-7a-2Kb">
+            <objects>
+                <viewController id="FCP-mr-8zz" userLabel="Long Tones Fail" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0VX-2s-wbR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar V(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="XFP-Ph-Z5d">
+                                <rect key="frame" x="30" y="10" width="315" height="60"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONG TONES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7E-3z-NHl">
+                                <rect key="frame" x="85" y="98" width="205" height="44"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="36"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SNZ-Cg-zqg" userLabel="Fail">
+                                <rect key="frame" x="87.5" y="160" width="200" height="200"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-music" translatesAutoresizingMaskIntoConstraints="NO" id="3XR-fh-N03">
+                                        <rect key="frame" x="10" y="10" width="180" height="180"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="180" id="MKy-Uy-Qy6"/>
+                                            <constraint firstAttribute="width" constant="180" id="vBC-tf-h07"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="3XR-fh-N03" firstAttribute="leading" secondItem="SNZ-Cg-zqg" secondAttribute="leading" constant="10" id="4um-cZ-7eZ"/>
+                                    <constraint firstAttribute="height" constant="200" id="8oU-dO-GKe"/>
+                                    <constraint firstAttribute="width" constant="200" id="jhI-ia-yPc"/>
+                                    <constraint firstItem="3XR-fh-N03" firstAttribute="top" secondItem="SNZ-Cg-zqg" secondAttribute="top" constant="10" id="ltF-24-ETd"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRY AGAIN!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nuU-yP-5ys">
+                                <rect key="frame" x="29" y="375" width="317" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="HWX-U7-6x8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="60"/>
+                                <color key="textColor" red="0.67843137249999996" green="0.1647058824" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxl-ry-oRe">
+                                <rect key="frame" x="24" y="445" width="137.5" height="110"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="5WV-13-TTA"/>
+                                </constraints>
+                                <string key="text">SWIPE LEFT 
+TO TRY AGAIN
+&lt;&lt;&lt;</string>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Oeb-mW-FAp" appends="YES" id="t2o-DB-PAU"/>
+                                </connections>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hfb-Bf-v3j">
+                                <rect key="frame" x="184.5" y="445" width="176.5" height="110"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="dlK-1m-bsj"/>
+                                </constraints>
+                                <string key="text">SWIPE RIGHT FOR 
+ALL EXERCISES
+&gt;&gt;&gt;</string>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Ofo-lx-XL2" appends="YES" id="XAo-IT-jY2"/>
+                                </connections>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SNZ-Cg-zqg" firstAttribute="centerX" secondItem="0VX-2s-wbR" secondAttribute="centerX" id="0TG-BB-qSh"/>
+                            <constraint firstItem="Hfb-Bf-v3j" firstAttribute="centerX" secondItem="gxl-ry-oRe" secondAttribute="centerX" constant="180" id="MI7-CI-X1l"/>
+                            <constraint firstItem="XFP-Ph-Z5d" firstAttribute="centerX" secondItem="0VX-2s-wbR" secondAttribute="centerX" id="WlX-2O-c36"/>
+                            <constraint firstItem="XFP-Ph-Z5d" firstAttribute="top" secondItem="ttg-19-R1i" secondAttribute="top" constant="10" id="YuJ-SK-eBU"/>
+                            <constraint firstItem="nuU-yP-5ys" firstAttribute="centerX" secondItem="0VX-2s-wbR" secondAttribute="centerX" id="hep-gV-zud"/>
+                            <constraint firstItem="j7E-3z-NHl" firstAttribute="centerX" secondItem="0VX-2s-wbR" secondAttribute="centerX" id="nvQ-O7-SUd"/>
+                            <constraint firstItem="nuU-yP-5ys" firstAttribute="centerY" secondItem="SNZ-Cg-zqg" secondAttribute="centerY" constant="150" id="oRB-q6-hfc"/>
+                            <constraint firstItem="SNZ-Cg-zqg" firstAttribute="centerY" secondItem="j7E-3z-NHl" secondAttribute="centerY" constant="140" id="rYG-HM-iYa"/>
+                            <constraint firstItem="gxl-ry-oRe" firstAttribute="centerX" secondItem="0VX-2s-wbR" secondAttribute="centerX" constant="-95" id="uSx-oK-kbd"/>
+                            <constraint firstItem="Hfb-Bf-v3j" firstAttribute="centerY" secondItem="gxl-ry-oRe" secondAttribute="centerY" id="vC2-Pi-vZE"/>
+                            <constraint firstItem="gxl-ry-oRe" firstAttribute="centerY" secondItem="nuU-yP-5ys" secondAttribute="centerY" constant="90" id="xyc-H7-Jkf"/>
+                            <constraint firstItem="j7E-3z-NHl" firstAttribute="centerY" secondItem="XFP-Ph-Z5d" secondAttribute="centerY" constant="80" id="zbH-tZ-xp6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ttg-19-R1i"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vdD-xJ-i8V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="mH3-Q7-Zeo" userLabel="Exit" sceneMemberID="exit"/>
+                <swipeGestureRecognizer direction="left" id="Oeb-mW-FAp" userLabel="left">
+                    <connections>
+                        <segue destination="mH3-Q7-Zeo" kind="unwind" unwindAction="unwindToLongTones:" id="PRR-aK-E8O"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="Ofo-lx-XL2" userLabel="right">
+                    <connections>
+                        <segue destination="mH3-Q7-Zeo" kind="unwind" unwindAction="unwindToAllExercises:" id="HCD-rp-Rpr"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2612" y="2235"/>
+        </scene>
+        <!--Shake It Success-->
+        <scene sceneID="Ft6-Zp-NPH">
+            <objects>
+                <viewController id="ifp-hd-YI6" userLabel="Shake It Success" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KKb-J1-6dS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar R(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="Jxn-v4-y1t">
+                                <rect key="frame" x="30" y="10" width="315" height="60"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQW-mq-lN8" userLabel="Badge: Rhythm">
+                                <rect key="frame" x="62.5" y="160" width="250" height="200"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank-badge" translatesAutoresizingMaskIntoConstraints="NO" id="saq-2J-zAP">
+                                        <rect key="frame" x="30" y="10" width="180" height="180"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="180" id="2xr-zi-xsG"/>
+                                            <constraint firstAttribute="width" constant="180" id="Jjl-cn-ocO"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="equalizer" translatesAutoresizingMaskIntoConstraints="NO" id="Y94-yN-yl1">
+                                        <rect key="frame" x="60" y="35" width="120" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="9kO-Uk-Jxg"/>
+                                            <constraint firstAttribute="height" constant="120" id="mIG-hI-aii"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="4bD-hT-koW"/>
+                                    <constraint firstItem="saq-2J-zAP" firstAttribute="top" secondItem="cQW-mq-lN8" secondAttribute="top" constant="10" id="8bM-li-PeR"/>
+                                    <constraint firstItem="Y94-yN-yl1" firstAttribute="top" secondItem="cQW-mq-lN8" secondAttribute="top" constant="35" id="FNI-r9-0l1"/>
+                                    <constraint firstItem="Y94-yN-yl1" firstAttribute="leading" secondItem="cQW-mq-lN8" secondAttribute="leading" constant="60" id="RPn-lV-zb8"/>
+                                    <constraint firstAttribute="height" constant="200" id="Wq5-pY-4dl"/>
+                                    <constraint firstItem="saq-2J-zAP" firstAttribute="leading" secondItem="cQW-mq-lN8" secondAttribute="leading" constant="30" id="uk6-og-63h"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELL DONE!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XaV-w1-NdV">
+                                <rect key="frame" x="15" y="375" width="345" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="Fpn-HX-kZC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="60"/>
+                                <color key="textColor" red="0.14855983850000001" green="0.48609346149999999" blue="0.54120576379999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCb-40-8EU">
+                                <rect key="frame" x="102" y="450" width="171" height="100"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="lPP-th-3iB"/>
+                                </constraints>
+                                <string key="text">SWIPE RIGHT FOR ALL EXERCISES
+&gt;&gt;&gt;</string>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="qGR-eo-kh2" appends="YES" id="8da-lH-BGZ"/>
+                                </connections>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHAKE - IT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWv-61-ryi">
+                                <rect key="frame" x="103" y="98" width="169" height="44"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="36"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XaV-w1-NdV" firstAttribute="centerY" secondItem="cQW-mq-lN8" secondAttribute="centerY" constant="150" id="0hq-H5-OjF"/>
+                            <constraint firstItem="lCb-40-8EU" firstAttribute="centerX" secondItem="KKb-J1-6dS" secondAttribute="centerX" id="EIJ-tf-v4J"/>
+                            <constraint firstItem="XaV-w1-NdV" firstAttribute="centerX" secondItem="KKb-J1-6dS" secondAttribute="centerX" id="EQp-sj-RdB"/>
+                            <constraint firstItem="lCb-40-8EU" firstAttribute="centerY" secondItem="XaV-w1-NdV" secondAttribute="centerY" constant="90" id="FO0-gL-VFy"/>
+                            <constraint firstItem="Jxn-v4-y1t" firstAttribute="top" secondItem="iJC-fN-oxo" secondAttribute="top" constant="10" id="JdQ-vF-Ij6"/>
+                            <constraint firstItem="dWv-61-ryi" firstAttribute="centerY" secondItem="Jxn-v4-y1t" secondAttribute="centerY" constant="80" id="LY9-Fa-ScX"/>
+                            <constraint firstItem="cQW-mq-lN8" firstAttribute="centerY" secondItem="dWv-61-ryi" secondAttribute="centerY" constant="140" id="Tgr-oD-Jqd"/>
+                            <constraint firstItem="cQW-mq-lN8" firstAttribute="centerX" secondItem="KKb-J1-6dS" secondAttribute="centerX" id="cA9-TC-FVv"/>
+                            <constraint firstItem="dWv-61-ryi" firstAttribute="centerX" secondItem="KKb-J1-6dS" secondAttribute="centerX" id="fIs-nI-v6T"/>
+                            <constraint firstItem="Jxn-v4-y1t" firstAttribute="centerX" secondItem="KKb-J1-6dS" secondAttribute="centerX" id="m4C-HH-sxH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iJC-fN-oxo"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KQN-by-ChT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="WKB-ab-jQF" userLabel="Exit" sceneMemberID="exit"/>
+                <swipeGestureRecognizer direction="right" id="qGR-eo-kh2" userLabel="right">
+                    <connections>
+                        <segue destination="WKB-ab-jQF" kind="unwind" unwindAction="unwindToAllExercises:" id="WkH-AP-nty"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3303" y="1558"/>
+        </scene>
+        <!--Shake It Fail-->
+        <scene sceneID="kcB-vJ-d5O">
+            <objects>
+                <viewController id="PM6-ox-2mx" userLabel="Shake It Fail" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="baL-Ty-Sgx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar R(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="UF6-mu-fdj">
+                                <rect key="frame" x="30" y="10" width="315" height="60"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRY AGAIN!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FpX-j2-ckZ">
+                                <rect key="frame" x="29" y="375" width="317" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="cjK-sl-36r"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="60"/>
+                                <color key="textColor" red="0.67843137249999996" green="0.1647058824" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rMQ-hx-Fik">
+                                <rect key="frame" x="24" y="445" width="137.5" height="110"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="7ty-oX-7Gb"/>
+                                </constraints>
+                                <string key="text">SWIPE LEFT 
+TO TRY AGAIN
+&lt;&lt;&lt;</string>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="DYx-0V-2nu" appends="YES" id="FHZ-PT-yaL"/>
+                                </connections>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxy-3R-mpw">
+                                <rect key="frame" x="184.5" y="445" width="176.5" height="110"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="iM1-54-a6f"/>
+                                </constraints>
+                                <string key="text">SWIPE RIGHT FOR 
+ALL EXERCISES
+&gt;&gt;&gt;</string>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="3yb-Te-k5f" appends="YES" id="1mB-f7-QTo"/>
+                                </connections>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHAKE - IT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9z2-Qf-poo">
+                                <rect key="frame" x="103" y="98" width="169" height="44"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="36"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQK-SI-p9u" userLabel="Fail">
+                                <rect key="frame" x="87.5" y="160" width="200" height="200"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-music" translatesAutoresizingMaskIntoConstraints="NO" id="vuN-DI-dYr">
+                                        <rect key="frame" x="10" y="10" width="180" height="180"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="180" id="3ml-JR-wut"/>
+                                            <constraint firstAttribute="width" constant="180" id="L4f-rQ-7Fd"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="vuN-DI-dYr" firstAttribute="leading" secondItem="aQK-SI-p9u" secondAttribute="leading" constant="10" id="Blh-lP-HUK"/>
+                                    <constraint firstItem="vuN-DI-dYr" firstAttribute="top" secondItem="aQK-SI-p9u" secondAttribute="top" constant="10" id="F4b-Ti-ct3"/>
+                                    <constraint firstAttribute="width" constant="200" id="LZ0-tr-qkW"/>
+                                    <constraint firstAttribute="height" constant="200" id="iue-Uz-hkN"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rMQ-hx-Fik" firstAttribute="centerY" secondItem="FpX-j2-ckZ" secondAttribute="centerY" constant="90" id="4TU-T7-Bf3"/>
+                            <constraint firstItem="qxy-3R-mpw" firstAttribute="centerY" secondItem="rMQ-hx-Fik" secondAttribute="centerY" id="MaJ-KF-nac"/>
+                            <constraint firstItem="9z2-Qf-poo" firstAttribute="centerX" secondItem="baL-Ty-Sgx" secondAttribute="centerX" id="TwS-Ub-l6M"/>
+                            <constraint firstItem="FpX-j2-ckZ" firstAttribute="centerX" secondItem="baL-Ty-Sgx" secondAttribute="centerX" id="YYV-xa-RhY"/>
+                            <constraint firstItem="rMQ-hx-Fik" firstAttribute="centerX" secondItem="baL-Ty-Sgx" secondAttribute="centerX" constant="-95" id="ab3-xj-XFB"/>
+                            <constraint firstItem="UF6-mu-fdj" firstAttribute="centerX" secondItem="baL-Ty-Sgx" secondAttribute="centerX" id="gVB-95-vzI"/>
+                            <constraint firstItem="aQK-SI-p9u" firstAttribute="centerX" secondItem="baL-Ty-Sgx" secondAttribute="centerX" id="hVW-AX-5BS"/>
+                            <constraint firstItem="FpX-j2-ckZ" firstAttribute="centerY" secondItem="aQK-SI-p9u" secondAttribute="centerY" constant="150" id="qQ7-Ow-Hni"/>
+                            <constraint firstItem="aQK-SI-p9u" firstAttribute="centerY" secondItem="9z2-Qf-poo" secondAttribute="centerY" constant="140" id="rBK-CY-eRn"/>
+                            <constraint firstItem="UF6-mu-fdj" firstAttribute="top" secondItem="2PY-NZ-WGQ" secondAttribute="top" constant="10" id="rzv-WE-NqE"/>
+                            <constraint firstItem="qxy-3R-mpw" firstAttribute="centerX" secondItem="rMQ-hx-Fik" secondAttribute="centerX" constant="180" id="tCM-fI-Xu6"/>
+                            <constraint firstItem="9z2-Qf-poo" firstAttribute="centerY" secondItem="UF6-mu-fdj" secondAttribute="centerY" constant="80" id="ve1-og-C2q"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2PY-NZ-WGQ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u7t-mI-0SP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="WPY-e3-2QZ" userLabel="Exit" sceneMemberID="exit"/>
+                <swipeGestureRecognizer direction="left" id="DYx-0V-2nu" userLabel="left">
+                    <connections>
+                        <segue destination="WPY-e3-2QZ" kind="unwind" unwindAction="unwindToShakeIt:" id="TEP-vg-7am"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="3yb-Te-k5f" userLabel="right">
+                    <connections>
+                        <segue destination="WPY-e3-2QZ" kind="unwind" unwindAction="unwindToAllExercises:" id="wR1-QD-lyM"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3302" y="2235"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Progress Bar M(PB)" width="315" height="60"/>
+        <image name="Progress Bar R(PB)" width="315" height="60"/>
+        <image name="Progress Bar V(PB)" width="315" height="60"/>
+        <image name="blank-badge" width="512" height="512"/>
+        <image name="equalizer" width="512" height="512"/>
+        <image name="memory" width="512" height="512"/>
+        <image name="microphone" width="512" height="512"/>
+        <image name="no-music" width="512" height="512"/>
+    </resources>
+</document>

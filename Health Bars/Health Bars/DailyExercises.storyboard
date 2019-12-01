@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar M(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="hPw-n2-74k">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar (PB)ALL" translatesAutoresizingMaskIntoConstraints="NO" id="hPw-n2-74k">
                                 <rect key="frame" x="30" y="30" width="315" height="87"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m0q-Jo-AhX" userLabel="Badge: Vocal">
@@ -141,7 +140,6 @@ NAVIGATION MENU
                             <constraint firstItem="hPw-n2-74k" firstAttribute="top" secondItem="wKQ-Ka-0Lv" secondAttribute="top" constant="10" id="1LW-ge-WEJ"/>
                             <constraint firstItem="hPw-n2-74k" firstAttribute="centerX" secondItem="F0F-qc-E3c" secondAttribute="centerX" id="2R9-P4-nHi"/>
                             <constraint firstItem="hPw-n2-74k" firstAttribute="centerY" secondItem="F0F-qc-E3c" secondAttribute="centerY" constant="-260" id="Ap6-f5-ehK"/>
-                            <constraint firstItem="Afg-by-1eP" firstAttribute="centerY" secondItem="F0F-qc-E3c" secondAttribute="centerY" constant="-100" id="HSN-IU-vMf"/>
                             <constraint firstItem="lL1-9K-ddl" firstAttribute="centerY" secondItem="F0F-qc-E3c" secondAttribute="centerY" constant="220" id="Lf3-Or-TsR"/>
                             <constraint firstItem="3X0-ue-SD1" firstAttribute="centerY" secondItem="58P-cx-6U4" secondAttribute="centerY" constant="90" id="TVQ-tY-38N"/>
                             <constraint firstItem="cVu-R5-Sfh" firstAttribute="centerY" secondItem="Afg-by-1eP" secondAttribute="centerY" id="X4a-h9-BpA"/>
@@ -170,7 +168,7 @@ NAVIGATION MENU
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar M(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="wW5-0q-0ys">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar (PB)M" translatesAutoresizingMaskIntoConstraints="NO" id="wW5-0q-0ys">
                                 <rect key="frame" x="30" y="30" width="315" height="87"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GUESS THAT INSTRUMENT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="b4F-r2-l0q">
@@ -261,7 +259,7 @@ END OF THE DAILY EXERCISES
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar M(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="xhJ-bk-wGN">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar (PB)M" translatesAutoresizingMaskIntoConstraints="NO" id="xhJ-bk-wGN">
                                 <rect key="frame" x="30" y="30" width="315" height="87"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ykh-bO-YvK" userLabel="Fail">
@@ -351,7 +349,7 @@ DAILY EXERCISES
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar M(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="YKb-Fc-T4X">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar (PB)M" translatesAutoresizingMaskIntoConstraints="NO" id="YKb-Fc-T4X">
                                 <rect key="frame" x="30" y="30" width="315" height="87"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GUESS THAT INSTRUMENT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="bbN-ty-cSQ">
@@ -489,8 +487,8 @@ DAILY EXERCISES
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar R(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="TCn-qY-e9I">
-                                <rect key="frame" x="30" y="30" width="315" height="87"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar R(PB)R" translatesAutoresizingMaskIntoConstraints="NO" id="TCn-qY-e9I">
+                                <rect key="frame" x="35" y="30" width="305" height="87"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oUd-M2-FoK" userLabel="Badge: Rhythm">
                                 <rect key="frame" x="62.5" y="193.5" width="250" height="200"/>
@@ -577,8 +575,8 @@ NEXT EXERCISES
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar R(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="wXI-UV-X1X">
-                                <rect key="frame" x="30" y="30" width="315" height="87"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar R(PB)R" translatesAutoresizingMaskIntoConstraints="NO" id="wXI-UV-X1X">
+                                <rect key="frame" x="35" y="30" width="305" height="87"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRY AGAIN!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gwl-Vf-mIL">
                                 <rect key="frame" x="29" y="408.5" width="317" height="70"/>
@@ -670,8 +668,8 @@ NEXT EXERCISES
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar R(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="LhU-bs-AqD">
-                                <rect key="frame" x="30" y="30" width="315" height="87"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar R(PB)R" translatesAutoresizingMaskIntoConstraints="NO" id="LhU-bs-AqD">
+                                <rect key="frame" x="35" y="30" width="305" height="87"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHAKE - IT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GoY-ry-FJz">
                                 <rect key="frame" x="103" y="131.5" width="169" height="44"/>
@@ -724,7 +722,7 @@ same time you hear the beat.
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar V(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="w7e-30-X91">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar (PB)V" translatesAutoresizingMaskIntoConstraints="NO" id="w7e-30-X91">
                                 <rect key="frame" x="30" y="30" width="315" height="87"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONG TONES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2j6-Lx-r7p">
@@ -812,7 +810,7 @@ NEXT EXERCISES
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar V(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="Bih-Fj-hbp">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar (PB)V" translatesAutoresizingMaskIntoConstraints="NO" id="Bih-Fj-hbp">
                                 <rect key="frame" x="30" y="30" width="315" height="87"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONG TONES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rH-Kh-xnb">
@@ -905,7 +903,7 @@ NEXT EXERCISES
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar V(PB)" translatesAutoresizingMaskIntoConstraints="NO" id="0F1-An-rBk">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progress Bar (PB)V" translatesAutoresizingMaskIntoConstraints="NO" id="0F1-An-rBk">
                                 <rect key="frame" x="30" y="30" width="315" height="87"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONG TONES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vet-cs-mvz">
@@ -1028,9 +1026,10 @@ NEXT EXERCISES
     </scenes>
     <resources>
         <image name="Button_Hear" width="224" height="224"/>
-        <image name="Progress Bar M(PB)" width="315" height="60"/>
-        <image name="Progress Bar R(PB)" width="315" height="60"/>
-        <image name="Progress Bar V(PB)" width="315" height="60"/>
+        <image name="Progress Bar (PB)ALL" width="315" height="60"/>
+        <image name="Progress Bar (PB)M" width="315" height="60"/>
+        <image name="Progress Bar (PB)V" width="315" height="61"/>
+        <image name="Progress Bar R(PB)R" width="305" height="60"/>
         <image name="blank-badge" width="512" height="512"/>
         <image name="equalizer" width="512" height="512"/>
         <image name="flute" width="512" height="512"/>

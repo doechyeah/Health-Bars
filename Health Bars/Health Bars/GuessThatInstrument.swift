@@ -8,20 +8,33 @@
 //  Developers:
 //  Alvin David
 //  Trevor Chow
+//  Michael Lin
 //
 //  Copyright © 2019 Team Rhythm. All rights reserved.
 //
 //  Changelog:
 //  2019-11-14: Created
+//  2019-11-22: Refactored with new AudioKitConductor class
 //
-// Bugs:
-// 11-18-2019: If unable to access Audio then the app crashes.
+//  Bugs:
+//  2019-11-18: If unable to access Audio then the app crashes.
 
 
 import UIKit
 import AudioKit
 
-class GuessThatInstrument: UIViewController {
+class GuessThatInstrument: UIViewController, ProgressBarProtocol {
+    
+    //MARK: Shared AudioKit conductor
+    let conductor = AudioKitConductor.sharedInstance
+    
+    //MARK: Database class
+    let PDB = ProgClass.sharedInstance
+    
+    //MARK: Constants
+    let instrumentNames = ["clarinet","flute","sax","snare","trombone","trumpet","violin","piano","bells"]
+    
+    //MARK: Outlets
     @IBOutlet weak var playInstrumentButton: UIButton!
     @IBOutlet weak var instrumentButton1: UIButton!
     @IBOutlet weak var instrumentButton2: UIButton!
@@ -33,29 +46,45 @@ class GuessThatInstrument: UIViewController {
     @IBOutlet weak var instrumentImage3: UIImageView!
     @IBOutlet weak var instrumentImage4: UIImageView!
     
-    let instrumentNames = ["clarinet","flute","sax","snare","trombone","trumpet","violin","piano","bells"]
+    var activityMode: ActivityMode = ._none
+    var activity: Activity = .GuessThatInstrument
+    var dailyExercisesDoneToday: [Bool] = [false, false, false]
     
+    //MARK: Game variables
     var segueKeepSameinstrument: Bool!
     var randInstrumentNumber: Int!
     var correctInstrumentNumber: Int!
     var correctInstrumentString: String!
     var randInstruments = ["instrument1","instrument2","instrument3","instrument4"]
+    var success: Bool = false
     
     //MARK: Audio Player Variables
     var instrument: AKAudioFile!
-    var instrumentPlayer: AKAudioPlayer!
+    //var instrumentPlayer: AKAudioPlayer!
     
-    let PDB = ProgClass(playID: "Player1")
+    
+    func unwindSegueFromView() {
+        NSLog("GTI delegate unwind function")
+        performSegue(withIdentifier: "segue_unwindtoNavigationMenu", sender: self)
+    }
+    @IBOutlet weak var progressBar: ProgressBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //load for the first time in memory
+        progressBar.delegate = self
+        //TODO: pass data that was sent from AllExercises
+        progressBar.setVars(new_activityMode: .AllExercises, new_currentActivity: .GuessThatInstrument, new_titleText: "GUESS THAT INSTRUMENT")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        dailyExercisesDoneToday = PDB.readDAct()
+        progressBar.setCompletedActivities(activitiesCompleted: dailyExercisesDoneToday)
+        
+        success = false
         
         // choose random instrument clips to present
         var set = [0,1,2,3,4,5,6,7,8]
@@ -76,11 +105,10 @@ class GuessThatInstrument: UIViewController {
         instrumentImage4.image = UIImage(named: randInstruments[3])
         
         initPlayer()
-        initAudioSession()
     }
     
     override func viewDidDisappear(_ animated: Bool){
-        instrumentPlayer.stop()
+        conductor.stop()
         
         do {
             try AudioKit.stop()
@@ -90,10 +118,26 @@ class GuessThatInstrument: UIViewController {
 
     }
     
+    // send data with segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        NSLog("GTI prepare()")
+        NSLog(segue.destination.debugDescription)
+        if let vc = segue.destination as? Success {
+            NSLog("is Success")
+            vc.activityMode = activityMode
+            vc.activity = activity
+        }
+        if let vc = segue.destination as? Fail {
+            NSLog("is Fail")
+            vc.activityMode = activityMode
+            vc.activity = activity
+        }
+    }
+    
     @IBAction func unwindToGTI(_ unwindSegue: UIStoryboardSegue) {}
     
     @IBAction func playInstrumentButtonPressed(_ sender: UIButton) {
-        instrumentPlayer.play(from: 0.0)
+        conductor.play()
         
     }
     
@@ -116,49 +160,40 @@ class GuessThatInstrument: UIViewController {
     
     func checkCorrect(_ choice: Int) {
         if(correctInstrumentString == randInstruments[choice]) {
+            success = true
             segueKeepSameinstrument = false
-            PDB.insert(table: "memory", actscore: 1)
-            let debugdict = PDB.readTable(table: "memory")
-            dump(debugdict)
-            let statchck = PDB.readStats()
-            dump(statchck)
+        }
+        updateStats()
+        if success {
             NSLog("Correct")
-            performSegue(withIdentifier: "segue_gotoSuccessGuessThatInstrument", sender: self)
+            performSegue(withIdentifier: "segue_gotoSuccessGTI", sender: self)
         } else {
             //goto fail
-            PDB.insert(table: "memory", actscore: 0)
-            let debugdict = PDB.readTable(table: "memory")
-            dump(debugdict)
-            let statchck = PDB.readStats()
-            dump(statchck)
             segueKeepSameinstrument = true
             NSLog("False")
-            performSegue(withIdentifier: "segue_gotoFailGuessThatInstrument", sender: self)
+            performSegue(withIdentifier: "segue_gotoFailGTI", sender: self)
         }
+    }
+    
+    // save stats to our DB
+    func updateStats() {
+        // 0 is fail, 1 is success
+        var activityScore = 0
+        if success {
+            activityScore = 1
+        }
+        PDB.insert(table: "memory", actscore: activityScore)
+        PDB.dumpAll()
     }
     
     //initializes the audio file to play
     func initPlayer() {
         do {
             try instrument = AKAudioFile(readFileName: correctInstrumentString+".mp3", baseDir: .resources)
-            try instrumentPlayer = AKAudioPlayer(file: instrument!)
+            conductor.loadFile(my_file: instrument)
         } catch {
             //error
         }
     }
-    
-    
-    func initAudioSession() {
-        do {
-            // workaround for bug in audiokit: https://github.com/AudioKit/AudioKit/issues/1799#issuecomment-506373157
-            AKSettings.sampleRate = AudioKit.engine.inputNode.inputFormat(forBus: 0).sampleRate
-            AudioKit.output = instrumentPlayer
-            try AKSettings.session.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.mixWithOthers)
-            try AKSettings.session.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
-            try AudioKit.start()
-        } catch {
-            //error
-        }
-}
 
 }
