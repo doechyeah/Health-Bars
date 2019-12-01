@@ -7,6 +7,7 @@
 //  Developers:
 //  Daniel Song
 //  Trevor Chow
+//  Martin Zhilin Lu
 //
 //  Copyright © 2019 Team Rhythm. All rights reserved.
 //
