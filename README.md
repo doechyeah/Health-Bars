@@ -32,6 +32,12 @@ cd health-bars
 cd "Health Bars"
 ```
 
+Initalize git submodules
+
+```
+git submodule update --init --recursive
+```
+
 Build process will fetch AudioKit framework 4.9.1 from web
 
 ### Xcode
