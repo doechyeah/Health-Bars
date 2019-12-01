@@ -24,7 +24,7 @@ class ProgClass {
     static let sharedInstance = ProgClass()
     // MARK: Class variables
 //    var playerID: String = ""
-    let SendURL = "https://advanture.wixsite.com/health-bars-g9/_functions-dev/UpdateStats"
+    let SendURL = "https://advanture.wixsite.com/health-bars-g9/_functions/UpdateStats"
     var currentdate: String
     var yesterday: String
     let path = NSSearchPathForDirectoriesInDomains(.documentDirectory,
@@ -227,7 +227,7 @@ class ProgClass {
                            data[voiceAttempts])
             }
             
-            Alamofire.request(SendURL,
+            AF.request(SendURL,
                               method: .put,
                               parameters: ["title": "Rhythm",
                                            "_id":"6ac071a8-b084-486c-8e0a-000caf23d1e0",
@@ -239,7 +239,7 @@ class ProgClass {
                     print("Oh No")
                 }
             }
-            Alamofire.request(SendURL,
+            AF.request(SendURL,
                               method: .put,
                               parameters: ["title": "Memory",
                                            "_id":"e7e64a06-71ec-44d3-a03e-6a112495d355",
@@ -251,7 +251,7 @@ class ProgClass {
                     print("Oh No")
                 }
             }
-            Alamofire.request(SendURL,
+            AF.request(SendURL,
                               method: .put,
                               parameters: ["title": "Voice",
                                            "_id":"f28cd49e-b62f-4c12-8bd5-3838bdd067b6",
