@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0C4D2F1F23860FFE00426065 /* AudioKitConductor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D2F1E23860FFE00426065 /* AudioKitConductor.swift */; };
-		0C524149237EA10200CA2C98 /* songTest_HardBass.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C524148237EA10100CA2C98 /* songTest_HardBass.json */; };
+		0C7886FE2393761500A0C303 /* Classical_Mozart.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0C7886F02393761500A0C303 /* Classical_Mozart.mp3 */; };
+		0C788700239376F700A0C303 /* Classical_Mozart.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C7886FF239376F700A0C303 /* Classical_Mozart.json */; };
 		0C7B24172379F62600E59378 /* ShakeIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B24162379F62600E59378 /* ShakeIt.swift */; };
-		0C7B241A2379F94F00E59378 /* songTest_Hardbass.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0C7B24192379F94F00E59378 /* songTest_Hardbass.mp3 */; };
 		0C7E926A23800EB000A5AC41 /* UnwindToActivitySegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E926923800EB000A5AC41 /* UnwindToActivitySegue.swift */; };
 		0C887214236FF9E400B4193A /* C#.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0C887208236FF9E300B4193A /* C#.mp3 */; };
 		0C887215236FF9E400B4193A /* D#.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0C887209236FF9E300B4193A /* D#.mp3 */; };
@@ -33,8 +33,8 @@
 		0CA377DE23694484001DAB00 /* Fail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA377DD23694484001DAB00 /* Fail.swift */; };
 		0CA9115D238B361400A7F514 /* ProgressBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CA9115C238B361400A7F514 /* ProgressBar.xib */; };
 		0CA91165238B375D00A7F514 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA91164238B375C00A7F514 /* ProgressBar.swift */; };
-		0CD1923D237FB19200A69AED /* songTest_Classical.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CD1923C237FB19200A69AED /* songTest_Classical.mp3 */; };
-		0CD1923F237FB19C00A69AED /* songTest_Classical.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CD1923E237FB19C00A69AED /* songTest_Classical.json */; };
+		0CD1923D237FB19200A69AED /* Classical_Vivaldi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CD1923C237FB19200A69AED /* Classical_Vivaldi.mp3 */; };
+		0CD1923F237FB19C00A69AED /* Classical_Vivaldi.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CD1923E237FB19C00A69AED /* Classical_Vivaldi.json */; };
 		0CE4CC10239104820006AB71 /* NavigationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4CC0F239104820006AB71 /* NavigationMenu.swift */; };
 		0CE4CC122391048E0006AB71 /* AllExercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4CC112391048E0006AB71 /* AllExercises.swift */; };
 		0CEEB1C92388BD2000D126DC /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEB1C82388BD2000D126DC /* NavigationController.swift */; };
@@ -235,9 +235,9 @@
 
 /* Begin PBXFileReference section */
 		0C4D2F1E23860FFE00426065 /* AudioKitConductor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioKitConductor.swift; sourceTree = "<group>"; };
-		0C524148237EA10100CA2C98 /* songTest_HardBass.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = songTest_HardBass.json; sourceTree = "<group>"; };
+		0C7886F02393761500A0C303 /* Classical_Mozart.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Classical_Mozart.mp3; sourceTree = "<group>"; };
+		0C7886FF239376F700A0C303 /* Classical_Mozart.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Classical_Mozart.json; sourceTree = "<group>"; };
 		0C7B24162379F62600E59378 /* ShakeIt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeIt.swift; sourceTree = "<group>"; };
-		0C7B24192379F94F00E59378 /* songTest_Hardbass.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = songTest_Hardbass.mp3; sourceTree = "<group>"; };
 		0C7E926923800EB000A5AC41 /* UnwindToActivitySegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnwindToActivitySegue.swift; sourceTree = "<group>"; };
 		0C887206236FF9AD00B4193A /*  */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ""; sourceTree = "<group>"; };
 		0C887208236FF9E300B4193A /* C#.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "C#.mp3"; sourceTree = "<group>"; };
@@ -269,8 +269,8 @@
 		0CA377DD23694484001DAB00 /* Fail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fail.swift; sourceTree = "<group>"; };
 		0CA9115C238B361400A7F514 /* ProgressBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressBar.xib; sourceTree = "<group>"; };
 		0CA91164238B375C00A7F514 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
-		0CD1923C237FB19200A69AED /* songTest_Classical.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = songTest_Classical.mp3; sourceTree = "<group>"; };
-		0CD1923E237FB19C00A69AED /* songTest_Classical.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = songTest_Classical.json; sourceTree = "<group>"; };
+		0CD1923C237FB19200A69AED /* Classical_Vivaldi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Classical_Vivaldi.mp3; sourceTree = "<group>"; };
+		0CD1923E237FB19C00A69AED /* Classical_Vivaldi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Classical_Vivaldi.json; sourceTree = "<group>"; };
 		0CE4CC0F239104820006AB71 /* NavigationMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationMenu.swift; sourceTree = "<group>"; };
 		0CE4CC112391048E0006AB71 /* AllExercises.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllExercises.swift; sourceTree = "<group>"; };
 		0CEEB1C82388BD2000D126DC /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -330,10 +330,10 @@
 		0C7B24182379F86900E59378 /* Songs */ = {
 			isa = PBXGroup;
 			children = (
-				0C7B24192379F94F00E59378 /* songTest_Hardbass.mp3 */,
-				0C524148237EA10100CA2C98 /* songTest_HardBass.json */,
-				0CD1923C237FB19200A69AED /* songTest_Classical.mp3 */,
-				0CD1923E237FB19C00A69AED /* songTest_Classical.json */,
+				0C7886F02393761500A0C303 /* Classical_Mozart.mp3 */,
+				0CD1923C237FB19200A69AED /* Classical_Vivaldi.mp3 */,
+				0CD1923E237FB19C00A69AED /* Classical_Vivaldi.json */,
+				0C7886FF239376F700A0C303 /* Classical_Mozart.json */,
 			);
 			path = Songs;
 			sourceTree = "<group>";
@@ -740,12 +740,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C88721B236FF9E400B4193A /* B.mp3 in Resources */,
-				0C7B241A2379F94F00E59378 /* songTest_Hardbass.mp3 in Resources */,
+				0C7886FE2393761500A0C303 /* Classical_Mozart.mp3 in Resources */,
 				0C88721A236FF9E400B4193A /* G.mp3 in Resources */,
 				0C887218236FF9E400B4193A /* E.mp3 in Resources */,
 				0C887216236FF9E400B4193A /* A.mp3 in Resources */,
 				E179CB612381035F00130CDC /* sax.mp3 in Resources */,
-				0CD1923D237FB19200A69AED /* songTest_Classical.mp3 in Resources */,
+				0CD1923D237FB19200A69AED /* Classical_Vivaldi.mp3 in Resources */,
 				0C887217236FF9E400B4193A /* G#.mp3 in Resources */,
 				E179CB652381035F00130CDC /* clarinet.mp3 in Resources */,
 				E179CB662381035F00130CDC /* bells.mp3 in Resources */,
@@ -762,12 +762,12 @@
 				0CF23E4E236C1EA400283DFD /* Assets.xcassets in Resources */,
 				E179CB632381035F00130CDC /* violin.mp3 in Resources */,
 				E179CB622381035F00130CDC /* snare.mp3 in Resources */,
+				0C788700239376F700A0C303 /* Classical_Mozart.json in Resources */,
 				0C887219236FF9E400B4193A /* D.mp3 in Resources */,
 				E179CB672381035F00130CDC /* flute.mp3 in Resources */,
 				0CF2CC6F2381E73F00B4B9DB /* Main.storyboard in Resources */,
 				0C887214236FF9E400B4193A /* C#.mp3 in Resources */,
-				0CD1923F237FB19C00A69AED /* songTest_Classical.json in Resources */,
-				0C524149237EA10200CA2C98 /* songTest_HardBass.json in Resources */,
+				0CD1923F237FB19C00A69AED /* Classical_Vivaldi.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
