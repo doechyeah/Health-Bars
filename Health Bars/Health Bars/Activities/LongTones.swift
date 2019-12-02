@@ -109,7 +109,7 @@ class LongTones: UIViewController, ProgressBarProtocol {
         NSLog("viewDidAppear()")
         super.viewDidAppear(animated)
         // simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        //UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         dailyExercisesDoneToday = PDB.readDAct()
         progressBar.setCompletedActivities(activitiesCompleted: dailyExercisesDoneToday)
@@ -301,7 +301,7 @@ class LongTones: UIViewController, ProgressBarProtocol {
     func matchPitch(_ pitch: Int) -> Bool {
         if currentPitchIndexToMatch == pitch {
             noteSustainPeriods += 1
-            print("\(noteSustainPeriods)")
+            print(String(noteSustainPeriods))
         }
         if noteSustainPeriods >= noteSustainPeriodsForSuccess {
             noteSustainPeriods = 0

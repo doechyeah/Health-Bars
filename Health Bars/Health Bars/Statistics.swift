@@ -167,7 +167,7 @@ class Statistics: UIViewController, ProgressBarProtocol {
         super.viewDidLoad()
         
        // EXTRA RANDOM DATA TO INPUT INTO THE GAME FOR DISPLAY
-        current_label.text = String(AggData.streaktoday)
+        current_label.text = "Daily Streak: "+String(AggData.streaktoday)
         
         //For group bar
        //load for the first time in memory

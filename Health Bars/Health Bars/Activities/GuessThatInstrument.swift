@@ -79,7 +79,7 @@ class GuessThatInstrument: UIViewController, ProgressBarProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // simulator fix: https://stackoverflow.com/questions/48773526/ios-simulator-does-not-refresh-correctly/50685380
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+//        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         dailyExercisesDoneToday = PDB.readDAct()
         progressBar.setCompletedActivities(activitiesCompleted: dailyExercisesDoneToday)

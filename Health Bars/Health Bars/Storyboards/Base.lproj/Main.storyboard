@@ -857,52 +857,6 @@
             </objects>
             <point key="canvasLocation" x="4950" y="495"/>
         </scene>
-        <!--Coming Soon-->
-        <scene sceneID="Zpx-c6-PMR">
-            <objects>
-                <viewController id="Huj-GF-WJu" customClass="ComingSoon" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="jlE-oW-f1S">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Coming Soon !!!" translatesAutoresizingMaskIntoConstraints="NO" id="NUz-95-LeI">
-                                <rect key="frame" x="9" y="137" width="357" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="357" id="Q5w-td-mL6"/>
-                                    <constraint firstAttribute="height" constant="128" id="zey-ya-lhQ"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwM-jK-5Fz">
-                                <rect key="frame" x="33" y="313" width="309" height="103"/>
-                                <color key="backgroundColor" red="0.93870705369999996" green="0.70375639199999995" blue="0.2574125826" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="103" id="Fz4-ea-ziY"/>
-                                    <constraint firstAttribute="width" secondItem="iwM-jK-5Fz" secondAttribute="height" multiplier="3:1" id="xc4-ye-hiW"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <state key="normal" title="Return to Navigation Menu">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <segue destination="UG3-Xq-uMg" kind="unwind" unwindAction="unwindToNavigationMenu:" id="VJo-zs-JXy"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="iwM-jK-5Fz" firstAttribute="top" secondItem="NUz-95-LeI" secondAttribute="bottom" constant="48" id="Fef-Dm-faW"/>
-                            <constraint firstItem="iwM-jK-5Fz" firstAttribute="centerX" secondItem="jlE-oW-f1S" secondAttribute="centerX" id="SMw-DB-m6s"/>
-                            <constraint firstItem="NUz-95-LeI" firstAttribute="centerX" secondItem="jlE-oW-f1S" secondAttribute="centerX" id="hLw-dC-TbQ"/>
-                            <constraint firstItem="NUz-95-LeI" firstAttribute="top" secondItem="CLh-8D-CjH" secondAttribute="top" constant="137" id="qbj-nW-6vB"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="CLh-8D-CjH"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TyB-F6-7qc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="UG3-Xq-uMg" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="2172" y="-869"/>
-        </scene>
         <!--Success-->
         <scene sceneID="V3k-C2-yrV">
             <objects>
@@ -1150,8 +1104,8 @@ ALL EXERCISES
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ukn-gw-98o">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="547"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAILY EXERCISE COMPLETED FOR THE DAY" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0F-zV-jGz">
-                                                <rect key="frame" x="16.5" y="0.0" width="342.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMPLETED EXERCISES:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0F-zV-jGz">
+                                                <rect key="frame" x="89" y="0.0" width="197.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1210,12 +1164,6 @@ ALL EXERCISES
                                                     <constraint firstAttribute="width" constant="106" id="KUg-aw-QaJ"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SUCCESS FOR EACH CATEGORY" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04y-46-hQN">
-                                                <rect key="frame" x="60.5" y="193.5" width="254.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7R9-u8-s6m" customClass="BarChartView" customModule="Charts">
                                                 <rect key="frame" x="3" y="244" width="369" height="272"/>
                                                 <color key="backgroundColor" red="1" green="0.8431192380235587" blue="0.99816029980518506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1232,16 +1180,14 @@ ALL EXERCISES
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="04y-46-hQN" firstAttribute="top" secondItem="N5o-V6-qmD" secondAttribute="bottom" constant="45" id="0tU-1P-vME"/>
                                             <constraint firstItem="N5o-V6-qmD" firstAttribute="top" secondItem="u0F-zV-jGz" secondAttribute="bottom" constant="20" id="ALB-bO-gAX"/>
                                             <constraint firstItem="u0F-zV-jGz" firstAttribute="top" secondItem="Ukn-gw-98o" secondAttribute="top" id="DpV-xc-y0U"/>
                                             <constraint firstItem="npD-0i-7fH" firstAttribute="centerX" secondItem="Ukn-gw-98o" secondAttribute="centerX" id="EQd-Z6-wCW"/>
+                                            <constraint firstItem="7R9-u8-s6m" firstAttribute="top" secondItem="npD-0i-7fH" secondAttribute="bottom" constant="71.5" id="FSR-SU-Y6m"/>
                                             <constraint firstItem="FMN-sL-KMV" firstAttribute="centerX" secondItem="Ukn-gw-98o" secondAttribute="centerX" constant="-116" id="GcA-MT-GK1"/>
-                                            <constraint firstItem="7R9-u8-s6m" firstAttribute="top" secondItem="04y-46-hQN" secondAttribute="bottom" constant="30" id="Juc-jY-JjN"/>
                                             <constraint firstItem="FMN-sL-KMV" firstAttribute="top" secondItem="u0F-zV-jGz" secondAttribute="bottom" constant="20" id="PcE-Qb-FL0"/>
                                             <constraint firstAttribute="trailing" secondItem="7R9-u8-s6m" secondAttribute="trailing" constant="3" id="Uvd-Jw-It8"/>
                                             <constraint firstItem="5qP-sC-arP" firstAttribute="centerX" secondItem="Ukn-gw-98o" secondAttribute="centerX" constant="116" id="VaU-8w-lbI"/>
-                                            <constraint firstItem="04y-46-hQN" firstAttribute="centerX" secondItem="Ukn-gw-98o" secondAttribute="centerX" id="Vfr-7U-aWj"/>
                                             <constraint firstItem="N5o-V6-qmD" firstAttribute="centerX" secondItem="Ukn-gw-98o" secondAttribute="centerX" id="W4s-j6-cL0"/>
                                             <constraint firstItem="npD-0i-7fH" firstAttribute="top" secondItem="N5o-V6-qmD" secondAttribute="bottom" constant="3" id="ZGa-pt-wnD"/>
                                             <constraint firstItem="5qP-sC-arP" firstAttribute="top" secondItem="u0F-zV-jGz" secondAttribute="bottom" constant="20" id="gjy-7g-vz8"/>
@@ -1293,7 +1239,6 @@ ALL EXERCISES
     </scenes>
     <resources>
         <image name="Button_Hear" width="224" height="224"/>
-        <image name="Coming Soon !!!" width="357" height="340"/>
         <image name="blank-badge" width="512" height="512"/>
         <image name="equalizer" width="512" height="512"/>
         <image name="green_equalizer" width="1500" height="1500"/>
