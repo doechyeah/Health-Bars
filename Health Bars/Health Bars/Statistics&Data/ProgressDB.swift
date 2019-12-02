@@ -23,7 +23,6 @@ import Alamofire
 class ProgClass {
     static let sharedInstance = ProgClass()
     // MARK: Class variables
-//    var playerID: String = ""
     let SendURL = "https://advanture.wixsite.com/health-bars-g9/_functions/UpdateStats"
     var currentdate: String
     var yesterday: String
@@ -56,9 +55,7 @@ class ProgClass {
     
     // MARK: Initializer
     init () {
-        // Initialize the progClass with the players ID
-//        playerID = playID
-        
+        // Grabs the current date to prep the database insertions.
         let date = Date()
         let yesdate = Calendar.current.date(byAdding: .day, value: -1, to: date)
         let format = DateFormatter()
@@ -164,14 +161,23 @@ class ProgClass {
         let daterow = DBtable.filter(datetime == currentdate)
         let statrow = Stats.filter(datetime == currentdate)
         var daily = 0;
-        var dbool = false;
+        var dailyBool = false;
         do {
             for x in try db.prepare(daterow) {
-                if x[score] == 0 && actscore != 0 {dbool = true}
+                if x[score] == 0 && actscore != 0 {dailyBool = true}
             }
             try db.run(daterow.update(score += actscore,
                                       attempts += 1))
+            // Switch decides which attribute to insert the data into and how much to update the daily streak count by.
             switch table {
+<<<<<<< HEAD
+=======
+            case "voice":
+                daily = 1
+                try db.run(statrow.update(voicescore += actscore))
+                try db.run(playData.filter(inst == 1).update(voicescore += actscore,
+                                                             voiceAttempts += 1))
+>>>>>>> 9b209972db7ace9f3ef2de01e365a52affd1d46e
             case "rhythm":
                 daily = 2
                 try db.run(statrow.update(rhythmscore += actscore))
@@ -192,10 +198,7 @@ class ProgClass {
                 print("ERROR ACTIVITY DIDN'T EXIST")
             }
             
-            if dbool { try db.run(dailyStreak.filter(datetime == currentdate).update(completedDaily += daily))}
-            
-//            readPlayer()
-            
+            if dailyBool { try db.run(dailyStreak.filter(datetime == currentdate).update(completedDaily += daily))}
         } catch let error {
             print("Insert failed: \(error)")
         }
@@ -217,7 +220,8 @@ class ProgClass {
     }
     
     func readPlayer() -> Dictionary<Int, (Int, Int, Int, Int, Int, Int)> {
-        // This function will read the entries at the desired table
+        // This function is used for the sending the data to the website to update the leaderboard table.
+        // Player data is updated accordingly and reset to 0 if it has sent the data.
         let db = try! Connection("\(path)/ProgressDB.sqlite3")
         var sendVoice = 0
         var sendRhythm = 0
@@ -387,8 +391,10 @@ class ProgClass {
         }
     }
     
-    // MARK: Test Functions (Uncomment in statistics.swift to enter test data.
+    // MARK: Test Functions (Uncomment in statistics.swift to enter test data).
     func InsertTest(dated: String) {
+        // Creates random data from a specified date and up to (not including) the current date.
+        // Only used for debugging.. NON FUNCTIONAL.
         let db = try! Connection("\(path)/ProgressDB.sqlite3")
         let format = DateFormatter()
         format.dateFormat = "yyyy/MM/dd"
@@ -454,7 +460,7 @@ class ProgClass {
         }
     }
     
-  
+    // Debugging function to read the values in all the tables.
     func dumpAll() {
         NSLog("readStats()")
         dump(readStats())
