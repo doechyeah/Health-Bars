@@ -266,10 +266,7 @@ class LongTones: UIViewController, ProgressBarProtocol {
     @objc func stopRecord() {
         //debug
         //NSLog("stopRecord()")
-        if displayTimer != nil {
-            displayTimer.invalidate()
-            displayTimer = nil
-        }
+        destroyTimers()
 
         unlockButtons()
         

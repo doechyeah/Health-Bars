@@ -172,20 +172,22 @@ class ProgClass {
             try db.run(daterow.update(score += actscore,
                                       attempts += 1))
             switch table {
-            case "voice":
-                daily = 1
-                try db.run(statrow.update(voicescore += actscore))
-                try db.run(playData.filter(inst == 1).update(voicescore += actscore,                                                               voiceAttempts += 1))
             case "rhythm":
                 daily = 2
                 try db.run(statrow.update(rhythmscore += actscore))
                 try db.run(playData.filter(inst == 1).update(rhythmscore += actscore,
                                                              rhythmAttempts += 1))
             case "memory":
-                daily = 4
-                try db.run(statrow.update(memoryscore += actscore))
-                try db.run(playData.filter(inst == 1).update(memoryscore += actscore,
-                                                             memoryAttempts += 1))
+            daily = 4
+            try db.run(statrow.update(memoryscore += actscore))
+            try db.run(playData.filter(inst == 1).update(memoryscore += actscore,
+                                                         memoryAttempts += 1))
+            case "voice":
+                daily = 1
+                try db.run(statrow.update(voicescore += actscore))
+                try db.run(playData.filter(inst == 1).update(voicescore += actscore,
+                                                             voiceAttempts += 1))
+            
             default:
                 print("ERROR ACTIVITY DIDN'T EXIST")
             }

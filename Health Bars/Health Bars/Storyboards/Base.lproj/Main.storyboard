@@ -333,7 +333,7 @@
             <objects>
                 <viewController id="umI-wS-8ws" customClass="GuessThatInstrument" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w5i-Kx-jjI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal: Pick the correct instrument you hear" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCk-oj-8L0">
@@ -711,7 +711,7 @@
             <objects>
                 <viewController id="5Nc-Ib-Y05" userLabel="Shake It" customClass="ShakeIt" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kl1-zR-gXz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sO-Kd-xSt">
@@ -862,7 +862,7 @@
             <objects>
                 <viewController id="NeQ-Ht-Zxa" userLabel="Success" customClass="Success" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h5a-Gb-Rdu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XEN-fc-wR8" userLabel="Badge: Vocal">
@@ -966,7 +966,7 @@
             <objects>
                 <viewController id="mXv-aH-Opl" userLabel="Fail" customClass="Fail" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YDx-L8-NDW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9um-Ak-FHJ" userLabel="Fail">
@@ -1252,8 +1252,8 @@ ALL EXERCISES
         <image name="volume_icon" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ACt-Xz-HpB"/>
-        <segue reference="O95-dR-ved"/>
+        <segue reference="mJ0-Sz-7xd"/>
+        <segue reference="Fej-un-AKn"/>
         <segue reference="idZ-R2-k9c"/>
         <segue reference="27b-a7-7qF"/>
         <segue reference="Fjg-aL-w8L"/>

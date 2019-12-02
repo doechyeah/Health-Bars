@@ -282,9 +282,9 @@ class ShakeIt: UIViewController, ProgressBarProtocol {
         countdownLabel.text = "Game Started!"
         
         // have trigger right at end of first window
-        DispatchQueue.global(qos: .userInitiated).async {
-            let ti = Timer.scheduledTimer(withTimeInterval: self.songStartOffsetTime + self.shakeAccuracyToleranceTime, repeats: false, block: {_ in
-        //Timer.scheduledTimer(withTimeInterval: self.songStartOffsetTime + self.shakeAccuracyToleranceTime, repeats: false, block: {_ in
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            let ti = Timer.scheduledTimer(withTimeInterval: self.songStartOffsetTime + self.shakeAccuracyToleranceTime, repeats: false, block: {_ in
+        Timer.scheduledTimer(withTimeInterval: self.songStartOffsetTime + self.shakeAccuracyToleranceTime, repeats: false, block: {_ in
                 self.updateShakeCondition()
                 self.beatResetTimer = Timer.scheduledTimer(timeInterval: self.songBeatPeriod,
                 target: self,
@@ -292,10 +292,10 @@ class ShakeIt: UIViewController, ProgressBarProtocol {
                 userInfo: nil,
                 repeats: true)
             })
-            let runLoop = RunLoop.current
-            runLoop.add(ti, forMode: .default)
-            runLoop.run()
-        }
+//            let runLoop = RunLoop.current
+//            runLoop.add(ti, forMode: .default)
+//            runLoop.run()
+//        }
         
         // vibration
         self.vibrateOnBeat()
@@ -320,9 +320,8 @@ class ShakeIt: UIViewController, ProgressBarProtocol {
         gameActive = false
         shakedToBeat = false
         destroyTimers()
-        updateStats()
         shakeLck.unlock()
-        
+        updateStats()
         startButton.isEnabled = true
         
         if success == false {
@@ -370,9 +369,7 @@ class ShakeIt: UIViewController, ProgressBarProtocol {
         if !shakedToBeat {
             shakeBeatMisses += 1
             print("shake Miss")
-            DispatchQueue.main.async {
-                self.updateCounters()
-            }
+            updateCounters()
         }
         shakedToBeat = false
         beatNum += 1
