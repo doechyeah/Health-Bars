@@ -333,7 +333,7 @@
             <objects>
                 <viewController id="umI-wS-8ws" customClass="GuessThatInstrument" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w5i-Kx-jjI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal: Pick the correct instrument you hear" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCk-oj-8L0">
@@ -711,7 +711,7 @@
             <objects>
                 <viewController id="5Nc-Ib-Y05" userLabel="Shake It" customClass="ShakeIt" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kl1-zR-gXz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sO-Kd-xSt">
@@ -862,7 +862,7 @@
             <objects>
                 <viewController id="NeQ-Ht-Zxa" userLabel="Success" customClass="Success" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h5a-Gb-Rdu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XEN-fc-wR8" userLabel="Badge: Vocal">
@@ -913,9 +913,6 @@
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="n6F-Cd-hWH" appends="YES" id="KW3-t8-gbV"/>
-                                </connections>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LFG-Bj-jqd" customClass="ProgressBar" customModule="Health_Bars" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
@@ -939,6 +936,9 @@
                             <constraint firstItem="XEN-fc-wR8" firstAttribute="centerX" secondItem="h5a-Gb-Rdu" secondAttribute="centerX" id="xmI-ac-ifJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qs6-WL-eEk"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="n6F-Cd-hWH" appends="YES" id="ZZe-sb-B5y"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="ko8-zB-nAv"/>
                     <connections>
@@ -959,14 +959,14 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="6364" y="102"/>
+            <point key="canvasLocation" x="6364" y="101.19940029985008"/>
         </scene>
         <!--Fail-->
         <scene sceneID="g9J-vz-4jV">
             <objects>
                 <viewController id="mXv-aH-Opl" userLabel="Fail" customClass="Fail" customModule="Health_Bars" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YDx-L8-NDW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9um-Ak-FHJ" userLabel="Fail">
@@ -1009,9 +1009,6 @@ TO TRY AGAIN
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="7rV-Mq-ibg" appends="YES" id="lnx-RF-sxN"/>
-                                </connections>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bc2-BT-gp6">
                                 <rect key="frame" x="184.5" y="475" width="176.5" height="110"/>
@@ -1025,9 +1022,6 @@ ALL EXERCISES
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="KYm-rc-vNv" appends="YES" id="Snh-6G-X0e"/>
-                                </connections>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wd5-jN-bNe" customClass="ProgressBar" customModule="Health_Bars" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
@@ -1053,6 +1047,10 @@ ALL EXERCISES
                             <constraint firstItem="Wd5-jN-bNe" firstAttribute="trailing" secondItem="PB3-Sh-03q" secondAttribute="trailing" id="xCT-aI-TP2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PB3-Sh-03q"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="7rV-Mq-ibg" appends="YES" id="zSO-jD-I6i"/>
+                            <outletCollection property="gestureRecognizers" destination="KYm-rc-vNv" appends="YES" id="m7A-8E-j7D"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="95T-B2-OLU"/>
                     <connections>
@@ -1254,10 +1252,10 @@ ALL EXERCISES
         <image name="volume_icon" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XHS-7m-Fdy"/>
-        <segue reference="7cC-hw-HfW"/>
-        <segue reference="Ogq-gb-PwT"/>
+        <segue reference="ACt-Xz-HpB"/>
+        <segue reference="O95-dR-ved"/>
+        <segue reference="idZ-R2-k9c"/>
         <segue reference="27b-a7-7qF"/>
-        <segue reference="LzZ-B9-pHq"/>
+        <segue reference="Fjg-aL-w8L"/>
     </inferredMetricsTieBreakers>
 </document>

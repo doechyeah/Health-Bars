@@ -381,7 +381,6 @@ class ShakeIt: UIViewController, ProgressBarProtocol {
         shakeLck.unlock()
     }
     
-//    Will Implement later. Coming in V3
     @objc func vibrateOnBeat() {
         //debug
         print("Vibrate!")
