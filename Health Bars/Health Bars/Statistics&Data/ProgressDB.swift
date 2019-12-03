@@ -277,8 +277,8 @@ class ProgClass {
                         print("Oh No")
                     }
                 }
-                try db.run(playData.filter(inst == 1).update(rhythmscore <- 0,
-                                                             rhythmAttempts <- 0))
+                try db.run(playData.filter(inst == 1).update(memoryscore <- 0,
+                                                             memoryAttempts <- 0))
             }
         } catch let error {
             print("Error reading stat: \(error)")
