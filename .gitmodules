@@ -4,3 +4,6 @@
 [submodule "Health Bars/Charts"]
 	path = Health Bars/Charts
 	url = https://github.com/danielgindi/Charts
+[submodule "Health Bars/Alamofire"]
+	path = Health Bars/Alamofire
+	url = https://github.com/Alamofire/Alamofire
