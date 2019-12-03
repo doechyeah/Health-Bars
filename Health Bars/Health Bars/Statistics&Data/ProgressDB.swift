@@ -170,14 +170,6 @@ class ProgClass {
                                       attempts += 1))
             // Switch decides which attribute to insert the data into and how much to update the daily streak count by.
             switch table {
-<<<<<<< HEAD
-=======
-            case "voice":
-                daily = 1
-                try db.run(statrow.update(voicescore += actscore))
-                try db.run(playData.filter(inst == 1).update(voicescore += actscore,
-                                                             voiceAttempts += 1))
->>>>>>> 9b209972db7ace9f3ef2de01e365a52affd1d46e
             case "rhythm":
                 daily = 2
                 try db.run(statrow.update(rhythmscore += actscore))
@@ -241,7 +233,7 @@ class ProgClass {
                 
             }
             if sendVoice > 0 {
-                AF.request(SendURL,
+                Alamofire.request(SendURL,
                                   method: .put,
                                   parameters: ["title": "Voice",
                                                "_id":"f28cd49e-b62f-4c12-8bd5-3838bdd067b6",
@@ -257,7 +249,7 @@ class ProgClass {
                                                              voiceAttempts <- 0))
             }
             if sendRhythm > 0 {
-                AF.request(SendURL,
+                Alamofire.request(SendURL,
                                   method: .put,
                                   parameters: ["title": "Rhythm",
                                                "_id":"6ac071a8-b084-486c-8e0a-000caf23d1e0",
@@ -273,7 +265,7 @@ class ProgClass {
                                                              rhythmAttempts <- 0))
             }
             if sendMemory > 0 {
-                AF.request(SendURL,
+                Alamofire.request(SendURL,
                                   method: .put,
                                   parameters: ["title": "Memory",
                                                "_id":"e7e64a06-71ec-44d3-a03e-6a112495d355",

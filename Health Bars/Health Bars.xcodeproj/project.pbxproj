@@ -46,7 +46,6 @@
 		5C20123F2384AFD3004D2EF3 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5C20123B2384AFCD004D2EF3 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5C20EC102384C45A0052CAB8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C20EC012384C4250052CAB8 /* Alamofire.framework */; };
 		5C20EC112384C45A0052CAB8 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5C20EC012384C4250052CAB8 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5C43D9FF23849A0300A17976 /* StatRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C43D9F823849A0200A17976 /* StatRecord.swift */; };
 		5C43DA0423849FB400A17976 /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C43DA0323849FB400A17976 /* AudioKit.framework */; };
 		5C43DA0523849FB400A17976 /* AudioKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5C43DA0323849FB400A17976 /* AudioKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5CF6802C237F8664005778E3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6801D237F8664005778E3 /* SwiftyJSON.swift */; };
@@ -280,7 +279,6 @@
 		5C2011FE2384A7B1004D2EF3 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 		5C2012352384AFCD004D2EF3 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		5C20EBF62384C4250052CAB8 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
-		5C43D9F823849A0200A17976 /* StatRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatRecord.swift; sourceTree = "<group>"; };
 		5C43DA0323849FB400A17976 /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AudioKit.framework; sourceTree = "<group>"; };
 		5CF6801D237F8664005778E3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		E16477B12380E272009A7CCF /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "SQLite.swift-0.12.2/SQLite.xcodeproj"; sourceTree = "<group>"; };
@@ -512,7 +510,6 @@
 				5CF6801D237F8664005778E3 /* SwiftyJSON.swift */,
 				5C2011FE2384A7B1004D2EF3 /* Statistics.swift */,
 				5C071B12237F5BAC0006A921 /* ProgressDB.swift */,
-				5C43D9F823849A0200A17976 /* StatRecord.swift */,
 				0CA91164238B375C00A7F514 /* ProgressBar.swift */,
 			);
 			path = "Statistics&Data";
@@ -848,7 +845,6 @@
 			files = (
 				5C2011FF2384A7B1004D2EF3 /* Statistics.swift in Sources */,
 				E179CB4C2380F17600130CDC /* GuessThatInstrument.swift in Sources */,
-				5C43D9FF23849A0300A17976 /* StatRecord.swift in Sources */,
 				0C7B24172379F62600E59378 /* ShakeIt.swift in Sources */,
 				0CE4CC10239104820006AB71 /* NavigationMenu.swift in Sources */,
 				5C071B1A237F5BAD0006A921 /* ProgressDB.swift in Sources */,
@@ -983,7 +979,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1040,7 +1036,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "-lc++";
@@ -1063,7 +1059,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Health Bars/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1087,7 +1083,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Health Bars/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
